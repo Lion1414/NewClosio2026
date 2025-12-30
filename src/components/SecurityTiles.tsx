@@ -4,7 +4,7 @@ const SecurityTiles: React.FC = () => {
   return (
     <section
       id="security"
-      className="relative w-full py-12 sm:py-16 md:py-20 lg:py-28 bg-transparent"
+      className="relative w-full py-12 sm:py-16 md:py-20 lg:py-28 bg-purple-900"
     >
       <div className="mx-auto flex max-w-6xl flex-col gap-8 sm:gap-10 md:gap-12 px-4 sm:px-6 lg:px-8 lg:flex-row lg:items-center">
         {/* LEFT COLUMN: VIDEO CARD */}
