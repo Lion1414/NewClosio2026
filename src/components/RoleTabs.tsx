@@ -16,10 +16,10 @@ const roles: Role[] = [
     subtitle: 'Full visibility and control over your entire operation',
     image: '/image copy copy.png',
     benefits: [
-      'Complete visibility across all agents and pipelines',
-      'Commission split management and automated payouts',
-      'Performance analytics and team productivity metrics',
-      'Revenue forecasting and business intelligence'
+      'Full agent and pipeline visibility',
+      'Automated commission splits',
+      'Team performance analytics',
+      'Revenue forecasting'
     ]
   },
   {
@@ -28,10 +28,10 @@ const roles: Role[] = [
     subtitle: 'Lead your team with data-driven insights',
     image: '/image copy copy copy.png',
     benefits: [
-      'Agent coaching tools and performance tracking',
-      'Pipeline forecasting and conversion analytics',
-      'Team goal setting and progress monitoring',
-      'Activity reports and leaderboard rankings'
+      'Agent coaching and tracking',
+      'Pipeline conversion analytics',
+      'Goal setting and monitoring',
+      'Activity reports and rankings'
     ]
   },
   {
@@ -40,10 +40,10 @@ const roles: Role[] = [
     subtitle: 'Everything you need to close more deals',
     image: 'https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     benefits: [
-      'Personal pipeline and activity management',
-      'Commission tracking and earning projections',
-      'Client communication and follow-up automation',
-      'Mobile-ready access to your entire book of business'
+      'Personal pipeline management',
+      'Commission tracking',
+      'Automated client follow-ups',
+      'Mobile access to your book'
     ]
   }
 ];
@@ -130,18 +130,11 @@ const RoleTabs: React.FC = () => {
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.4 }}
               >
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2C66FF] to-[#1E4FD9] flex items-center justify-center shadow-lg shadow-[#2C66FF]/30">
-                    <span className="text-white text-xl font-bold">
-                      {currentRole.title.charAt(0)}
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white">
-                      {currentRole.title}
-                    </h3>
-                    <p className="text-[#6B7A94] text-sm mt-0.5">{currentRole.subtitle}</p>
-                  </div>
+                <div className="mb-8">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white">
+                    {currentRole.title}
+                  </h3>
+                  <p className="text-[#6B7A94] text-sm mt-1">{currentRole.subtitle}</p>
                 </div>
 
                 <div className="space-y-4">
@@ -151,11 +144,9 @@ const RoleTabs: React.FC = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="group flex items-start gap-4 p-5 rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/[0.06] hover:border-[#2C66FF]/30 hover:from-[#2C66FF]/[0.08] hover:to-[#2C66FF]/[0.02] transition-all duration-300"
+                      className="group flex items-center gap-4 p-5 rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/[0.06] hover:border-[#2C66FF]/30 hover:from-[#2C66FF]/[0.08] hover:to-[#2C66FF]/[0.02] transition-all duration-300"
                     >
-                      <div className="w-6 h-6 rounded-full bg-[#2C66FF]/20 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-[#2C66FF]/30 transition-colors">
-                        <div className="w-2 h-2 rounded-full bg-[#2C66FF]" />
-                      </div>
+                      <div className="w-5 h-[2px] bg-white flex-shrink-0 group-hover:bg-[#2C66FF] transition-colors" />
                       <p className="text-[#C4CCD9] leading-relaxed group-hover:text-white transition-colors">{benefit}</p>
                     </motion.div>
                   ))}
