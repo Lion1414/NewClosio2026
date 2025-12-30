@@ -24,7 +24,7 @@ const ValueProps: React.FC = () => {
   return (
     <section id="why-closio" className="py-16 sm:py-20 md:py-28 lg:py-32 bg-black">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:gap-16 grid-cols-1 lg:grid-cols-2 items-center">
+        <div className="grid gap-12 lg:gap-16 grid-cols-1 lg:grid-cols-[1.3fr_1fr] items-center">
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -33,7 +33,7 @@ const ValueProps: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="order-1 flex items-center justify-center"
           >
-            <div className="rounded-2xl overflow-hidden border-2 border-[#6ad4f2] shadow-2xl shadow-[#6ad4f2]/20">
+            <div className="rounded-2xl overflow-hidden border-2 border-[#6ad4f2] shadow-2xl shadow-[#6ad4f2]/20 w-full lg:scale-110 lg:origin-left">
               <video
                 src="https://www.dropbox.com/scl/fi/im3lveaj0bz8pe0un87u5/new-video-fro-laptop-display.mp4?rlkey=gaj2fuvzalyfyup0abzhscs1w&st=gyl2lmoj&raw=1"
                 autoPlay
