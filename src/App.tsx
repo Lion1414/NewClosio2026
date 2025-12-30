@@ -13,7 +13,6 @@ import RoadmapTimeline from './components/RoadmapTimeline';
 import FAQAccordion from './components/FAQAccordion';
 import ContactSplit from './components/ContactSplit';
 import HoverFooter from './components/ui/hover-footer-demo';
-import ClosioPurchaseToasts from './components/ui/closio-purchase-toasts';
 import { SectionWrapper } from './components/ui/section-wrapper';
 
 function App() {
@@ -74,8 +73,6 @@ function App() {
       </SectionWrapper>
 
       <HoverFooter />
-
-      <ClosioPurchaseToasts />
       </div>
     </div>
   );
