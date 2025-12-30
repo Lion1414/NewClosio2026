@@ -104,7 +104,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               <img
                 src="/chatgpt_image_dec_18,_2025,_03_32_05_pm.png"
                 alt="Closio"
-                className="h-36 w-auto select-none"
+                className="h-12 w-auto select-none"
                 draggable={false}
               />
             </a>
@@ -165,7 +165,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             className="fixed inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setMobileMenuOpen(false)}
           />
-          <div className="mobile-menu-glass fixed top-[152px] left-0 right-0 mx-4 rounded-2xl shadow-2xl overflow-hidden">
+          <div className="mobile-menu-glass fixed top-[72px] left-0 right-0 mx-4 rounded-2xl shadow-2xl overflow-hidden">
             <div className="py-4 px-2 space-y-1">
               {NAV_ITEMS.map((item) => (
                 <button
