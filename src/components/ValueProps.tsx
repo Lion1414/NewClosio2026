@@ -1,6 +1,5 @@
-import React, { useMemo, useRef } from 'react';
+import React, { useMemo } from 'react';
 import { GlassInfoCard } from '@/components/ui/glass-info-card';
-import { useScrambleOnView } from '@/hooks/useScrambleOnView';
 
 const ValueCard = React.memo(({ title, description }: { title: string; description: string }) => (
   <GlassInfoCard className="text-center">
@@ -14,14 +13,6 @@ const ValueCard = React.memo(({ title, description }: { title: string; descripti
 ValueCard.displayName = 'ValueCard';
 
 const ValueProps: React.FC = () => {
-  const closioRef = useRef<HTMLSpanElement>(null);
-
-  useScrambleOnView(closioRef, "Closio", {
-    duration: 1.4,
-    revealDelay: 0.1,
-    chars: "upperAndLowerCase",
-  });
-
   const valueProps = useMemo(() => [
     {
       title: 'Purpose-Built for Life Insurance',
@@ -55,14 +46,13 @@ const ValueProps: React.FC = () => {
           </div>
 
           <div className="wc-header order-1 lg:order-2 lg:col-span-5 lg:pl-4 text-center lg:text-right px-4 sm:px-0">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6 text-center lg:text-right">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6 text-center lg:text-right flex items-center justify-center lg:justify-end gap-3">
               Why{" "}
-              <span
-                ref={closioRef}
-                className="text-transparent bg-clip-text bg-gradient-to-r from-[#2C66FF] to-[#2B4FB3]"
-              >
-                Closio
-              </span>
+              <img
+                src="/67ff5f5f-fc49-493f-8cb5-0467588c2623 copy.png"
+                alt="Closio"
+                className="h-10 sm:h-12 md:h-14 w-auto inline-block"
+              />
             </h2>
             <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-4 sm:mb-6 text-center lg:text-right">
               A CRM built thoughtfully for the workflows, responsibilities, and operational demands of life-insurance teams.
