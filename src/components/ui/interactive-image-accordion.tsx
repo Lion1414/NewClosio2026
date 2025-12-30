@@ -5,30 +5,42 @@ import { GlowButton } from '@/components/ui/glow-button';
 const accordionItems = [
   {
     id: 1,
+    title: 'Dashboard',
+    imageUrl: 'https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    description: 'Get a complete overview of your agency performance at a glance'
+  },
+  {
+    id: 2,
     title: 'Book of Business',
     imageUrl: '/book-of-business.png',
     description: 'Track all your clients, policies, and deals in one place'
   },
   {
-    id: 2,
+    id: 3,
     title: 'Commission',
     imageUrl: 'https://images.pexels.com/photos/6694543/pexels-photo-6694543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     description: 'Real-time commission tracking and split calculations'
   },
   {
-    id: 3,
+    id: 4,
     title: 'Leaderboard',
     imageUrl: 'https://images.pexels.com/photos/7413891/pexels-photo-7413891.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     description: 'Motivate your team with live performance rankings'
   },
   {
-    id: 4,
+    id: 5,
     title: 'Team Hierarchy',
     imageUrl: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     description: 'Visualize and manage your entire agency structure'
   },
   {
-    id: 5,
+    id: 6,
+    title: 'User Management',
+    imageUrl: 'https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    description: 'Control access, permissions, and roles for your entire team'
+  },
+  {
+    id: 7,
     title: 'Carrier Management',
     imageUrl: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     description: 'Organize carriers, products, and contracting levels'
