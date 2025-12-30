@@ -26,7 +26,7 @@ const roles: Role[] = [
     id: 'manager',
     title: 'Manager',
     subtitle: 'Lead your team with data-driven insights',
-    image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    image: '/image copy copy copy.png',
     benefits: [
       'Agent coaching tools and performance tracking',
       'Pipeline forecasting and conversion analytics',
