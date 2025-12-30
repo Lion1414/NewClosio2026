@@ -82,9 +82,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           scrollProgress > 0.1 ? 'py-3' : 'py-4'
         }`}
         style={{
-          background: 'rgba(5, 10, 24, 0.35)',
-          backdropFilter: 'blur(24px) saturate(180%)',
-          WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+          background: '#000000',
           boxShadow: '0 8px 30px rgba(0, 0, 0, 0.25)'
         }}
       >
