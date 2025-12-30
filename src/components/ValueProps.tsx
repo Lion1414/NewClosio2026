@@ -34,10 +34,9 @@ const ValueProps: React.FC = () => {
             className="order-1 flex items-center justify-center"
           >
             <div
-              className="rounded-2xl overflow-hidden border border-white/20 w-full lg:scale-110 lg:origin-left p-1"
+              className="rounded-2xl overflow-hidden border border-[#6ad4f2]/40 w-full lg:scale-110 lg:origin-left p-1.5 bg-black/50"
               style={{
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%)',
-                backdropFilter: 'blur(8px)'
+                boxShadow: '0 0 30px rgba(106, 212, 242, 0.25), 0 0 60px rgba(106, 212, 242, 0.15), 0 0 100px rgba(106, 212, 242, 0.08)'
               }}
             >
               <div className="rounded-xl overflow-hidden">
@@ -50,7 +49,7 @@ const ValueProps: React.FC = () => {
                   className="w-full h-auto object-cover"
                 />
               </div>
-              <div className="h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent my-1" />
+              <div className="h-[1px] bg-gradient-to-r from-transparent via-[#6ad4f2]/30 to-transparent my-1.5" />
               <div className="rounded-xl overflow-hidden">
                 <img
                   src="/wall_art_for_closio.png"
