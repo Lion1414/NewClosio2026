@@ -79,13 +79,12 @@ const Navbar: React.FC<NavbarProps> = () => {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full ${
-          scrollProgress > 0.1 ? 'py-2' : 'py-3'
+          scrollProgress > 0.1 ? 'py-3' : 'py-4'
         }`}
         style={{
           background: 'rgba(5, 10, 24, 0.35)',
           backdropFilter: 'blur(24px) saturate(180%)',
           WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
           boxShadow: '0 8px 30px rgba(0, 0, 0, 0.25)'
         }}
       >
