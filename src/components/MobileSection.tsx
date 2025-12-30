@@ -42,13 +42,13 @@ const MobileSection: React.FC = () => {
             </div>
           </div>
 
-          <div className="order-1 lg:order-2 relative">
+          <div className="order-1 lg:order-2 relative lg:w-[140%] lg:-mr-[20%]">
             <div className="absolute inset-0 bg-gradient-to-r from-[#2C66FF]/20 to-[#00D4FF]/20 blur-3xl opacity-30 rounded-full scale-150" />
             <div className="relative">
               <img
                 src="/purple_pink_gradient_mobile_application_presentation.png"
                 alt="Closio mobile application showcasing dashboard, leaderboard, and login screens"
-                className="w-full h-auto max-w-2xl mx-auto drop-shadow-2xl"
+                className="w-full h-auto max-w-5xl mx-auto drop-shadow-2xl scale-110 lg:scale-125"
               />
             </div>
           </div>
