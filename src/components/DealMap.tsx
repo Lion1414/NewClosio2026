@@ -12,11 +12,6 @@ export default function DealMap() {
     <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-[#0d1d35]" />
 
-      <div className="absolute inset-0">
-        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#2C66FF]/8 rounded-full blur-[150px]" />
-        <div className="absolute bottom-1/3 right-1/3 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[120px]" />
-      </div>
-
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12">
           <motion.h2
@@ -80,7 +75,7 @@ export default function DealMap() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5 + index * 0.1 }}
-                  className="flex items-center gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-white/10 transition-all duration-300"
+                  className="flex items-center gap-4 py-3"
                 >
                   <div className="w-[3px] h-10 bg-[#2C66FF] rounded-full flex-shrink-0" />
                   <div>
