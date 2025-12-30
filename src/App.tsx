@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ValueProps from './components/ValueProps';
+import MobileSection from './components/MobileSection';
 import { InteractiveImageAccordion } from './components/ui/interactive-image-accordion';
 import DealMap from './components/DealMap';
 import RoleTabs from './components/RoleTabs';
@@ -26,6 +27,10 @@ function App() {
 
       <SectionWrapper className="!bg-black !bg-none">
         <ValueProps />
+      </SectionWrapper>
+
+      <SectionWrapper className="!bg-black !bg-none">
+        <MobileSection />
       </SectionWrapper>
 
       <SectionWrapper className="!bg-[#1A2428] !bg-none">
