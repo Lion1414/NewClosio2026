@@ -3,6 +3,17 @@ import { useRef, useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
+const renderTextWithItalicI = (text: string) => {
+  if (text.toUpperCase() === "CLOSIO") {
+    return (
+      <>
+        CLOS<tspan style={{ fontStyle: "italic" }}>I</tspan>O
+      </>
+    );
+  }
+  return text;
+};
+
 export const TextHoverEffect = ({
   text,
   duration,
@@ -107,7 +118,7 @@ export const TextHoverEffect = ({
         className="fill-transparent stroke-neutral-200 font-[helvetica] text-7xl font-bold dark:stroke-neutral-800"
         style={{ opacity: hovered ? 0.7 : 0 }}
       >
-        {text}
+        {renderTextWithItalicI(text)}
       </text>
 
       <motion.text
@@ -127,7 +138,7 @@ export const TextHoverEffect = ({
           ease: "easeInOut",
         }}
       >
-        {text}
+        {renderTextWithItalicI(text)}
       </motion.text>
 
       <text
@@ -140,7 +151,7 @@ export const TextHoverEffect = ({
         mask="url(#textMask)"
         className="fill-transparent font-[helvetica] text-7xl font-bold"
       >
-        {text}
+        {renderTextWithItalicI(text)}
       </text>
     </svg>
   );
