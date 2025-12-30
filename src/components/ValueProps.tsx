@@ -22,7 +22,7 @@ const valueItems = [
 
 const ValueProps: React.FC = () => {
   return (
-    <section id="why-closio" className="py-16 sm:py-20 md:py-28 lg:py-32 bg-black">
+    <section id="why-closio" className="py-16 sm:py-20 md:py-28 lg:py-32 bg-[#0A1628]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:gap-16 grid-cols-1 lg:grid-cols-[1.3fr_1fr] items-center">
 
@@ -34,7 +34,7 @@ const ValueProps: React.FC = () => {
             className="order-1 flex items-center justify-center"
           >
             <div
-              className="rounded-2xl overflow-hidden border border-[#6ad4f2]/40 w-full lg:scale-110 lg:origin-left p-1.5 bg-black/50"
+              className="rounded-2xl overflow-hidden border border-[#6ad4f2]/40 w-full lg:scale-110 lg:origin-left p-1.5 bg-[#050d18]"
               style={{
                 boxShadow: '0 0 30px rgba(106, 212, 242, 0.25), 0 0 60px rgba(106, 212, 242, 0.15), 0 0 100px rgba(106, 212, 242, 0.08)'
               }}
