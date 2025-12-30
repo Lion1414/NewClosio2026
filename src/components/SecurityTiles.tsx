@@ -8,7 +8,7 @@ const SecurityTiles: React.FC = () => {
     >
       <div className="mx-auto flex max-w-6xl flex-col gap-8 sm:gap-10 md:gap-12 px-4 sm:px-6 lg:px-8 lg:flex-row lg:items-center">
         {/* LEFT COLUMN: VIDEO CARD */}
-        <div className="w-full lg:w-1/2">
+        <div className="w-full lg:w-[55%]">
           <div
             className="relative aspect-video w-full overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900/60
                        shadow-[0_18px_45px_rgba(0,0,0,0.6)] backdrop-blur-xl glow-hover"
@@ -18,7 +18,7 @@ const SecurityTiles: React.FC = () => {
 
             {/* VIDEO - inner frame */}
             <div className="relative z-10 flex h-full w-full items-center justify-center">
-              <div className="relative flex h-[82%] w-[82%] items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-black/40">
+              <div className="relative flex h-[90%] w-[90%] items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-black/40">
                 <video
                   src="https://www.dropbox.com/scl/fi/g5umukhp9y6s8zloj9330/Theme-Closio.mp4?rlkey=2vd4dj8ja6yptwy111cde6lzn&raw=1"
                   className="h-full w-auto object-cover"
@@ -33,7 +33,7 @@ const SecurityTiles: React.FC = () => {
         </div>
 
         {/* RIGHT COLUMN: TEXT CONTENT */}
-        <div className="w-full lg:w-1/2 space-y-4 sm:space-y-6 text-center lg:text-left">
+        <div className="w-full lg:w-[45%] space-y-4 sm:space-y-6 text-center lg:text-left">
           <div className="space-y-2 sm:space-y-3">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">
               Customize Everything, Your Way
