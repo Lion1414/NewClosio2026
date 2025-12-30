@@ -2,6 +2,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ValueProps from './components/ValueProps';
 import { InteractiveImageAccordion } from './components/ui/interactive-image-accordion';
+import DealMap from './components/DealMap';
 import RoleTabs from './components/RoleTabs';
 import KPIWall from './components/KPIWall';
 import SecurityTiles from './components/SecurityTiles';
@@ -31,6 +32,10 @@ function App() {
 
       <SectionWrapper>
         <InteractiveImageAccordion />
+      </SectionWrapper>
+
+      <SectionWrapper>
+        <DealMap />
       </SectionWrapper>
 
       <SectionWrapper>
