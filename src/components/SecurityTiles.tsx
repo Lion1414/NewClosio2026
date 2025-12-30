@@ -18,7 +18,7 @@ const SecurityTiles: React.FC = () => {
 
             {/* VIDEO - inner frame */}
             <div className="relative z-10 flex h-full w-full items-center justify-center">
-              <div className="relative flex h-[90%] w-[90%] items-center justify-center overflow-hidden rounded-xl border border-black bg-black/40">
+              <div className="relative flex h-[90%] w-[90%] items-center justify-center overflow-hidden rounded-xl border border-black bg-black">
                 <video
                   src="https://www.dropbox.com/scl/fi/g5umukhp9y6s8zloj9330/Theme-Closio.mp4?rlkey=2vd4dj8ja6yptwy111cde6lzn&raw=1"
                   className="h-full w-auto object-cover"
