@@ -125,9 +125,8 @@ export function InteractiveImageAccordion() {
 
           {/* Left Side: Text Content */}
           <div className="w-full lg:w-2/5 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#2C66FF]/10 border border-[#2C66FF]/20 mb-6">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#2C66FF] animate-pulse" />
-              <span className="text-[#2C66FF] text-xs font-medium tracking-wide uppercase">All in one HUB for you</span>
+            <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-[#2C66FF]/10 mb-6">
+              <span className="text-white text-xs font-medium tracking-wide uppercase">ALL IN ONE HUB FOR YOU</span>
             </div>
 
             <h2 className="text-4xl lg:text-5xl font-bold mb-4 leading-tight">
