@@ -10,7 +10,7 @@ const benefits = [
 export default function DealMap() {
   return (
     <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#020a15] to-black" />
+      <div className="absolute inset-0 bg-[#0d1d35]" />
 
       <div className="absolute inset-0">
         <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#2C66FF]/8 rounded-full blur-[150px]" />
