@@ -26,39 +26,24 @@ const ValueProps: React.FC = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:gap-16 grid-cols-1 lg:grid-cols-2 items-center">
 
-          <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] order-1">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="absolute top-0 left-0 w-[55%] sm:w-[50%] z-10"
-            >
-              <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50">
-                <img
-                  src="/image copy copy.png"
-                  alt="Closio Dashboard"
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="absolute bottom-0 right-0 sm:right-8 w-[60%] sm:w-[55%] z-20"
-            >
-              <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50">
-                <img
-                  src="/image copy copy copy.png"
-                  alt="Closio Features"
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="order-1 flex items-center justify-center"
+          >
+            <div className="rounded-2xl overflow-hidden border-2 border-[#6ad4f2] shadow-2xl shadow-[#6ad4f2]/20">
+              <video
+                src="https://www.dropbox.com/scl/fi/im3lveaj0bz8pe0un87u5/new-video-fro-laptop-display.mp4?rlkey=gaj2fuvzalyfyup0abzhscs1w&st=gyl2lmoj&raw=1"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full max-w-[550px] h-auto object-cover"
+              />
+            </div>
+          </motion.div>
 
           <div className="order-2 lg:pl-8">
             <motion.div
