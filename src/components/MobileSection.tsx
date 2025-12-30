@@ -9,7 +9,7 @@ const MobileSection: React.FC = () => {
           <img
             src="/purple_pink_gradient_mobile_application_presentation.png"
             alt="Closio mobile application showcasing dashboard, leaderboard, and login screens"
-            className="h-[105%] w-auto max-w-none object-contain drop-shadow-2xl -translate-x-[2%]"
+            className="h-[85%] w-auto max-w-none object-contain drop-shadow-2xl translate-x-[1%]"
           />
         </div>
       </div>
