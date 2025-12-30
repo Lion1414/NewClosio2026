@@ -6,9 +6,9 @@ const SecurityTiles: React.FC = () => {
       id="security"
       className="relative w-full py-12 sm:py-16 md:py-20 lg:py-28 bg-black"
     >
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 sm:gap-10 md:gap-12 px-4 sm:px-6 lg:px-8 lg:flex-row lg:items-center">
+      <div className="mx-auto flex max-w-7xl flex-col gap-8 sm:gap-10 md:gap-12 px-4 sm:px-6 lg:px-8 lg:flex-row lg:items-center">
         {/* LEFT COLUMN: VIDEO CARD */}
-        <div className="w-full lg:w-[55%]">
+        <div className="w-full lg:w-[62%]">
           <div
             className="relative aspect-video w-full overflow-hidden rounded-2xl
                        shadow-[0_18px_45px_rgba(0,0,0,0.6)]"
@@ -25,7 +25,7 @@ const SecurityTiles: React.FC = () => {
         </div>
 
         {/* RIGHT COLUMN: TEXT CONTENT */}
-        <div className="w-full lg:w-[45%] space-y-4 sm:space-y-6 text-center lg:text-left">
+        <div className="w-full lg:w-[38%] space-y-4 sm:space-y-6 text-center lg:text-left">
           <div className="space-y-2 sm:space-y-3">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">
               Customize Everything, Your Way
