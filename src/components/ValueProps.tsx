@@ -34,17 +34,30 @@ const ValueProps: React.FC = () => {
             className="order-1 flex items-center justify-center"
           >
             <div
-              className="rounded-2xl overflow-hidden border-2 border-[#6ad4f2] w-full lg:scale-110 lg:origin-left"
-              style={{ boxShadow: '0 0 40px rgba(106, 212, 242, 0.4), 0 0 80px rgba(106, 212, 242, 0.2), 0 0 120px rgba(106, 212, 242, 0.1)' }}
+              className="rounded-2xl overflow-hidden border border-white/20 w-full lg:scale-110 lg:origin-left p-1"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%)',
+                backdropFilter: 'blur(8px)'
+              }}
             >
-              <video
-                src="https://www.dropbox.com/scl/fi/im3lveaj0bz8pe0un87u5/new-video-fro-laptop-display.mp4?rlkey=gaj2fuvzalyfyup0abzhscs1w&st=gyl2lmoj&raw=1"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-auto object-cover"
-              />
+              <div className="rounded-xl overflow-hidden">
+                <video
+                  src="https://www.dropbox.com/scl/fi/im3lveaj0bz8pe0un87u5/new-video-fro-laptop-display.mp4?rlkey=gaj2fuvzalyfyup0abzhscs1w&st=gyl2lmoj&raw=1"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+              <div className="h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent my-1" />
+              <div className="rounded-xl overflow-hidden">
+                <img
+                  src="/wall_art_for_closio.png"
+                  alt="Closio Dashboard Features"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
             </div>
           </motion.div>
 
