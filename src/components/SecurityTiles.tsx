@@ -8,14 +8,14 @@ const SecurityTiles: React.FC = () => {
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-8 sm:gap-10 md:gap-12 px-4 sm:px-6 lg:px-8 lg:flex-row lg:items-center">
         {/* LEFT COLUMN: VIDEO CARD */}
-        <div className="w-full lg:w-[62%]">
+        <div className="w-full lg:w-[68%]">
           <div
-            className="relative aspect-video w-full overflow-hidden rounded-2xl
+            className="relative w-full overflow-hidden rounded-2xl bg-[#0d1117]
                        shadow-[0_18px_45px_rgba(0,0,0,0.6)]"
           >
             <video
               src="https://www.dropbox.com/scl/fi/bg4jywewzx467cdv0fyo1/Screen-Recording-2025-12-30-112836.mp4?rlkey=4rkbf0hfuu09o9autts0ux0cp&st=wtjctzuk&raw=1"
-              className="h-full w-full object-cover"
+              className="w-full h-auto block"
               autoPlay
               muted
               loop
@@ -25,7 +25,7 @@ const SecurityTiles: React.FC = () => {
         </div>
 
         {/* RIGHT COLUMN: TEXT CONTENT */}
-        <div className="w-full lg:w-[38%] space-y-4 sm:space-y-6 text-center lg:text-left">
+        <div className="w-full lg:w-[32%] space-y-4 sm:space-y-6 text-center lg:text-left">
           <div className="space-y-2 sm:space-y-3">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">
               Customize Everything, Your Way
