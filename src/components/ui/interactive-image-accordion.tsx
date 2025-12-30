@@ -137,29 +137,6 @@ export function InteractiveImageAccordion() {
               One unified platform. Complete control over your agency.
             </p>
 
-            <div className="flex flex-wrap gap-2 mb-8">
-              {[
-                'Dashboard',
-                'Leaderboard',
-                'Book of Business',
-                'Commission',
-                'Admin Payout',
-                'Agent Payout',
-                'Team Hierarchy',
-                'User Management',
-                'Reminders',
-                'Carrier Management',
-                'Quick Links'
-              ].map((feature) => (
-                <span
-                  key={feature}
-                  className="px-3 py-1.5 text-xs font-medium rounded-lg bg-white/[0.03] border border-white/10 text-[#A8B3C7] hover:bg-white/[0.06] hover:border-white/20 hover:text-white transition-all duration-200 cursor-default"
-                >
-                  {feature}
-                </span>
-              ))}
-            </div>
-
             <GlowButton
               onClick={() => {
                 const element = document.getElementById('contact');
