@@ -53,12 +53,12 @@ const RoleTabs: React.FC = () => {
   const currentRole = roles.find(r => r.id === activeRole) || roles[0];
 
   return (
-    <section className="py-24 md:py-32 bg-black relative overflow-hidden">
+    <section className="py-16 md:py-20 bg-black relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#0A1628]/80 via-black to-black" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#2C66FF]/5 blur-[120px] rounded-full" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -94,7 +94,7 @@ const RoleTabs: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex justify-center mb-16"
+          className="flex justify-center mb-10"
         >
           <div className="inline-flex p-1.5 rounded-2xl bg-[#0A1628]/80 border border-white/[0.08] backdrop-blur-xl shadow-2xl shadow-black/50">
             {roles.map((role) => (
@@ -122,7 +122,7 @@ const RoleTabs: React.FC = () => {
           </div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-16 items-center">
+        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-12 items-center">
           <div className="order-2 lg:order-1">
             <AnimatePresence mode="wait">
               <motion.div
@@ -190,25 +190,18 @@ const RoleTabs: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-[#0A1628]/50 to-transparent" />
                   </div>
 
-                  <div className="absolute bottom-0 left-0 right-0 p-8">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        {roles.map((role, idx) => (
-                          <div
-                            key={role.id}
-                            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                              role.id === activeRole
-                                ? 'w-8 bg-[#2C66FF]'
-                                : 'bg-white/30'
-                            }`}
-                          />
-                        ))}
-                      </div>
-                      <div className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10">
-                        <span className="text-xs font-medium text-white/80">
-                          {roles.findIndex(r => r.id === activeRole) + 1} of {roles.length}
-                        </span>
-                      </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <div className="flex items-center gap-2">
+                      {roles.map((role) => (
+                        <div
+                          key={role.id}
+                          className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                            role.id === activeRole
+                              ? 'w-8 bg-[#2C66FF]'
+                              : 'bg-white/30'
+                          }`}
+                        />
+                      ))}
                     </div>
                   </div>
                 </div>
