@@ -1,23 +1,23 @@
 import React from 'react';
 
-const LoopyLine: React.FC = () => {
+const AngularLine: React.FC = () => {
   return (
     <svg
-      viewBox="0 0 400 700"
+      viewBox="0 0 500 700"
       className="absolute left-0 top-0 h-full w-auto opacity-90"
       style={{ filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))' }}
       preserveAspectRatio="xMinYMid slice"
     >
       <defs>
-        <linearGradient id="loopyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <linearGradient id="angularGradient" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="rgba(255, 255, 255, 0)" />
-          <stop offset="15%" stopColor="rgba(255, 255, 255, 0.9)" />
+          <stop offset="10%" stopColor="rgba(255, 255, 255, 0.9)" />
           <stop offset="50%" stopColor="rgba(255, 255, 255, 1)" />
-          <stop offset="85%" stopColor="rgba(255, 255, 255, 0.9)" />
+          <stop offset="90%" stopColor="rgba(255, 255, 255, 0.9)" />
           <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
         </linearGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+        <filter id="lineGlow">
+          <feGaussianBlur stdDeviation="4" result="coloredBlur" />
           <feMerge>
             <feMergeNode in="coloredBlur" />
             <feMergeNode in="SourceGraphic" />
@@ -25,27 +25,29 @@ const LoopyLine: React.FC = () => {
         </filter>
       </defs>
       <path
-        d="M 50 0
-           C 120 80, 180 120, 140 200
-           C 100 280, 30 300, 80 380
-           C 130 460, 200 420, 160 500
-           C 120 580, 60 620, 100 700"
+        d="M 30 0
+           L 30 200
+           Q 30 280, 110 280
+           L 350 280
+           Q 430 280, 430 360
+           L 430 700"
         fill="none"
-        stroke="url(#loopyGradient)"
-        strokeWidth="24"
+        stroke="url(#angularGradient)"
+        strokeWidth="20"
         strokeLinecap="round"
         strokeLinejoin="round"
-        filter="url(#glow)"
+        filter="url(#lineGlow)"
       />
       <path
-        d="M 50 0
-           C 120 80, 180 120, 140 200
-           C 100 280, 30 300, 80 380
-           C 130 460, 200 420, 160 500
-           C 120 580, 60 620, 100 700"
+        d="M 30 0
+           L 30 200
+           Q 30 280, 110 280
+           L 350 280
+           Q 430 280, 430 360
+           L 430 700"
         fill="none"
-        stroke="rgba(255, 255, 255, 0.15)"
-        strokeWidth="40"
+        stroke="rgba(255, 255, 255, 0.1)"
+        strokeWidth="36"
         strokeLinecap="round"
         strokeLinejoin="round"
         className="blur-sm"
@@ -54,10 +56,35 @@ const LoopyLine: React.FC = () => {
   );
 };
 
+const IOImprint: React.FC = () => {
+  return (
+    <div className="absolute left-12 sm:left-16 lg:left-24 top-1/2 -translate-y-1/2 flex items-baseline gap-0">
+      <span
+        className="text-[120px] sm:text-[160px] lg:text-[200px] font-bold tracking-tighter italic text-white/[0.06]"
+        style={{
+          fontStyle: 'italic',
+          letterSpacing: '-0.05em'
+        }}
+      >
+        I
+      </span>
+      <span
+        className="text-[120px] sm:text-[160px] lg:text-[200px] font-bold tracking-tighter text-white/[0.06]"
+        style={{
+          letterSpacing: '-0.05em'
+        }}
+      >
+        O
+      </span>
+    </div>
+  );
+};
+
 const MobileSection: React.FC = () => {
   return (
     <section id="mobile" className="h-[500px] sm:h-[600px] lg:h-[700px] overflow-hidden relative">
-      <LoopyLine />
+      <AngularLine />
+      <IOImprint />
       <div className="absolute inset-0 flex items-center justify-end">
         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[70%] h-full bg-gradient-to-l from-[#2C66FF]/10 to-transparent blur-3xl opacity-40" />
         <div className="relative w-full h-full flex items-end justify-end">
