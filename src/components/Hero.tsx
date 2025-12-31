@@ -215,9 +215,9 @@ const Hero: React.FC = () => {
     <section id="hero" className="min-h-[70vh] w-full text-white flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative overflow-hidden">
       <HeroDrainLines />
       <div className="w-full max-w-6xl mx-auto space-y-8 sm:space-y-12 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start space-y-8 lg:space-y-0 lg:space-x-12">
-          <div className="flex-1 lg:flex-none"></div>
-          <div className="space-y-4 sm:space-y-6 flex items-center justify-center flex-col text-center lg:text-right lg:items-end flex-1">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start space-y-8 lg:space-y-0 lg:space-x-12 lg:justify-center">
+          <div className="lg:w-[15%]"></div>
+          <div className="space-y-4 sm:space-y-6 flex items-center justify-center flex-col text-center lg:text-right lg:items-end">
             <span className="text-xs sm:text-sm uppercase tracking-[0.2em] text-neutral-600 font-medium">
               CLOS<em className="italic">I</em>O WAS BUILT FOR YOU
             </span>
