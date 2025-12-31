@@ -3,10 +3,10 @@ import React from 'react';
 const AngularLine: React.FC = () => {
   return (
     <svg
-      viewBox="0 0 500 700"
-      className="absolute left-0 top-0 h-full w-auto opacity-90"
+      viewBox="0 0 800 700"
+      className="absolute left-0 top-0 h-full w-[60%] opacity-90"
       style={{ filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))' }}
-      preserveAspectRatio="xMinYMid slice"
+      preserveAspectRatio="xMidYMin slice"
     >
       <defs>
         <linearGradient id="angularGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -25,29 +25,29 @@ const AngularLine: React.FC = () => {
         </filter>
       </defs>
       <path
-        d="M 30 0
-           L 30 200
-           Q 30 280, 110 280
-           L 350 280
-           Q 430 280, 430 360
-           L 430 700"
+        d="M 450 0
+           L 450 180
+           Q 450 260, 530 260
+           L 650 260
+           Q 730 260, 730 340
+           L 730 700"
         fill="none"
         stroke="url(#angularGradient)"
-        strokeWidth="20"
+        strokeWidth="16"
         strokeLinecap="round"
         strokeLinejoin="round"
         filter="url(#lineGlow)"
       />
       <path
-        d="M 30 0
-           L 30 200
-           Q 30 280, 110 280
-           L 350 280
-           Q 430 280, 430 360
-           L 430 700"
+        d="M 450 0
+           L 450 180
+           Q 450 260, 530 260
+           L 650 260
+           Q 730 260, 730 340
+           L 730 700"
         fill="none"
-        stroke="rgba(255, 255, 255, 0.1)"
-        strokeWidth="36"
+        stroke="rgba(255, 255, 255, 0.08)"
+        strokeWidth="28"
         strokeLinecap="round"
         strokeLinejoin="round"
         className="blur-sm"
