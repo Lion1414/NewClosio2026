@@ -79,7 +79,7 @@ const FeatureShowcase: React.FC = () => {
                       <img
                         src={feature.image}
                         alt={feature.title}
-                        className="absolute inset-0 w-full h-full object-cover"
+                        className="absolute inset-0 w-full h-full object-contain"
                       />
                     ) : (
                       <>
