@@ -58,20 +58,20 @@ const AngularLine: React.FC = () => {
 
 const IOImprint: React.FC = () => {
   return (
-    <div className="absolute left-12 sm:left-16 lg:left-24 top-1/2 -translate-y-1/2 flex items-baseline gap-0">
+    <div className="absolute left-12 sm:left-16 lg:left-24 top-[58%] -translate-y-1/2 flex items-baseline gap-4 sm:gap-6 lg:gap-8">
       <span
-        className="text-[120px] sm:text-[160px] lg:text-[200px] font-bold tracking-tighter italic text-white/[0.06]"
+        className="text-[120px] sm:text-[160px] lg:text-[200px] font-bold italic text-transparent"
         style={{
-          fontStyle: 'italic',
-          letterSpacing: '-0.05em'
+          WebkitTextStroke: '2px rgba(255, 255, 255, 0.12)',
+          letterSpacing: '-0.02em'
         }}
       >
         I
       </span>
       <span
-        className="text-[120px] sm:text-[160px] lg:text-[200px] font-bold tracking-tighter text-white/[0.06]"
+        className="text-[120px] sm:text-[160px] lg:text-[200px] font-bold text-white/[0.08]"
         style={{
-          letterSpacing: '-0.05em'
+          letterSpacing: '-0.02em'
         }}
       >
         O
