@@ -156,7 +156,7 @@ export function InteractiveImageAccordion() {
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }}
               label="Book a Demo"
-              className="px-12 py-5 text-lg glow-btn-black"
+              className="px-24 py-5 text-lg glow-btn-white"
             />
           </div>
         </div>
