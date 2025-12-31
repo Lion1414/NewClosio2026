@@ -71,8 +71,8 @@ const FeatureShowcase: React.FC = () => {
                 <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[2px] h-[calc(100%-4rem)] bg-gray-300/40 rounded-full" />
 
                 {/* Image Area with Gradient */}
-                <div className="w-full lg:w-1/2">
-                  <div className="relative aspect-[4/3] bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0]">
+                <div className="w-full lg:w-1/2 p-4">
+                  <div className="relative aspect-[4/3] bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0] rounded-2xl overflow-hidden">
                     {/* Placeholder for image - user will add images later */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-center text-white/90">
