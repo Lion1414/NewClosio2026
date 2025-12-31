@@ -61,7 +61,7 @@ const HeroDrainLines: React.FC = () => {
       />
 
       <path
-        d="M -100 130 L 130 130 Q 200 130, 200 200 L 200 550 Q 200 620, 270 620 L 350 620"
+        d="M -100 130 L 100 130 Q 170 130, 170 200 L 170 530 Q 170 600, 100 600 L 50 600 Q 50 600, 50 670 L 50 800"
         fill="none"
         stroke="rgba(255, 255, 255, 0.15)"
         strokeWidth="32"
@@ -70,7 +70,7 @@ const HeroDrainLines: React.FC = () => {
         className="blur-md"
       />
       <path
-        d="M -100 130 L 130 130 Q 200 130, 200 200 L 200 550 Q 200 620, 270 620 L 350 620"
+        d="M -100 130 L 100 130 Q 170 130, 170 200 L 170 530 Q 170 600, 100 600 L 50 600 Q 50 600, 50 670 L 50 800"
         fill="none"
         stroke="white"
         strokeWidth="16"
@@ -118,7 +118,7 @@ const HeroDrainLines: React.FC = () => {
       />
 
       <path
-        d="M -100 10 L 530 10 Q 600 10, 600 80 L 600 550 Q 600 620, 530 620 L 350 620"
+        d="M -100 10 L 400 10 Q 470 10, 470 80 L 470 530 Q 470 600, 400 600 L 120 600 Q 50 600, 50 670 L 50 800"
         fill="none"
         stroke="rgba(255, 255, 255, 0.15)"
         strokeWidth="32"
@@ -127,26 +127,7 @@ const HeroDrainLines: React.FC = () => {
         className="blur-md"
       />
       <path
-        d="M -100 10 L 530 10 Q 600 10, 600 80 L 600 550 Q 600 620, 530 620 L 350 620"
-        fill="none"
-        stroke="white"
-        strokeWidth="16"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        filter="url(#heroGlowWhite)"
-      />
-
-      <path
-        d="M 350 620 L 400 620 Q 400 620, 400 690 L 400 800"
-        fill="none"
-        stroke="rgba(255, 255, 255, 0.15)"
-        strokeWidth="32"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="blur-md"
-      />
-      <path
-        d="M 350 620 L 400 620 Q 400 620, 400 690 L 400 800"
+        d="M -100 10 L 400 10 Q 470 10, 470 80 L 470 530 Q 470 600, 400 600 L 120 600 Q 50 600, 50 670 L 50 800"
         fill="none"
         stroke="white"
         strokeWidth="16"
