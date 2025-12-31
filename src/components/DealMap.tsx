@@ -9,11 +9,11 @@ const benefits = [
 
 export default function DealMap() {
   return (
-    <section className="py-16 relative overflow-hidden">
+    <section className="py-20 md:py-16 relative overflow-hidden">
       <div className="absolute inset-0 bg-[#d593c0]" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-8">
+        <div className="text-center mb-12 md:mb-8">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -35,7 +35,7 @@ export default function DealMap() {
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-[1.3fr_0.7fr] gap-8 items-center">
+        <div className="grid lg:grid-cols-[1.3fr_0.7fr] gap-12 lg:gap-8 items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -54,7 +54,7 @@ export default function DealMap() {
             </div>
           </motion.div>
 
-          <div className="space-y-6">
+          <div className="space-y-8 md:space-y-6">
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -67,7 +67,7 @@ export default function DealMap() {
               </h3>
             </motion.div>
 
-            <div className="grid gap-3">
+            <div className="grid gap-5 md:gap-3">
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={benefit.title}
@@ -75,11 +75,11 @@ export default function DealMap() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5 + index * 0.1 }}
-                  className="flex items-center gap-4 py-3"
+                  className="flex items-center gap-4 py-4 md:py-3"
                 >
-                  <div className="w-[3px] h-10 bg-black rounded-full flex-shrink-0" />
+                  <div className="w-[3px] h-12 md:h-10 bg-black rounded-full flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-black mb-0.5">{benefit.title}</h4>
+                    <h4 className="font-semibold text-black mb-1 md:mb-0.5">{benefit.title}</h4>
                     <p className="text-sm text-black">{benefit.description}</p>
                   </div>
                 </motion.div>
