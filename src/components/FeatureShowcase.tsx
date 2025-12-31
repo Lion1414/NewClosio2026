@@ -42,7 +42,7 @@ const FeatureShowcase: React.FC = () => {
         >
           No Limits on what you can do
         </motion.h2>
-        <div className="space-y-24 md:space-y-32">
+        <div className="space-y-12 md:space-y-16">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -50,7 +50,7 @@ const FeatureShowcase: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="bg-[#1a1d23] rounded-3xl overflow-hidden shadow-2xl"
+              className="bg-gray-100/30 backdrop-blur-sm rounded-3xl overflow-hidden shadow-lg border border-gray-200/50"
             >
               <div className={`relative flex flex-col ${
                 feature.reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
@@ -58,17 +58,17 @@ const FeatureShowcase: React.FC = () => {
                 {/* Text Content */}
                 <div className="w-full lg:w-1/2 p-8 md:p-12 lg:p-16 flex items-center">
                   <div className="space-y-6">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                       {feature.title}
                     </h2>
-                    <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
+                    <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
                 </div>
 
                 {/* Rounded Divider Line */}
-                <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[2px] h-[calc(100%-4rem)] bg-white/20 rounded-full" />
+                <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[2px] h-[calc(100%-4rem)] bg-gray-300/40 rounded-full" />
 
                 {/* Image Area with Gradient */}
                 <div className="w-full lg:w-1/2">
