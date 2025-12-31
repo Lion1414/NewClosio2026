@@ -81,8 +81,8 @@ const Navbar: React.FC<NavbarProps> = () => {
           scrollProgress > 0.1 ? 'py-3' : 'py-4'
         }`}
         style={{
-          background: '#000000',
-          boxShadow: '0 8px 30px rgba(0, 0, 0, 0.25)'
+          background: scrollProgress > 0.1 ? '#000000' : 'transparent',
+          boxShadow: scrollProgress > 0.1 ? '0 8px 30px rgba(0, 0, 0, 0.25)' : 'none'
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
