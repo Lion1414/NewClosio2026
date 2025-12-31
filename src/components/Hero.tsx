@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
 import { useScrambleOnView } from '@/hooks/useScrambleOnView';
 
 const HeroDrainLines: React.FC = () => {
@@ -221,17 +222,26 @@ const Hero: React.FC = () => {
             <span className="text-xs sm:text-sm uppercase tracking-[0.2em] text-neutral-600 font-medium">
               CLOS<em className="italic">I</em>O WAS BUILT FOR YOU
             </span>
-            <h1 className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight max-w-4xl leading-[1.05] -tracking-[0.02em]">
-              <span ref={line1Ref} className="inline-block">
+            <h1 className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight max-w-4xl leading-[1.05] -tracking-[0.02em] overflow-hidden">
+              <motion.span
+                ref={line1Ref}
+                className="inline-block"
+                initial={{ x: -200, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
                 Close More.
-              </span>
+              </motion.span>
               <br />
-              <span
+              <motion.span
                 ref={line2Ref}
                 className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#d593c0] to-[#6ad4f2]"
+                initial={{ x: 200, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.15 }}
               >
                 Close Smarter.
-              </span>
+              </motion.span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-neutral-300 max-w-xl leading-relaxed px-4 sm:px-0">
               The life insurance CRM that takes you from lead to issue paid.
