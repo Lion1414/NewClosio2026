@@ -123,7 +123,21 @@ export function InteractiveImageAccordion() {
       <div className="max-w-[calc(100vw-12rem)] mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
 
-          {/* Left Side: Text Content */}
+          {/* Left Side: Interactive Image Accordion */}
+          <div className="w-full lg:w-3/5">
+            <div className="flex items-center justify-center gap-3 overflow-x-auto p-4">
+              {accordionItems.map((item, index) => (
+                <AccordionItem
+                  key={item.id}
+                  item={item}
+                  isActive={index === activeIndex}
+                  onClick={() => handleItemClick(index)}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Right Side: Text Content */}
           <div className="w-full lg:w-2/5 text-center lg:text-left">
             <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-[#2C66FF]/10 mb-6">
               <span className="text-white text-xs font-medium tracking-wide uppercase">ALL IN ONE HUB FOR YOU</span>
@@ -144,20 +158,6 @@ export function InteractiveImageAccordion() {
               label="Book a Demo"
               className="px-12 py-5 text-lg glow-btn-black"
             />
-          </div>
-
-          {/* Right Side: Interactive Image Accordion */}
-          <div className="w-full lg:w-3/5">
-            <div className="flex items-center justify-center gap-3 overflow-x-auto p-4">
-              {accordionItems.map((item, index) => (
-                <AccordionItem
-                  key={item.id}
-                  item={item}
-                  isActive={index === activeIndex}
-                  onClick={() => handleItemClick(index)}
-                />
-              ))}
-            </div>
           </div>
         </div>
       </div>
