@@ -147,10 +147,12 @@ const ValueProps: React.FC = () => {
                   className="group py-5 border-b border-white/20 last:border-b-0"
                 >
                   <div className="flex items-start gap-4 sm:gap-6">
-                    <span className="text-[#3ca2fa] text-sm font-semibold tracking-wider pt-1">
+                    <span className="text-[#6ad4f2] group-hover:text-[#d593c0] text-sm font-semibold tracking-wider pt-1 transition-colors duration-300">
                       {item.number}
                     </span>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-medium text-white group-hover:text-[#3ca2fa] transition-colors duration-300">
+                    <h3
+                      className="text-xl sm:text-2xl md:text-3xl font-medium text-white transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-[#d593c0] group-hover:to-[#6ad4f2] group-hover:bg-clip-text group-hover:text-transparent"
+                    >
                       {item.title}
                     </h3>
                   </div>
