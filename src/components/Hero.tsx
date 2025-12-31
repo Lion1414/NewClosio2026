@@ -20,7 +20,7 @@ const HeroWhiteLine: React.FC = () => {
         </filter>
       </defs>
       <path
-        d="M 440 750 L 440 80 Q 440 10, 370 10 L -50 10"
+        d="M 440 750 L 440 200 Q 440 130, 370 130 L -50 130"
         fill="none"
         stroke="rgba(255, 255, 255, 0.15)"
         strokeWidth="32"
@@ -29,7 +29,7 @@ const HeroWhiteLine: React.FC = () => {
         className="blur-md"
       />
       <path
-        d="M 440 750 L 440 80 Q 440 10, 370 10 L -50 10"
+        d="M 440 750 L 440 200 Q 440 130, 370 130 L -50 130"
         fill="none"
         stroke="white"
         strokeWidth="16"
