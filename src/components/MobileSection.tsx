@@ -9,11 +9,10 @@ const AngularLine: React.FC = () => {
       preserveAspectRatio="xMidYMin slice"
     >
       <defs>
-        <linearGradient id="angularGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id="angularGradient" x1="0%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" stopColor="rgba(255, 255, 255, 0)" />
-          <stop offset="10%" stopColor="rgba(255, 255, 255, 0.9)" />
-          <stop offset="50%" stopColor="rgba(255, 255, 255, 1)" />
-          <stop offset="90%" stopColor="rgba(255, 255, 255, 0.9)" />
+          <stop offset="5%" stopColor="rgba(255, 255, 255, 1)" />
+          <stop offset="95%" stopColor="rgba(255, 255, 255, 1)" />
           <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
         </linearGradient>
         <filter id="lineGlow">
