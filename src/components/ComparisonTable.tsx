@@ -48,7 +48,7 @@ const ComparisonTable: React.FC = () => {
   ];
 
   return (
-    <section className="relative w-full py-12 sm:py-16 md:py-20 lg:py-28 bg-transparent">
+    <section className="relative w-full py-12 sm:py-16 md:py-20 lg:py-28 bg-[#1A1A1A]">
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-5">
