@@ -125,13 +125,13 @@ export function InteractiveImageAccordion() {
   };
 
   return (
-    <section id="product" className="py-20">
-      <div className="max-w-[calc(100vw-12rem)] mx-auto px-6">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+    <section id="product" className="py-28 lg:py-32">
+      <div className="max-w-[calc(100vw-4rem)] lg:max-w-[calc(100vw-6rem)] mx-auto px-4 lg:px-0">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
 
           {/* Left Side: Interactive Image Accordion */}
-          <div className="w-full lg:w-3/5">
-            <div className="flex items-center justify-center gap-3 overflow-x-auto p-4">
+          <div className="w-full lg:w-[58%] lg:pl-4">
+            <div className="flex items-center justify-start gap-3 overflow-x-auto p-4">
               {accordionItems.map((item, index) => (
                 <AccordionItem
                   key={item.id}
@@ -144,7 +144,7 @@ export function InteractiveImageAccordion() {
           </div>
 
           {/* Right Side: Text Content */}
-          <div className="w-full lg:w-2/5 text-center lg:text-left">
+          <div className="w-full lg:w-[38%] text-center lg:text-left lg:pr-8">
             <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-[#2C66FF]/10 mb-6">
               <span className="text-white text-xs font-medium tracking-wide uppercase">ALL IN ONE HUB FOR YOU</span>
             </div>
