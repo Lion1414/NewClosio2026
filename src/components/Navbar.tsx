@@ -27,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const scrollY = window.scrollY;
-          const maxScroll = 500;
+          const maxScroll = 300;
           const progress = Math.min(scrollY / maxScroll, 1);
           setScrollProgress(progress);
           ticking = false;
@@ -36,6 +36,7 @@ const Navbar: React.FC<NavbarProps> = () => {
       }
     };
 
+    handleScroll(); // Initial call
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -78,11 +79,11 @@ const Navbar: React.FC<NavbarProps> = () => {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full ${
-          scrollProgress > 0.1 ? 'py-3' : 'py-4'
+          scrollProgress > 0.3 ? 'py-3' : 'py-4'
         }`}
         style={{
-          background: scrollProgress > 0.1 ? '#000000' : 'transparent',
-          boxShadow: scrollProgress > 0.1 ? '0 8px 30px rgba(0, 0, 0, 0.25)' : 'none'
+          background: scrollProgress > 0.3 ? '#000000' : 'rgba(0, 0, 0, 0)',
+          boxShadow: scrollProgress > 0.3 ? '0 8px 30px rgba(0, 0, 0, 0.25)' : 'none'
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
