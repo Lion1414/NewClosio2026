@@ -22,9 +22,9 @@ const VerticalLine: React.FC = () => {
         d="M 100 1000
            L 100 550
            Q 100 480, 170 480
-           L 470 480
-           Q 540 480, 540 410
-           L 540 -100"
+           L 400 480
+           Q 470 480, 470 410
+           L 470 -100"
         fill="none"
         stroke="white"
         strokeWidth="16"
@@ -36,9 +36,9 @@ const VerticalLine: React.FC = () => {
         d="M 100 1000
            L 100 550
            Q 100 480, 170 480
-           L 470 480
-           Q 540 480, 540 410
-           L 540 -100"
+           L 400 480
+           Q 470 480, 470 410
+           L 470 -100"
         fill="none"
         stroke="rgba(255, 255, 255, 0.15)"
         strokeWidth="32"
