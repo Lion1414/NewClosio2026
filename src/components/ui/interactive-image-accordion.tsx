@@ -48,7 +48,7 @@ const accordionItems = [
   {
     id: 8,
     title: 'Carrier Management',
-    imageUrl: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    imageUrl: '/carrier_management-_closio_website.png',
     description: 'Organize carriers, products, and contracting levels'
   },
 ];
