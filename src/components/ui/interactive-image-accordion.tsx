@@ -42,7 +42,7 @@ const accordionItems = [
   {
     id: 7,
     title: 'User Management',
-    imageUrl: 'https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    imageUrl: '/user_management-_closio_website.png',
     description: 'Control access, permissions, and roles for your entire team'
   },
   {
