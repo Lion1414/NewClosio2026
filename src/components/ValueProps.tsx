@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 const VerticalLine: React.FC = () => {
   return (
     <svg
-      viewBox="0 0 400 900"
-      className="absolute left-0 top-0 h-full w-[25vw] pointer-events-none"
+      viewBox="0 0 500 900"
+      className="absolute left-0 top-0 h-full w-[30vw] pointer-events-none"
       style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
       preserveAspectRatio="none"
     >
@@ -22,9 +22,9 @@ const VerticalLine: React.FC = () => {
         d="M 50 1000
            L 50 550
            Q 50 480, 120 480
-           L 280 480
-           Q 350 480, 350 410
-           L 350 -100"
+           L 350 480
+           Q 430 480, 430 410
+           L 430 -100"
         fill="none"
         stroke="white"
         strokeWidth="16"
@@ -36,9 +36,9 @@ const VerticalLine: React.FC = () => {
         d="M 50 1000
            L 50 550
            Q 50 480, 120 480
-           L 280 480
-           Q 350 480, 350 410
-           L 350 -100"
+           L 350 480
+           Q 430 480, 430 410
+           L 430 -100"
         fill="none"
         stroke="rgba(255, 255, 255, 0.15)"
         strokeWidth="32"
