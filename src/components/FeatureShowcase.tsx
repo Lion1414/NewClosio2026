@@ -68,7 +68,7 @@ const FeatureShowcase: React.FC = () => {
                 </div>
 
                 {/* Rounded Divider Line */}
-                <div className="hidden lg:block absolute left-[45%] top-1/2 -translate-x-1/2 -translate-y-1/2 w-[2px] h-[calc(100%-4rem)] bg-gray-300/40 rounded-full" />
+                <div className="hidden lg:block absolute left-[45%] top-1/2 -translate-x-1/2 -translate-y-1/2 w-[6px] h-[calc(100%-4rem)] bg-gray-300/40" style={{ borderRadius: '999px' }} />
 
                 {/* Image Area with Gradient */}
                 <div className="w-full lg:w-[55%]">
