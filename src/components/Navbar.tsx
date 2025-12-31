@@ -118,7 +118,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     className={[
                       'nav-underline-glow',
                       'text-sm font-medium transition-colors',
-                      !isActive ? 'text-white/80 hover:text-white' : 'text-[#2C66FF]',
+                      !isActive ? 'text-white/80 hover:text-white' : 'text-[#6ad4f2]',
                       isActive ? 'is-active' : '',
                     ].join(' ')}
                   >
@@ -171,7 +171,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   onClick={handleNavClick(item.id)}
                   className={`w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
                     activeSection === item.id
-                      ? 'bg-[#2C66FF]/20 text-[#2C66FF]'
+                      ? 'bg-[#6ad4f2]/20 text-[#6ad4f2]'
                       : 'text-gray-300 hover:bg-white/5 hover:text-white'
                   }`}
                 >

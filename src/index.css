@@ -1104,10 +1104,10 @@ html, body {
   border-radius: 999px;
   opacity: 0;
   transition: width 220ms ease, opacity 220ms ease;
-  background: rgba(44, 102, 255, 0.9);
+  background: rgba(106, 212, 242, 0.9);
   box-shadow:
-    0 0 12px rgba(44, 102, 255, 0.55),
-    0 0 22px rgba(44, 102, 255, 0.25);
+    0 0 12px rgba(106, 212, 242, 0.55),
+    0 0 22px rgba(106, 212, 242, 0.25);
 }
 
 .nav-underline-glow:hover::after {
