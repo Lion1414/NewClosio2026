@@ -80,7 +80,12 @@ function HoverFooter() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-10 lg:gap-12 pb-8 sm:pb-10 md:pb-12">
           <div className="flex flex-col space-y-4 text-center sm:text-left">
             <div className="flex items-center justify-center sm:justify-start">
-              <span className="text-[#3ca2fa] text-2xl sm:text-3xl font-bold">Closio</span>
+              <img
+                src="/67ff5f5f-fc49-493f-8cb5-0467588c2623.png"
+                alt="Closio"
+                className="h-16 w-auto select-none"
+                draggable={false}
+              />
             </div>
             <p className="text-sm leading-relaxed text-gray-300">
               The CRM built for life insurance agencies.
