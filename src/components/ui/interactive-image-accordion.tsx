@@ -24,7 +24,7 @@ const accordionItems = [
   {
     id: 4,
     title: 'Leaderboard',
-    imageUrl: 'https://images.pexels.com/photos/7413891/pexels-photo-7413891.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    imageUrl: '/leaderboard-_closio_website.png',
     description: 'Motivate your team with live performance rankings'
   },
   {
