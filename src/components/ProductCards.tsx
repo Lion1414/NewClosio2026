@@ -39,7 +39,7 @@ const ProductCards: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 sm:mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-4">
-            Your Command Center
+            Your Future Command Center
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-[#A8B3C7] max-w-3xl mx-auto leading-relaxed px-4">
             Everything you need to manage your life insurance business in one powerful, purpose-built platform
