@@ -33,7 +33,7 @@ const VerticalLine: React.FC = () => {
            Q 450 480, 450 410
            L 450 0"
         fill="none"
-        stroke="url(#valueLineGradient)"
+        stroke="white"
         strokeWidth="16"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -47,11 +47,11 @@ const VerticalLine: React.FC = () => {
            Q 450 480, 450 410
            L 450 0"
         fill="none"
-        stroke="rgba(255, 255, 255, 0.08)"
-        strokeWidth="28"
+        stroke="rgba(255, 255, 255, 0.15)"
+        strokeWidth="32"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="blur-sm"
+        className="blur-md"
       />
     </svg>
   );
