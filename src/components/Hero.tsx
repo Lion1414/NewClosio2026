@@ -1,6 +1,5 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { useScrambleOnView } from '@/hooks/useScrambleOnView';
 
 const HeroWhiteLine: React.FC = () => {
   return (
@@ -198,21 +197,6 @@ const HeroDrainLines: React.FC = () => {
 };
 
 const Hero: React.FC = () => {
-  const line1Ref = useRef<HTMLSpanElement>(null);
-  const line2Ref = useRef<HTMLSpanElement>(null);
-
-  useScrambleOnView(line1Ref, "Close More.", {
-    duration: 1.3,
-    revealDelay: 0.12,
-    chars: "upperAndLowerCase",
-  });
-
-  useScrambleOnView(line2Ref, "Close Smarter.", {
-    duration: 1.3,
-    revealDelay: 0.12,
-    chars: "upperAndLowerCase",
-  });
-
   return (
     <section id="hero" className="min-h-[85vh] w-full text-white flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-40 pb-20 sm:pt-48 sm:pb-24 relative overflow-hidden">
       <HeroWhiteLine />
@@ -225,7 +209,6 @@ const Hero: React.FC = () => {
             </span>
             <h1 className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight max-w-4xl leading-[1.05] -tracking-[0.02em] overflow-hidden">
               <motion.span
-                ref={line1Ref}
                 className="inline-block"
                 initial={{ x: '-100vw', opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -235,7 +218,6 @@ const Hero: React.FC = () => {
               </motion.span>
               <br />
               <motion.span
-                ref={line2Ref}
                 className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#d593c0] to-[#6ad4f2]"
                 initial={{ x: '100vw', opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
