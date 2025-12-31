@@ -33,7 +33,7 @@ function App() {
         <MobileSection />
       </SectionWrapper>
 
-      <SectionWrapper className="!bg-[#1A2428] !bg-none">
+      <SectionWrapper className="!bg-[#0F1214] !bg-none">
         <InteractiveImageAccordion />
       </SectionWrapper>
 
