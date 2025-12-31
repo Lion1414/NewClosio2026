@@ -1,6 +1,62 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+const VerticalLine: React.FC = () => {
+  return (
+    <svg
+      viewBox="0 0 800 900"
+      className="absolute left-0 bottom-0 h-full w-[60%] pointer-events-none"
+      style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
+      preserveAspectRatio="xMidYMax slice"
+    >
+      <defs>
+        <linearGradient id="valueLineGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stopColor="rgba(255, 255, 255, 0)" />
+          <stop offset="15%" stopColor="rgba(255, 255, 255, 0.9)" />
+          <stop offset="50%" stopColor="rgba(255, 255, 255, 1)" />
+          <stop offset="85%" stopColor="rgba(255, 255, 255, 0.9)" />
+          <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
+        </linearGradient>
+        <filter id="valueLineGlow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+          <feMerge>
+            <feMergeNode in="coloredBlur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      <path
+        d="M 50 900
+           L 50 550
+           Q 50 480, 120 480
+           L 380 480
+           Q 450 480, 450 410
+           L 450 0"
+        fill="none"
+        stroke="url(#valueLineGradient)"
+        strokeWidth="16"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        filter="url(#valueLineGlow)"
+      />
+      <path
+        d="M 50 900
+           L 50 550
+           Q 50 480, 120 480
+           L 380 480
+           Q 450 480, 450 410
+           L 450 0"
+        fill="none"
+        stroke="rgba(255, 255, 255, 0.08)"
+        strokeWidth="28"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="blur-sm"
+      />
+    </svg>
+  );
+};
+
 const valueItems = [
   {
     number: '01',
@@ -22,8 +78,9 @@ const valueItems = [
 
 const ValueProps: React.FC = () => {
   return (
-    <section id="why-closio" className="py-16 sm:py-20 md:py-28 lg:py-32 bg-black">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="why-closio" className="py-16 sm:py-20 md:py-28 lg:py-32 bg-black relative overflow-hidden">
+      <VerticalLine />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid gap-12 lg:gap-16 grid-cols-1 lg:grid-cols-[1.3fr_1fr] items-center">
 
           <motion.div
