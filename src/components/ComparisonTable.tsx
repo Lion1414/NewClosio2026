@@ -63,12 +63,8 @@ const ComparisonTable: React.FC = () => {
           <div className="relative group">
             <div className="absolute -inset-[1px] bg-gradient-to-br from-[#6ad4f2] to-[#4fb8d8] rounded-2xl opacity-75 group-hover:opacity-100 transition-opacity" />
             <div className="relative bg-black rounded-2xl overflow-hidden">
-              <div className="bg-gradient-to-r from-[#6ad4f2] to-[#4fb8d8] px-6 py-5 flex items-center justify-center">
-                <img
-                  src="/67ff5f5f-fc49-493f-8cb5-0467588c2623.png"
-                  alt="Closio"
-                  className="h-16 w-auto"
-                />
+              <div className="bg-gradient-to-r from-[#6ad4f2] to-[#4fb8d8] px-6 py-5 text-center">
+                <h3 className="text-2xl font-bold text-black">Closio</h3>
               </div>
 
               <div className="p-6 space-y-6">
