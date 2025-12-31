@@ -112,31 +112,11 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.3"
-        className="fill-transparent stroke-white font-[helvetica] text-6xl font-bold"
+        className="fill-transparent stroke-white font-[helvetica] text-5xl font-bold"
         style={{ opacity: hovered ? 0.7 : 0 }}
       >
         {renderTextWithItalicI(text)}
       </text>
-
-      <motion.text
-        x="50%"
-        y="50%"
-        textAnchor="middle"
-        dominantBaseline="middle"
-        strokeWidth="0.3"
-        className="fill-transparent stroke-white font-[helvetica] text-6xl font-bold"
-        initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
-        animate={{
-          strokeDashoffset: 0,
-          strokeDasharray: 1000,
-        }}
-        transition={{
-          duration: 4,
-          ease: "easeInOut",
-        }}
-      >
-        {renderTextWithItalicI(text)}
-      </motion.text>
 
       <text
         x="50%"
@@ -146,7 +126,7 @@ export const TextHoverEffect = ({
         stroke="url(#textGradient)"
         strokeWidth="0.3"
         mask="url(#textMask)"
-        className="fill-transparent font-[helvetica] text-6xl font-bold"
+        className="fill-transparent font-[helvetica] text-5xl font-bold"
       >
         {renderTextWithItalicI(text)}
       </text>
