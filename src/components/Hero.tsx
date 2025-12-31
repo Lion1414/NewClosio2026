@@ -7,7 +7,7 @@ const HeroDrainLines: React.FC = () => {
     <svg
       viewBox="0 0 1600 700"
       className="absolute inset-0 w-full h-full pointer-events-none"
-      preserveAspectRatio="xMidYMid slice"
+      preserveAspectRatio="xMinYMid slice"
       aria-hidden="true"
     >
       <defs>
@@ -118,7 +118,7 @@ const HeroDrainLines: React.FC = () => {
       />
 
       <path
-        d="M -100 10 L 400 10 Q 470 10, 470 80 L 470 600"
+        d="M -100 10 L 420 10 Q 490 10, 490 80 L 490 700"
         fill="none"
         stroke="rgba(255, 255, 255, 0.15)"
         strokeWidth="32"
@@ -127,7 +127,7 @@ const HeroDrainLines: React.FC = () => {
         className="blur-md"
       />
       <path
-        d="M -100 10 L 400 10 Q 470 10, 470 80 L 470 600"
+        d="M -100 10 L 420 10 Q 490 10, 490 80 L 490 700"
         fill="none"
         stroke="white"
         strokeWidth="16"
