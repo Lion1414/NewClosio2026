@@ -59,7 +59,7 @@ const ComparisonTable: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
+        <div className="relative grid md:grid-cols-2 gap-6 mb-12">
           <div className="relative group">
             <div className="absolute -inset-[1px] bg-gradient-to-br from-[#6ad4f2] to-[#4fb8d8] rounded-2xl opacity-75 group-hover:opacity-100 transition-opacity" />
             <div className="relative bg-black rounded-2xl overflow-hidden">
@@ -69,7 +69,7 @@ const ComparisonTable: React.FC = () => {
 
               <div className="p-6 space-y-6">
                 {closioFeatures.map((feature, index) => (
-                  <div key={index} className="space-y-2">
+                  <div key={index} className="space-y-2 relative">
                     <div className="h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                     <h4 className="text-xs font-bold text-white/90 tracking-wider pt-3">
                       {feature.title}
@@ -77,6 +77,11 @@ const ComparisonTable: React.FC = () => {
                     <p className="text-sm text-slate-400 leading-relaxed">
                       {feature.description}
                     </p>
+                    <div className="hidden md:block absolute -right-[2.75rem] top-1/2 -translate-y-1/2 z-10">
+                      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#6ad4f2] to-[#d593c0] flex items-center justify-center border-2 border-black shadow-lg">
+                        <span className="text-black font-bold text-xs">VS.</span>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
