@@ -18,7 +18,7 @@ const accordionItems = [
   {
     id: 3,
     title: 'Commission',
-    imageUrl: 'https://images.pexels.com/photos/6694543/pexels-photo-6694543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    imageUrl: '/commission-_closio_website.png',
     description: 'Real-time commission tracking and split calculations'
   },
   {
