@@ -33,6 +33,15 @@ const FeatureShowcase: React.FC = () => {
   return (
     <section className="bg-white py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-6">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-5xl md:text-6xl lg:text-7xl font-bold text-black text-center mb-16 md:mb-20"
+        >
+          No Limits on what you can do
+        </motion.h2>
         <div className="space-y-24 md:space-y-32">
           {features.map((feature, index) => (
             <motion.div
