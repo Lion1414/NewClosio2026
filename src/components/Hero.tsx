@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
               <br />
               <span
                 ref={line2Ref}
-                className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#2C66FF] to-[#2B4FB3]"
+                className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#d593c0] to-[#6ad4f2]"
               >
                 Close Smarter.
               </span>
