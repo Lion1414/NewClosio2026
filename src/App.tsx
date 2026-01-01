@@ -1,3 +1,4 @@
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ValueProps from './components/ValueProps';
@@ -14,66 +15,82 @@ import FAQAccordion from './components/FAQAccordion';
 import ContactSplit from './components/ContactSplit';
 import HoverFooter from './components/ui/hover-footer-demo';
 import { SectionWrapper } from './components/ui/section-wrapper';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsConditions from './pages/TermsConditions';
+import FAQsPage from './pages/FAQsPage';
 
-function App() {
+function HomePage() {
   return (
-    <div className="bg-black text-[#E8EEF5] overflow-x-hidden w-full min-h-screen">
+    <>
       <div id="top" />
-      <Navbar />
 
       <div>
         <SectionWrapper className="!bg-black !bg-none">
           <Hero />
         </SectionWrapper>
 
-      <SectionWrapper className="!bg-black !bg-none">
-        <ValueProps />
-      </SectionWrapper>
+        <SectionWrapper className="!bg-black !bg-none">
+          <ValueProps />
+        </SectionWrapper>
 
-      <SectionWrapper className="!bg-black !bg-none !from-black !via-black !to-black">
-        <MobileSection />
-      </SectionWrapper>
+        <SectionWrapper className="!bg-black !bg-none !from-black !via-black !to-black">
+          <MobileSection />
+        </SectionWrapper>
 
-      <SectionWrapper className="!bg-[#0F1214] !bg-none">
-        <InteractiveImageAccordion />
-      </SectionWrapper>
+        <SectionWrapper className="!bg-[#0F1214] !bg-none">
+          <InteractiveImageAccordion />
+        </SectionWrapper>
 
-      <SectionWrapper>
-        <DealMap />
-      </SectionWrapper>
+        <SectionWrapper>
+          <DealMap />
+        </SectionWrapper>
 
-      <SectionWrapper>
-        <RoleTabs />
-      </SectionWrapper>
+        <SectionWrapper>
+          <RoleTabs />
+        </SectionWrapper>
 
-      <SectionWrapper>
-        <SecurityTiles />
-      </SectionWrapper>
+        <SectionWrapper>
+          <SecurityTiles />
+        </SectionWrapper>
 
-      <FeatureShowcase />
+        <FeatureShowcase />
 
-      <SectionWrapper>
-        <ComparisonTable />
-      </SectionWrapper>
+        <SectionWrapper>
+          <ComparisonTable />
+        </SectionWrapper>
 
-      <SectionWrapper>
-        <TestimonialsCarousel />
-      </SectionWrapper>
+        <SectionWrapper>
+          <TestimonialsCarousel />
+        </SectionWrapper>
 
-      <SectionWrapper>
-        <RoadmapTimeline />
-      </SectionWrapper>
+        <SectionWrapper>
+          <RoadmapTimeline />
+        </SectionWrapper>
 
-      <SectionWrapper>
-        <FAQAccordion />
-      </SectionWrapper>
+        <SectionWrapper>
+          <FAQAccordion />
+        </SectionWrapper>
 
-      <SectionWrapper>
-        <ContactSplit />
-      </SectionWrapper>
+        <SectionWrapper>
+          <ContactSplit />
+        </SectionWrapper>
 
-      <HoverFooter />
+        <HoverFooter />
       </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <div className="bg-black text-[#E8EEF5] overflow-x-hidden w-full min-h-screen">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-conditions" element={<TermsConditions />} />
+        <Route path="/faqs" element={<FAQsPage />} />
+      </Routes>
     </div>
   );
 }
