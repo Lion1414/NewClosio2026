@@ -87,7 +87,7 @@ const MobileSection: React.FC = () => {
       <div className="absolute inset-0 flex items-end justify-end">
         <div className="relative w-full h-full flex items-end justify-end pr-0">
           <img
-            src="/new_mobile_digital.png"
+            src="/purple_pink_gradient_mobile_application_presentation_(6).png"
             alt="Closio mobile application showcasing dashboard, leaderboard, and login screens"
             className="h-[95%] sm:h-[92%] lg:h-[90%] w-auto max-w-none object-contain drop-shadow-2xl"
           />
