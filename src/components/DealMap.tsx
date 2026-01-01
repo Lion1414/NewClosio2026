@@ -9,57 +9,83 @@ const benefits = [
 
 const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="relative">
+    <div className="relative pb-4">
       <div
         className="relative mx-auto"
         style={{
           maxWidth: '100%',
-          filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.15))'
+          filter: 'drop-shadow(0 30px 60px rgba(0, 0, 0, 0.12)) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.08))'
         }}
       >
         <div
-          className="relative rounded-[20px] p-[8px] md:p-[12px]"
+          className="relative rounded-[16px] md:rounded-[20px] overflow-hidden"
           style={{
-            background: 'linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 100%)',
+            background: 'linear-gradient(180deg, #e8e8ed 0%, #d8d8dd 50%, #c8c8cd 100%)',
+            padding: '6px 6px 20px 6px',
           }}
         >
           <div
-            className="absolute top-[10px] md:top-[14px] left-1/2 -translate-x-1/2 w-2 h-2 md:w-3 md:h-3 rounded-full"
+            className="absolute top-[8px] md:top-[10px] left-1/2 -translate-x-1/2 w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full"
             style={{
-              background: 'linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%)',
-              boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.1)'
+              background: 'radial-gradient(circle at 30% 30%, #3a3a3a 0%, #1a1a1a 60%, #0a0a0a 100%)',
+              boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.15), 0 1px 1px rgba(0,0,0,0.3)'
             }}
           />
           <div
-            className="rounded-[12px] overflow-hidden mt-4 md:mt-6"
+            className="rounded-[8px] md:rounded-[10px] overflow-hidden mt-3 md:mt-4"
             style={{
               background: '#000',
-              boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.1)'
+              boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.05)'
             }}
           >
             {children}
           </div>
         </div>
+
+        <div className="relative flex flex-col items-center">
+          <div
+            className="relative"
+            style={{
+              width: '8px',
+              height: '50px',
+              background: 'linear-gradient(90deg, #b8b8bd 0%, #d8d8dd 30%, #e8e8ed 50%, #d8d8dd 70%, #b8b8bd 100%)',
+              boxShadow: '-2px 0 4px rgba(0,0,0,0.1), 2px 0 4px rgba(0,0,0,0.1)',
+            }}
+          />
+          <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-[12px] h-[50px]"
+            style={{
+              background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%)',
+            }}
+          />
+        </div>
+
         <div
-          className="mx-auto h-[40px] md:h-[60px] relative"
+          className="relative mx-auto overflow-hidden"
           style={{
-            width: '30%',
-            background: 'linear-gradient(180deg, #e8e8ed 0%, #d2d2d7 100%)',
-            clipPath: 'polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%)',
+            width: '140px',
+            height: '10px',
+            background: 'linear-gradient(180deg, #d0d0d5 0%, #c0c0c5 50%, #b0b0b5 100%)',
+            borderRadius: '0 0 8px 8px',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.3)',
           }}
-        />
-        <div
-          className="mx-auto h-[8px] md:h-[12px] rounded-[4px]"
-          style={{
-            width: '50%',
-            background: 'linear-gradient(180deg, #d2d2d7 0%, #c7c7cc 100%)',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-          }}
-        />
+        >
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(90deg, rgba(0,0,0,0.05) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.05) 100%)',
+            }}
+          />
+        </div>
       </div>
+
       <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-[20px] rounded-[50%] blur-xl opacity-20"
-        style={{ background: '#000' }}
+        className="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded-[50%]"
+        style={{
+          width: '120px',
+          height: '8px',
+          background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, transparent 70%)',
+          filter: 'blur(4px)',
+        }}
       />
     </div>
   );
