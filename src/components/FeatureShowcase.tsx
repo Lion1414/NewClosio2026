@@ -23,7 +23,7 @@ const CommissionImageSwitcher: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative aspect-[4/3] bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0] p-8">
+    <div className="relative aspect-[16/10] bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0] p-8">
       {/* Glass overlay effect matching the design */}
       <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
 
@@ -42,7 +42,7 @@ const CommissionImageSwitcher: React.FC = () => {
               <img
                 src={images[currentImage]}
                 alt={`Commission Clarity ${currentImage + 1}`}
-                className="w-full h-full object-cover rounded-xl opacity-85"
+                className="w-full h-full object-contain rounded-xl opacity-85"
               />
             </div>
           </motion.div>
