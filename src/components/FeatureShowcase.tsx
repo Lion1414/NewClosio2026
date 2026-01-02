@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 interface FeatureSection {
   title: string;
@@ -8,41 +8,6 @@ interface FeatureSection {
   image?: string;
   reversed?: boolean;
 }
-
-// Commission image switcher component
-const CommissionImageSwitcher: React.FC = () => {
-  const [currentImage, setCurrentImage] = useState(0);
-  const images = ['/commission_clarity.png', '/commission_clarity_%232%20copy.png'];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 4000); // Switch every 4 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="relative aspect-[4/3]">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentImage}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="absolute inset-0"
-        >
-          <img
-            src={images[currentImage]}
-            alt={`Commission Clarity ${currentImage + 1}`}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </motion.div>
-      </AnimatePresence>
-    </div>
-  );
-};
 
 const features: FeatureSection[] = [
   {
@@ -56,6 +21,7 @@ const features: FeatureSection[] = [
     title: 'Commission Clarity',
     description: 'Know your earnings in real-time. Track splits, overrides, and payouts with complete transparency across your entire team.',
     imagePlaceholder: 'Commission Tracking',
+    image: '/commission-_closio_website_art.png',
     reversed: true
   },
   {
@@ -107,27 +73,22 @@ const FeatureShowcase: React.FC = () => {
 
                 {/* Image Area */}
                 <div className="w-full lg:w-[55%] overflow-hidden">
-                  {index === 1 ? (
-                    // Commission Clarity section with image switcher
-                    <CommissionImageSwitcher />
-                  ) : (
-                    <div className="relative aspect-[4/3]">
-                      {feature.image ? (
-                        <img
-                          src={feature.image}
-                          alt={feature.title}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0] flex items-center justify-center">
-                          <div className="text-center text-white/90">
-                            <div className="text-2xl font-semibold mb-2">{feature.imagePlaceholder}</div>
-                            <div className="text-sm opacity-70">Image placeholder</div>
-                          </div>
+                  <div className="relative aspect-[4/3]">
+                    {feature.image ? (
+                      <img
+                        src={feature.image}
+                        alt={feature.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0] flex items-center justify-center">
+                        <div className="text-center text-white/90">
+                          <div className="text-2xl font-semibold mb-2">{feature.imagePlaceholder}</div>
+                          <div className="text-sm opacity-70">Image placeholder</div>
                         </div>
-                      )}
-                    </div>
-                  )}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </motion.div>
