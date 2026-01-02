@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface FeatureSection {
   title: string;
@@ -8,6 +8,49 @@ interface FeatureSection {
   image?: string;
   reversed?: boolean;
 }
+
+// Commission image switcher component
+const CommissionImageSwitcher: React.FC = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+  const images = ['/commission_clarity.png', '/commission_clarity_#2.png'];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 4000); // Switch every 4 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="relative aspect-[4/3] bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0] p-8">
+      {/* Glass overlay effect matching the design */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+
+      <div className="relative w-full h-full">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentImage}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="absolute inset-0"
+          >
+            {/* Glass border container */}
+            <div className="w-full h-full rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl p-4">
+              <img
+                src={images[currentImage]}
+                alt={`Commission Clarity ${currentImage + 1}`}
+                className="w-full h-full object-cover rounded-xl opacity-85"
+              />
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+};
 
 const features: FeatureSection[] = [
   {
@@ -75,28 +118,33 @@ const FeatureShowcase: React.FC = () => {
 
                 {/* Image Area with Gradient */}
                 <div className="w-full lg:w-[55%]">
-                  <div className="relative aspect-[4/3] bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0]">
-                    {feature.image ? (
-                      <img
-                        src={feature.image}
-                        alt={feature.title}
-                        className="absolute inset-0 w-full h-full object-cover"
-                      />
-                    ) : (
-                      <>
-                        {/* Placeholder for image - user will add images later */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="text-center text-white/90">
-                            <div className="text-2xl font-semibold mb-2">{feature.imagePlaceholder}</div>
-                            <div className="text-sm opacity-70">Image placeholder</div>
+                  {index === 1 ? (
+                    // Commission Clarity section with image switcher
+                    <CommissionImageSwitcher />
+                  ) : (
+                    <div className="relative aspect-[4/3] bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0]">
+                      {feature.image ? (
+                        <img
+                          src={feature.image}
+                          alt={feature.title}
+                          className="absolute inset-0 w-full h-full object-cover"
+                        />
+                      ) : (
+                        <>
+                          {/* Placeholder for image - user will add images later */}
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="text-center text-white/90">
+                              <div className="text-2xl font-semibold mb-2">{feature.imagePlaceholder}</div>
+                              <div className="text-sm opacity-70">Image placeholder</div>
+                            </div>
                           </div>
-                        </div>
 
-                        {/* Subtle overlay pattern */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
-                      </>
-                    )}
-                  </div>
+                          {/* Subtle overlay pattern */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+                        </>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
