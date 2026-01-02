@@ -12,7 +12,7 @@ interface FeatureSection {
 // Commission image switcher component
 const CommissionImageSwitcher: React.FC = () => {
   const [currentImage, setCurrentImage] = useState(0);
-  const images = ['/commission_clarity.png', '/commission_clarity_%232.png'];
+  const images = ['/commission_clarity.png', '/commission_clarity_%232%20copy.png'];
 
   useEffect(() => {
     const interval = setInterval(() => {
