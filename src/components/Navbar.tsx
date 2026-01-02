@@ -163,9 +163,9 @@ const Navbar: React.FC<NavbarProps> = () => {
               <div className="relative" ref={docsDropdownRef}>
                 <button
                   onClick={() => setDocsDropdownOpen(!docsDropdownOpen)}
-                  className={`text-sm font-medium transition-colors flex items-center gap-1 ${
+                  className={`nav-underline-glow text-sm font-medium transition-colors inline-flex items-center gap-1 ${
                     DOCS_ITEMS.some(item => item.path === location.pathname)
-                      ? 'text-[#6ad4f2]'
+                      ? 'text-[#6ad4f2] is-active'
                       : 'text-white/80 hover:text-white'
                   }`}
                 >
