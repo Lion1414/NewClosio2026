@@ -21,7 +21,7 @@ const features: FeatureSection[] = [
     title: 'Commission Clarity',
     description: 'Know your earnings in real-time. Track splits, overrides, and payouts with complete transparency across your entire team.',
     imagePlaceholder: 'Commission Tracking',
-    image: '/commission-_closio_website_art.png',
+    image: '/new_cover.png',
     reversed: true
   },
   {
