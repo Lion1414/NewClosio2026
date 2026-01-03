@@ -37,8 +37,10 @@ const Navbar: React.FC<NavbarProps> = () => {
   const [activeSection, setActiveSection] = useState<string>('');
   const [featuresDropdownOpen, setFeaturesDropdownOpen] = useState(false);
   const [docsDropdownOpen, setDocsDropdownOpen] = useState(false);
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
   const featuresDropdownRef = useRef<HTMLDivElement>(null);
   const docsDropdownRef = useRef<HTMLDivElement>(null);
+  const lastScrollY = useRef(0);
   const location = useLocation();
   const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
@@ -55,6 +57,15 @@ const Navbar: React.FC<NavbarProps> = () => {
           const maxScroll = 300;
           const progress = Math.min(scrollY / maxScroll, 1);
           setScrollProgress(progress);
+
+          // Track scroll direction
+          if (scrollY > lastScrollY.current && scrollY > 100) {
+            setIsScrollingDown(true);
+          } else {
+            setIsScrollingDown(false);
+          }
+          lastScrollY.current = scrollY;
+
           ticking = false;
         });
         ticking = true;
@@ -278,7 +289,9 @@ const Navbar: React.FC<NavbarProps> = () => {
               </button>
               <button
                 onClick={() => window.location.href = 'https://closio.com/login'}
-                className="bg-white text-black font-medium px-5 py-2 text-sm whitespace-nowrap rounded-lg hover:bg-white/90 transition-colors"
+                className={`bg-white text-black font-medium px-5 py-2 text-sm whitespace-nowrap rounded-lg hover:bg-white/90 transition-all duration-300 ${
+                  isScrollingDown ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                }`}
               >
                 Log In
               </button>
@@ -370,7 +383,9 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </button>
                 <button
                   onClick={() => window.location.href = 'https://closio.com/login'}
-                  className="bg-white text-black font-medium w-full px-5 py-2.5 text-sm rounded-lg hover:bg-white/90 transition-colors"
+                  className={`bg-white text-black font-medium w-full px-5 py-2.5 text-sm rounded-lg hover:bg-white/90 transition-all duration-300 ${
+                    isScrollingDown ? 'opacity-50' : 'opacity-100'
+                  }`}
                 >
                   Log In
                 </button>
