@@ -10,7 +10,6 @@ import SecurityTiles from './components/SecurityTiles';
 import FeatureShowcase from './components/FeatureShowcase';
 import ComparisonTable from './components/ComparisonTable';
 import TestimonialsCarousel from './components/TestimonialsCarousel';
-import RoadmapTimeline from './components/RoadmapTimeline';
 import FAQAccordion from './components/FAQAccordion';
 import ContactSplit from './components/ContactSplit';
 import HoverFooter from './components/ui/hover-footer-demo';
@@ -69,10 +68,6 @@ function HomePage() {
 
         <SectionWrapper>
           <TestimonialsCarousel />
-        </SectionWrapper>
-
-        <SectionWrapper>
-          <RoadmapTimeline />
         </SectionWrapper>
 
         <SectionWrapper>
