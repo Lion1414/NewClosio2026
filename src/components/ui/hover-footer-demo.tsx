@@ -3,6 +3,7 @@ import {
   Mail,
   Phone,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { FooterBackgroundGradient } from "@/components/ui/hover-footer";
 
 const TwitterIcon = ({ size = 18, className = "" }: { size?: number; className?: string }) => (
@@ -28,17 +29,24 @@ const FacebookIcon = ({ size = 18, className = "" }: { size?: number; className?
 function HoverFooter() {
   const footerLinks = [
     {
-      title: "About Us",
+      title: "Features",
       links: [
-        { label: "Our Story", href: "#" },
-        { label: "Leadership Team", href: "#" },
+        { label: "Dashboard", href: "/features/dashboard" },
+        { label: "Leaderboard", href: "/features/leaderboard" },
+        { label: "Book of Business", href: "/features/book-of-business" },
+        { label: "Commission", href: "/features/commission" },
+        { label: "Estimated Payouts", href: "/features/estimated-payouts" },
+        { label: "Team Hierarchy", href: "/features/team-hierarchy" },
+        { label: "User Management", href: "/features/user-management" },
+        { label: "Reminders & More", href: "/features/reminders" },
       ],
     },
     {
-      title: "Helpful Links",
+      title: "Resources",
       links: [
-        { label: "FAQs", href: "#" },
-        { label: "Support", href: "#" },
+        { label: "Privacy Policy", href: "/privacy-policy" },
+        { label: "Terms & Conditions", href: "/terms-conditions" },
+        { label: "FAQs", href: "/faqs" },
       ],
     },
   ];
@@ -75,54 +83,74 @@ function HoverFooter() {
   ];
 
   return (
-    <footer className="bg-black relative h-fit overflow-hidden">
-      <div className="max-w-7xl mx-auto p-6 sm:p-8 md:p-10 lg:p-14 z-40 relative">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-10 lg:gap-12 pb-8 sm:pb-10 md:pb-12">
-          <div className="flex flex-col space-y-4 text-center sm:text-left">
-            <div className="flex items-center justify-center sm:justify-start">
+    <footer className="bg-black relative h-fit overflow-hidden border-t border-white/10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-10 lg:px-14 py-12 sm:py-14 md:py-16 z-40 relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-10 lg:gap-12">
+          {/* Company Info */}
+          <div className="lg:col-span-3 flex flex-col space-y-4">
+            <Link to="/" className="flex items-center">
               <img
                 src="/67ff5f5f-fc49-493f-8cb5-0467588c2623.png"
                 alt="Closio"
                 className="h-24 w-auto select-none"
                 draggable={false}
               />
-            </div>
-            <p className="text-sm leading-relaxed text-gray-300">
+            </Link>
+            <p className="text-sm leading-relaxed text-gray-400 pr-4">
               The CRM built for life insurance agencies.
             </p>
           </div>
 
-          {footerLinks.map((section) => (
-            <div key={section.title} className="text-center sm:text-left">
-              <h4 className="text-white text-base sm:text-lg font-semibold mb-4 sm:mb-6">
-                {section.title}
-              </h4>
-              <ul className="space-y-2 sm:space-y-3 text-gray-300">
-                {section.links.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="hover:text-[#3ca2fa] transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Features */}
+          <div className="lg:col-span-3">
+            <h4 className="text-white text-base font-semibold mb-5 tracking-tight">
+              Features
+            </h4>
+            <ul className="space-y-2.5 text-sm">
+              {footerLinks[0].links.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    to={link.href}
+                    className="text-gray-400 hover:text-[#6ad4f2] transition-colors inline-block"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          <div className="text-center sm:text-left">
-            <h4 className="text-white text-base sm:text-lg font-semibold mb-4 sm:mb-6">
+          {/* Resources */}
+          <div className="lg:col-span-2">
+            <h4 className="text-white text-base font-semibold mb-5 tracking-tight">
+              Resources
+            </h4>
+            <ul className="space-y-2.5 text-sm">
+              {footerLinks[1].links.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    to={link.href}
+                    className="text-gray-400 hover:text-[#6ad4f2] transition-colors inline-block"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Us */}
+          <div className="lg:col-span-2">
+            <h4 className="text-white text-base font-semibold mb-5 tracking-tight">
               Contact Us
             </h4>
-            <ul className="space-y-3 sm:space-y-4 text-gray-300">
+            <ul className="space-y-3 text-sm">
               {contactInfo.map((item, i) => (
-                <li key={i} className="flex items-center justify-center sm:justify-start space-x-3">
-                  {item.icon}
+                <li key={i} className="flex items-start space-x-2.5">
+                  <span className="mt-0.5">{item.icon}</span>
                   <a
                     href={item.href}
-                    className="hover:text-[#3ca2fa] transition-colors text-sm sm:text-base"
+                    className="text-gray-400 hover:text-[#6ad4f2] transition-colors"
                   >
                     {item.text}
                   </a>
@@ -131,17 +159,18 @@ function HoverFooter() {
             </ul>
           </div>
 
-          <div className="text-center sm:text-left">
-            <h4 className="text-white text-base sm:text-lg font-semibold mb-4 sm:mb-6">
+          {/* Follow Us */}
+          <div className="lg:col-span-2">
+            <h4 className="text-white text-base font-semibold mb-5 tracking-tight">
               Follow Us
             </h4>
-            <ul className="space-y-3 sm:space-y-4 text-gray-300">
+            <ul className="space-y-3 text-sm">
               {socialLinks.map((item, i) => (
-                <li key={i} className="flex items-center justify-center sm:justify-start space-x-3">
+                <li key={i} className="flex items-center space-x-2.5">
                   {item.icon}
                   <a
                     href={item.href}
-                    className="hover:text-[#3ca2fa] transition-colors text-sm sm:text-base"
+                    className="text-gray-400 hover:text-[#6ad4f2] transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -150,13 +179,15 @@ function HoverFooter() {
                 </li>
               ))}
             </ul>
-            <p className="text-xs sm:text-sm text-gray-400 mt-6">
-              &copy; {new Date().getFullYear()} Closio. All rights reserved.
-            </p>
           </div>
         </div>
 
-        <hr className="border-t border-gray-700 my-6 sm:my-8" />
+        {/* Bottom Bar */}
+        <div className="mt-12 pt-8 border-t border-gray-800">
+          <p className="text-xs text-gray-500 text-center">
+            &copy; {new Date().getFullYear()} Closio. All rights reserved.
+          </p>
+        </div>
       </div>
 
       <FooterBackgroundGradient />
