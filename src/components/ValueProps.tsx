@@ -83,7 +83,7 @@ const ValueProps: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="order-1 flex items-center justify-start"
           >
-            <div className="relative w-full max-w-[90%] lg:max-w-[85%]">
+            <div className="relative w-full">
               <div
                 className="relative rounded-2xl overflow-hidden"
                 style={{
@@ -105,8 +105,8 @@ const ValueProps: React.FC = () => {
                       background: 'linear-gradient(90deg, transparent 5%, rgba(255, 255, 255, 0.15) 30%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.15) 70%, transparent 95%)',
                     }}
                   />
-                  <div className="p-2 sm:p-3">
-                    <div className="rounded-xl overflow-hidden min-h-[450px]">
+                  <div className="p-5 sm:p-6 md:p-7">
+                    <div className="rounded-xl overflow-hidden min-h-[550px]">
                       <video
                         src="https://www.dropbox.com/scl/fi/im3lveaj0bz8pe0un87u5/new-video-fro-laptop-display.mp4?rlkey=gaj2fuvzalyfyup0abzhscs1w&st=gyl2lmoj&raw=1"
                         autoPlay
@@ -114,7 +114,7 @@ const ValueProps: React.FC = () => {
                         muted
                         playsInline
                         preload="auto"
-                        className="w-full min-h-[450px] object-cover rounded-lg"
+                        className="w-full min-h-[550px] object-cover rounded-lg"
                       />
                     </div>
                   </div>
