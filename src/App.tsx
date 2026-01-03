@@ -60,10 +60,6 @@ function HomePage() {
         </SectionWrapper>
 
         <SectionWrapper>
-          <TestimonialsCarousel />
-        </SectionWrapper>
-
-        <SectionWrapper>
           <ContactSplit />
         </SectionWrapper>
 
