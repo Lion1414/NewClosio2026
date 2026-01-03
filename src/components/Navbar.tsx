@@ -187,7 +187,12 @@ const Navbar: React.FC<NavbarProps> = () => {
               })}
 
               {/* Features Dropdown */}
-              <div className="relative" ref={featuresDropdownRef}>
+              <div
+                className="relative"
+                ref={featuresDropdownRef}
+                onMouseEnter={() => setFeaturesDropdownOpen(true)}
+                onMouseLeave={() => setFeaturesDropdownOpen(false)}
+              >
                 <button
                   onClick={() => setFeaturesDropdownOpen(!featuresDropdownOpen)}
                   className={`nav-underline-glow text-sm font-medium transition-colors inline-flex items-center gap-1 ${
@@ -233,7 +238,12 @@ const Navbar: React.FC<NavbarProps> = () => {
               </div>
 
               {/* Docs & FAQs Dropdown */}
-              <div className="relative" ref={docsDropdownRef}>
+              <div
+                className="relative"
+                ref={docsDropdownRef}
+                onMouseEnter={() => setDocsDropdownOpen(true)}
+                onMouseLeave={() => setDocsDropdownOpen(false)}
+              >
                 <button
                   onClick={() => setDocsDropdownOpen(!docsDropdownOpen)}
                   className={`nav-underline-glow text-sm font-medium transition-colors inline-flex items-center gap-1 ${
