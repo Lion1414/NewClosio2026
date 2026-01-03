@@ -24,6 +24,7 @@ import EstimatedPayouts from './pages/features/EstimatedPayouts';
 import TeamHierarchy from './pages/features/TeamHierarchy';
 import UserManagement from './pages/features/UserManagement';
 import Reminders from './pages/features/Reminders';
+import TestimonialSection from './components/TestimonialSection';
 
 function HomePage() {
   return (
@@ -49,6 +50,10 @@ function HomePage() {
 
         <SectionWrapper>
           <DealMap />
+        </SectionWrapper>
+
+        <SectionWrapper className="!bg-black !bg-none">
+          <TestimonialSection />
         </SectionWrapper>
 
         <FullWidthVideo />
