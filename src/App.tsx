@@ -18,6 +18,14 @@ import { SectionWrapper } from './components/ui/section-wrapper';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
 import FAQsPage from './pages/FAQsPage';
+import Dashboard from './pages/features/Dashboard';
+import Leaderboard from './pages/features/Leaderboard';
+import BookOfBusiness from './pages/features/BookOfBusiness';
+import Commission from './pages/features/Commission';
+import EstimatedPayouts from './pages/features/EstimatedPayouts';
+import TeamHierarchy from './pages/features/TeamHierarchy';
+import UserManagement from './pages/features/UserManagement';
+import Reminders from './pages/features/Reminders';
 
 function HomePage() {
   return (
@@ -90,6 +98,14 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-conditions" element={<TermsConditions />} />
         <Route path="/faqs" element={<FAQsPage />} />
+        <Route path="/features/dashboard" element={<Dashboard />} />
+        <Route path="/features/leaderboard" element={<Leaderboard />} />
+        <Route path="/features/book-of-business" element={<BookOfBusiness />} />
+        <Route path="/features/commission" element={<Commission />} />
+        <Route path="/features/estimated-payouts" element={<EstimatedPayouts />} />
+        <Route path="/features/team-hierarchy" element={<TeamHierarchy />} />
+        <Route path="/features/user-management" element={<UserManagement />} />
+        <Route path="/features/reminders" element={<Reminders />} />
       </Routes>
     </div>
   );

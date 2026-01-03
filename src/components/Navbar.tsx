@@ -14,6 +14,17 @@ const NAV_ITEMS = [
   { id: 'contact', label: 'Contact' }
 ];
 
+const FEATURES_ITEMS = [
+  { path: '/features/dashboard', label: 'Dashboard' },
+  { path: '/features/leaderboard', label: 'Leaderboard' },
+  { path: '/features/book-of-business', label: 'Book of Business' },
+  { path: '/features/commission', label: 'Commission' },
+  { path: '/features/estimated-payouts', label: 'Estimated Payouts' },
+  { path: '/features/team-hierarchy', label: 'Team Hierarchy' },
+  { path: '/features/user-management', label: 'User Management' },
+  { path: '/features/reminders', label: 'Reminders & More' }
+];
+
 const DOCS_ITEMS = [
   { path: '/privacy-policy', label: 'Privacy Policy' },
   { path: '/terms-conditions', label: 'Terms & Conditions' },
@@ -24,7 +35,9 @@ const Navbar: React.FC<NavbarProps> = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('');
+  const [featuresDropdownOpen, setFeaturesDropdownOpen] = useState(false);
   const [docsDropdownOpen, setDocsDropdownOpen] = useState(false);
+  const featuresDropdownRef = useRef<HTMLDivElement>(null);
   const docsDropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -81,6 +94,9 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      if (featuresDropdownRef.current && !featuresDropdownRef.current.contains(event.target as Node)) {
+        setFeaturesDropdownOpen(false);
+      }
       if (docsDropdownRef.current && !docsDropdownRef.current.contains(event.target as Node)) {
         setDocsDropdownOpen(false);
       }
@@ -158,6 +174,52 @@ const Navbar: React.FC<NavbarProps> = () => {
                   </a>
                 );
               })}
+
+              {/* Features Dropdown */}
+              <div className="relative" ref={featuresDropdownRef}>
+                <button
+                  onClick={() => setFeaturesDropdownOpen(!featuresDropdownOpen)}
+                  className={`nav-underline-glow text-sm font-medium transition-colors inline-flex items-center gap-1 ${
+                    FEATURES_ITEMS.some(item => item.path === location.pathname)
+                      ? 'text-[#6ad4f2] is-active'
+                      : 'text-white/80 hover:text-white'
+                  }`}
+                >
+                  Features
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={`transition-transform duration-200 ${featuresDropdownOpen ? 'rotate-180' : ''}`}
+                  >
+                    <path d="M6 9l6 6 6-6"/>
+                  </svg>
+                </button>
+
+                {featuresDropdownOpen && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 py-2 bg-black/90 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl">
+                    {FEATURES_ITEMS.map((item) => (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        onClick={() => setFeaturesDropdownOpen(false)}
+                        className={`block px-4 py-2.5 text-sm transition-colors ${
+                          location.pathname === item.path
+                            ? 'text-[#6ad4f2] bg-[#6ad4f2]/10'
+                            : 'text-white/70 hover:text-white hover:bg-white/5'
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
 
               {/* Docs & FAQs Dropdown */}
               <div className="relative" ref={docsDropdownRef}>
@@ -256,6 +318,27 @@ const Navbar: React.FC<NavbarProps> = () => {
                   {item.label}
                 </button>
               ))}
+
+              {/* Features Section */}
+              <div className="pt-3 mt-3 border-t border-white/10">
+                <div className="px-4 py-2 text-xs font-semibold text-white/40 uppercase tracking-wider">
+                  Features
+                </div>
+                {FEATURES_ITEMS.map((item) => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`w-full block text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
+                      location.pathname === item.path
+                        ? 'bg-[#6ad4f2]/20 text-[#6ad4f2]'
+                        : 'text-gray-300 hover:bg-white/5 hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
 
               {/* Docs & FAQs Section */}
               <div className="pt-3 mt-3 border-t border-white/10">
