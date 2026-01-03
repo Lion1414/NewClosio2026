@@ -36,7 +36,7 @@ const FullWidthVideo = () => {
     <section className="relative w-full h-[70vh] bg-black overflow-hidden">
       <video
         ref={videoRef}
-        src="https://www.dropbox.com/scl/fi/gwibdbcluxfef5k8da25e/New-modern-video-for-home-page.mp4?rlkey=ry2rmgsr32c8qf4xb6vdshrwo&st=7dv9a7uo&raw=1"
+        src="https://www.dropbox.com/scl/fi/uxum5tmuxb6u1oglbbe5k/White-Clean-and-Modern-Website-Project-Launch-Presentation-With-Mockups.mp4?rlkey=cuqu7gnwc97ftmkrh1ar5lemz&st=m6fs8rcs&raw=1"
         muted
         playsInline
         preload="auto"
