@@ -83,17 +83,56 @@ const ValueProps: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="order-1 flex items-center justify-start"
           >
-            <div className="relative w-full">
-              <div className="rounded-xl overflow-hidden">
-                <video
-                  src="https://www.dropbox.com/scl/fi/im3lveaj0bz8pe0un87u5/new-video-fro-laptop-display.mp4?rlkey=gaj2fuvzalyfyup0abzhscs1w&st=gyl2lmoj&raw=1"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                  className="w-full h-auto"
-                />
+            <div className="relative w-full max-w-5xl" style={{ perspective: '2000px' }}>
+              {/* Mac Monitor Frame */}
+              <div
+                className="relative"
+                style={{
+                  transform: 'rotateY(-8deg) rotateX(2deg)',
+                  transformStyle: 'preserve-3d'
+                }}
+              >
+                {/* Monitor Bezel */}
+                <div className="relative bg-gradient-to-b from-[#E8E8E8] to-[#CECECE] rounded-[20px] p-[14px] shadow-2xl">
+                  {/* Screen Reflection Overlay */}
+                  <div className="absolute inset-0 rounded-[20px] bg-gradient-to-br from-white/5 via-transparent to-black/10 pointer-events-none z-10"></div>
+
+                  {/* Inner Black Bezel */}
+                  <div className="relative bg-black rounded-[12px] p-[8px]">
+                    {/* Screen */}
+                    <div className="relative rounded-[8px] overflow-hidden bg-black">
+                      <video
+                        src="https://www.dropbox.com/scl/fi/im3lveaj0bz8pe0un87u5/new-video-fro-laptop-display.mp4?rlkey=gaj2fuvzalyfyup0abzhscs1w&st=gyl2lmoj&raw=1"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="auto"
+                        className="w-full h-auto"
+                      />
+                      {/* Screen Glare */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none"></div>
+                    </div>
+                  </div>
+
+                  {/* Bottom Notch */}
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full">
+                    <div className="w-40 h-2 bg-gradient-to-b from-[#CECECE] to-[#B0B0B0] rounded-b-lg"></div>
+                  </div>
+                </div>
+
+                {/* Monitor Stand */}
+                <div className="relative mt-2 flex flex-col items-center">
+                  {/* Stand Neck */}
+                  <div className="w-12 h-16 bg-gradient-to-r from-[#CECECE] via-[#E8E8E8] to-[#CECECE] rounded-b-md shadow-lg"></div>
+                  {/* Stand Base */}
+                  <div className="w-48 h-3 bg-gradient-to-r from-[#B0B0B0] via-[#E8E8E8] to-[#B0B0B0] rounded-full shadow-2xl -mt-1"></div>
+                  {/* Shadow under base */}
+                  <div className="w-40 h-2 bg-black/20 rounded-full blur-md mt-1"></div>
+                </div>
+
+                {/* Ambient Shadow */}
+                <div className="absolute inset-0 -z-10 bg-gradient-radial from-transparent via-transparent to-black/30 blur-3xl" style={{ transform: 'translateZ(-50px) scale(1.1)' }}></div>
               </div>
             </div>
           </motion.div>
