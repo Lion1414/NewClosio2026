@@ -135,13 +135,13 @@ export default function DealMap() {
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-[1.4fr_0.6fr] gap-12 lg:gap-10 items-center">
+        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="relative"
+            className="relative max-w-[85%] mx-auto lg:max-w-full"
           >
             <DesktopMonitor>
               <img
@@ -159,7 +159,7 @@ export default function DealMap() {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              <h3 className="text-xl lg:text-2xl font-bold text-[#1a1a2e]">
+              <h3 className="text-2xl lg:text-3xl font-bold text-[#1a1a2e]">
                 See Your Business<br />
                 <span className="text-[#3a7ca5]">Come to Life</span>
               </h3>
@@ -177,8 +177,8 @@ export default function DealMap() {
                 >
                   <div className="w-[3px] h-10 md:h-8 bg-gradient-to-b from-[#3a7ca5] to-[#2d5f7a] rounded-full flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-[#1a1a2e] text-sm mb-0.5">{benefit.title}</h4>
-                    <p className="text-xs text-[#6a6a7a]">{benefit.description}</p>
+                    <h4 className="font-semibold text-[#1a1a2e] text-base mb-0.5">{benefit.title}</h4>
+                    <p className="text-sm text-[#6a6a7a]">{benefit.description}</p>
                   </div>
                 </motion.div>
               ))}
