@@ -162,7 +162,7 @@ export function InteractiveImageAccordion() {
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }}
               label="Book a Demo"
-              className="px-24 py-5 text-lg bg-black text-white hover:bg-gray-900"
+              className="px-24 py-5 text-lg glow-btn-black"
             />
           </div>
         </div>
