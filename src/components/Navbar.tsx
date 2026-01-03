@@ -218,31 +218,33 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </button>
 
                 {featuresDropdownOpen && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[720px] p-6 bg-black/95 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl">
-                    <div className="grid grid-cols-3 gap-4">
-                      {FEATURES_ITEMS.map((item) => (
-                        <Link
-                          key={item.path}
-                          to={item.path}
-                          onClick={() => setFeaturesDropdownOpen(false)}
-                          className={`group flex flex-col p-4 rounded-xl transition-all duration-200 ${
-                            location.pathname === item.path
-                              ? 'bg-[#6ad4f2]/10 border border-[#6ad4f2]/30'
-                              : 'bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/20'
-                          }`}
-                        >
-                          <span className={`text-sm font-semibold mb-1.5 transition-colors ${
-                            location.pathname === item.path
-                              ? 'text-[#6ad4f2]'
-                              : 'text-white group-hover:text-[#6ad4f2]'
-                          }`}>
-                            {item.label}
-                          </span>
-                          <span className="text-xs text-white/50 leading-relaxed">
-                            {item.description}
-                          </span>
-                        </Link>
-                      ))}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3">
+                    <div className="w-[720px] p-6 bg-black/95 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl">
+                      <div className="grid grid-cols-3 gap-4">
+                        {FEATURES_ITEMS.map((item) => (
+                          <Link
+                            key={item.path}
+                            to={item.path}
+                            onClick={() => setFeaturesDropdownOpen(false)}
+                            className={`group flex flex-col p-4 rounded-xl transition-all duration-200 ${
+                              location.pathname === item.path
+                                ? 'bg-[#6ad4f2]/10 border border-[#6ad4f2]/30'
+                                : 'bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/20'
+                            }`}
+                          >
+                            <span className={`text-sm font-semibold mb-1.5 transition-colors ${
+                              location.pathname === item.path
+                                ? 'text-[#6ad4f2]'
+                                : 'text-white group-hover:text-[#6ad4f2]'
+                            }`}>
+                              {item.label}
+                            </span>
+                            <span className="text-xs text-white/50 leading-relaxed">
+                              {item.description}
+                            </span>
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 )}
@@ -280,21 +282,23 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </button>
 
                 {docsDropdownOpen && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 py-2 bg-black/90 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl">
-                    {DOCS_ITEMS.map((item) => (
-                      <Link
-                        key={item.path}
-                        to={item.path}
-                        onClick={() => setDocsDropdownOpen(false)}
-                        className={`block px-4 py-2.5 text-sm transition-colors ${
-                          location.pathname === item.path
-                            ? 'text-[#6ad4f2] bg-[#6ad4f2]/10'
-                            : 'text-white/70 hover:text-white hover:bg-white/5'
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3">
+                    <div className="w-48 py-2 bg-black/90 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl">
+                      {DOCS_ITEMS.map((item) => (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          onClick={() => setDocsDropdownOpen(false)}
+                          className={`block px-4 py-2.5 text-sm transition-colors ${
+                            location.pathname === item.path
+                              ? 'text-[#6ad4f2] bg-[#6ad4f2]/10'
+                              : 'text-white/70 hover:text-white hover:bg-white/5'
+                          }`}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
