@@ -33,7 +33,7 @@ const FullWidthVideo = () => {
   }, [hasPlayed]);
 
   return (
-    <section className="relative w-full bg-black px-4 sm:px-6 lg:px-8 py-4">
+    <section className="relative w-full bg-black px-4 sm:px-6 lg:px-8 pt-4">
       <div className="relative w-full h-[80vh] overflow-hidden rounded-2xl">
         <video
           ref={videoRef}
