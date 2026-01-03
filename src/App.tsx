@@ -6,7 +6,6 @@ import MobileSection from './components/MobileSection';
 import { InteractiveImageAccordion } from './components/ui/interactive-image-accordion';
 import DealMap from './components/DealMap';
 import FullWidthVideo from './components/FullWidthVideo';
-import SecurityTiles from './components/SecurityTiles';
 import FeatureShowcase from './components/FeatureShowcase';
 import ComparisonTable from './components/ComparisonTable';
 import TestimonialsCarousel from './components/TestimonialsCarousel';
@@ -50,10 +49,6 @@ function HomePage() {
 
         <SectionWrapper>
           <DealMap />
-        </SectionWrapper>
-
-        <SectionWrapper>
-          <SecurityTiles />
         </SectionWrapper>
 
         <FullWidthVideo />
