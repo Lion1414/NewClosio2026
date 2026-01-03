@@ -33,16 +33,18 @@ const FullWidthVideo = () => {
   }, [hasPlayed]);
 
   return (
-    <section className="relative w-full h-[70vh] bg-black overflow-hidden">
-      <video
-        ref={videoRef}
-        src="https://www.dropbox.com/scl/fi/uxum5tmuxb6u1oglbbe5k/White-Clean-and-Modern-Website-Project-Launch-Presentation-With-Mockups.mp4?rlkey=cuqu7gnwc97ftmkrh1ar5lemz&st=m6fs8rcs&raw=1"
-        muted
-        playsInline
-        preload="auto"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 pointer-events-none" />
+    <section className="relative w-full bg-black px-4 sm:px-6 lg:px-8 py-8">
+      <div className="relative w-full h-[70vh] overflow-hidden rounded-2xl">
+        <video
+          ref={videoRef}
+          src="https://www.dropbox.com/scl/fi/uxum5tmuxb6u1oglbbe5k/White-Clean-and-Modern-Website-Project-Launch-Presentation-With-Mockups.mp4?rlkey=cuqu7gnwc97ftmkrh1ar5lemz&st=m6fs8rcs&raw=1"
+          muted
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 pointer-events-none" />
+      </div>
     </section>
   );
 };
