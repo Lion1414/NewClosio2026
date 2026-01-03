@@ -133,7 +133,7 @@ const ComparisonTable: React.FC = () => {
             <img
               src="/closio_main_logo.png"
               alt="Closio"
-              className="h-12 mx-auto"
+              className="h-20 mx-auto"
             />
           </div>
 
