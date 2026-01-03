@@ -8,7 +8,6 @@ interface NavbarProps {
 
 const NAV_ITEMS = [
   { id: 'product', label: 'Product' },
-  { id: 'pricing', label: 'Pricing' },
   { id: 'contact', label: 'Contact' }
 ];
 
