@@ -4,7 +4,7 @@ const AngularLine: React.FC = () => {
   return (
     <svg
       viewBox="0 0 500 700"
-      className="absolute left-0 top-0 h-full w-[30vw]"
+      className="absolute left-0 top-0 h-full w-[30vw] min-h-[500px]"
       style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
       preserveAspectRatio="none"
     >
@@ -81,15 +81,15 @@ const IOImprint: React.FC = () => {
 
 const MobileSection: React.FC = () => {
   return (
-    <section id="mobile" className="h-[500px] sm:h-[600px] lg:h-[700px] overflow-hidden relative">
+    <section id="mobile" className="relative">
       <AngularLine />
       <IOImprint />
-      <div className="absolute inset-0 flex items-end justify-end">
-        <div className="relative w-full h-full flex items-end justify-end pr-0">
+      <div className="flex items-end justify-end">
+        <div className="relative w-full flex items-end justify-end">
           <img
             src="/purple_pink_gradient_mobile_application_presentation_(6).png"
             alt="Closio mobile application showcasing dashboard, leaderboard, and login screens"
-            className="h-[95%] sm:h-[92%] lg:h-[90%] w-auto max-w-none object-contain drop-shadow-2xl"
+            className="w-auto max-w-none object-contain drop-shadow-2xl"
           />
         </div>
       </div>
