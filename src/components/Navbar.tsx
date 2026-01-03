@@ -10,7 +10,6 @@ const NAV_ITEMS = [
   { id: 'product', label: 'Product' },
   { id: 'pricing', label: 'Pricing' },
   { id: 'testimonials', label: 'Reviews' },
-  { id: 'coming-soon', label: 'Coming Soon' },
   { id: 'contact', label: 'Contact' }
 ];
 
