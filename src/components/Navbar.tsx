@@ -9,7 +9,6 @@ interface NavbarProps {
 const NAV_ITEMS = [
   { id: 'product', label: 'Product' },
   { id: 'pricing', label: 'Pricing' },
-  { id: 'testimonials', label: 'Reviews' },
   { id: 'contact', label: 'Contact' }
 ];
 
