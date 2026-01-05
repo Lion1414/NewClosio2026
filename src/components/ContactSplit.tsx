@@ -35,19 +35,9 @@ const ContactSplit = React.memo(() => {
   };
 
   return (
-    <section id="contact" className="py-32 relative">
+    <section id="contact" className="py-32 pb-64 relative bg-black">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
-            style={{
-              backgroundImage: 'url(/main_dashboard_screen-closio_website.png)',
-              filter: 'blur(2px)'
-            }}
-          />
-
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628]/95 via-[#0d1b2e]/90 to-[#1a2634]/95" />
-
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl bg-black">
           <div className="relative z-10 py-24 px-8 sm:px-12 lg:px-16">
             <div className="max-w-3xl mx-auto">
               <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-[#1a2634]/80 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] p-10 sm:p-12">
@@ -118,6 +108,14 @@ const ContactSplit = React.memo(() => {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-full max-w-4xl px-8">
+            <img
+              src="/image copy copy copy copy copy copy copy copy copy.png"
+              alt="Closio Login"
+              className="w-full h-auto rounded-2xl shadow-2xl"
+            />
           </div>
         </div>
       </div>
