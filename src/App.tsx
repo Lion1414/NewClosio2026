@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -27,6 +28,7 @@ import TeamHierarchy from './pages/features/TeamHierarchy';
 import UserManagement from './pages/features/UserManagement';
 import Reminders from './pages/features/Reminders';
 import TestimonialSection from './components/TestimonialSection';
+import SplashScreen from './components/SplashScreen';
 
 function HomePage() {
   return (
@@ -81,25 +83,30 @@ function HomePage() {
 }
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
   return (
-    <div className="bg-black text-[#E8EEF5] overflow-x-hidden w-full min-h-screen">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/terms-conditions" element={<TermsConditions />} />
-        <Route path="/faqs" element={<FAQsPage />} />
-        <Route path="/contact" element={<ContactUs />} />
-        <Route path="/features/dashboard" element={<Dashboard />} />
-        <Route path="/features/leaderboard" element={<Leaderboard />} />
-        <Route path="/features/book-of-business" element={<BookOfBusiness />} />
-        <Route path="/features/commission" element={<Commission />} />
-        <Route path="/features/estimated-payouts" element={<EstimatedPayouts />} />
-        <Route path="/features/team-hierarchy" element={<TeamHierarchy />} />
-        <Route path="/features/user-management" element={<UserManagement />} />
-        <Route path="/features/reminders" element={<Reminders />} />
-      </Routes>
-    </div>
+    <>
+      {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
+      <div className="bg-black text-[#E8EEF5] overflow-x-hidden w-full min-h-screen">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-conditions" element={<TermsConditions />} />
+          <Route path="/faqs" element={<FAQsPage />} />
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/features/dashboard" element={<Dashboard />} />
+          <Route path="/features/leaderboard" element={<Leaderboard />} />
+          <Route path="/features/book-of-business" element={<BookOfBusiness />} />
+          <Route path="/features/commission" element={<Commission />} />
+          <Route path="/features/estimated-payouts" element={<EstimatedPayouts />} />
+          <Route path="/features/team-hierarchy" element={<TeamHierarchy />} />
+          <Route path="/features/user-management" element={<UserManagement />} />
+          <Route path="/features/reminders" element={<Reminders />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 
