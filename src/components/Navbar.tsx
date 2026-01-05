@@ -24,7 +24,8 @@ const FEATURES_ITEMS = [
 const DOCS_ITEMS = [
   { path: '/privacy-policy', label: 'Privacy Policy' },
   { path: '/terms-conditions', label: 'Terms & Conditions' },
-  { path: '/faqs', label: 'FAQs' }
+  { path: '/faqs', label: 'FAQs' },
+  { path: '/contact', label: 'Contact Us' }
 ];
 
 const Navbar: React.FC<NavbarProps> = () => {
