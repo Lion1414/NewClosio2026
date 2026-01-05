@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ValueProps from './components/ValueProps';
+import FeatureGrid from './components/FeatureGrid';
 import MobileSection from './components/MobileSection';
 import { InteractiveImageAccordion } from './components/ui/interactive-image-accordion';
 import DealMap from './components/DealMap';
@@ -39,6 +40,10 @@ function HomePage() {
 
         <SectionWrapper className="!bg-black !bg-none">
           <ValueProps />
+        </SectionWrapper>
+
+        <SectionWrapper className="!bg-black !bg-none">
+          <FeatureGrid />
         </SectionWrapper>
 
         <SectionWrapper className="!bg-black !bg-none !from-black !via-black !to-black">
