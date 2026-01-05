@@ -27,62 +27,159 @@ const PrivacyPolicy = () => {
 
           <h1 className="text-5xl md:text-6xl font-bold mb-8">Privacy Policy</h1>
 
-          <div className="text-white/60 mb-12">
-            Last updated: January 1, 2026
+          <div className="text-white/60 mb-4">
+            Last Updated: January 5, 2026
           </div>
+
+          <p className="text-white/70 leading-relaxed mb-12">
+            Closio ("Company," "we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and protect information when you access or use the Closio software platform (the "Service").
+            <br /><br />
+            Closio is operated from New York, New York.
+          </p>
 
           <div className="space-y-10">
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
               <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">1. Information We Collect</h2>
+              <p className="text-white/70 leading-relaxed mb-4">
+                We collect only the information necessary to operate and provide the Service.
+              </p>
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-2">Information You Provide</h3>
+                  <ul className="list-disc list-inside text-white/70 leading-relaxed space-y-1">
+                    <li>Name</li>
+                    <li>Email address</li>
+                    <li>Account credentials</li>
+                    <li>Business-related data you voluntarily upload into the platform</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-2">Automatically Collected Information</h3>
+                  <ul className="list-disc list-inside text-white/70 leading-relaxed space-y-1">
+                    <li>IP address</li>
+                    <li>Browser type</li>
+                    <li>Device information</li>
+                    <li>Log and usage data</li>
+                  </ul>
+                </div>
+                <p className="text-white/70 leading-relaxed">
+                  We do not collect sensitive personal data unless voluntarily provided by the user within the CRM.
+                </p>
+              </div>
+            </section>
+
+            <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">2. How We Use Information</h2>
+              <p className="text-white/70 leading-relaxed mb-4">
+                We use collected information solely to:
+              </p>
+              <ul className="list-disc list-inside text-white/70 leading-relaxed space-y-1 mb-4">
+                <li>Provide, operate, and maintain the Service</li>
+                <li>Authenticate users</li>
+                <li>Improve performance and reliability</li>
+                <li>Ensure security and prevent fraud</li>
+                <li>Comply with legal obligations</li>
+              </ul>
               <p className="text-white/70 leading-relaxed">
-                We collect information you provide directly to us, such as when you create an account,
-                make a purchase, or contact us for support. This may include your name, email address,
-                phone number, and payment information.
+                We do not use your data for marketing, advertising, or analytics unrelated to the operation of the Service.
               </p>
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">2. How We Use Your Information</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">3. Data Storage & Security</h2>
+              <ul className="list-disc list-inside text-white/70 leading-relaxed space-y-2 mb-4">
+                <li>All data is securely stored using Amazon Web Services (AWS)</li>
+                <li>Industry-standard security measures are used, including access controls and encryption where applicable</li>
+                <li>Access to customer data is strictly limited to authorized personnel</li>
+              </ul>
               <p className="text-white/70 leading-relaxed">
-                We use the information we collect to provide, maintain, and improve our services,
-                process transactions, send you technical notices and support messages, and respond
-                to your comments and questions.
+                While no system is 100% secure, we take reasonable and appropriate steps to protect your data.
               </p>
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">3. Information Sharing</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">4. Data Sharing & Disclosure</h2>
+              <p className="text-white/70 leading-relaxed mb-4">
+                Closio does not:
+              </p>
+              <ul className="list-disc list-inside text-white/70 leading-relaxed space-y-1 mb-4">
+                <li>Sell user data</li>
+                <li>Rent user data</li>
+                <li>Trade user data</li>
+                <li>Share data with third parties for marketing purposes</li>
+              </ul>
+              <p className="text-white/70 leading-relaxed mb-2">
+                We may share information only:
+              </p>
+              <ul className="list-disc list-inside text-white/70 leading-relaxed space-y-1">
+                <li>With trusted infrastructure providers (e.g., AWS) solely to operate the Service</li>
+                <li>When required by law, court order, or legal process</li>
+                <li>To protect our rights, users, or platform security</li>
+              </ul>
+            </section>
+
+            <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">5. Data Ownership</h2>
+              <p className="text-white/70 leading-relaxed mb-4">
+                All data uploaded into Closio remains the property of the customer.
+              </p>
               <p className="text-white/70 leading-relaxed">
-                We do not share your personal information with third parties except as described
-                in this policy. We may share information with service providers who assist us in
-                operating our platform, conducting our business, or serving our users.
+                Closio acts only as a software provider and does not claim ownership over user data.
               </p>
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">4. Data Security</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">6. Data Retention</h2>
+              <p className="text-white/70 leading-relaxed mb-4">
+                We retain user data only for as long as:
+              </p>
+              <ul className="list-disc list-inside text-white/70 leading-relaxed space-y-1 mb-4">
+                <li>The account remains active, or</li>
+                <li>Required to comply with legal obligations</li>
+              </ul>
               <p className="text-white/70 leading-relaxed">
-                We implement appropriate technical and organizational measures to protect the
-                security of your personal information. However, no method of transmission over
-                the Internet is 100% secure.
+                Users may request account deletion, after which data will be removed within a reasonable timeframe unless legally required to retain it.
               </p>
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">5. Your Rights</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">7. Cookies & Tracking</h2>
+              <p className="text-white/70 leading-relaxed mb-4">
+                Closio uses minimal cookies necessary for:
+              </p>
+              <ul className="list-disc list-inside text-white/70 leading-relaxed space-y-1 mb-4">
+                <li>Authentication</li>
+                <li>Platform functionality</li>
+              </ul>
               <p className="text-white/70 leading-relaxed">
-                You have the right to access, correct, or delete your personal information.
-                You may also object to or restrict certain processing of your data. To exercise
-                these rights, please contact us at privacy@closio.com.
+                We do not use advertising cookies or behavioral tracking.
               </p>
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">6. Contact Us</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">8. Children's Privacy</h2>
               <p className="text-white/70 leading-relaxed">
-                If you have any questions about this Privacy Policy, please contact us at
-                privacy@closio.com or through our contact form on the website.
+                Closio is not intended for individuals under the age of 18. We do not knowingly collect data from minors.
               </p>
+            </section>
+
+            <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">9. Changes to This Policy</h2>
+              <p className="text-white/70 leading-relaxed">
+                We may update this Privacy Policy from time to time. Updates will be posted on this page with a revised "Last Updated" date.
+              </p>
+            </section>
+
+            <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">10. Contact Information</h2>
+              <p className="text-white/70 leading-relaxed mb-4">
+                If you have questions about this Privacy Policy, contact us at:
+              </p>
+              <div className="text-white/70 leading-relaxed space-y-1">
+                <p className="font-semibold text-white">Closio</p>
+                <p>New York, New York</p>
+                <p>📧 support@closio.com</p>
+              </div>
             </section>
           </div>
         </motion.div>
