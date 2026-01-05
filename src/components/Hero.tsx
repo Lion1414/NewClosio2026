@@ -40,17 +40,34 @@ const TypewriterText: React.FC<{ text: string; delay?: number }> = ({ text, dela
   );
 };
 
-const StaticButton: React.FC = () => {
+const FlipButton: React.FC = () => {
+  const [hasTyped, setHasTyped] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setHasTyped(true), 3500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <motion.button
-      className="demo-btn relative px-8 py-4 bg-white text-black font-semibold text-base rounded-xl shadow-[0_0_40px_rgba(255,255,255,0.3)] overflow-hidden z-10"
+      className="demo-btn group relative px-8 py-4 bg-white text-black font-semibold text-base rounded-xl shadow-[0_0_40px_rgba(255,255,255,0.3)] overflow-hidden z-10"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 1.5 }}
       style={{ perspective: '600px' }}
     >
-      <span className="demo-btn-text relative z-10">
-        <TypewriterText text="Book a Demo Now" delay={2000} />
+      <span className="demo-btn-text relative z-10 block overflow-hidden h-6">
+        {!hasTyped ? (
+          <TypewriterText text="Book a Demo Now" delay={2000} />
+        ) : (
+          <span
+            className="relative block transition-transform duration-500 ease-out group-hover:-translate-y-full"
+            style={{ transformStyle: 'preserve-3d' }}
+          >
+            <span className="block">Book a Demo Now</span>
+            <span className="absolute top-full left-0 block">Book a Demo Now</span>
+          </span>
+        )}
       </span>
     </motion.button>
   );
@@ -118,7 +135,7 @@ const Hero: React.FC = () => {
             The life insurance CRM that takes you from lead to issue paid.
           </motion.p>
 
-          <StaticButton />
+          <FlipButton />
         </div>
       </div>
 
