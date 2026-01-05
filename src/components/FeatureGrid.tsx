@@ -143,6 +143,43 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   );
 };
 
+const VerticalLine: React.FC = () => {
+  return (
+    <svg
+      viewBox="0 0 500 900"
+      className="absolute left-0 top-0 h-full w-[30vw] pointer-events-none"
+      style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
+      preserveAspectRatio="none"
+    >
+      <defs>
+        <filter id="featureLineGlow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+          <feMerge>
+            <feMergeNode in="coloredBlur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      <path
+        d="M 50 -50 L 50 950"
+        fill="none"
+        stroke="white"
+        strokeWidth="16"
+        strokeLinecap="round"
+        filter="url(#featureLineGlow)"
+      />
+      <path
+        d="M 50 -50 L 50 950"
+        fill="none"
+        stroke="rgba(255, 255, 255, 0.15)"
+        strokeWidth="32"
+        strokeLinecap="round"
+        className="blur-md"
+      />
+    </svg>
+  );
+};
+
 const FeatureGrid: React.FC = () => {
   const features = [
     {
@@ -197,7 +234,7 @@ const FeatureGrid: React.FC = () => {
 
   return (
     <section className="relative py-20 bg-black overflow-hidden">
-      <div className="absolute left-0 top-0 bottom-0 w-px bg-white" />
+      <VerticalLine />
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
