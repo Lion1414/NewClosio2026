@@ -37,16 +37,18 @@ const ContactSplit = React.memo(() => {
   return (
     <section id="contact" className="py-32 relative bg-black overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="relative">
+        <div className="relative min-h-[800px]">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl">
             <img
               src="/image copy copy copy copy copy copy copy copy copy.png"
               alt="Closio Login"
               className="w-full h-auto rounded-2xl shadow-2xl"
+              loading="eager"
+              fetchpriority="high"
             />
           </div>
 
-          <div className="relative z-10 flex items-center justify-center min-h-[600px]">
+          <div className="relative z-10 flex items-center justify-center min-h-[800px]">
             <div className="max-w-3xl mx-auto text-center px-8">
               <h2 className="text-4xl sm:text-5xl font-bold mb-4">
                 Stay in the Loop with{' '}
