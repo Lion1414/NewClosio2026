@@ -163,7 +163,7 @@ const FAQsPage = () => {
               Can't find the answer you're looking for? Our team is here to help.
             </p>
             <Link
-              to="/#contact"
+              to="/contact-us"
               className="inline-flex items-center gap-2 bg-[#6ad4f2] text-black font-medium px-6 py-3 rounded-lg hover:bg-[#6ad4f2]/90 transition-colors"
             >
               Contact Support
