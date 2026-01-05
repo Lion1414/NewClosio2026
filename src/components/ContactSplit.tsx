@@ -61,7 +61,7 @@ const ContactSplit = React.memo(() => {
             </div>
           </div>
 
-          <div className="relative z-10 flex items-center justify-center min-h-[500px]">
+          <div className="relative z-10 flex items-start justify-center min-h-[500px] pt-8">
             <div className="max-w-3xl mx-auto text-center px-8">
               <h2 className="text-4xl sm:text-5xl font-bold mb-4">
                 Stay in the Loop with{' '}
