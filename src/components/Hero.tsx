@@ -50,7 +50,7 @@ const FlipButton: React.FC = () => {
 
   return (
     <motion.button
-      className="demo-btn group relative px-8 py-4 bg-white text-black font-semibold text-base rounded-xl shadow-[0_0_40px_rgba(255,255,255,0.3)] overflow-hidden z-10"
+      className="demo-btn group relative px-8 py-4 bg-white text-black font-semibold text-base rounded-xl shadow-[0_0_40px_rgba(255,255,255,0.3)] overflow-hidden z-30"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 1.5 }}
@@ -95,7 +95,7 @@ const Hero: React.FC = () => {
         />
       </motion.div>
 
-      <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10 py-32 lg:py-0">
+      <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-30 py-32 lg:py-0">
         <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-xl lg:max-w-2xl">
           <motion.span
             className="text-xs sm:text-sm uppercase tracking-[0.2em] text-neutral-500 font-medium mb-6"
