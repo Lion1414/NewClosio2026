@@ -40,48 +40,62 @@ const features: FeatureSection[] = [
 interface StackingCardProps {
   feature: FeatureSection;
   index: number;
+  totalCards: number;
 }
 
-const StackingCard: React.FC<StackingCardProps> = ({ feature, index }) => {
+const StackingCard: React.FC<StackingCardProps> = ({ feature, index, totalCards }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const isLast = index === totalCards - 1;
 
   const { scrollYProgress } = useScroll({
     target: cardRef,
-    offset: ['start end', 'start start']
+    offset: ['start end', 'end start']
   });
 
   const scale = useTransform(
     scrollYProgress,
-    [0, 1],
-    [0.85, 1]
+    [0, 0.3, 0.5],
+    [0.9, 1, 1]
   );
 
-  const opacity = useTransform(
+  const cardOpacity = useTransform(
     scrollYProgress,
-    [0, 0.5, 1],
-    [0.3, 0.8, 1]
+    isLast
+      ? [0, 0.2, 0.4, 1]
+      : [0, 0.2, 0.4, 0.7, 0.85],
+    isLast
+      ? [0, 0.5, 1, 1]
+      : [0, 0.5, 1, 1, 0]
   );
 
-  const topOffset = 100 + index * 30;
+  const y = useTransform(
+    scrollYProgress,
+    [0, 0.3],
+    [100, 0]
+  );
 
   return (
     <div
       ref={cardRef}
-      className="h-screen w-full"
+      className="h-[100vh] w-full"
+      style={{ marginBottom: isLast ? 0 : '-20vh' }}
     >
-      <div
-        className="sticky w-full flex items-center justify-center px-4 md:px-8"
+      <motion.div
+        className="sticky top-[15vh] w-full flex items-start justify-center px-4 md:px-8"
         style={{
-          top: `${topOffset}px`,
-          height: `calc(100vh - ${topOffset + 40}px)`,
-          zIndex: index + 1
+          zIndex: index + 1,
+          opacity: cardOpacity,
+          scale,
+          y
         }}
       >
-        <motion.div
-          style={{ scale, opacity }}
-          className="w-full max-w-[90%] lg:max-w-[85%] mx-auto"
-        >
-          <div className="bg-[#0f1419] backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+        <div className="w-full max-w-[90%] lg:max-w-[85%] mx-auto">
+          <div
+            className="bg-[#0f1419] backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10"
+            style={{
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05)'
+            }}
+          >
             <div className={`relative flex flex-col ${
               feature.reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
             }`}>
@@ -132,15 +146,17 @@ const StackingCard: React.FC<StackingCardProps> = ({ feature, index }) => {
               </div>
             </div>
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </div>
   );
 };
 
 const FeatureShowcase: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
   return (
-    <section className="relative bg-white">
+    <section ref={sectionRef} className="relative bg-white">
       <div className="sticky top-0 z-50 pt-8 md:pt-12 pb-6 bg-gradient-to-b from-white via-white to-white/0">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0f1419] text-center">
           No Limits on what you can do
@@ -153,11 +169,12 @@ const FeatureShowcase: React.FC = () => {
             key={index}
             feature={feature}
             index={index}
+            totalCards={features.length}
           />
         ))}
       </div>
 
-      <div className="h-[30vh] bg-white" />
+      <div className="h-[20vh] bg-white" />
     </section>
   );
 };
