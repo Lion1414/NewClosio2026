@@ -357,7 +357,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             >
               <button
                 onClick={handleNavClick('contact')}
-                className="bg-white text-black font-medium whitespace-nowrap rounded-full hover:bg-white/90"
+                className="bg-white text-black font-medium whitespace-nowrap rounded-xl hover:bg-white/90"
                 style={{
                   padding: isScrolled ? '6px 16px' : '8px 20px',
                   fontSize: isScrolled ? '12px' : '14px',
@@ -368,7 +368,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               </button>
               <button
                 onClick={() => window.location.href = 'https://closio.com/login'}
-                className="bg-transparent text-white font-medium whitespace-nowrap rounded-full hover:bg-white/10"
+                className="bg-transparent text-white font-medium whitespace-nowrap rounded-xl hover:bg-white/10"
                 style={{
                   padding: isScrolled ? '6px 16px' : '8px 20px',
                   fontSize: isScrolled ? '12px' : '14px',
@@ -463,13 +463,13 @@ const Navbar: React.FC<NavbarProps> = () => {
               <div className="pt-4 px-4 space-y-3 border-t border-white/10 mt-4">
                 <button
                   onClick={handleNavClick('contact')}
-                  className="bg-white text-black font-medium w-full px-5 py-2.5 text-sm rounded-lg hover:bg-white/90 transition-colors"
+                  className="bg-white text-black font-medium w-full px-5 py-2.5 text-sm rounded-xl hover:bg-white/90 transition-colors"
                 >
                   Book a Demo
                 </button>
                 <button
                   onClick={() => window.location.href = 'https://closio.com/login'}
-                  className={`bg-white text-black font-medium w-full px-5 py-2.5 text-sm rounded-lg hover:bg-white/90 transition-all duration-300 ${
+                  className={`bg-white text-black font-medium w-full px-5 py-2.5 text-sm rounded-xl hover:bg-white/90 transition-all duration-300 ${
                     isScrollingDown ? 'opacity-50' : 'opacity-100'
                   }`}
                 >

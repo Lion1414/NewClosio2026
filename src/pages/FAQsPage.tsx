@@ -104,7 +104,7 @@ const FAQsPage = () => {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
                   activeCategory === category
                     ? 'bg-[#6ad4f2] text-black'
                     : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-white/10'
@@ -164,7 +164,7 @@ const FAQsPage = () => {
             </p>
             <Link
               to="/contact-us"
-              className="inline-flex items-center gap-2 bg-[#6ad4f2] text-black font-medium px-6 py-3 rounded-lg hover:bg-[#6ad4f2]/90 transition-colors"
+              className="inline-flex items-center gap-2 bg-[#6ad4f2] text-black font-medium px-6 py-3 rounded-xl hover:bg-[#6ad4f2]/90 transition-colors"
             >
               Contact Support
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

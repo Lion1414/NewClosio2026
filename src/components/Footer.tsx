@@ -80,9 +80,9 @@ const Footer: React.FC = () => {
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-2 bg-white/10 border border-white/20 rounded-l-lg focus:border-[#2C66FF] focus:ring-2 focus:ring-[#2C66FF]/20 outline-none transition-all text-sm"
+                  className="flex-1 px-4 py-2 bg-white/10 border border-white/20 rounded-l-xl focus:border-[#2C66FF] focus:ring-2 focus:ring-[#2C66FF]/20 outline-none transition-all text-sm"
                 />
-                <button className="px-4 py-2 bg-gradient-to-r from-[#2C66FF] to-[#2B4FB3] rounded-r-lg hover:scale-105 transition-all text-sm">
+                <button className="px-4 py-2 bg-gradient-to-r from-[#2C66FF] to-[#2B4FB3] rounded-r-xl hover:scale-105 transition-all text-sm">
                   →
                 </button>
               </div>
@@ -95,7 +95,7 @@ const Footer: React.FC = () => {
                   key={index}
                   href={social.href}
                   aria-label={social.label}
-                  className="px-3 py-2 bg-white/10 rounded-lg hover:bg-[#2C66FF] transition-all hover:scale-110 text-xs"
+                  className="px-3 py-2 bg-white/10 rounded-xl hover:bg-[#2C66FF] transition-all hover:scale-110 text-xs"
                 >
                   {social.label}
                 </a>
@@ -135,7 +135,7 @@ const Footer: React.FC = () => {
             </div>
             <button
               onClick={scrollToTop}
-              className="w-10 h-10 bg-white/10 hover:bg-[#2C66FF] rounded-lg flex items-center justify-center transition-all hover:scale-110 text-xl"
+              className="w-10 h-10 bg-white/10 hover:bg-[#2C66FF] rounded-xl flex items-center justify-center transition-all hover:scale-110 text-xl"
               aria-label="Back to top"
             >
               ↑
