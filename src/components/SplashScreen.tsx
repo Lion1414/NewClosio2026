@@ -31,61 +31,62 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: 'easeInOut' }}
         >
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] pointer-events-none opacity-30">
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none">
             <svg
               className="w-full h-full"
-              viewBox="0 0 400 400"
+              viewBox="0 0 500 500"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              {Array.from({ length: 16 }).map((_, i) => (
-                <motion.line
-                  key={`h-${i}`}
-                  x1="0"
-                  y1={i * 25}
-                  x2="400"
-                  y2={i * 25}
-                  stroke="rgba(106, 212, 242, 0.4)"
-                  strokeWidth="1"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{
-                    duration: 0.8,
-                    delay: i * 0.05,
-                    ease: 'easeOut',
-                  }}
-                />
-              ))}
-              {Array.from({ length: 16 }).map((_, i) => (
-                <motion.line
-                  key={`v-${i}`}
-                  x1={i * 25}
-                  y1="0"
-                  x2={i * 25}
-                  y2="400"
-                  stroke="rgba(106, 212, 242, 0.4)"
-                  strokeWidth="1"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{
-                    duration: 0.8,
-                    delay: i * 0.05,
-                    ease: 'easeOut',
-                  }}
-                />
-              ))}
+              <defs>
+                <radialGradient id="gridFade" cx="0%" cy="100%" r="100%">
+                  <stop offset="0%" stopColor="white" stopOpacity="0.5" />
+                  <stop offset="50%" stopColor="white" stopOpacity="0.2" />
+                  <stop offset="100%" stopColor="white" stopOpacity="0" />
+                </radialGradient>
+                <mask id="gridMask">
+                  <rect width="500" height="500" fill="url(#gridFade)" />
+                </mask>
+              </defs>
+              <g mask="url(#gridMask)">
+                {Array.from({ length: 20 }).map((_, i) => (
+                  <motion.line
+                    key={`h-${i}`}
+                    x1="0"
+                    y1={i * 25}
+                    x2="500"
+                    y2={i * 25}
+                    stroke="white"
+                    strokeWidth="1"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: 1 }}
+                    transition={{
+                      duration: 0.8,
+                      delay: i * 0.04,
+                      ease: 'easeOut',
+                    }}
+                  />
+                ))}
+                {Array.from({ length: 20 }).map((_, i) => (
+                  <motion.line
+                    key={`v-${i}`}
+                    x1={i * 25}
+                    y1="0"
+                    x2={i * 25}
+                    y2="500"
+                    stroke="white"
+                    strokeWidth="1"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: 1 }}
+                    transition={{
+                      duration: 0.8,
+                      delay: i * 0.04,
+                      ease: 'easeOut',
+                    }}
+                  />
+                ))}
+              </g>
             </svg>
-
-            <motion.div
-              className="absolute inset-0"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              style={{
-                background:
-                  'radial-gradient(circle at center, rgba(106, 212, 242, 0.15) 0%, transparent 70%)',
-              }}
-            />
           </div>
 
           <motion.div
@@ -114,7 +115,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
               transition={{ duration: 1, delay: 0.6 }}
               style={{
                 background:
-                  'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.1) 0%, transparent 70%)',
+                  'radial-gradient(ellipse at center, rgba(255, 255, 255, 0.08) 0%, transparent 70%)',
               }}
             />
           </motion.div>
@@ -129,7 +130,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
               {[0, 1, 2].map((i) => (
                 <motion.div
                   key={i}
-                  className="w-1.5 h-1.5 bg-[#6ad4f2] rounded-full"
+                  className="w-1.5 h-1.5 bg-white rounded-full"
                   animate={{
                     opacity: [0.3, 1, 0.3],
                     scale: [1, 1.2, 1],
