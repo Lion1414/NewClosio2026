@@ -29,6 +29,7 @@ import UserManagement from './pages/features/UserManagement';
 import Reminders from './pages/features/Reminders';
 import TestimonialSection from './components/TestimonialSection';
 import SplashScreen from './components/SplashScreen';
+import OverlappingBanner from './components/OverlappingBanner';
 
 function HomePage() {
   return (
@@ -40,7 +41,9 @@ function HomePage() {
           <Hero />
         </SectionWrapper>
 
-        <SectionWrapper className="!bg-black !bg-none">
+        <OverlappingBanner />
+
+        <SectionWrapper className="!bg-black !bg-none pt-32">
           <ValueProps />
         </SectionWrapper>
 
