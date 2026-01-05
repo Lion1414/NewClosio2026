@@ -48,14 +48,14 @@ const ContactSplit = React.memo(() => {
             />
           </div>
 
-          <div className="absolute -bottom-32 left-0 pointer-events-none select-none z-0 opacity-80">
-            <div className="text-[200px] sm:text-[250px] md:text-[320px] lg:text-[380px] font-bold tracking-tight flex items-center leading-none">
+          <div className="absolute -bottom-96 left-0 pointer-events-none select-none z-0 opacity-90">
+            <div className="text-[320px] sm:text-[400px] md:text-[500px] lg:text-[600px] xl:text-[700px] font-bold tracking-tight flex items-center leading-none gap-8 md:gap-16 lg:gap-24">
               <span
                 className="italic"
                 style={{
-                  WebkitTextStroke: '3px rgba(106, 212, 242, 0.8)',
+                  WebkitTextStroke: '4px rgba(106, 212, 242, 0.9)',
                   WebkitTextFillColor: 'transparent',
-                  filter: 'drop-shadow(0 0 60px rgba(106, 212, 242, 0.8)) drop-shadow(0 0 100px rgba(106, 212, 242, 0.5))',
+                  filter: 'drop-shadow(0 0 80px rgba(106, 212, 242, 0.9)) drop-shadow(0 0 120px rgba(106, 212, 242, 0.6))',
                 }}
               >
                 I
@@ -63,7 +63,7 @@ const ContactSplit = React.memo(() => {
               <span
                 className="text-white"
                 style={{
-                  filter: 'drop-shadow(0 0 60px rgba(106, 212, 242, 0.8)) drop-shadow(0 0 100px rgba(106, 212, 242, 0.5))',
+                  filter: 'drop-shadow(0 0 80px rgba(106, 212, 242, 0.9)) drop-shadow(0 0 120px rgba(106, 212, 242, 0.6))',
                 }}
               >
                 O
