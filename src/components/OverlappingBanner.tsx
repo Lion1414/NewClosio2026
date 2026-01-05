@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const OverlappingBanner: React.FC = () => {
   return (
-    <div className="relative z-30 -mt-32 mb-[-8rem] px-4 sm:px-8 md:px-16 lg:px-24">
+    <div className="relative z-10 -mt-16 mb-[-8rem] px-4 sm:px-8 md:px-16 lg:px-24">
       <motion.div
         className="relative w-full rounded-3xl overflow-hidden"
         style={{
