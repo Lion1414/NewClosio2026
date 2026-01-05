@@ -56,7 +56,7 @@ const FlipButton: React.FC = () => {
       transition={{ duration: 0.6, delay: 1.5 }}
       style={{ perspective: '600px' }}
     >
-      <span className="demo-btn-text relative z-10 block overflow-hidden h-6">
+      <span className="demo-btn-text relative z-10 flex items-center justify-center overflow-hidden h-6">
         {!hasTyped ? (
           <TypewriterText text="Book a Demo Now" delay={2000} />
         ) : (
@@ -64,8 +64,8 @@ const FlipButton: React.FC = () => {
             className="relative block transition-transform duration-500 ease-out group-hover:-translate-y-full"
             style={{ transformStyle: 'preserve-3d' }}
           >
-            <span className="block">Book a Demo Now</span>
-            <span className="absolute top-full left-0 block">Book a Demo Now</span>
+            <span className="block text-center">Book a Demo Now</span>
+            <span className="absolute top-full left-0 w-full block text-center">Book a Demo Now</span>
           </span>
         )}
       </span>
