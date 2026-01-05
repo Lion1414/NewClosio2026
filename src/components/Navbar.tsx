@@ -141,23 +141,33 @@ const Navbar: React.FC<NavbarProps> = () => {
     setMobileMenuOpen(false);
   };
 
+  const isScrolled = scrollProgress > 0.15;
+
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full ${
-          scrollProgress > 0.3 ? 'py-3' : 'py-4'
-        }`}
-        style={{
-          background: scrollProgress > 0.3 ? '#000000' : 'rgba(0, 0, 0, 0)',
-          boxShadow: scrollProgress > 0.3 ? '0 8px 30px rgba(0, 0, 0, 0.25)' : 'none'
-        }}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full"
+        style={{ padding: isScrolled ? '12px 16px' : '16px' }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          className={`transition-all duration-500 ease-out ${
+            isScrolled
+              ? 'max-w-4xl mx-auto px-4 py-2 rounded-full backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]'
+              : 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'
+          }`}
+          style={{
+            background: isScrolled
+              ? 'linear-gradient(135deg, rgba(20, 20, 25, 0.85) 0%, rgba(10, 10, 15, 0.9) 100%)'
+              : 'transparent'
+          }}
+        >
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link
               to="/"
-              className="flex items-center gap-2"
+              className={`flex items-center gap-2 transition-all duration-500 ${
+                isScrolled ? 'scale-75 origin-left' : ''
+              }`}
               onClick={() => {
                 if (isHomePage) {
                   document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" });
@@ -168,13 +178,17 @@ const Navbar: React.FC<NavbarProps> = () => {
               <img
                 src="/closio_main_logo.png"
                 alt="Closio"
-                className="h-24 w-auto select-none"
+                className={`w-auto select-none transition-all duration-500 ${
+                  isScrolled ? 'h-16' : 'h-24'
+                }`}
                 draggable={false}
               />
             </Link>
 
             {/* Desktop Nav Links - Center */}
-            <div className="hidden lg:flex items-center space-x-8">
+            <div className={`hidden lg:flex items-center transition-all duration-500 ${
+              isScrolled ? 'space-x-4' : 'space-x-8'
+            }`}>
               {NAV_ITEMS.map((item) => {
                 const isActive = activeSection === item.id;
                 return (
@@ -184,7 +198,8 @@ const Navbar: React.FC<NavbarProps> = () => {
                     onClick={handleNavClick(item.id)}
                     className={[
                       'nav-underline-glow',
-                      'text-sm font-medium transition-colors',
+                      'font-medium transition-all duration-300',
+                      isScrolled ? 'text-xs' : 'text-sm',
                       !isActive ? 'text-white/80 hover:text-white' : 'text-[#6ad4f2]',
                       isActive ? 'is-active' : '',
                     ].join(' ')}
@@ -203,7 +218,9 @@ const Navbar: React.FC<NavbarProps> = () => {
               >
                 <button
                   onClick={() => setFeaturesDropdownOpen(!featuresDropdownOpen)}
-                  className={`nav-underline-glow text-sm font-medium transition-colors inline-flex items-center gap-1 ${
+                  className={`nav-underline-glow font-medium transition-all duration-300 inline-flex items-center gap-1 ${
+                    isScrolled ? 'text-xs' : 'text-sm'
+                  } ${
                     FEATURES_ITEMS.some(item => item.path === location.pathname)
                       ? 'text-[#6ad4f2] is-active'
                       : 'text-white/80 hover:text-white'
@@ -211,8 +228,8 @@ const Navbar: React.FC<NavbarProps> = () => {
                 >
                   Features
                   <svg
-                    width="12"
-                    height="12"
+                    width={isScrolled ? "10" : "12"}
+                    height={isScrolled ? "10" : "12"}
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -267,7 +284,9 @@ const Navbar: React.FC<NavbarProps> = () => {
               >
                 <button
                   onClick={() => setDocsDropdownOpen(!docsDropdownOpen)}
-                  className={`nav-underline-glow text-sm font-medium transition-colors inline-flex items-center gap-1 ${
+                  className={`nav-underline-glow font-medium transition-all duration-300 inline-flex items-center gap-1 ${
+                    isScrolled ? 'text-xs' : 'text-sm'
+                  } ${
                     DOCS_ITEMS.some(item => item.path === location.pathname)
                       ? 'text-[#6ad4f2] is-active'
                       : 'text-white/80 hover:text-white'
@@ -275,8 +294,8 @@ const Navbar: React.FC<NavbarProps> = () => {
                 >
                   Docs & FAQs
                   <svg
-                    width="12"
-                    height="12"
+                    width={isScrolled ? "10" : "12"}
+                    height={isScrolled ? "10" : "12"}
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -313,18 +332,22 @@ const Navbar: React.FC<NavbarProps> = () => {
             </div>
 
             {/* CTA Buttons - Right */}
-            <div className="hidden lg:flex items-center space-x-3">
+            <div className={`hidden lg:flex items-center transition-all duration-500 ${
+              isScrolled ? 'space-x-2' : 'space-x-3'
+            }`}>
               <button
                 onClick={handleNavClick('contact')}
-                className="bg-white text-black font-medium px-5 py-2 text-sm whitespace-nowrap rounded-lg hover:bg-white/90 transition-colors"
+                className={`bg-white text-black font-medium whitespace-nowrap rounded-full hover:bg-white/90 transition-all duration-300 ${
+                  isScrolled ? 'px-4 py-1.5 text-xs' : 'px-5 py-2 text-sm'
+                }`}
               >
                 Book a Demo
               </button>
               <button
                 onClick={() => window.location.href = 'https://closio.com/login'}
-                className={`bg-white text-black font-medium px-5 py-2 text-sm whitespace-nowrap rounded-lg hover:bg-white/90 transition-all duration-300 ${
-                  isScrollingDown ? 'opacity-0 pointer-events-none' : 'opacity-100'
-                }`}
+                className={`bg-transparent text-white font-medium whitespace-nowrap rounded-full border border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300 ${
+                  isScrolled ? 'px-4 py-1.5 text-xs' : 'px-5 py-2 text-sm'
+                } ${isScrollingDown && !isScrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
               >
                 Log In
               </button>
