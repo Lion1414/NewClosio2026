@@ -212,7 +212,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                       !isActive ? 'text-white/80 hover:text-white' : 'text-[#6ad4f2]'
                     } ${isActive ? 'is-active' : ''}`}
                     style={{
-                      fontSize: isScrolled ? '13px' : '14px',
+                      fontSize: isScrolled ? '14px' : '15px',
                       transition: 'font-size 700ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms ease'
                     }}
                   >
@@ -236,7 +236,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                       : 'text-white/80 hover:text-white'
                   }`}
                   style={{
-                    fontSize: isScrolled ? '13px' : '14px',
+                    fontSize: isScrolled ? '14px' : '15px',
                     transition: 'font-size 700ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms ease'
                   }}
                 >
@@ -304,7 +304,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                       : 'text-white/80 hover:text-white'
                   }`}
                   style={{
-                    fontSize: isScrolled ? '13px' : '14px',
+                    fontSize: isScrolled ? '14px' : '15px',
                     transition: 'font-size 700ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms ease'
                   }}
                 >
