@@ -6,8 +6,7 @@ const OverlappingBanner: React.FC = () => {
       <motion.div
         className="relative w-full rounded-3xl overflow-hidden"
         style={{
-          background: 'rgba(255, 255, 255, 0.92)',
-          backdropFilter: 'blur(20px)',
+          background: '#ffffff',
           boxShadow: '0 25px 80px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.2)',
         }}
         initial={{ opacity: 0, y: 60 }}
