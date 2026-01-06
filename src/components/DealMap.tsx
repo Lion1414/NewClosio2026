@@ -187,12 +187,174 @@ export default function DealMap() {
         </div>
 
         <div className="relative flex items-center justify-center">
+          <svg
+            className="absolute inset-0 w-full h-full pointer-events-none hidden lg:block"
+            style={{ zIndex: 15 }}
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <linearGradient id="lineGradLeft1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#6ad4f2" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#6ad4f2" stopOpacity="0.1" />
+              </linearGradient>
+              <linearGradient id="lineGradLeft2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#6ad4f2" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#6ad4f2" stopOpacity="0.1" />
+              </linearGradient>
+              <linearGradient id="lineGradRight1" x1="100%" y1="0%" x2="0%" y2="0%">
+                <stop offset="0%" stopColor="#6ad4f2" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#6ad4f2" stopOpacity="0.1" />
+              </linearGradient>
+              <linearGradient id="lineGradRight2" x1="100%" y1="0%" x2="0%" y2="0%">
+                <stop offset="0%" stopColor="#6ad4f2" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#6ad4f2" stopOpacity="0.1" />
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            <motion.line
+              x1="22%"
+              y1="30%"
+              x2="36%"
+              y2="38%"
+              stroke="url(#lineGradLeft1)"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              filter="url(#glow)"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+              transition={{ delay: 2.8, duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+            />
+            <motion.circle
+              cx="22%"
+              cy="30%"
+              r="4"
+              fill="#6ad4f2"
+              filter="url(#glow)"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+              transition={{ delay: 2.7, duration: 0.3 }}
+            />
+            <motion.circle
+              cx="36%"
+              cy="38%"
+              r="3"
+              fill="#6ad4f2"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={isInView ? { scale: 1, opacity: 0.6 } : { scale: 0, opacity: 0 }}
+              transition={{ delay: 3.5, duration: 0.3 }}
+            />
+
+            <motion.line
+              x1="22%"
+              y1="70%"
+              x2="36%"
+              y2="62%"
+              stroke="url(#lineGradLeft2)"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              filter="url(#glow)"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+              transition={{ delay: 3.2, duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+            />
+            <motion.circle
+              cx="22%"
+              cy="70%"
+              r="4"
+              fill="#6ad4f2"
+              filter="url(#glow)"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+              transition={{ delay: 3.1, duration: 0.3 }}
+            />
+            <motion.circle
+              cx="36%"
+              cy="62%"
+              r="3"
+              fill="#6ad4f2"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={isInView ? { scale: 1, opacity: 0.6 } : { scale: 0, opacity: 0 }}
+              transition={{ delay: 3.9, duration: 0.3 }}
+            />
+
+            <motion.line
+              x1="78%"
+              y1="30%"
+              x2="64%"
+              y2="38%"
+              stroke="url(#lineGradRight1)"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              filter="url(#glow)"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+              transition={{ delay: 3.0, duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+            />
+            <motion.circle
+              cx="78%"
+              cy="30%"
+              r="4"
+              fill="#6ad4f2"
+              filter="url(#glow)"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+              transition={{ delay: 2.9, duration: 0.3 }}
+            />
+            <motion.circle
+              cx="64%"
+              cy="38%"
+              r="3"
+              fill="#6ad4f2"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={isInView ? { scale: 1, opacity: 0.6 } : { scale: 0, opacity: 0 }}
+              transition={{ delay: 3.7, duration: 0.3 }}
+            />
+
+            <motion.line
+              x1="78%"
+              y1="70%"
+              x2="64%"
+              y2="62%"
+              stroke="url(#lineGradRight2)"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              filter="url(#glow)"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+              transition={{ delay: 3.4, duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+            />
+            <motion.circle
+              cx="78%"
+              cy="70%"
+              r="4"
+              fill="#6ad4f2"
+              filter="url(#glow)"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+              transition={{ delay: 3.3, duration: 0.3 }}
+            />
+            <motion.circle
+              cx="64%"
+              cy="62%"
+              r="3"
+              fill="#6ad4f2"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={isInView ? { scale: 1, opacity: 0.6 } : { scale: 0, opacity: 0 }}
+              transition={{ delay: 4.1, duration: 0.3 }}
+            />
+          </svg>
+
           <div className="hidden lg:flex flex-col gap-8 absolute left-0 top-1/2 -translate-y-1/2 z-20" style={{ width: '220px' }}>
             {leftFacts.map((fact, index) => {
               const titleDelay = 800 + index * 400;
               const descDelay = 1200 + index * 400;
-              const descLength = fact.description.length;
-              const lineDelay = (descDelay + descLength * 50 + 200) / 1000;
 
               return (
                 <motion.div
@@ -209,50 +371,6 @@ export default function DealMap() {
                       boxShadow: '0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3)',
                     }}
                   >
-                    <svg
-                      className="absolute top-1/2 -translate-y-1/2 pointer-events-none"
-                      style={{ left: '100%', width: '80px', height: '20px' }}
-                      viewBox="0 0 80 20"
-                      fill="none"
-                      preserveAspectRatio="none"
-                    >
-                      <motion.circle
-                        cx="4"
-                        cy="10"
-                        r="3"
-                        fill="#6ad4f2"
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-                        transition={{ delay: lineDelay, duration: 0.3, ease: 'easeOut' }}
-                      />
-                      <motion.line
-                        x1="8"
-                        y1="10"
-                        x2="80"
-                        y2="10"
-                        stroke="url(#lineGradientLeft)"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
-                        transition={{ delay: lineDelay + 0.15, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-                      />
-                      <motion.circle
-                        cx="76"
-                        cy="10"
-                        r="2"
-                        fill="#6ad4f2"
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={isInView ? { scale: 1, opacity: 0.6 } : { scale: 0, opacity: 0 }}
-                        transition={{ delay: lineDelay + 0.7, duration: 0.3, ease: 'easeOut' }}
-                      />
-                      <defs>
-                        <linearGradient id="lineGradientLeft" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#6ad4f2" />
-                          <stop offset="100%" stopColor="#6ad4f2" stopOpacity="0.2" />
-                        </linearGradient>
-                      </defs>
-                    </svg>
                     <span className="text-[#6ad4f2] text-xs font-medium tracking-wider mb-2 block">{fact.number}</span>
                     <h4 className="font-semibold text-white text-base mb-1.5">
                       <TypewriterText text={fact.title} delay={titleDelay} isVisible={isInView} />
@@ -286,8 +404,6 @@ export default function DealMap() {
             {rightFacts.map((fact, index) => {
               const titleDelay = 1000 + index * 400;
               const descDelay = 1400 + index * 400;
-              const descLength = fact.description.length;
-              const lineDelay = (descDelay + descLength * 50 + 200) / 1000;
 
               return (
                 <motion.div
@@ -304,50 +420,6 @@ export default function DealMap() {
                       boxShadow: '0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3)',
                     }}
                   >
-                    <svg
-                      className="absolute top-1/2 -translate-y-1/2 pointer-events-none"
-                      style={{ right: '100%', width: '80px', height: '20px' }}
-                      viewBox="0 0 80 20"
-                      fill="none"
-                      preserveAspectRatio="none"
-                    >
-                      <motion.circle
-                        cx="76"
-                        cy="10"
-                        r="3"
-                        fill="#6ad4f2"
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-                        transition={{ delay: lineDelay, duration: 0.3, ease: 'easeOut' }}
-                      />
-                      <motion.line
-                        x1="72"
-                        y1="10"
-                        x2="0"
-                        y2="10"
-                        stroke="url(#lineGradientRight)"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
-                        transition={{ delay: lineDelay + 0.15, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-                      />
-                      <motion.circle
-                        cx="4"
-                        cy="10"
-                        r="2"
-                        fill="#6ad4f2"
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={isInView ? { scale: 1, opacity: 0.6 } : { scale: 0, opacity: 0 }}
-                        transition={{ delay: lineDelay + 0.7, duration: 0.3, ease: 'easeOut' }}
-                      />
-                      <defs>
-                        <linearGradient id="lineGradientRight" x1="100%" y1="0%" x2="0%" y2="0%">
-                          <stop offset="0%" stopColor="#6ad4f2" />
-                          <stop offset="100%" stopColor="#6ad4f2" stopOpacity="0.2" />
-                        </linearGradient>
-                      </defs>
-                    </svg>
                     <span className="text-[#6ad4f2] text-xs font-medium tracking-wider mb-2 block">{fact.number}</span>
                     <h4 className="font-semibold text-white text-base mb-1.5">
                       <TypewriterText text={fact.title} delay={titleDelay} isVisible={isInView} />
