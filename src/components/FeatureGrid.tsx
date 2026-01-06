@@ -166,7 +166,17 @@ const VerticalLine: React.FC = () => {
         stroke="white"
         strokeWidth="16"
         strokeLinecap="round"
+        strokeLinejoin="round"
         filter="url(#featureLineGlow)"
+      />
+      <path
+        d="M 50 -50 L 50 950"
+        fill="none"
+        stroke="rgba(255, 255, 255, 0.15)"
+        strokeWidth="32"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="blur-md"
       />
     </svg>
   );
