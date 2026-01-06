@@ -4,10 +4,10 @@ const OverlappingBanner: React.FC = () => {
   return (
     <div className="relative z-10 -mt-16 mb-[-8rem] px-4 sm:px-8 md:px-16 lg:px-24">
       <motion.div
-        className="relative w-full rounded-3xl overflow-hidden backdrop-blur-xl border border-white/20"
+        className="relative w-full rounded-3xl overflow-hidden backdrop-blur-2xl border border-white/10"
         style={{
-          background: 'rgba(255, 255, 255, 0.08)',
-          boxShadow: '0 25px 80px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15)',
+          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(0, 0, 0, 0.15) 50%, rgba(255, 255, 255, 0.04) 100%)',
+          boxShadow: '0 25px 80px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0.5px 0 rgba(255, 255, 255, 0.1)',
         }}
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
