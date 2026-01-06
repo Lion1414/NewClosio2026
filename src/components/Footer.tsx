@@ -75,7 +75,7 @@ const Footer: React.FC = () => {
             
             {/* Newsletter Signup */}
             <div className="mb-6">
-              <h4 className="font-semibold mb-3">Stay Updated</h4>
+              <h4 className="font-semibold mb-3 text-gray-400">/Stay Updated</h4>
               <div className="flex">
                 <input
                   type="email"
@@ -106,7 +106,7 @@ const Footer: React.FC = () => {
           {/* Footer Links */}
           {footerSections.map((section, index) => (
             <div key={index}>
-              <h4 className="font-semibold mb-4">{section.title}</h4>
+              <h4 className="font-semibold mb-4 text-gray-400">/{section.title}</h4>
               <ul className="space-y-2">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
