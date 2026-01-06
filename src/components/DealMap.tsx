@@ -193,9 +193,9 @@ export default function DealMap() {
             preserveAspectRatio="none"
           >
             <motion.line
-              x1="17%"
+              x1="22%"
               y1="30%"
-              x2="27%"
+              x2="28%"
               y2="30%"
               stroke="#1a1a1a"
               strokeWidth="1"
@@ -206,9 +206,9 @@ export default function DealMap() {
             />
 
             <motion.line
-              x1="17%"
+              x1="22%"
               y1="70%"
-              x2="27%"
+              x2="28%"
               y2="70%"
               stroke="#1a1a1a"
               strokeWidth="1"
@@ -219,9 +219,9 @@ export default function DealMap() {
             />
 
             <motion.line
-              x1="83%"
+              x1="78%"
               y1="30%"
-              x2="73%"
+              x2="72%"
               y2="30%"
               stroke="#1a1a1a"
               strokeWidth="1"
@@ -232,9 +232,9 @@ export default function DealMap() {
             />
 
             <motion.line
-              x1="83%"
+              x1="78%"
               y1="70%"
-              x2="73%"
+              x2="72%"
               y2="70%"
               stroke="#1a1a1a"
               strokeWidth="1"
@@ -286,12 +286,9 @@ export default function DealMap() {
             className="relative w-full max-w-[580px] mx-auto"
           >
             <DesktopMonitor>
-              <video
-                src="https://www.dropbox.com/scl/fi/tba2zwhrh4gc6n77c4nat/New-Videos.mp4?rlkey=6m363kxzdljpw8g0zi8ti5hxa&st=wgoieyc1&raw=1"
-                autoPlay
-                loop
-                muted
-                playsInline
+              <img
+                src="/image copy copy copy copy copy copy copy.png"
+                alt="Deal Map - Policies Submitted Per State"
                 className="w-full h-auto block"
               />
             </DesktopMonitor>
