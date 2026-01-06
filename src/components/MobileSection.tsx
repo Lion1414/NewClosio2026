@@ -85,7 +85,7 @@ const MobileSection: React.FC = () => {
         <div className="relative w-full h-full flex items-start justify-end pr-0">
           <video
             ref={videoRef}
-            src="https://www.dropbox.com/scl/fi/91kfeqcce94u71i3toya2/mobile-video.mp4?rlkey=9zea3i2e2ldsmme1yhlxgjh5y&st=20nss4kd&raw=1"
+            src="https://www.dropbox.com/scl/fi/zsaggxsj4klujoec2wcam/Brand-new-copy-of-mobile-art-video.mp4?rlkey=4983zhcsv1roi1hbudhyum4df&st=ruomps0s&raw=1"
             className="h-[100%] w-auto max-w-none object-contain drop-shadow-2xl"
             muted
             playsInline
