@@ -161,10 +161,10 @@ const Navbar: React.FC<NavbarProps> = () => {
             backdropFilter: isScrolled ? 'blur(20px) saturate(180%)' : 'none',
             WebkitBackdropFilter: isScrolled ? 'blur(20px) saturate(180%)' : 'none',
             background: isScrolled
-              ? 'linear-gradient(135deg, rgba(15, 15, 20, 0.9) 0%, rgba(8, 8, 12, 0.95) 100%)'
+              ? 'linear-gradient(135deg, rgba(40, 40, 45, 0.25) 0%, rgba(30, 30, 35, 0.3) 100%)'
               : 'transparent',
             boxShadow: isScrolled
-              ? '0 4px 30px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05)'
+              ? '0 4px 30px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.08)'
               : 'none',
             transition: 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)'
           }}
