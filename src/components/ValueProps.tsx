@@ -113,7 +113,7 @@ const ValueProps: React.FC = () => {
           <div className="order-2 lg:pl-16 lg:max-w-md">
             <div className="mb-8">
               <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-3">
-                Why CLOS<span
+                WHY CLOS<span
                   className="italic mx-1"
                   style={{ WebkitTextStroke: '1.5px currentColor', WebkitTextFillColor: 'transparent' }}
                 >I</span>O
