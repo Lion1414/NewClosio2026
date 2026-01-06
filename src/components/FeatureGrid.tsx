@@ -49,17 +49,25 @@ const DashboardIcon: React.FC = () => (
   </svg>
 );
 
-const TrophyIcon: React.FC = () => (
+const MedalsIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
-    <path d="M 70 50 L 65 80 Q 65 95, 80 95 L 80 50 Z" fill="#ffffff" opacity="0.8" />
-    <path d="M 130 50 L 135 80 Q 135 95, 120 95 L 120 50 Z" fill="#ffffff" opacity="0.8" />
-    <ellipse cx="100" cy="50" rx="30" ry="8" fill="#cccccc" opacity="0.6" />
-    <path d="M 70 50 L 70 85 Q 70 110, 100 115 Q 130 110, 130 85 L 130 50 Z" fill="#ffffff" opacity="0.9" />
-    <path d="M 75 50 L 75 85 Q 75 110, 105 115 Q 135 110, 135 85 L 135 50 Z" fill="#cccccc" opacity="0.7" />
-    <rect x="90" y="115" width="20" height="25" rx="2" fill="#ffffff" opacity="0.9" />
-    <rect x="95" y="110" width="20" height="25" rx="2" fill="#cccccc" opacity="0.7" />
-    <rect x="75" y="140" width="50" height="8" rx="3" fill="#ffffff" opacity="0.9" />
-    <rect x="80" y="135" width="50" height="8" rx="3" fill="#cccccc" opacity="0.7" />
+    <line x1="55" y1="30" x2="55" y2="75" stroke="#888888" strokeWidth="3" opacity="0.6" />
+    <circle cx="55" cy="100" r="30" fill="#9ca3af" opacity="0.9" />
+    <circle cx="55" cy="100" r="24" fill="#d1d5db" opacity="0.95" />
+    <circle cx="55" cy="100" r="18" fill="#9ca3af" opacity="0.7" />
+    <text x="55" y="106" fontSize="18" fontWeight="bold" fill="#ffffff" textAnchor="middle" opacity="0.9">3</text>
+
+    <line x1="145" y1="30" x2="145" y2="75" stroke="#a87c4f" strokeWidth="3" opacity="0.6" />
+    <circle cx="145" cy="100" r="30" fill="#a87c4f" opacity="0.9" />
+    <circle cx="145" cy="100" r="24" fill="#cd9b6a" opacity="0.95" />
+    <circle cx="145" cy="100" r="18" fill="#a87c4f" opacity="0.7" />
+    <text x="145" y="106" fontSize="18" fontWeight="bold" fill="#ffffff" textAnchor="middle" opacity="0.9">2</text>
+
+    <line x1="100" y1="20" x2="100" y2="55" stroke="#d4af37" strokeWidth="3" opacity="0.7" />
+    <circle cx="100" cy="80" r="35" fill="#d4af37" opacity="0.95" />
+    <circle cx="100" cy="80" r="28" fill="#f5d77a" opacity="0.95" />
+    <circle cx="100" cy="80" r="20" fill="#d4af37" opacity="0.8" />
+    <text x="100" y="87" fontSize="22" fontWeight="bold" fill="#ffffff" textAnchor="middle" opacity="0.95">1</text>
   </svg>
 );
 
@@ -110,7 +118,7 @@ const FeatureGrid: React.FC = () => {
     {
       title: 'Leaderboard',
       description: 'Track top performers and motivate your team with real-time rankings and achievements.',
-      icon: TrophyIcon,
+      icon: MedalsIcon,
       bgColor: 'rgba(107, 114, 128, 0.4)',
     },
   ];
