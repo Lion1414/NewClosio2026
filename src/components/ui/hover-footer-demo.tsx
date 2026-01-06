@@ -1,8 +1,4 @@
 "use client";
-import {
-  Mail,
-  Phone,
-} from "lucide-react";
 import { Link } from "react-router-dom";
 import { FooterBackgroundGradient } from "@/components/ui/hover-footer";
 
@@ -47,20 +43,8 @@ function HoverFooter() {
         { label: "Privacy Policy", href: "/privacy-policy" },
         { label: "Terms & Conditions", href: "/terms-conditions" },
         { label: "FAQs", href: "/faqs" },
+        { label: "Contact Us", href: "/contact-us" },
       ],
-    },
-  ];
-
-  const contactInfo = [
-    {
-      icon: <Mail size={18} className="text-[#3ca2fa]" />,
-      text: "support@closio.com",
-      href: "mailto:support@closio.com",
-    },
-    {
-      icon: <Phone size={18} className="text-[#3ca2fa]" />,
-      text: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
     },
   ];
 
@@ -102,7 +86,7 @@ function HoverFooter() {
           </div>
 
           {/* Features */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-4">
             <h4 className="text-white text-base font-semibold mb-5 tracking-tight">
               Features
             </h4>
@@ -121,7 +105,7 @@ function HoverFooter() {
           </div>
 
           {/* Resources */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <h4 className="text-white text-base font-semibold mb-5 tracking-tight">
               Resources
             </h4>
@@ -134,26 +118,6 @@ function HoverFooter() {
                   >
                     {link.label}
                   </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact Us */}
-          <div className="lg:col-span-2">
-            <h4 className="text-white text-base font-semibold mb-5 tracking-tight">
-              Contact Us
-            </h4>
-            <ul className="space-y-3 text-sm">
-              {contactInfo.map((item, i) => (
-                <li key={i} className="flex items-start space-x-2.5">
-                  <span className="mt-0.5">{item.icon}</span>
-                  <a
-                    href={item.href}
-                    className="text-gray-400 hover:text-[#6ad4f2] transition-colors"
-                  >
-                    {item.text}
-                  </a>
                 </li>
               ))}
             </ul>
