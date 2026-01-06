@@ -5,18 +5,8 @@ const VerticalLine: React.FC = () => {
     <svg
       viewBox="0 0 500 900"
       className="absolute left-0 top-0 h-full w-[30vw] pointer-events-none"
-      style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
       preserveAspectRatio="none"
     >
-      <defs>
-        <filter id="valueLineGlow">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
       <path
         d="M 50 1000
            L 50 450
@@ -29,21 +19,6 @@ const VerticalLine: React.FC = () => {
         strokeWidth="16"
         strokeLinecap="round"
         strokeLinejoin="round"
-        filter="url(#valueLineGlow)"
-      />
-      <path
-        d="M 50 1000
-           L 50 450
-           Q 50 380, 120 380
-           L 370 380
-           Q 440 380, 440 310
-           L 440 -50"
-        fill="none"
-        stroke="rgba(255, 255, 255, 0.15)"
-        strokeWidth="32"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="blur-md"
       />
     </svg>
   );
