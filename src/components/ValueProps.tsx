@@ -94,13 +94,9 @@ const ValueProps: React.FC = () => {
                   <div className="relative bg-black rounded-[12px] p-[3px]">
                     {/* Screen */}
                     <div className="relative rounded-[10px] overflow-hidden bg-black">
-                      <video
-                        src="https://www.dropbox.com/scl/fi/im3lveaj0bz8pe0un87u5/new-video-fro-laptop-display.mp4?rlkey=gaj2fuvzalyfyup0abzhscs1w&st=gyl2lmoj&raw=1"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="auto"
+                      <img
+                        src="/main_desktop_photo_dashboard.png"
+                        alt="Closio Dashboard"
                         className="w-full h-auto"
                       />
                       {/* Screen Glare */}
