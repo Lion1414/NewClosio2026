@@ -30,6 +30,7 @@ import Reminders from './pages/features/Reminders';
 import TestimonialSection from './components/TestimonialSection';
 import SplashScreen from './components/SplashScreen';
 import OverlappingBanner from './components/OverlappingBanner';
+import ScrollToTop from './components/ScrollToTop';
 
 function HomePage() {
   return (
@@ -92,6 +93,7 @@ function App() {
     <>
       {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       <div className="bg-black text-[#E8EEF5] overflow-x-hidden w-full min-h-screen">
+        <ScrollToTop />
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
