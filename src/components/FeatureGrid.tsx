@@ -211,7 +211,7 @@ const VerticalLine: React.FC = () => {
       <div
         className="absolute inset-0 bg-white"
         style={{
-          width: '19px',
+          width: '20px',
           transform: 'translateX(-50%)',
           boxShadow: 'none'
         }}
