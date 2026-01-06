@@ -184,7 +184,7 @@ const FeaturedCard: React.FC<{ title: string; description: string; image?: strin
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="relative group"
+      className="relative group h-full"
     >
       <div
         className="absolute -inset-[1px] bg-gradient-to-r from-[#6ad4f2]/40 via-[#8bb4d9]/40 to-[#d593c0]/40 rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"
@@ -192,11 +192,11 @@ const FeaturedCard: React.FC<{ title: string; description: string; image?: strin
           filter: 'blur(20px)',
         }}
       />
-      <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#0d1117]/90 via-[#0d1117]/80 to-[#0d1117]/90 backdrop-blur-2xl border border-white/20">
+      <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#0d1117]/90 via-[#0d1117]/80 to-[#0d1117]/90 backdrop-blur-2xl border border-white/20 h-full flex flex-col">
         <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#6ad4f2]/50 to-transparent" />
 
-        <div className="relative h-[400px] overflow-hidden">
+        <div className="relative flex-1 overflow-hidden">
           {image ? (
             <img
               src={image}
@@ -275,8 +275,8 @@ const FeatureGrid: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-1 lg:row-span-2">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:grid-rows-[1fr]">
+          <div className="lg:col-span-1 h-full">
             <FeaturedCard
               title={featuredFeature.title}
               description={featuredFeature.description}
@@ -285,7 +285,7 @@ const FeatureGrid: React.FC = () => {
             />
           </div>
 
-          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 auto-rows-fr">
             {features.map((feature, index) => (
               <FeatureCard
                 key={index}
