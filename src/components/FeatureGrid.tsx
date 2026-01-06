@@ -87,26 +87,31 @@ const FeatureGrid: React.FC = () => {
       title: 'Book of Business',
       description: 'Manage your entire portfolio of clients and policies in one organized, searchable database.',
       icon: BookIcon,
+      bgColor: 'rgba(55, 65, 81, 0.4)',
     },
     {
       title: 'Team Hierarchy',
       description: 'Visualize your agency structure with clear reporting lines and team performance metrics.',
       icon: HierarchyIcon,
+      bgColor: 'rgba(75, 85, 99, 0.4)',
     },
     {
       title: 'Commission Tracking',
       description: 'Real-time visibility into your commission structure with automated calculations and transparent breakdowns.',
       icon: CommissionIcon,
+      bgColor: 'rgba(31, 41, 55, 0.4)',
     },
     {
       title: 'Dashboard Analytics',
       description: 'Powerful insights and metrics to track performance, close rates, and revenue at a glance.',
       icon: DashboardIcon,
+      bgColor: 'rgba(55, 65, 81, 0.5)',
     },
     {
       title: 'Leaderboard',
       description: 'Track top performers and motivate your team with real-time rankings and achievements.',
       icon: TrophyIcon,
+      bgColor: 'rgba(107, 114, 128, 0.4)',
     },
   ];
 
@@ -138,9 +143,13 @@ const FeatureGrid: React.FC = () => {
             return (
               <div
                 key={index}
-                className={`relative overflow-hidden bg-[#2a2e3a] border border-white/[0.08] ${
+                className={`relative overflow-hidden backdrop-blur-xl border border-white/10 rounded-2xl ${
                   isTopRow ? 'col-span-1 lg:col-span-3' : 'col-span-1 lg:col-span-2'
                 }`}
+                style={{
+                  background: `linear-gradient(135deg, ${feature.bgColor} 0%, rgba(0, 0, 0, 0.2) 100%)`,
+                  boxShadow: 'inset 0 1px 0 0 rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0, 0, 0, 0.3)',
+                }}
               >
                 <div className="relative p-8 flex flex-col h-full min-h-[340px]">
                   <div className="w-24 h-24 mb-8">
