@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 const AngularLine: React.FC = () => {
   return (
@@ -49,16 +49,47 @@ const IOImprint: React.FC = () => {
 };
 
 const MobileSection: React.FC = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [hasPlayed, setHasPlayed] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasPlayed) {
+            video.play().catch((error) => {
+              console.log('Video autoplay failed:', error);
+            });
+            setHasPlayed(true);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [hasPlayed]);
+
   return (
     <section id="mobile" className="h-[450px] sm:h-[500px] lg:h-[550px] overflow-hidden relative">
       <AngularLine />
       <IOImprint />
       <div className="absolute inset-0 flex items-start justify-end pt-0">
         <div className="relative w-full h-full flex items-start justify-end pr-0">
-          <img
-            src="/purple_pink_gradient_mobile_application_presentation_(6).png"
-            alt="Closio mobile application showcasing dashboard, leaderboard, and login screens"
+          <video
+            ref={videoRef}
+            src="https://www.dropbox.com/scl/fi/91kfeqcce94u71i3toya2/mobile-video.mp4?rlkey=9zea3i2e2ldsmme1yhlxgjh5y&st=20nss4kd&raw=1"
             className="h-[100%] w-auto max-w-none object-contain drop-shadow-2xl"
+            muted
+            playsInline
+            preload="auto"
           />
         </div>
       </div>
