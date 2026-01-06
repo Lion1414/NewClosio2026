@@ -76,15 +76,9 @@ const ValueProps: React.FC = () => {
         <div className="grid gap-12 lg:gap-20 grid-cols-1 lg:grid-cols-[1.5fr_1fr] items-center">
 
           <div className="order-1 flex items-center justify-start">
-            <div className="relative w-full max-w-5xl" style={{ perspective: '2000px' }}>
+            <div className="relative w-full max-w-5xl">
               {/* Mac Monitor Frame */}
-              <div
-                className="relative"
-                style={{
-                  transform: 'rotateY(6deg) rotateX(4deg)',
-                  transformStyle: 'preserve-3d'
-                }}
-              >
+              <div className="relative">
                 {/* Monitor Bezel - Ultra Slim */}
                 <div className="relative bg-gradient-to-b from-white via-[#F5F5F5] to-[#E8E8E8] rounded-[16px] p-[6px] shadow-2xl">
                   {/* Screen Reflection Overlay */}
@@ -136,7 +130,7 @@ const ValueProps: React.FC = () => {
                 </div>
 
                 {/* Ambient Shadow */}
-                <div className="absolute inset-0 -z-10 bg-gradient-radial from-transparent via-transparent to-black/30 blur-3xl" style={{ transform: 'translateZ(-50px) scale(1.1)' }}></div>
+                <div className="absolute inset-0 -z-10 bg-gradient-radial from-transparent via-transparent to-black/30 blur-3xl"></div>
               </div>
             </div>
           </div>
