@@ -43,26 +43,12 @@ const TypewriterText: React.FC<{ text: string; delay?: number }> = ({ text, dela
 const FlipButton: React.FC = () => {
   return (
     <motion.button
-      className="demo-btn group relative px-8 py-4 bg-white text-black font-semibold text-base rounded-xl shadow-[0_0_40px_rgba(255,255,255,0.3)] group-hover:shadow-none overflow-hidden z-30 transition-shadow duration-300"
+      className="demo-btn relative px-8 py-4 bg-white text-black font-semibold text-base rounded-xl shadow-[0_0_40px_rgba(255,255,255,0.3)] overflow-hidden z-30"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 4.4 }}
     >
-      <span
-        className="absolute inset-0 bg-black scale-0 group-hover:scale-[2.5] transition-transform duration-[850ms] ease-out origin-center"
-        style={{
-          transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-          borderRadius: '50%'
-        }}
-      />
-      <span
-        className="absolute inset-0 bg-black/40 scale-0 group-hover:scale-[2.8] transition-transform duration-[900ms] ease-out origin-center blur-md"
-        style={{
-          transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-          borderRadius: '50%'
-        }}
-      />
-      <span className="relative z-10 flex items-center justify-center overflow-visible h-6 transition-colors duration-700 group-hover:text-white">
+      <span className="flex items-center justify-center overflow-visible h-6">
         <TypewriterText text="Book a Demo Now" delay={5100} />
       </span>
     </motion.button>
