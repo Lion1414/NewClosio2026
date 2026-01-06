@@ -106,66 +106,55 @@ interface StackingCardProps {
   feature: FeatureSection;
   index: number;
   totalCards: number;
+  containerRef: React.RefObject<HTMLDivElement>;
 }
 
-const StackingCard: React.FC<StackingCardProps> = ({ feature, index, totalCards }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isFirst = index === 0;
+const StackingCard: React.FC<StackingCardProps> = ({ feature, index, totalCards, containerRef }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
   const isLast = index === totalCards - 1;
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start end', 'start start']
+    offset: ['start start', 'end end']
   });
 
-  const y = useTransform(
-    scrollYProgress,
-    [0, 1],
-    isFirst ? [0, 0] : [600, 0]
-  );
-
-  const { scrollYProgress: exitProgress } = useScroll({
-    target: containerRef,
-    offset: ['end end', 'end start']
-  });
+  const cardStart = index / totalCards;
+  const cardEnd = (index + 1) / totalCards;
 
   const scale = useTransform(
-    exitProgress,
-    [0, 1],
-    isLast ? [1, 1] : [1, 0.9]
+    scrollYProgress,
+    [cardStart, cardEnd, cardEnd + 0.1],
+    isLast ? [1, 1, 1] : [1, 1, 0.92]
   );
 
-  const cardOpacity = useTransform(
-    exitProgress,
-    [0, 1],
-    isLast ? [1, 1] : [1, 0.3]
+  const opacity = useTransform(
+    scrollYProgress,
+    [cardStart, cardEnd, cardEnd + 0.15],
+    isLast ? [1, 1, 1] : [1, 1, 0.4]
   );
 
-  const topOffset = 100 + index * 30;
+  const topOffset = 80 + index * 24;
 
   return (
-    <div
-      ref={containerRef}
-      className="h-screen w-full"
-      style={{ marginBottom: isLast ? 0 : '-30vh' }}
+    <motion.div
+      ref={cardRef}
+      className="sticky w-full flex items-center justify-center px-4 md:px-8"
+      style={{
+        top: `${topOffset}px`,
+        zIndex: index + 1,
+        scale,
+        opacity,
+        transformOrigin: 'center top'
+      }}
     >
-      <motion.div
-        className="sticky w-full flex items-start justify-center px-4 md:px-8"
-        style={{
-          top: `${topOffset}px`,
-          zIndex: index + 1,
-          y,
-          scale,
-          opacity: cardOpacity
-        }}
-      >
-        <CardContent feature={feature} />
-      </motion.div>
-    </div>
+      <CardContent feature={feature} />
+    </motion.div>
   );
 };
 
 const FeatureShowcase: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   return (
     <section className="relative bg-white overflow-hidden">
       <div className="sticky top-0 z-[100] pt-8 md:pt-12 pb-6 bg-gradient-to-b from-white via-white to-white/0">
@@ -174,15 +163,22 @@ const FeatureShowcase: React.FC = () => {
         </h2>
       </div>
 
-      <div className="relative">
-        {features.map((feature, index) => (
-          <StackingCard
-            key={index}
-            feature={feature}
-            index={index}
-            totalCards={features.length}
-          />
-        ))}
+      <div
+        ref={containerRef}
+        className="relative"
+        style={{ height: `${features.length * 80}vh` }}
+      >
+        <div className="flex flex-col gap-[50vh]">
+          {features.map((feature, index) => (
+            <StackingCard
+              key={index}
+              feature={feature}
+              index={index}
+              totalCards={features.length}
+              containerRef={containerRef as React.RefObject<HTMLDivElement>}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
