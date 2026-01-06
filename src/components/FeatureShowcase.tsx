@@ -38,21 +38,18 @@ const features: FeatureSection[] = [
 
 const FeatureShowcase: React.FC = () => {
   return (
-    <section className="relative bg-white overflow-hidden">
-      <div className="sticky top-0 z-[100] pt-8 md:pt-12 pb-6 bg-gradient-to-b from-white via-white to-white/0">
+    <section className="relative bg-white overflow-hidden py-16 md:py-24">
+      <div className="pt-8 md:pt-12 pb-12 md:pb-16">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0f1419] text-center">
           No Limits on what you can do
         </h2>
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-12 md:gap-16">
         {features.map((feature, index) => (
           <div
             key={index}
-            className="sticky top-[100px] w-full flex items-center justify-center px-4 md:px-8 h-[70vh]"
-            style={{
-              zIndex: index + 1
-            }}
+            className="w-full flex items-center justify-center px-4 md:px-8"
           >
             <div className="w-full max-w-[90%] lg:max-w-[85%] mx-auto">
               <div
@@ -115,8 +112,6 @@ const FeatureShowcase: React.FC = () => {
           </div>
         ))}
       </div>
-
-      <div className="h-[30vh]" />
     </section>
   );
 };
