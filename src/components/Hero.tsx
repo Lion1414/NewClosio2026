@@ -65,12 +65,12 @@ const Hero: React.FC = () => {
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px)
+            linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px)
           `,
-          backgroundSize: '60px 60px',
-          maskImage: 'radial-gradient(ellipse 80% 60% at center, rgba(0,0,0,0.4) 0%, transparent 70%)',
-          WebkitMaskImage: 'radial-gradient(ellipse 80% 60% at center, rgba(0,0,0,0.4) 0%, transparent 70%)',
+          backgroundSize: '50px 50px',
+          maskImage: 'radial-gradient(ellipse 70% 70% at 40% 50%, black 0%, rgba(0,0,0,0.6) 30%, transparent 70%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 70% 70% at 40% 50%, black 0%, rgba(0,0,0,0.6) 30%, transparent 70%)',
         }}
       />
 
