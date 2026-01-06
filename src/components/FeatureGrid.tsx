@@ -1,147 +1,97 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-interface FeatureCardProps {
-  title: string;
-  description: string;
-  image?: string;
-  delay?: number;
-  className?: string;
-  imagePosition?: 'top' | 'left' | 'right' | 'background';
-  size?: 'small' | 'medium' | 'large';
-}
+const BookIcon: React.FC = () => (
+  <svg viewBox="0 0 200 200" className="w-full h-full">
+    <defs>
+      <linearGradient id="bookGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#6ad4f2" />
+        <stop offset="100%" stopColor="#4a9db8" />
+      </linearGradient>
+    </defs>
+    <path d="M60 50 L60 150 L140 150 L140 50 Z" fill="url(#bookGradient)" opacity="0.9" />
+    <path d="M60 50 L140 50 L150 40 L70 40 Z" fill="url(#bookGradient)" opacity="0.7" />
+    <path d="M140 50 L140 150 L150 140 L150 40 Z" fill="#3a7d98" opacity="0.8" />
+    <rect x="70" y="65" width="60" height="4" fill="#fff" opacity="0.4" rx="2" />
+    <rect x="70" y="80" width="50" height="4" fill="#fff" opacity="0.4" rx="2" />
+    <rect x="70" y="95" width="55" height="4" fill="#fff" opacity="0.4" rx="2" />
+  </svg>
+);
 
-const FeatureCard: React.FC<FeatureCardProps> = ({
-  title,
-  description,
-  image,
-  delay = 0,
-  className = '',
-  imagePosition = 'top',
-  size = 'medium',
-}) => {
-  const cardVariants = {
-    hidden: { opacity: 0, y: 60, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.8,
-        delay,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      },
-    },
-  };
+const HierarchyIcon: React.FC = () => (
+  <svg viewBox="0 0 200 200" className="w-full h-full">
+    <defs>
+      <linearGradient id="hierarchyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#8bb4d9" />
+        <stop offset="100%" stopColor="#6a94b9" />
+      </linearGradient>
+    </defs>
+    <rect x="75" y="40" width="50" height="35" rx="4" fill="url(#hierarchyGradient)" opacity="0.9" />
+    <rect x="85" y="35" width="50" height="35" rx="4" fill="#6a94b9" opacity="0.7" />
+    <line x1="100" y1="75" x2="100" y2="95" stroke="#6ad4f2" strokeWidth="3" opacity="0.6" />
+    <line x1="100" y1="95" x2="60" y2="95" stroke="#6ad4f2" strokeWidth="3" opacity="0.6" />
+    <line x1="100" y1="95" x2="140" y2="95" stroke="#6ad4f2" strokeWidth="3" opacity="0.6" />
+    <rect x="35" y="105" width="40" height="30" rx="4" fill="url(#hierarchyGradient)" opacity="0.9" />
+    <rect x="45" y="100" width="40" height="30" rx="4" fill="#6a94b9" opacity="0.7" />
+    <rect x="115" y="105" width="40" height="30" rx="4" fill="url(#hierarchyGradient)" opacity="0.9" />
+    <rect x="125" y="100" width="40" height="30" rx="4" fill="#6a94b9" opacity="0.7" />
+  </svg>
+);
 
-  const imageHeight = size === 'large' ? 'h-64' : size === 'medium' ? 'h-48' : 'h-36';
+const CommissionIcon: React.FC = () => (
+  <svg viewBox="0 0 200 200" className="w-full h-full">
+    <defs>
+      <linearGradient id="coinGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#6ad4f2" />
+        <stop offset="100%" stopColor="#4a9db8" />
+      </linearGradient>
+    </defs>
+    <ellipse cx="100" cy="70" rx="45" ry="40" fill="url(#coinGradient)" opacity="0.9" />
+    <ellipse cx="105" cy="65" rx="45" ry="40" fill="#4a9db8" opacity="0.7" />
+    <path d="M 60 65 L 60 105 Q 60 125, 105 130 Q 150 125, 150 105 L 150 65" fill="#3a7d98" opacity="0.8" />
+    <ellipse cx="105" cy="65" rx="45" ry="40" fill="url(#coinGradient)" opacity="0.95" />
+    <text x="105" y="75" fontSize="40" fontWeight="bold" fill="#fff" textAnchor="middle" opacity="0.5">$</text>
+  </svg>
+);
 
-  if (imagePosition === 'left' || imagePosition === 'right') {
-    return (
-      <motion.div
-        variants={cardVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-80px' }}
-        whileHover={{ y: -8, transition: { duration: 0.3 } }}
-        className={`group relative rounded-2xl overflow-hidden bg-[#0d1117] border border-white/[0.08] backdrop-blur-xl ${className}`}
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#6ad4f2]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+const DashboardIcon: React.FC = () => (
+  <svg viewBox="0 0 200 200" className="w-full h-full">
+    <defs>
+      <linearGradient id="dashGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#8bb4d9" />
+        <stop offset="100%" stopColor="#6a94b9" />
+      </linearGradient>
+    </defs>
+    <rect x="45" y="90" width="15" height="50" rx="3" fill="url(#dashGradient)" opacity="0.9" />
+    <rect x="50" y="85" width="15" height="50" rx="3" fill="#6a94b9" opacity="0.7" />
+    <rect x="75" y="70" width="15" height="70" rx="3" fill="url(#dashGradient)" opacity="0.9" />
+    <rect x="80" y="65" width="15" height="70" rx="3" fill="#6a94b9" opacity="0.7" />
+    <rect x="105" y="55" width="15" height="85" rx="3" fill="url(#dashGradient)" opacity="0.9" />
+    <rect x="110" y="50" width="15" height="85" rx="3" fill="#6a94b9" opacity="0.7" />
+    <rect x="135" y="75" width="15" height="65" rx="3" fill="url(#dashGradient)" opacity="0.9" />
+    <rect x="140" y="70" width="15" height="65" rx="3" fill="#6a94b9" opacity="0.7" />
+  </svg>
+);
 
-        <div className={`flex ${imagePosition === 'right' ? 'flex-row' : 'flex-row-reverse'} h-full`}>
-          <div className="flex-1 p-6 flex flex-col justify-center">
-            <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-[#6ad4f2] transition-colors duration-300">
-              {title}
-            </h3>
-            <p className="text-white/50 text-sm leading-relaxed group-hover:text-white/70 transition-colors duration-300">
-              {description}
-            </p>
-          </div>
-          <div className="flex-1 relative overflow-hidden">
-            {image ? (
-              <img src={image} alt={title} className="w-full h-full object-cover" />
-            ) : (
-              <div className="w-full h-full bg-gradient-to-br from-[#1a1f2e] to-[#0d1117] flex items-center justify-center">
-                <div className="w-16 h-16 rounded-xl bg-[#6ad4f2]/10 border border-[#6ad4f2]/20" />
-              </div>
-            )}
-          </div>
-        </div>
-      </motion.div>
-    );
-  }
-
-  if (imagePosition === 'background') {
-    return (
-      <motion.div
-        variants={cardVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-80px' }}
-        whileHover={{ y: -8, transition: { duration: 0.3 } }}
-        className={`group relative rounded-2xl overflow-hidden ${className}`}
-      >
-        <div className="absolute inset-0">
-          {image ? (
-            <img src={image} alt={title} className="w-full h-full object-cover" />
-          ) : (
-            <div className="w-full h-full bg-gradient-to-br from-[#1a1f2e] to-[#0d1117]" />
-          )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
-        </div>
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#6ad4f2]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-        <div className="relative h-full flex flex-col justify-end p-6">
-          <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#6ad4f2] transition-colors duration-300">
-            {title}
-          </h3>
-          <p className="text-white/60 text-sm leading-relaxed">
-            {description}
-          </p>
-        </div>
-      </motion.div>
-    );
-  }
-
-  return (
-    <motion.div
-      variants={cardVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-80px' }}
-      whileHover={{ y: -8, transition: { duration: 0.3 } }}
-      className={`group relative rounded-2xl overflow-hidden bg-[#0d1117] border border-white/[0.08] backdrop-blur-xl ${className}`}
-    >
-      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#6ad4f2]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-      <div className={`relative ${imageHeight} overflow-hidden`}>
-        {image ? (
-          <img
-            src={image}
-            alt={title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-          />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-[#1a1f2e] to-[#0d1117] flex items-center justify-center">
-            <div className="w-20 h-20 rounded-2xl bg-[#6ad4f2]/10 border border-[#6ad4f2]/20 group-hover:bg-[#6ad4f2]/15 group-hover:border-[#6ad4f2]/30 transition-all duration-300" />
-          </div>
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117] via-transparent to-transparent opacity-60" />
-      </div>
-
-      <div className="p-5">
-        <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-[#6ad4f2] transition-colors duration-300">
-          {title}
-        </h3>
-        <p className="text-white/50 text-sm leading-relaxed group-hover:text-white/70 transition-colors duration-300">
-          {description}
-        </p>
-      </div>
-    </motion.div>
-  );
-};
+const TrophyIcon: React.FC = () => (
+  <svg viewBox="0 0 200 200" className="w-full h-full">
+    <defs>
+      <linearGradient id="trophyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#6ad4f2" />
+        <stop offset="100%" stopColor="#4a9db8" />
+      </linearGradient>
+    </defs>
+    <path d="M 70 50 L 65 80 Q 65 95, 80 95 L 80 50 Z" fill="url(#trophyGradient)" opacity="0.8" />
+    <path d="M 130 50 L 135 80 Q 135 95, 120 95 L 120 50 Z" fill="url(#trophyGradient)" opacity="0.8" />
+    <ellipse cx="100" cy="50" rx="30" ry="8" fill="#4a9db8" opacity="0.6" />
+    <path d="M 70 50 L 70 85 Q 70 110, 100 115 Q 130 110, 130 85 L 130 50 Z" fill="url(#trophyGradient)" opacity="0.9" />
+    <path d="M 75 50 L 75 85 Q 75 110, 105 115 Q 135 110, 135 85 L 135 50 Z" fill="#4a9db8" opacity="0.7" />
+    <rect x="90" y="115" width="20" height="25" rx="2" fill="url(#trophyGradient)" opacity="0.9" />
+    <rect x="95" y="110" width="20" height="25" rx="2" fill="#4a9db8" opacity="0.7" />
+    <rect x="75" y="140" width="50" height="8" rx="3" fill="url(#trophyGradient)" opacity="0.9" />
+    <rect x="80" y="135" width="50" height="8" rx="3" fill="#4a9db8" opacity="0.7" />
+  </svg>
+);
 
 const VerticalLine: React.FC = () => {
   return (
@@ -161,84 +111,32 @@ const VerticalLine: React.FC = () => {
   );
 };
 
-const FeaturedCard: React.FC<{ title: string; description: string; image?: string; delay?: number }> = ({
-  title,
-  description,
-  image,
-  delay = 0,
-}) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 60, scale: 0.95 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="relative group h-full"
-    >
-      <div
-        className="absolute -inset-[1px] bg-gradient-to-r from-[#6ad4f2]/40 via-[#8bb4d9]/40 to-[#d593c0]/40 rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"
-        style={{
-          filter: 'blur(20px)',
-        }}
-      />
-      <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#0d1117]/90 via-[#0d1117]/80 to-[#0d1117]/90 backdrop-blur-2xl border border-white/20 h-full flex flex-col">
-        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#6ad4f2]/50 to-transparent" />
-
-        <div className="relative flex-1 overflow-hidden">
-          {image ? (
-            <img
-              src={image}
-              alt={title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-          ) : (
-            <div className="w-full h-full bg-gradient-to-br from-[#1a1f2e] to-[#0d1117] flex items-center justify-center">
-              <div className="w-32 h-32 rounded-2xl bg-[#6ad4f2]/10 border border-[#6ad4f2]/20" />
-            </div>
-          )}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117] via-transparent to-transparent opacity-80" />
-        </div>
-
-        <div className="relative p-8">
-          <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[#6ad4f2] transition-colors duration-300">
-            {title}
-          </h3>
-          <p className="text-white/60 text-base leading-relaxed group-hover:text-white/80 transition-colors duration-300">
-            {description}
-          </p>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
 const FeatureGrid: React.FC = () => {
   const features = [
     {
       title: 'Book of Business',
       description: 'Manage your entire portfolio of clients and policies in one organized, searchable database.',
-      image: '/bofb-_closio_website.png',
+      icon: BookIcon,
     },
     {
       title: 'Team Hierarchy',
       description: 'Visualize your agency structure with clear reporting lines and team performance metrics.',
-      image: '/team_hierarchy-_closio_website.png',
+      icon: HierarchyIcon,
     },
     {
       title: 'Commission Tracking',
       description: 'Real-time visibility into your commission structure with automated calculations and transparent breakdowns.',
-      image: '/commission-_closio_website.png',
+      icon: CommissionIcon,
     },
     {
       title: 'Dashboard Analytics',
       description: 'Powerful insights and metrics to track performance, close rates, and revenue at a glance.',
-      image: '/main_dashboard-_closio_website.png',
+      icon: DashboardIcon,
     },
     {
       title: 'Leaderboard',
       description: 'Track top performers and motivate your team with real-time rankings and achievements.',
-      image: '/leaderboard-_closio_website.png',
+      icon: TrophyIcon,
     },
   ];
 
@@ -264,46 +162,40 @@ const FeatureGrid: React.FC = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 60, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.8, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className={`group relative rounded-2xl overflow-hidden bg-[#0d1117] border border-white/[0.08] backdrop-blur-xl ${
-                index === 0 ? 'sm:row-span-2' : ''
-              }`}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#6ad4f2]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 60, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.8, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className="group relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#0d1117]/60 via-[#0d1117]/80 to-[#0d1117]/60 border border-white/[0.06] backdrop-blur-xl"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#6ad4f2]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <div className={`relative ${index === 0 ? 'h-full' : 'h-64'} overflow-hidden`}>
-                {feature.image ? (
-                  <img
-                    src={feature.image}
-                    alt={feature.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-[#1a1f2e] to-[#0d1117] flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-2xl bg-[#6ad4f2]/10 border border-[#6ad4f2]/20" />
+                <div className="relative p-8 flex flex-col h-full min-h-[340px]">
+                  <div className="w-32 h-32 mb-8 flex items-center justify-center rounded-2xl bg-gradient-to-br from-[#0A0F1A]/80 to-[#1A2428]/60 border border-white/[0.05] group-hover:border-white/[0.1] transition-all duration-500">
+                    <div className="w-24 h-24">
+                      <Icon />
+                    </div>
                   </div>
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117] via-transparent to-transparent opacity-60" />
-              </div>
 
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#6ad4f2] transition-colors duration-300">
-                  {feature.title}
-                </h3>
-                <p className="text-white/50 text-sm leading-relaxed group-hover:text-white/70 transition-colors duration-300">
-                  {feature.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+                  <div className="flex-1 flex flex-col">
+                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#6ad4f2] transition-colors duration-300">
+                      {feature.title}
+                    </h3>
+                    <p className="text-white/60 text-base leading-relaxed group-hover:text-white/75 transition-colors duration-300">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
