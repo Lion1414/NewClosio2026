@@ -41,42 +41,15 @@ const TypewriterText: React.FC<{ text: string; delay?: number }> = ({ text, dela
 };
 
 const FlipButton: React.FC = () => {
-  const [hasTyped, setHasTyped] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setHasTyped(true), 3500);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <motion.button
       className="demo-btn group relative px-8 py-4 bg-white text-black font-semibold text-base rounded-xl shadow-[0_0_40px_rgba(255,255,255,0.3)] overflow-visible z-30"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 1.5 }}
-      style={{ perspective: '1000px' }}
     >
-      <span className="demo-btn-text relative z-10 flex items-center justify-center overflow-visible h-6">
-        {!hasTyped ? (
-          <TypewriterText text="Book a Demo Now" delay={2000} />
-        ) : (
-          <motion.span
-            className="relative block"
-            style={{ transformStyle: 'preserve-3d' }}
-            whileHover={{
-              rotateX: [0, 360],
-              rotateY: [0, 720],
-              rotateZ: [0, 360],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              duration: 1.5,
-              ease: "easeInOut",
-            }}
-          >
-            <span className="block text-center">Book a Demo Now</span>
-          </motion.span>
-        )}
+      <span className="relative z-10 flex items-center justify-center overflow-visible h-6">
+        <TypewriterText text="Book a Demo Now" delay={2000} />
       </span>
     </motion.button>
   );
