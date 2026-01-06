@@ -16,7 +16,7 @@ const AngularLine: React.FC = () => {
            L 420 750"
         fill="none"
         stroke="white"
-        strokeWidth="16"
+        strokeWidth="20"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
