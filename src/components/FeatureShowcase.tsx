@@ -45,13 +45,12 @@ const FeatureShowcase: React.FC = () => {
         </h2>
       </div>
 
-      <div className="flex flex-col gap-[50vh]">
+      <div className="flex flex-col">
         {features.map((feature, index) => (
           <div
             key={index}
-            className="sticky w-full flex items-center justify-center px-4 md:px-8"
+            className="sticky top-[100px] w-full flex items-center justify-center px-4 md:px-8 h-[70vh]"
             style={{
-              top: `${80 + index * 24}px`,
               zIndex: index + 1
             }}
           >
