@@ -5,24 +5,8 @@ const AngularLine: React.FC = () => {
     <svg
       viewBox="0 0 500 700"
       className="absolute left-0 top-0 h-full w-[30vw] min-h-[500px]"
-      style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
       preserveAspectRatio="none"
     >
-      <defs>
-        <linearGradient id="angularGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="rgba(255, 255, 255, 0)" />
-          <stop offset="5%" stopColor="rgba(255, 255, 255, 1)" />
-          <stop offset="95%" stopColor="rgba(255, 255, 255, 1)" />
-          <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
-        </linearGradient>
-        <filter id="lineGlow">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
       <path
         d="M 50 -50
            L 50 160
@@ -35,21 +19,6 @@ const AngularLine: React.FC = () => {
         strokeWidth="16"
         strokeLinecap="round"
         strokeLinejoin="round"
-        filter="url(#lineGlow)"
-      />
-      <path
-        d="M 50 -50
-           L 50 160
-           Q 50 240, 130 240
-           L 340 240
-           Q 420 240, 420 320
-           L 420 750"
-        fill="none"
-        stroke="rgba(255, 255, 255, 0.15)"
-        strokeWidth="32"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="blur-md"
       />
     </svg>
   );
