@@ -6,7 +6,7 @@ const VerticalLine: React.FC = () => {
     <svg
       viewBox="0 0 500 900"
       className="absolute left-0 top-0 h-full w-[30vw] pointer-events-none"
-      preserveAspectRatio="xMidYMid meet"
+      preserveAspectRatio="none"
     >
       <path
         d="M 50 1000
@@ -20,8 +20,6 @@ const VerticalLine: React.FC = () => {
         strokeWidth="20"
         strokeLinecap="round"
         strokeLinejoin="round"
-        vectorEffect="non-scaling-stroke"
-        style={{ strokeWidth: '20px' }}
       />
     </svg>
   );
