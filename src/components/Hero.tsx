@@ -46,10 +46,10 @@ const FlipButton: React.FC = () => {
       className="demo-btn group relative px-8 py-4 bg-white text-black font-semibold text-base rounded-xl shadow-[0_0_40px_rgba(255,255,255,0.3)] overflow-visible z-30"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 1.5 }}
+      transition={{ duration: 0.6, delay: 4.4 }}
     >
       <span className="relative z-10 flex items-center justify-center overflow-visible h-6">
-        <TypewriterText text="Book a Demo Now" delay={3300} />
+        <TypewriterText text="Book a Demo Now" delay={5100} />
       </span>
     </motion.button>
   );
@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
         className="absolute right-0 top-[8%] w-[70%] lg:w-[75%] h-auto z-20 hidden md:block"
         initial={{ opacity: 0, x: 100, scale: 0.95 }}
         animate={{ opacity: 1, x: 0, scale: 1 }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 3.1 }}
       >
         <img
           src="/transparent_hero_photo.png"
@@ -83,7 +83,7 @@ const Hero: React.FC = () => {
             className="text-xs sm:text-sm uppercase tracking-[0.2em] text-neutral-500 font-medium mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
+            transition={{ duration: 0.8, delay: 2.9 }}
           >
             CLOS<em className="italic">I</em>O WAS BUILT FOR YOU
           </motion.span>
@@ -93,7 +93,7 @@ const Hero: React.FC = () => {
               className="inline-block"
               initial={{ x: -300, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 3.0 }}
             >
               Close More.
             </motion.span>
@@ -102,7 +102,7 @@ const Hero: React.FC = () => {
               className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#d593c0] to-[#6ad4f2]"
               initial={{ x: 300, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 3.2 }}
             >
               Close Smarter.
             </motion.span>
@@ -112,7 +112,7 @@ const Hero: React.FC = () => {
             className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-md leading-relaxed mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 4.3 }}
           >
             The life insurance CRM that takes you from lead to issue paid.
           </motion.p>
