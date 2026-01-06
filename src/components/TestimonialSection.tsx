@@ -25,14 +25,6 @@ const testimonials: Testimonial[] = [
     author: "Sarah Chen",
     initials: "SC",
     role: "Regional Manager, Pacific Insurance Group"
-  },
-  {
-    quoteBefore: "The commission tracking alone saves us hours.",
-    highlight: "Complete visibility into our earnings",
-    quoteAfter: "means no more surprises. We know exactly what's coming and when.",
-    author: "David Martinez",
-    initials: "DM",
-    role: "Agency Owner, Martinez & Associates"
   }
 ];
 
