@@ -192,96 +192,30 @@ export default function DealMap() {
             style={{ zIndex: 15 }}
             preserveAspectRatio="none"
           >
-            <defs>
-              <linearGradient id="lineGradLeft1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#6ad4f2" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#6ad4f2" stopOpacity="0.1" />
-              </linearGradient>
-              <linearGradient id="lineGradLeft2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#6ad4f2" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#6ad4f2" stopOpacity="0.1" />
-              </linearGradient>
-              <linearGradient id="lineGradRight1" x1="100%" y1="0%" x2="0%" y2="0%">
-                <stop offset="0%" stopColor="#6ad4f2" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#6ad4f2" stopOpacity="0.1" />
-              </linearGradient>
-              <linearGradient id="lineGradRight2" x1="100%" y1="0%" x2="0%" y2="0%">
-                <stop offset="0%" stopColor="#6ad4f2" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#6ad4f2" stopOpacity="0.1" />
-              </linearGradient>
-              <filter id="glow">
-                <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-                <feMerge>
-                  <feMergeNode in="coloredBlur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
-
             <motion.line
               x1="22%"
               y1="30%"
               x2="28%"
               y2="30%"
-              stroke="url(#lineGradLeft1)"
-              strokeWidth="1.5"
+              stroke="#1a1a1a"
+              strokeWidth="1"
               strokeLinecap="round"
-              filter="url(#glow)"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
               transition={{ delay: 2.8, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
             />
-            <motion.circle
-              cx="22%"
-              cy="30%"
-              r="4"
-              fill="#6ad4f2"
-              filter="url(#glow)"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-              transition={{ delay: 2.7, duration: 0.3 }}
-            />
-            <motion.circle
-              cx="28%"
-              cy="30%"
-              r="3"
-              fill="#6ad4f2"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={isInView ? { scale: 1, opacity: 0.6 } : { scale: 0, opacity: 0 }}
-              transition={{ delay: 3.3, duration: 0.3 }}
-            />
 
             <motion.line
               x1="22%"
               y1="70%"
               x2="28%"
               y2="70%"
-              stroke="url(#lineGradLeft2)"
-              strokeWidth="1.5"
+              stroke="#1a1a1a"
+              strokeWidth="1"
               strokeLinecap="round"
-              filter="url(#glow)"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
               transition={{ delay: 3.2, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            />
-            <motion.circle
-              cx="22%"
-              cy="70%"
-              r="4"
-              fill="#6ad4f2"
-              filter="url(#glow)"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-              transition={{ delay: 3.1, duration: 0.3 }}
-            />
-            <motion.circle
-              cx="28%"
-              cy="70%"
-              r="3"
-              fill="#6ad4f2"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={isInView ? { scale: 1, opacity: 0.6 } : { scale: 0, opacity: 0 }}
-              transition={{ delay: 3.7, duration: 0.3 }}
             />
 
             <motion.line
@@ -289,32 +223,12 @@ export default function DealMap() {
               y1="30%"
               x2="72%"
               y2="30%"
-              stroke="url(#lineGradRight1)"
-              strokeWidth="1.5"
+              stroke="#1a1a1a"
+              strokeWidth="1"
               strokeLinecap="round"
-              filter="url(#glow)"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
               transition={{ delay: 3.0, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            />
-            <motion.circle
-              cx="78%"
-              cy="30%"
-              r="4"
-              fill="#6ad4f2"
-              filter="url(#glow)"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-              transition={{ delay: 2.9, duration: 0.3 }}
-            />
-            <motion.circle
-              cx="72%"
-              cy="30%"
-              r="3"
-              fill="#6ad4f2"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={isInView ? { scale: 1, opacity: 0.6 } : { scale: 0, opacity: 0 }}
-              transition={{ delay: 3.5, duration: 0.3 }}
             />
 
             <motion.line
@@ -322,32 +236,12 @@ export default function DealMap() {
               y1="70%"
               x2="72%"
               y2="70%"
-              stroke="url(#lineGradRight2)"
-              strokeWidth="1.5"
+              stroke="#1a1a1a"
+              strokeWidth="1"
               strokeLinecap="round"
-              filter="url(#glow)"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
               transition={{ delay: 3.4, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            />
-            <motion.circle
-              cx="78%"
-              cy="70%"
-              r="4"
-              fill="#6ad4f2"
-              filter="url(#glow)"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-              transition={{ delay: 3.3, duration: 0.3 }}
-            />
-            <motion.circle
-              cx="72%"
-              cy="70%"
-              r="3"
-              fill="#6ad4f2"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={isInView ? { scale: 1, opacity: 0.6 } : { scale: 0, opacity: 0 }}
-              transition={{ delay: 3.9, duration: 0.3 }}
             />
           </svg>
 
