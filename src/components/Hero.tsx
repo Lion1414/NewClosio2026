@@ -141,7 +141,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 4.3 }}
           >
-            Trusted & Used by thousands of agents
+            / Trusted & Used by 1,000+ agents
           </motion.p>
 
           <FlipButton />
