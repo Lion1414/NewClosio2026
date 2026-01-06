@@ -188,57 +188,82 @@ export default function DealMap() {
 
         <div className="relative flex items-center justify-center">
           <div className="hidden lg:flex flex-col gap-8 absolute left-0 top-1/2 -translate-y-1/2 z-20" style={{ width: '220px' }}>
-            {leftFacts.map((fact, index) => (
-              <motion.div
-                key={fact.title}
-                initial={{ opacity: 0, x: -80 }}
-                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -80 }}
-                transition={{ delay: 0.6 + index * 0.3, duration: 0.6, ease: 'easeOut' }}
-                className="relative"
-              >
-                <div
-                  className="p-5 rounded-xl border border-gray-800/50"
-                  style={{
-                    background: '#000000',
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3)',
-                  }}
+            {leftFacts.map((fact, index) => {
+              const titleDelay = 800 + index * 400;
+              const descDelay = 1200 + index * 400;
+              const descLength = fact.description.length;
+              const lineDelay = (descDelay + descLength * 50 + 200) / 1000;
+
+              return (
+                <motion.div
+                  key={fact.title}
+                  initial={{ opacity: 0, x: -80 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -80 }}
+                  transition={{ delay: 0.6 + index * 0.3, duration: 0.6, ease: 'easeOut' }}
+                  className="relative"
                 >
-                  <svg
-                    className="absolute top-1/2 -translate-y-1/2 pointer-events-none"
-                    style={{ left: '100%', width: '60px', height: '4px' }}
-                    viewBox="0 0 60 4"
-                    fill="none"
-                    preserveAspectRatio="none"
+                  <div
+                    className="p-5 rounded-xl border border-gray-800/50"
+                    style={{
+                      background: '#000000',
+                      boxShadow: '0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3)',
+                    }}
                   >
-                    <motion.line
-                      x1="0"
-                      y1="2"
-                      x2="60"
-                      y2="2"
-                      stroke="url(#lineGradientLeftBlack)"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      initial={{ pathLength: 0, opacity: 0 }}
-                      animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
-                      transition={{ delay: 2.2 + index * 0.5, duration: 0.5, ease: 'easeOut' }}
-                    />
-                    <defs>
-                      <linearGradient id="lineGradientLeftBlack" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#000000" />
-                        <stop offset="100%" stopColor="#000000" stopOpacity="0.2" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span className="text-[#6ad4f2] text-xs font-medium tracking-wider mb-2 block">{fact.number}</span>
-                  <h4 className="font-semibold text-white text-base mb-1.5">
-                    <TypewriterText text={fact.title} delay={800 + index * 400} isVisible={isInView} />
-                  </h4>
-                  <p className="text-sm text-gray-400 leading-relaxed min-h-[36px]">
-                    <TypewriterText text={fact.description} delay={1200 + index * 400} isVisible={isInView} />
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+                    <svg
+                      className="absolute top-1/2 -translate-y-1/2 pointer-events-none"
+                      style={{ left: '100%', width: '80px', height: '20px' }}
+                      viewBox="0 0 80 20"
+                      fill="none"
+                      preserveAspectRatio="none"
+                    >
+                      <motion.circle
+                        cx="4"
+                        cy="10"
+                        r="3"
+                        fill="#6ad4f2"
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+                        transition={{ delay: lineDelay, duration: 0.3, ease: 'easeOut' }}
+                      />
+                      <motion.line
+                        x1="8"
+                        y1="10"
+                        x2="80"
+                        y2="10"
+                        stroke="url(#lineGradientLeft)"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+                        transition={{ delay: lineDelay + 0.15, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+                      />
+                      <motion.circle
+                        cx="76"
+                        cy="10"
+                        r="2"
+                        fill="#6ad4f2"
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={isInView ? { scale: 1, opacity: 0.6 } : { scale: 0, opacity: 0 }}
+                        transition={{ delay: lineDelay + 0.7, duration: 0.3, ease: 'easeOut' }}
+                      />
+                      <defs>
+                        <linearGradient id="lineGradientLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#6ad4f2" />
+                          <stop offset="100%" stopColor="#6ad4f2" stopOpacity="0.2" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <span className="text-[#6ad4f2] text-xs font-medium tracking-wider mb-2 block">{fact.number}</span>
+                    <h4 className="font-semibold text-white text-base mb-1.5">
+                      <TypewriterText text={fact.title} delay={titleDelay} isVisible={isInView} />
+                    </h4>
+                    <p className="text-sm text-gray-400 leading-relaxed min-h-[36px]">
+                      <TypewriterText text={fact.description} delay={descDelay} isVisible={isInView} />
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
 
           <motion.div
@@ -258,57 +283,82 @@ export default function DealMap() {
           </motion.div>
 
           <div className="hidden lg:flex flex-col gap-8 absolute right-0 top-1/2 -translate-y-1/2 z-20" style={{ width: '220px' }}>
-            {rightFacts.map((fact, index) => (
-              <motion.div
-                key={fact.title}
-                initial={{ opacity: 0, x: 80 }}
-                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
-                transition={{ delay: 0.8 + index * 0.3, duration: 0.6, ease: 'easeOut' }}
-                className="relative"
-              >
-                <div
-                  className="p-5 rounded-xl border border-gray-800/50"
-                  style={{
-                    background: '#000000',
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3)',
-                  }}
+            {rightFacts.map((fact, index) => {
+              const titleDelay = 1000 + index * 400;
+              const descDelay = 1400 + index * 400;
+              const descLength = fact.description.length;
+              const lineDelay = (descDelay + descLength * 50 + 200) / 1000;
+
+              return (
+                <motion.div
+                  key={fact.title}
+                  initial={{ opacity: 0, x: 80 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
+                  transition={{ delay: 0.8 + index * 0.3, duration: 0.6, ease: 'easeOut' }}
+                  className="relative"
                 >
-                  <svg
-                    className="absolute top-1/2 -translate-y-1/2 pointer-events-none"
-                    style={{ right: '100%', width: '60px', height: '4px' }}
-                    viewBox="0 0 60 4"
-                    fill="none"
-                    preserveAspectRatio="none"
+                  <div
+                    className="p-5 rounded-xl border border-gray-800/50"
+                    style={{
+                      background: '#000000',
+                      boxShadow: '0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3)',
+                    }}
                   >
-                    <motion.line
-                      x1="60"
-                      y1="2"
-                      x2="0"
-                      y2="2"
-                      stroke="url(#lineGradientRightBlack)"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      initial={{ pathLength: 0, opacity: 0 }}
-                      animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
-                      transition={{ delay: 2.4 + index * 0.5, duration: 0.5, ease: 'easeOut' }}
-                    />
-                    <defs>
-                      <linearGradient id="lineGradientRightBlack" x1="100%" y1="0%" x2="0%" y2="0%">
-                        <stop offset="0%" stopColor="#000000" />
-                        <stop offset="100%" stopColor="#000000" stopOpacity="0.2" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span className="text-[#6ad4f2] text-xs font-medium tracking-wider mb-2 block">{fact.number}</span>
-                  <h4 className="font-semibold text-white text-base mb-1.5">
-                    <TypewriterText text={fact.title} delay={1000 + index * 400} isVisible={isInView} />
-                  </h4>
-                  <p className="text-sm text-gray-400 leading-relaxed min-h-[36px]">
-                    <TypewriterText text={fact.description} delay={1400 + index * 400} isVisible={isInView} />
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+                    <svg
+                      className="absolute top-1/2 -translate-y-1/2 pointer-events-none"
+                      style={{ right: '100%', width: '80px', height: '20px' }}
+                      viewBox="0 0 80 20"
+                      fill="none"
+                      preserveAspectRatio="none"
+                    >
+                      <motion.circle
+                        cx="76"
+                        cy="10"
+                        r="3"
+                        fill="#6ad4f2"
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+                        transition={{ delay: lineDelay, duration: 0.3, ease: 'easeOut' }}
+                      />
+                      <motion.line
+                        x1="72"
+                        y1="10"
+                        x2="0"
+                        y2="10"
+                        stroke="url(#lineGradientRight)"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+                        transition={{ delay: lineDelay + 0.15, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+                      />
+                      <motion.circle
+                        cx="4"
+                        cy="10"
+                        r="2"
+                        fill="#6ad4f2"
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={isInView ? { scale: 1, opacity: 0.6 } : { scale: 0, opacity: 0 }}
+                        transition={{ delay: lineDelay + 0.7, duration: 0.3, ease: 'easeOut' }}
+                      />
+                      <defs>
+                        <linearGradient id="lineGradientRight" x1="100%" y1="0%" x2="0%" y2="0%">
+                          <stop offset="0%" stopColor="#6ad4f2" />
+                          <stop offset="100%" stopColor="#6ad4f2" stopOpacity="0.2" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <span className="text-[#6ad4f2] text-xs font-medium tracking-wider mb-2 block">{fact.number}</span>
+                    <h4 className="font-semibold text-white text-base mb-1.5">
+                      <TypewriterText text={fact.title} delay={titleDelay} isVisible={isInView} />
+                    </h4>
+                    <p className="text-sm text-gray-400 leading-relaxed min-h-[36px]">
+                      <TypewriterText text={fact.description} delay={descDelay} isVisible={isInView} />
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
 
