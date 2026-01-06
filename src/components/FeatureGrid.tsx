@@ -28,11 +28,48 @@ const HierarchyIcon: React.FC = () => (
 
 const CommissionIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
-    <ellipse cx="100" cy="70" rx="45" ry="40" fill="#ffffff" opacity="0.9" />
-    <ellipse cx="105" cy="65" rx="45" ry="40" fill="#cccccc" opacity="0.7" />
-    <path d="M 60 65 L 60 105 Q 60 125, 105 130 Q 150 125, 150 105 L 150 65" fill="#aaaaaa" opacity="0.8" />
-    <ellipse cx="105" cy="65" rx="45" ry="40" fill="#ffffff" opacity="0.95" />
-    <text x="105" y="75" fontSize="40" fontWeight="bold" fill="#000" textAnchor="middle" opacity="0.3">$</text>
+    <g opacity="0.5">
+      <ellipse cx="65" cy="145" rx="28" ry="12" fill="#888888" />
+      <ellipse cx="65" cy="140" rx="28" ry="12" fill="#aaaaaa" />
+      <ellipse cx="65" cy="135" rx="28" ry="12" fill="#cccccc" />
+      <ellipse cx="65" cy="130" rx="28" ry="12" fill="#ffffff" />
+      <text x="65" y="135" fontSize="16" fontWeight="bold" fill="#000" textAnchor="middle" opacity="0.4">$</text>
+    </g>
+
+    <g opacity="0.7">
+      <ellipse cx="135" cy="155" rx="28" ry="12" fill="#888888" />
+      <ellipse cx="135" cy="150" rx="28" ry="12" fill="#999999" />
+      <ellipse cx="135" cy="145" rx="28" ry="12" fill="#aaaaaa" />
+      <ellipse cx="135" cy="140" rx="28" ry="12" fill="#bbbbbb" />
+      <ellipse cx="135" cy="135" rx="28" ry="12" fill="#cccccc" />
+      <ellipse cx="135" cy="130" rx="28" ry="12" fill="#dddddd" />
+      <ellipse cx="135" cy="125" rx="28" ry="12" fill="#ffffff" />
+      <text x="135" y="130" fontSize="16" fontWeight="bold" fill="#000" textAnchor="middle" opacity="0.4">$</text>
+    </g>
+
+    <g>
+      <ellipse cx="100" cy="115" rx="35" ry="15" fill="#777777" />
+      <ellipse cx="100" cy="108" rx="35" ry="15" fill="#888888" />
+      <ellipse cx="100" cy="101" rx="35" ry="15" fill="#999999" />
+      <ellipse cx="100" cy="94" rx="35" ry="15" fill="#aaaaaa" />
+      <ellipse cx="100" cy="87" rx="35" ry="15" fill="#bbbbbb" />
+      <ellipse cx="100" cy="80" rx="35" ry="15" fill="#cccccc" />
+      <ellipse cx="100" cy="73" rx="35" ry="15" fill="#dddddd" />
+      <ellipse cx="100" cy="66" rx="35" ry="15" fill="#eeeeee" />
+      <ellipse cx="100" cy="59" rx="35" ry="15" fill="#ffffff" />
+      <text x="100" y="65" fontSize="22" fontWeight="bold" fill="#000" textAnchor="middle" opacity="0.35">$</text>
+    </g>
+
+    <g opacity="0.6">
+      <path d="M155 75 L155 45 L148 52 M155 45 L162 52" stroke="#ffffff" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M165 85 L165 55 L158 62 M165 55 L172 62" stroke="#ffffff" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
+    </g>
+
+    <g opacity="0.4">
+      <text x="40" y="55" fontSize="18" fontWeight="bold" fill="#ffffff">$</text>
+      <text x="55" y="45" fontSize="14" fontWeight="bold" fill="#ffffff">$</text>
+      <text x="30" y="70" fontSize="12" fontWeight="bold" fill="#ffffff">$</text>
+    </g>
   </svg>
 );
 
