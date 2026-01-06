@@ -85,7 +85,7 @@ function HoverFooter() {
   return (
     <footer className="bg-black relative h-fit overflow-hidden border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-10 lg:px-14 py-12 sm:py-14 md:py-16 z-40 relative">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-6 lg:gap-8">
           {/* Company Info */}
           <div className="lg:col-span-3 flex flex-col space-y-4">
             <Link to="/" className="flex items-center">
