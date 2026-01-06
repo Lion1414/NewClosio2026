@@ -50,23 +50,32 @@ const FlipButton: React.FC = () => {
 
   return (
     <motion.button
-      className="demo-btn group relative px-8 py-4 bg-white text-black font-semibold text-base rounded-xl shadow-[0_0_40px_rgba(255,255,255,0.3)] overflow-hidden z-30"
+      className="demo-btn group relative px-8 py-4 bg-white text-black font-semibold text-base rounded-xl shadow-[0_0_40px_rgba(255,255,255,0.3)] overflow-visible z-30"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 1.5 }}
-      style={{ perspective: '600px' }}
+      style={{ perspective: '1000px' }}
     >
-      <span className="demo-btn-text relative z-10 flex items-center justify-center overflow-hidden h-6">
+      <span className="demo-btn-text relative z-10 flex items-center justify-center overflow-visible h-6">
         {!hasTyped ? (
           <TypewriterText text="Book a Demo Now" delay={2000} />
         ) : (
-          <span
-            className="relative block transition-transform duration-500 ease-out group-hover:-translate-y-full"
+          <motion.span
+            className="relative block"
             style={{ transformStyle: 'preserve-3d' }}
+            whileHover={{
+              rotateX: [0, 360],
+              rotateY: [0, 720],
+              rotateZ: [0, 360],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 1.5,
+              ease: "easeInOut",
+            }}
           >
             <span className="block text-center">Book a Demo Now</span>
-            <span className="absolute top-full left-0 w-full block text-center">Book a Demo Now</span>
-          </span>
+          </motion.span>
         )}
       </span>
     </motion.button>
