@@ -255,7 +255,7 @@ const FeatureGrid: React.FC = () => {
         >
           <h2 className="text-4xl sm:text-5xl font-bold md:max-w-md">
             <span className="text-white">
-              /Core Features
+              / CORE FEATURES
             </span>
           </h2>
           <p className="text-white/50 text-lg md:max-w-xl md:text-right">
