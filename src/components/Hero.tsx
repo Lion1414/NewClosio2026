@@ -49,7 +49,7 @@ const FlipButton: React.FC = () => {
       transition={{ duration: 0.6, delay: 1.5 }}
     >
       <span className="relative z-10 flex items-center justify-center overflow-visible h-6">
-        <TypewriterText text="Book a Demo Now" delay={2000} />
+        <TypewriterText text="Book a Demo Now" delay={3300} />
       </span>
     </motion.button>
   );
