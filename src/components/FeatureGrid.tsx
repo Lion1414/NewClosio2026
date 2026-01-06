@@ -254,8 +254,8 @@ const FeatureGrid: React.FC = () => {
           className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold md:max-w-md">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6ad4f2] to-[#5ac3e1]">
-              Core Features
+            <span className="text-white">
+              /Core Features
             </span>
           </h2>
           <p className="text-white/50 text-lg md:max-w-xl md:text-right">
