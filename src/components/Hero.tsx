@@ -43,7 +43,7 @@ const TypewriterText: React.FC<{ text: string; delay?: number }> = ({ text, dela
 const FlipButton: React.FC = () => {
   return (
     <motion.button
-      className="demo-btn group relative px-8 py-4 bg-white text-black font-semibold text-base rounded-xl shadow-[0_0_40px_rgba(255,255,255,0.3)] group-hover:shadow-none overflow-hidden z-30 transition-all duration-700"
+      className="demo-btn group relative px-8 py-4 bg-white text-black font-semibold text-base rounded-xl shadow-[0_0_40px_rgba(255,255,255,0.3)] group-hover:shadow-none overflow-hidden z-30 transition-shadow duration-300"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 4.4 }}
