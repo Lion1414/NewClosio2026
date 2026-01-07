@@ -175,11 +175,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             <Link
               to="/"
               className="flex items-center gap-2 flex-shrink-0"
-              onClick={() => {
-                if (isHomePage) {
-                  document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" });
-                }
-              }}
+              onClick={() => window.scrollTo(0, 0)}
               aria-label="Closio - Back to top"
             >
               <img
@@ -265,7 +261,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                           <Link
                             key={item.path}
                             to={item.path}
-                            onClick={() => setFeaturesDropdownOpen(false)}
+                            onClick={() => { setFeaturesDropdownOpen(false); window.scrollTo(0, 0); }}
                             className={`group flex flex-col px-3 py-2.5 rounded-md transition-all duration-200 ${
                               location.pathname === item.path
                                 ? 'bg-[#6ad4f2]/10 border border-[#6ad4f2]/30'
@@ -332,7 +328,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                         <Link
                           key={item.path}
                           to={item.path}
-                          onClick={() => setDocsDropdownOpen(false)}
+                          onClick={() => { setDocsDropdownOpen(false); window.scrollTo(0, 0); }}
                           className={`block px-4 py-2.5 text-sm transition-colors ${
                             location.pathname === item.path
                               ? 'text-[#6ad4f2] bg-[#6ad4f2]/10'
@@ -429,7 +425,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   <Link
                     key={item.path}
                     to={item.path}
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={() => { setMobileMenuOpen(false); window.scrollTo(0, 0); }}
                     className={`w-full flex flex-col text-left px-4 py-3 rounded-xl transition-colors ${
                       location.pathname === item.path
                         ? 'bg-[#6ad4f2]/20 text-[#6ad4f2]'
@@ -451,7 +447,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   <Link
                     key={item.path}
                     to={item.path}
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={() => { setMobileMenuOpen(false); window.scrollTo(0, 0); }}
                     className={`w-full block text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
                       location.pathname === item.path
                         ? 'bg-[#6ad4f2]/20 text-[#6ad4f2]'

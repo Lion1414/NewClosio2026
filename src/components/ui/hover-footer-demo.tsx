@@ -73,7 +73,7 @@ function HoverFooter() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-5 lg:gap-6">
           {/* Company Info */}
           <div className="lg:col-span-3 flex flex-col space-y-4">
-            <Link to="/" className="flex items-center">
+            <Link to="/" onClick={() => window.scrollTo(0, 0)} className="flex items-center">
               <img
                 src="/67ff5f5f-fc49-493f-8cb5-0467588c2623.png"
                 alt="Closio"
