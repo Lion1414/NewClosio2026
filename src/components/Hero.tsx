@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import TunnelBackground from './TunnelBackground';
 
 const TypewriterText: React.FC<{ text: string; delay?: number }> = ({ text, delay = 0 }) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -61,18 +62,7 @@ const Hero: React.FC = () => {
       id="hero"
       className="min-h-screen w-full text-white flex items-center relative overflow-hidden bg-black"
     >
-      <div
-        className="absolute inset-0 z-[1] pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px',
-          maskImage: 'radial-gradient(ellipse 55% 55% at 30% 50%, black 0%, rgba(0,0,0,0.3) 20%, transparent 55%)',
-          WebkitMaskImage: 'radial-gradient(ellipse 55% 55% at 30% 50%, black 0%, rgba(0,0,0,0.3) 20%, transparent 55%)',
-        }}
-      />
+      <TunnelBackground />
 
       <motion.div
         className="absolute right-0 top-[8%] w-[70%] lg:w-[75%] h-auto z-20 hidden md:block"
