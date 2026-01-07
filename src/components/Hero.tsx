@@ -149,15 +149,15 @@ const Hero: React.FC = () => {
               />
             </span>
             <span
-              className="block text-transparent bg-clip-text bg-gradient-to-r from-[#35E7E0] via-[#6ad4f2] to-[#35E7E0]"
+              className="block text-[#6ad4f2]"
               style={{
-                textShadow: "0 0 30px rgba(53, 231, 224, 0.5), 0 0 60px rgba(53, 231, 224, 0.2)"
+                textShadow: "0 0 30px rgba(106, 212, 242, 0.5), 0 0 60px rgba(106, 212, 242, 0.2)"
               }}
             >
               <TypewriterText
                 text="Close Smarter."
                 delay={4100}
-                isGradient={true}
+                isGradient={false}
                 skipAnimation={hasAnimated}
               />
             </span>
