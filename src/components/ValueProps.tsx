@@ -143,9 +143,9 @@ const ValueProps: React.FC = () => {
                   const element = document.getElementById('contact');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="w-44 py-2.5 bg-white text-black font-semibold rounded-lg hover:bg-white/90 transition-all duration-300 text-sm"
+                className="px-8 py-4 bg-white text-black font-semibold rounded-xl hover:bg-white/90 transition-all duration-300 text-base"
               >
-                Book a Demo
+                Book a Demo Now
               </button>
             </div>
           </div>
