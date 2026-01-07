@@ -92,7 +92,7 @@ const ContactSplit = React.memo(() => {
                 <div className="flex-1 p-6 md:p-8 lg:p-10 flex flex-col justify-center">
                   <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 text-left">
                     Stay in the Loop with{' '}
-                    <span className="text-[#22d3ee]">
+                    <span className="text-white">
                       Closio
                     </span>
                   </h2>
@@ -130,7 +130,7 @@ const ContactSplit = React.memo(() => {
                         <button
                           type="submit"
                           disabled={status === 'loading'}
-                          className="px-5 py-3 bg-[#22d3ee] text-black font-semibold rounded-lg hover:bg-[#67e8f9] hover:shadow-lg hover:shadow-[#22d3ee]/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-sm"
+                          className="px-5 py-3 bg-white text-black font-semibold rounded-lg hover:bg-white/90 hover:shadow-lg hover:shadow-white/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-sm"
                         >
                           {status === 'loading' ? (
                             <span className="flex items-center justify-center gap-2">
