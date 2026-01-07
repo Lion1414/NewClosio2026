@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen w-full text-white flex items-center relative overflow-hidden"
+      className="min-h-screen w-full text-white flex items-center relative overflow-hidden bg-black"
     >
       <HeroBackground3D />
 

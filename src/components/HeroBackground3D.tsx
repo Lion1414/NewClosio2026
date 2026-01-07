@@ -17,11 +17,13 @@ const HeroBackground3D: React.FC = () => {
       powerPreference: "high-performance",
     });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 1);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.15;
 
     const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x000000);
     const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 90);
     camera.position.set(0.0, 0.35, 7.8);
 
@@ -348,10 +350,10 @@ const HeroBackground3D: React.FC = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 z-0 pointer-events-none">
+    <div className="absolute inset-0 z-0 pointer-events-none bg-black">
       <canvas
         ref={canvasRef}
-        className="w-full h-full block"
+        className="w-full h-full block bg-black"
         style={{ opacity: 0.92 }}
       />
     </div>
