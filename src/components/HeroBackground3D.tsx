@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+import gsap from 'gsap';
 
 const HeroBackground3D: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -24,23 +25,31 @@ const HeroBackground3D: React.FC = () => {
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x000000);
-    const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 90);
-    camera.position.set(0.0, 0.35, 8.5);
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 90);
+    camera.position.set(0.0, 0.2, 7.5);
 
     const pmrem = new THREE.PMREMGenerator(renderer);
     scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
 
-    const key = new THREE.DirectionalLight(0xffffff, 2.2);
+    const key = new THREE.DirectionalLight(0xffffff, 2.5);
     key.position.set(5, 6, 7);
     scene.add(key);
 
-    const fill = new THREE.DirectionalLight(0xffffff, 0.9);
+    const fill = new THREE.DirectionalLight(0xffffff, 1.0);
     fill.position.set(-6, 2, 5);
     scene.add(fill);
 
-    const rim = new THREE.PointLight(0xffffff, 1.3, 30);
+    const rim = new THREE.PointLight(0xffffff, 1.5, 30);
     rim.position.set(-2.0, 2.2, -2.8);
     scene.add(rim);
+
+    const accentLight1 = new THREE.PointLight(0x35E7E0, 2.0, 15);
+    accentLight1.position.set(3, 1, 3);
+    scene.add(accentLight1);
+
+    const accentLight2 = new THREE.PointLight(0x6ad4f2, 1.5, 15);
+    accentLight2.position.set(-3, -1, 2);
+    scene.add(accentLight2);
 
     const TEAL = new THREE.Color("#35E7E0");
     const WHITE = new THREE.Color("#FFFFFF");
@@ -66,7 +75,7 @@ const HeroBackground3D: React.FC = () => {
 
     const hero3D = new THREE.Group();
     scene.add(hero3D);
-    hero3D.position.set(1.7, 0.0, 0.0);
+    hero3D.position.set(0, 0.0, 0.0);
 
     const topRingGeo = new THREE.TorusGeometry(1.4, 0.18, 64, 100);
     const ringTop = new THREE.Mesh(topRingGeo, glassMaterial(TEAL, 0.40, 0.04, 1.5));
@@ -247,7 +256,29 @@ const HeroBackground3D: React.FC = () => {
       ty = (e.clientY / window.innerHeight - 0.5) * 0.18;
     };
 
-    const handleClick = () => { pulse = 1.0; };
+    const handleClick = () => {
+      pulse = 1.0;
+
+      gsap.to([ringTop.scale, ringMiddle.scale, ringBottom.scale], {
+        x: 1.15,
+        y: 1.15,
+        z: 1.15,
+        duration: 0.4,
+        ease: "power2.out",
+        yoyo: true,
+        repeat: 1
+      });
+
+      gsap.to(io.scale, {
+        x: 1.2,
+        y: 1.2,
+        z: 1.2,
+        duration: 0.4,
+        ease: "back.out(3)",
+        yoyo: true,
+        repeat: 1
+      });
+    };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     window.addEventListener("click", handleClick, { passive: true });
@@ -260,13 +291,147 @@ const HeroBackground3D: React.FC = () => {
       camera.updateProjectionMatrix();
 
       const mobile = w < 900;
-      hero3D.position.x = mobile ? 0.4 : 1.70;
-      hero3D.scale.setScalar(mobile ? 0.65 : 1.0);
+      hero3D.position.x = 0;
+      hero3D.scale.setScalar(mobile ? 0.75 : 1.15);
     }
 
     const resizeObserver = new ResizeObserver(fit);
     resizeObserver.observe(canvas);
     fit();
+
+    gsap.fromTo(hero3D.scale,
+      { x: 0, y: 0, z: 0 },
+      {
+        x: hero3D.scale.x,
+        y: hero3D.scale.y,
+        z: hero3D.scale.z,
+        duration: 2.5,
+        ease: "elastic.out(1, 0.6)",
+        delay: 0.3
+      }
+    );
+
+    gsap.fromTo(hero3D.rotation,
+      { y: Math.PI * 2 },
+      {
+        y: 0,
+        duration: 2.5,
+        ease: "power3.out",
+        delay: 0.3
+      }
+    );
+
+    gsap.fromTo(ringTop.rotation,
+      { x: -Math.PI },
+      {
+        x: 0,
+        duration: 2,
+        ease: "power2.out",
+        delay: 0.5
+      }
+    );
+
+    gsap.fromTo(ringBottom.rotation,
+      { x: Math.PI },
+      {
+        x: 0,
+        duration: 2,
+        ease: "power2.out",
+        delay: 0.7
+      }
+    );
+
+    gsap.to(ringTop.rotation, {
+      z: Math.PI * 2,
+      duration: 20,
+      ease: "none",
+      repeat: -1,
+      delay: 2
+    });
+
+    gsap.to(ringMiddle.rotation, {
+      z: -Math.PI * 2,
+      duration: 15,
+      ease: "none",
+      repeat: -1,
+      delay: 2
+    });
+
+    gsap.to(ringBottom.rotation, {
+      z: Math.PI * 2,
+      duration: 25,
+      ease: "none",
+      repeat: -1,
+      delay: 2
+    });
+
+    gsap.fromTo(io.scale,
+      { x: 0, y: 0, z: 0 },
+      {
+        x: 1,
+        y: 1,
+        z: 1,
+        duration: 2,
+        ease: "back.out(2)",
+        delay: 1.2
+      }
+    );
+
+    gsap.to(io.rotation, {
+      y: Math.PI * 2,
+      duration: 30,
+      ease: "none",
+      repeat: -1,
+      delay: 2
+    });
+
+    gsap.fromTo(particles.material,
+      { opacity: 0 },
+      {
+        opacity: 0.7,
+        duration: 2,
+        ease: "power2.out",
+        delay: 1.5
+      }
+    );
+
+    gsap.fromTo(connectionLines.material,
+      { opacity: 0 },
+      {
+        opacity: 0.15,
+        duration: 2,
+        ease: "power2.out",
+        delay: 1.8
+      }
+    );
+
+    gsap.fromTo(camera.position,
+      { z: 12 },
+      {
+        z: 7.5,
+        duration: 2.5,
+        ease: "power2.inOut",
+        delay: 0.2
+      }
+    );
+
+    gsap.to(accentLight1.position, {
+      x: -3,
+      duration: 8,
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1,
+      delay: 2
+    });
+
+    gsap.to(accentLight2.position, {
+      x: 3,
+      duration: 10,
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1,
+      delay: 2
+    });
 
     let t = 0;
     let animationId: number;
@@ -277,27 +442,50 @@ const HeroBackground3D: React.FC = () => {
       raycaster.setFromCamera(pointerNDC, camera);
       const hit = raycaster.intersectObjects([ringTop, ringMiddle, ringBottom, iMesh, oMesh], true);
       const isHover = hit.length > 0;
-      if (isHover !== hover) hover = isHover;
 
-      hero3D.rotation.y += ((tx - hero3D.rotation.y) * 0.06);
-      hero3D.rotation.x += ((-ty - hero3D.rotation.x) * 0.06);
+      if (isHover !== hover) {
+        hover = isHover;
 
-      const swing = Math.sin(t * 0.7) * 0.12;
+        gsap.to([ringTop.material, ringBottom.material], {
+          emissiveIntensity: hover ? 0.55 : 0.40,
+          duration: 0.4,
+          ease: "power2.out"
+        });
+
+        gsap.to(ringMiddle.material, {
+          emissiveIntensity: hover ? 0.50 : 0.35,
+          duration: 0.4,
+          ease: "power2.out"
+        });
+
+        gsap.to([iMesh.material, oMesh.material], {
+          emissiveIntensity: hover ? 0.45 : 0.26,
+          duration: 0.4,
+          ease: "power2.out"
+        });
+
+        gsap.to(ioGlow.material, {
+          opacity: hover ? 0.12 : 0.06,
+          duration: 0.4,
+          ease: "power2.out"
+        });
+      }
+
+      const targetRotY = tx * 0.5;
+      const targetRotX = -ty * 0.3;
+      hero3D.rotation.y += (targetRotY - hero3D.rotation.y) * 0.08;
+      hero3D.rotation.x += (targetRotX - hero3D.rotation.x) * 0.08;
+
+      const swing = Math.sin(t * 0.5) * 0.08;
 
       ringTop.rotation.x = swing;
-      ringTop.rotation.z = Math.cos(t * 0.5) * 0.08;
-
-      ringMiddle.rotation.x = swing * 0.8;
-      ringMiddle.rotation.z = Math.cos(t * 0.5 + 0.3) * 0.06;
-
-      ringBottom.rotation.x = swing * 0.6;
-      ringBottom.rotation.z = Math.cos(t * 0.5 + 0.6) * 0.05;
+      ringMiddle.rotation.x = swing * 0.6;
+      ringBottom.rotation.x = swing * 0.4;
 
       chain1.rotation.z = swing * 0.5;
       chain2.rotation.z = swing * 0.4;
 
-      io.rotation.y = Math.sin(t * 0.55) * 0.10;
-      io.rotation.x = Math.cos(t * 0.45) * 0.06;
+      io.rotation.x = Math.cos(t * 0.4) * 0.05;
 
       const positions = particles.geometry.attributes.position.array as Float32Array;
       const phases = particles.geometry.attributes.phase.array as Float32Array;
@@ -305,41 +493,20 @@ const HeroBackground3D: React.FC = () => {
       for (let i = 0; i < particleCount; i++) {
         const i3 = i * 3;
         const phase = phases[i];
-        const angle = (i / particleCount) * Math.PI * 2 + t * 0.3;
-        const radius = 2.0 + Math.sin(t * 0.5 + phase) * 0.8;
-        const yOscillate = Math.sin(t * 0.6 + phase) * 0.3;
+        const angle = (i / particleCount) * Math.PI * 2 + t * 0.25;
+        const radius = 2.3 + Math.sin(t * 0.4 + phase) * 0.6;
+        const yOscillate = Math.sin(t * 0.5 + phase) * 0.4;
 
         positions[i3] = Math.cos(angle) * radius;
-        positions[i3 + 1] = positions[i3 + 1] * 0.95 + yOscillate * 0.05;
+        positions[i3 + 1] = positions[i3 + 1] * 0.96 + yOscillate * 0.04;
         positions[i3 + 2] = Math.sin(angle) * radius;
       }
       particles.geometry.attributes.position.needsUpdate = true;
 
-      connectionLines.rotation.y = t * 0.15;
-      (connectionLines.material as THREE.LineBasicMaterial).opacity = 0.15 + Math.sin(t * 2) * 0.05;
-
-      const targetEm = hover ? 0.55 : 0.40;
-      (ringTop.material as THREE.MeshPhysicalMaterial).emissiveIntensity += (targetEm - (ringTop.material as THREE.MeshPhysicalMaterial).emissiveIntensity) * 0.10;
-      (ringBottom.material as THREE.MeshPhysicalMaterial).emissiveIntensity += (targetEm - (ringBottom.material as THREE.MeshPhysicalMaterial).emissiveIntensity) * 0.10;
-      (ringMiddle.material as THREE.MeshPhysicalMaterial).emissiveIntensity += ((hover ? 0.50 : 0.35) - (ringMiddle.material as THREE.MeshPhysicalMaterial).emissiveIntensity) * 0.10;
-
-      const ioTarget = hover ? 0.38 : 0.26;
-      (iMesh.material as THREE.MeshPhysicalMaterial).emissiveIntensity += (ioTarget - (iMesh.material as THREE.MeshPhysicalMaterial).emissiveIntensity) * 0.10;
-      (oMesh.material as THREE.MeshPhysicalMaterial).emissiveIntensity += (ioTarget - (oMesh.material as THREE.MeshPhysicalMaterial).emissiveIntensity) * 0.10;
-      (ioGlow.material as THREE.MeshBasicMaterial).opacity += ((hover ? 0.085 : 0.06) - (ioGlow.material as THREE.MeshBasicMaterial).opacity) * 0.12;
+      connectionLines.rotation.y = t * 0.12;
 
       if (pulse > 0.001) {
-        const s = 1 + pulse * 0.08;
-        ringTop.scale.setScalar(s);
-        ringMiddle.scale.setScalar(s);
-        ringBottom.scale.setScalar(s);
-        io.scale.setScalar(1.0 + pulse * 0.10);
         pulse *= 0.88;
-      } else {
-        ringTop.scale.setScalar(1);
-        ringMiddle.scale.setScalar(1);
-        ringBottom.scale.setScalar(1);
-        io.scale.setScalar(1);
       }
 
       renderer.render(scene, camera);
@@ -361,10 +528,11 @@ const HeroBackground3D: React.FC = () => {
       <canvas
         ref={canvasRef}
         className="w-full h-full block bg-black pointer-events-auto"
-        style={{ opacity: 0.95 }}
+        style={{ opacity: 1 }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(53,231,224,0.03)_50%,_transparent_100%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(53,231,224,0.05)_40%,_transparent_100%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(106,212,242,0.03)_0%,_transparent_60%)] pointer-events-none" />
     </div>
   );
 };

@@ -1,45 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import HeroBackground3D from './HeroBackground3D';
-
-const TypewriterText: React.FC<{ text: string; delay?: number }> = ({ text, delay = 0 }) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const [started, setStarted] = useState(false);
-
-  useEffect(() => {
-    const startTimer = setTimeout(() => setStarted(true), delay);
-    return () => clearTimeout(startTimer);
-  }, [delay]);
-
-  useEffect(() => {
-    if (!started) return;
-
-    let currentIndex = 0;
-    const interval = setInterval(() => {
-      if (currentIndex <= text.length) {
-        setDisplayedText(text.slice(0, currentIndex));
-        currentIndex++;
-      } else {
-        clearInterval(interval);
-      }
-    }, 80);
-
-    return () => clearInterval(interval);
-  }, [text, started]);
-
-  return (
-    <span className="relative">
-      {displayedText}
-      {displayedText.length < text.length && (
-        <motion.span
-          className="inline-block w-[2px] h-5 bg-black ml-0.5 align-middle"
-          animate={{ opacity: [1, 0] }}
-          transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-        />
-      )}
-    </span>
-  );
-};
 
 const FlipButton: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -91,26 +52,8 @@ const Hero: React.FC = () => {
         <HeroBackground3D />
       </motion.div>
 
-      <motion.div
-        className="absolute right-0 top-[8%] w-[70%] lg:w-[75%] h-auto z-20 hidden md:block"
-        initial={{ opacity: 0, x: 100, scale: 0.92, rotateY: 15 }}
-        animate={{ opacity: 1, x: 0, scale: 1, rotateY: 0 }}
-        transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
-        style={{ perspective: 1000 }}
-      >
-        <motion.img
-          src="/transparent_hero_photo.png"
-          alt="Closio Dashboard"
-          className="w-full h-auto object-contain drop-shadow-2xl"
-          style={{
-            filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5))',
-          }}
-          whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-        />
-      </motion.div>
-
       <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-30 py-32 lg:py-0">
-        <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-xl lg:max-w-2xl">
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
           <motion.span
             className="text-xs sm:text-sm uppercase tracking-[0.2em] text-neutral-500 font-medium mb-6 relative"
             initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
