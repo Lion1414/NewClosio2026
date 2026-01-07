@@ -23,8 +23,9 @@ const GlassRingsSection = () => {
     renderer.toneMappingExposure = 1.05;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 80);
-    camera.position.set(0, 0, 6);
+    scene.background = new THREE.Color(0x000000);
+    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 80);
+    camera.position.set(0, 0, 7.5);
 
     const pmrem = new THREE.PMREMGenerator(renderer);
     const env = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
@@ -101,7 +102,7 @@ const GlassRingsSection = () => {
 
       const isMobile = w < 900;
       group.position.x = isMobile ? 0 : 0;
-      group.scale.setScalar(isMobile ? 0.9 : 1.15);
+      group.scale.setScalar(isMobile ? 0.75 : 0.95);
     };
 
     const resizeObserver = new ResizeObserver(fit);
@@ -213,7 +214,7 @@ const GlassRingsSection = () => {
             ref={canvasRef}
             className="w-full h-[500px] lg:h-[600px] order-first lg:order-last block bg-black"
             style={{
-              opacity: 0.85,
+              opacity: 1.0,
               filter: 'saturate(1.08)'
             }}
           />
