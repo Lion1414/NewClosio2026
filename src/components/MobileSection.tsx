@@ -1,28 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Robot3D from './Robot3D';
 
-const AngularLine: React.FC = () => {
-  return (
-    <svg
-      viewBox="0 0 1000 1000"
-      className="absolute inset-0 w-full h-full pointer-events-none"
-      preserveAspectRatio="none"
-    >
-      <path
-        d="M 1050 300
-           L 580 300
-           Q 550 300, 550 330
-           L 550 1050"
-        fill="none"
-        stroke="white"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-};
-
 const Robot3DContainer: React.FC = () => {
   return (
     <div className="absolute left-[2%] sm:left-[3%] lg:left-[4%] top-[55%] -translate-y-1/2 w-[280px] sm:w-[340px] lg:w-[400px] xl:w-[450px] h-[350px] sm:h-[400px] lg:h-[450px] xl:h-[500px] pointer-events-none">
@@ -62,7 +40,6 @@ const MobileSection: React.FC = () => {
 
   return (
     <section id="mobile" className="min-h-[600px] h-[600px] sm:h-[650px] lg:h-[700px] xl:h-[750px] overflow-visible relative">
-      <AngularLine />
       <Robot3DContainer />
       <div className="absolute inset-0 flex items-end justify-end">
         <div className="relative w-full h-full flex items-end justify-end pr-0 pb-0">
