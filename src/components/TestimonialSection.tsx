@@ -64,7 +64,7 @@ const TypewriterText: React.FC<{ text: string }> = ({ text }) => {
 
   return (
     <div ref={elementRef} className="text-center mb-8">
-      <h2 className="text-6xl sm:text-7xl lg:text-8xl font-bold text-neutral-800/30 tracking-tight">
+      <h2 className="text-6xl sm:text-7xl lg:text-8xl font-bold text-white/40 tracking-tight">
         {displayText}
         <span className="animate-pulse">|</span>
       </h2>
