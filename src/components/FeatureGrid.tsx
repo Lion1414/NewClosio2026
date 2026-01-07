@@ -589,19 +589,11 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
       } ${isDashboard ? 'border-0' : 'border border-white/10'}`}
       style={{
         background: isDashboard
-          ? 'linear-gradient(135deg, #164e63 0%, #155e75 25%, #0e4a5c 50%, #0c4a6e 75%, #0369a1 100%)'
+          ? '#6ad4f2'
           : '#000000',
         willChange: 'transform, opacity',
       }}
     >
-      {isDashboard && (
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            background: 'radial-gradient(ellipse at 30% 20%, rgba(34, 211, 238, 0.25) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 40%)',
-          }}
-        />
-      )}
       <SparkleEffect isHovered={isHovered} />
       <div className="relative p-8 flex flex-col h-full min-h-[340px] z-10">
         <div className="w-36 h-36 mb-8">
@@ -609,10 +601,10 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
         </div>
 
         <div className="flex-1 flex flex-col">
-          <h3 className={`text-2xl font-bold mb-4 ${isDashboard ? 'text-white' : 'text-white'}`}>
+          <h3 className={`text-2xl font-bold mb-4 ${isDashboard ? 'text-gray-900' : 'text-white'}`}>
             {feature.title}
           </h3>
-          <p className={`text-base leading-relaxed ${isDashboard ? 'text-gray-300' : 'text-white/60'}`}>
+          <p className={`text-base leading-relaxed ${isDashboard ? 'text-gray-800' : 'text-white/60'}`}>
             {feature.description}
           </p>
         </div>
