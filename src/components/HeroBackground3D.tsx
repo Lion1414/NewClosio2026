@@ -53,21 +53,18 @@ const HeroBackground3D: React.FC = () => {
     const TEAL = new THREE.Color("#35E7E0");
     const WHITE = new THREE.Color("#FFFFFF");
 
-    function glassMaterial(tint: THREE.Color, emissiveIntensity = 0.35, rough = 0.05, thickness = 1.2) {
+    function solidMaterial(baseColor: THREE.Color, emissiveIntensity = 0.3, rough = 0.2) {
       return new THREE.MeshPhysicalMaterial({
-        color: new THREE.Color("#FFFFFF"),
-        metalness: 0.0,
+        color: baseColor,
+        metalness: 0.1,
         roughness: rough,
-        transmission: 1.0,
-        thickness,
-        ior: 1.52,
-        transparent: true,
-        opacity: 1.0,
-        clearcoat: 1.0,
-        clearcoatRoughness: 0.05,
-        envMapIntensity: 2.0,
-        specularIntensity: 1.2,
-        emissive: tint,
+        transmission: 0,
+        transparent: false,
+        clearcoat: 0.8,
+        clearcoatRoughness: 0.1,
+        envMapIntensity: 1.5,
+        specularIntensity: 1.0,
+        emissive: baseColor,
         emissiveIntensity
       });
     }
@@ -141,20 +138,13 @@ const HeroBackground3D: React.FC = () => {
     io.position.set(0, 0.0, 0.0);
     hero3D.add(io);
 
-    const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.5, height: 1.3, stroke: 0.14, depth: 0.15 }), glassMaterial(TEAL, 0.40, 0.06, 0.45));
-    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.65, ringThickness: 0.14, depth: 0.15, segments: 128 }), glassMaterial(WHITE, 0.35, 0.07, 0.45));
+    const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.5, height: 1.3, stroke: 0.14, depth: 0.15 }), solidMaterial(TEAL, 0.4, 0.2));
+    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.65, ringThickness: 0.14, depth: 0.15, segments: 128 }), solidMaterial(WHITE, 0.3, 0.2));
 
     iMesh.position.set(-0.50, 0.0, 0.0);
     oMesh.position.set(0.52, 0.0, 0.0);
 
     io.add(iMesh, oMesh);
-
-    const ioGlow = new THREE.Mesh(
-      new THREE.PlaneGeometry(2.2, 1.5),
-      new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.08, depthWrite: false })
-    );
-    ioGlow.position.set(0, 0, -0.15);
-    io.add(ioGlow);
 
     const raycaster = new THREE.Raycaster();
     const pointerNDC = new THREE.Vector2(0, 0);
@@ -282,19 +272,13 @@ const HeroBackground3D: React.FC = () => {
         hover = isHover;
 
         gsap.to(iMesh.material, {
-          emissiveIntensity: hover ? 0.55 : 0.40,
+          emissiveIntensity: hover ? 0.6 : 0.4,
           duration: 0.4,
           ease: "power2.out"
         });
 
         gsap.to(oMesh.material, {
-          emissiveIntensity: hover ? 0.50 : 0.35,
-          duration: 0.4,
-          ease: "power2.out"
-        });
-
-        gsap.to(ioGlow.material, {
-          opacity: hover ? 0.14 : 0.08,
+          emissiveIntensity: hover ? 0.5 : 0.3,
           duration: 0.4,
           ease: "power2.out"
         });
