@@ -221,9 +221,6 @@ const GlassRingsSection = () => {
 
         </div>
       </div>
-
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(55,230,224,0.05),transparent_50%)] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(255,99,216,0.05),transparent_50%)] pointer-events-none" />
     </section>
   );
 };
