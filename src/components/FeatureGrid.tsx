@@ -567,24 +567,24 @@ const GridPattern: React.FC<{ isDashboard: boolean; index: number }> = ({ isDash
   const patternId = `grid-pattern-${index}`;
   return (
     <div
-      className="absolute top-0 right-0 w-40 h-40 pointer-events-none overflow-hidden"
+      className="absolute top-0 right-0 w-56 h-56 pointer-events-none overflow-hidden"
       style={{
-        maskImage: 'radial-gradient(ellipse at 100% 0%, black 0%, transparent 70%)',
-        WebkitMaskImage: 'radial-gradient(ellipse at 100% 0%, black 0%, transparent 70%)',
+        maskImage: 'radial-gradient(ellipse at 100% 0%, black 0%, transparent 75%)',
+        WebkitMaskImage: 'radial-gradient(ellipse at 100% 0%, black 0%, transparent 75%)',
       }}
     >
-      <svg width="160" height="160" className="opacity-20">
+      <svg width="224" height="224" className="opacity-40">
         <defs>
-          <pattern id={patternId} width="16" height="16" patternUnits="userSpaceOnUse">
+          <pattern id={patternId} width="20" height="20" patternUnits="userSpaceOnUse">
             <path
-              d="M 16 0 L 0 0 0 16"
+              d="M 20 0 L 0 0 0 20"
               fill="none"
               stroke={isDashboard ? '#0891b2' : '#ffffff'}
-              strokeWidth="0.5"
+              strokeWidth="1"
             />
           </pattern>
         </defs>
-        <rect width="160" height="160" fill={`url(#${patternId})`} />
+        <rect width="224" height="224" fill={`url(#${patternId})`} />
       </svg>
     </div>
   );
@@ -592,9 +592,9 @@ const GridPattern: React.FC<{ isDashboard: boolean; index: number }> = ({ isDash
 
 const BottomGlow: React.FC<{ isDashboard: boolean }> = ({ isDashboard }) => (
   <motion.div
-    className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
-    initial={{ opacity: 0.3 }}
-    animate={{ opacity: [0.3, 0.6, 0.3] }}
+    className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+    initial={{ opacity: 0.5 }}
+    animate={{ opacity: [0.5, 0.9, 0.5] }}
     transition={{
       duration: 3,
       repeat: Infinity,
@@ -602,19 +602,27 @@ const BottomGlow: React.FC<{ isDashboard: boolean }> = ({ isDashboard }) => (
     }}
   >
     <div
-      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-24 blur-2xl"
+      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-32 blur-3xl"
       style={{
         background: isDashboard
-          ? 'radial-gradient(ellipse at 50% 100%, rgba(8, 145, 178, 0.4), transparent 70%)'
-          : 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.15), transparent 70%)',
+          ? 'radial-gradient(ellipse at 50% 100%, rgba(8, 145, 178, 0.6), transparent 70%)'
+          : 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.35), transparent 70%)',
       }}
     />
     <div
-      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-16 blur-xl"
+      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] h-20 blur-2xl"
       style={{
         background: isDashboard
-          ? 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.2), transparent 70%)'
-          : 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.1), transparent 70%)',
+          ? 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.35), transparent 70%)'
+          : 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.25), transparent 70%)',
+      }}
+    />
+    <div
+      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[50%] h-12 blur-xl"
+      style={{
+        background: isDashboard
+          ? 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.5), transparent 70%)'
+          : 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.15), transparent 70%)',
       }}
     />
   </motion.div>
