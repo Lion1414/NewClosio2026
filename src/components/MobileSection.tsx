@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import Robot3D from './Robot3D';
 
 const AngularLine: React.FC = () => {
   return (
@@ -24,26 +25,10 @@ const AngularLine: React.FC = () => {
   );
 };
 
-const IOImprint: React.FC = () => {
+const Robot3DContainer: React.FC = () => {
   return (
-    <div className="absolute left-8 sm:left-12 lg:left-16 top-[68%] -translate-y-1/2 flex items-baseline gap-4 sm:gap-6 lg:gap-8">
-      <span
-        className="text-[120px] sm:text-[160px] lg:text-[200px] font-bold italic text-transparent"
-        style={{
-          WebkitTextStroke: '2px rgba(255, 255, 255, 0.22)',
-          letterSpacing: '-0.02em'
-        }}
-      >
-        I
-      </span>
-      <span
-        className="text-[120px] sm:text-[160px] lg:text-[200px] font-bold text-white/[0.15]"
-        style={{
-          letterSpacing: '-0.02em'
-        }}
-      >
-        O
-      </span>
+    <div className="absolute left-[60px] sm:left-[80px] lg:left-[100px] top-[50%] -translate-y-1/2 w-[200px] sm:w-[240px] lg:w-[280px] h-[300px] sm:h-[350px] lg:h-[400px] pointer-events-none">
+      <Robot3D />
     </div>
   );
 };
@@ -80,7 +65,7 @@ const MobileSection: React.FC = () => {
   return (
     <section id="mobile" className="h-[450px] sm:h-[500px] lg:h-[550px] overflow-hidden relative">
       <AngularLine />
-      <IOImprint />
+      <Robot3DContainer />
       <div className="absolute inset-0 flex items-start justify-end pt-0">
         <div className="relative w-full h-full flex items-start justify-end pr-0">
           <video
