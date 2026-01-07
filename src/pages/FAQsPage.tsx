@@ -195,6 +195,7 @@ const FAQsPage = () => {
             </p>
             <Link
               to="/contact-us"
+              onClick={() => window.scrollTo(0, 0)}
               className="inline-flex items-center gap-2 bg-[#6ad4f2] text-black font-medium px-6 py-3 rounded-xl hover:bg-[#6ad4f2]/90 transition-colors"
             >
               Contact Support
