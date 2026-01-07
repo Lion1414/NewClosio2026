@@ -25,7 +25,7 @@ const GlassRingsSection = () => {
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x000000);
     const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 80);
-    camera.position.set(0, 0, 7.5);
+    camera.position.set(0, 0.35, 8.5);
 
     const pmrem = new THREE.PMREMGenerator(renderer);
     const env = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
@@ -44,48 +44,53 @@ const GlassRingsSection = () => {
     scene.add(rim);
 
     const C_TEAL = new THREE.Color("#37E6E0");
-    const C_PINK = new THREE.Color("#FF63D8");
     const C_WHITE = new THREE.Color("#FFFFFF");
 
-    const makeGlass = (tint: THREE.Color, emissiveStrength = 0.35) => new THREE.MeshPhysicalMaterial({
-      color: tint.clone().lerp(C_WHITE, 0.55),
+    const makeGlass = (tint: THREE.Color, emissiveStrength = 0.40) => new THREE.MeshPhysicalMaterial({
+      color: new THREE.Color("#FFFFFF"),
       metalness: 0.0,
-      roughness: 0.12,
+      roughness: 0.04,
       transmission: 1.0,
-      thickness: 0.65,
-      ior: 1.5,
+      thickness: 1.5,
+      ior: 1.52,
       transparent: true,
       opacity: 1.0,
       clearcoat: 1.0,
-      clearcoatRoughness: 0.12,
-      envMapIntensity: 0.8,
-      specularIntensity: 1.0,
-      emissive: tint.clone().lerp(C_WHITE, 0.2),
+      clearcoatRoughness: 0.05,
+      envMapIntensity: 2.0,
+      specularIntensity: 1.2,
+      emissive: tint,
       emissiveIntensity: emissiveStrength
     });
 
     const group = new THREE.Group();
     scene.add(group);
 
-    const geo = new THREE.TorusGeometry(1, 0.16, 48, 220);
+    const topRingGeo = new THREE.TorusGeometry(1.4, 0.18, 64, 100);
+    const ringTop = new THREE.Mesh(topRingGeo, makeGlass(C_TEAL, 0.45));
+    ringTop.position.set(0, 1.8, 0);
+    group.add(ringTop);
 
-    const ring3 = new THREE.Mesh(geo, makeGlass(C_TEAL, 0.18));
-    ring3.scale.set(2.2, 2.2, 2.2);
-    ring3.rotation.set(0, 0, 0);
-    ring3.position.set(0, -0.6, 0);
-    group.add(ring3);
+    const middleRingGeo = new THREE.TorusGeometry(0.9, 0.12, 64, 100);
+    const ringMiddle = new THREE.Mesh(middleRingGeo, makeGlass(C_WHITE, 0.38));
+    ringMiddle.position.set(0, 0.35, 0);
+    group.add(ringMiddle);
 
-    const ring1 = new THREE.Mesh(geo, makeGlass(C_TEAL, 0.32));
-    ring1.scale.set(1.8, 1.8, 1.8);
-    ring1.rotation.set(0, 0, 0);
-    ring1.position.set(0, 0.2, 0);
-    group.add(ring1);
+    const bottomRingGeo = new THREE.TorusGeometry(1.4, 0.18, 64, 100);
+    const ringBottom = new THREE.Mesh(bottomRingGeo, makeGlass(C_TEAL, 0.45));
+    ringBottom.position.set(0, -1.1, 0);
+    group.add(ringBottom);
 
-    const ring2 = new THREE.Mesh(geo, makeGlass(C_PINK, 0.28));
-    ring2.scale.set(1.4, 1.4, 1.4);
-    ring2.rotation.set(0, 0, 0);
-    ring2.position.set(0, 1.0, 0);
-    group.add(ring2);
+    const chainGeo = new THREE.CylinderGeometry(0.06, 0.06, 0.6, 16);
+    const chainMat = makeGlass(C_WHITE, 0.28);
+
+    const chain1 = new THREE.Mesh(chainGeo, chainMat);
+    chain1.position.set(0, 1.15, 0);
+    group.add(chain1);
+
+    const chain2 = new THREE.Mesh(chainGeo, chainMat);
+    chain2.position.set(0, -0.35, 0);
+    group.add(chain2);
 
     const fit = () => {
       const w = canvas.clientWidth;
@@ -109,11 +114,19 @@ const GlassRingsSection = () => {
     const animate = () => {
       t += 0.008;
 
-      ring1.rotation.y += 0.006;
-      ring2.rotation.y -= 0.005;
-      ring3.rotation.y += 0.004;
+      const swing = Math.sin(t * 0.7) * 0.12;
 
-      group.position.y = Math.sin(t) * 0.08;
+      ringTop.rotation.x = swing;
+      ringTop.rotation.z = Math.cos(t * 0.5) * 0.08;
+
+      ringMiddle.rotation.x = swing * 0.8;
+      ringMiddle.rotation.z = Math.cos(t * 0.5 + 0.3) * 0.06;
+
+      ringBottom.rotation.x = swing * 0.6;
+      ringBottom.rotation.z = Math.cos(t * 0.5 + 0.6) * 0.05;
+
+      chain1.rotation.z = swing * 0.5;
+      chain2.rotation.z = swing * 0.4;
 
       renderer.render(scene, camera);
       animationId = requestAnimationFrame(animate);
@@ -143,7 +156,10 @@ const GlassRingsSection = () => {
       cancelAnimationFrame(animationId);
       resizeObserver.disconnect();
       renderer.dispose();
-      geo.dispose();
+      topRingGeo.dispose();
+      middleRingGeo.dispose();
+      bottomRingGeo.dispose();
+      chainGeo.dispose();
     };
   }, []);
 
