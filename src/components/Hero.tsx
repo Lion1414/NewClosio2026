@@ -137,7 +137,7 @@ const Hero: React.FC = () => {
           </h1>
 
           <motion.p
-            className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-md leading-relaxed mb-10"
+            className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-md leading-relaxed mb-14"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 5.3 }}
