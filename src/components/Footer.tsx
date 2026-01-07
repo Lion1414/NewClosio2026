@@ -56,12 +56,19 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-black/60 backdrop-blur-xl relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#6ad4f2] to-transparent opacity-80" />
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white to-transparent opacity-60" />
-      <div className="absolute top-[-8px] left-0 right-0 h-[20px] bg-gradient-to-r from-transparent via-[#6ad4f2]/30 to-transparent blur-md" />
-      <div className="absolute top-0 left-0 right-0 h-[40px] bg-gradient-to-b from-[#6ad4f2]/10 to-transparent" />
-      <div className="max-w-[calc(100vw-12rem)] mx-auto px-6 py-16">
+    <footer
+      className="relative overflow-visible"
+      style={{
+        background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0.85) 100%)',
+        backdropFilter: 'blur(24px)',
+        WebkitBackdropFilter: 'blur(24px)',
+      }}
+    >
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white to-transparent opacity-90" />
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/80 to-transparent blur-[1px]" />
+      <div className="absolute top-[-10px] left-0 right-0 h-[25px] bg-gradient-to-r from-transparent via-white/20 to-transparent blur-lg" />
+      <div className="absolute top-[-20px] left-1/2 -translate-x-1/2 w-[60%] h-[40px] bg-gradient-to-r from-transparent via-[#6ad4f2]/30 to-transparent blur-2xl" />
+      <div className="max-w-[calc(100vw-12rem)] mx-auto px-6 pt-[220px] pb-16">
         {/* Main Footer Content */}
         <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
           {/* Brand Section */}

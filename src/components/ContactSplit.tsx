@@ -209,9 +209,19 @@ const ContactSplit = React.memo(() => {
         </div>
       </section>
 
-      <section className="relative bg-black overflow-hidden">
-        <div className="h-[400px] w-full pointer-events-none select-none">
-          <StaticIO3D />
+      <section className="relative bg-black overflow-visible">
+        <div className="relative h-[500px] w-full pointer-events-none select-none flex items-center justify-center -mb-[200px]">
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div
+              className="w-[600px] h-[400px] rounded-full blur-[100px] opacity-40"
+              style={{
+                background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.5) 0%, rgba(106, 212, 242, 0.2) 40%, transparent 70%)',
+              }}
+            />
+          </div>
+          <div className="absolute inset-0">
+            <StaticIO3D />
+          </div>
         </div>
       </section>
     </>
