@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 
 const ContactUs = () => {
@@ -218,12 +219,12 @@ const ContactUs = () => {
             <p className="text-white/70 mb-4">
               Before reaching out, you might find your answer in our FAQ section.
             </p>
-            <a
-              href="/faqs"
+            <Link
+              to="/faqs"
               className="inline-block px-6 py-2 border border-[#6ad4f2] text-[#6ad4f2] rounded-xl hover:bg-[#6ad4f2]/10 transition-colors"
             >
               Visit FAQs
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
       </div>
