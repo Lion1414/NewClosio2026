@@ -151,8 +151,8 @@ const HierarchyIcon: React.FC = () => (
         <stop offset="100%" stopColor="#1f2937" />
       </linearGradient>
       <linearGradient id="hierScreenGlow" x1="50%" y1="0%" x2="50%" y2="100%">
-        <stop offset="0%" stopColor="#1a1a2e" />
-        <stop offset="100%" stopColor="#0f0f1a" />
+        <stop offset="0%" stopColor="#0e7490" />
+        <stop offset="100%" stopColor="#164e63" />
       </linearGradient>
       <filter id="hierShadow" x="-30%" y="-30%" width="160%" height="160%">
         <feDropShadow dx="1" dy="2" stdDeviation="2" floodColor="#000" floodOpacity="0.4" />
