@@ -176,25 +176,56 @@ const ContactSplit = React.memo(() => {
               boxShadow: '0 25px 50px -12px rgba(106, 212, 242, 0.3), 0 0 80px rgba(106, 212, 242, 0.15)',
             }}
           >
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.1) 100%)',
+              }}
+            />
+            <div
+              className="absolute top-0 left-0 right-0 h-[1px]"
+              style={{
+                background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 20%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.6) 80%, transparent 100%)',
+              }}
+            />
+            <div
+              className="absolute bottom-0 left-0 right-0 h-[1px]"
+              style={{
+                background: 'linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.1) 50%, transparent 100%)',
+              }}
+            />
+            <div
+              className="absolute -top-20 -left-20 w-[300px] h-[300px] rounded-full pointer-events-none"
+              style={{
+                background: 'radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%)',
+              }}
+            />
+            <div
+              className="absolute -bottom-32 -right-32 w-[400px] h-[400px] rounded-full pointer-events-none"
+              style={{
+                background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)',
+              }}
+            />
+
             <div className="relative z-10 flex flex-col md:flex-row items-stretch min-h-[280px] md:min-h-[300px]">
               <div className="flex-1 p-6 md:p-8 lg:p-10 flex flex-col justify-center">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 text-left text-black">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 text-left text-white drop-shadow-sm">
                   Stay in the Loop with{' '}
-                  <span className="text-black/80">
+                  <span className="text-white/90">
                     Closio
                   </span>
                 </h2>
-                <p className="text-sm lg:text-base text-black/70 max-w-md mb-6 leading-relaxed text-left">
+                <p className="text-sm lg:text-base text-white/80 max-w-md mb-6 leading-relaxed text-left">
                   Be the first to hear about updates, early access offers, and exclusive insights.
                 </p>
 
                 {status === 'success' ? (
                   <div className="flex flex-col items-start py-3">
-                    <div className="w-12 h-12 bg-black/20 rounded-full flex items-center justify-center mb-3 border border-black/30">
-                      <span className="text-black text-xl">✓</span>
+                    <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-3 border border-white/30 backdrop-blur-sm">
+                      <span className="text-white text-xl">✓</span>
                     </div>
-                    <p className="text-lg font-semibold text-black">You're in!</p>
-                    <p className="text-black/70 mt-1 text-sm">We'll be in touch.</p>
+                    <p className="text-lg font-semibold text-white">You're in!</p>
+                    <p className="text-white/80 mt-1 text-sm">We'll be in touch.</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="max-w-sm">
@@ -211,14 +242,14 @@ const ContactSplit = React.memo(() => {
                             }
                           }}
                           placeholder="Enter your email"
-                          className="w-full px-4 py-3 bg-black/20 border border-black/20 rounded-lg focus:border-black/50 focus:ring-2 focus:ring-black/20 outline-none transition-all text-black placeholder:text-black/50 text-sm"
+                          className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:border-white/60 focus:ring-2 focus:ring-white/30 outline-none transition-all text-white placeholder:text-white/60 text-sm backdrop-blur-sm"
                           disabled={status === 'loading'}
                         />
                       </div>
                       <button
                         type="submit"
                         disabled={status === 'loading'}
-                        className="px-5 py-3 bg-black text-white font-semibold rounded-lg hover:bg-black/90 hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-sm"
+                        className="px-5 py-3 bg-white text-[#6ad4f2] font-semibold rounded-lg hover:bg-white/90 hover:shadow-lg hover:shadow-white/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-sm"
                       >
                         {status === 'loading' ? (
                           <span className="flex items-center justify-center gap-2">
@@ -235,7 +266,7 @@ const ContactSplit = React.memo(() => {
                     </div>
 
                     {status === 'error' && errorMessage && (
-                      <p className="mt-2 text-red-700 text-xs font-medium">{errorMessage}</p>
+                      <p className="mt-2 text-red-200 text-xs font-medium">{errorMessage}</p>
                     )}
                   </form>
                 )}
@@ -257,16 +288,17 @@ const ContactSplit = React.memo(() => {
                     }}
                   >
                     <div
-                      className="px-3 py-2 rounded-lg whitespace-nowrap flex items-center gap-2"
+                      className="px-3 py-2 rounded-xl whitespace-nowrap flex items-center gap-2"
                       style={{
-                        background: 'rgba(0, 0, 0, 0.15)',
-                        backdropFilter: 'blur(12px)',
-                        border: '1px solid rgba(0, 0, 0, 0.1)',
-                        boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1)',
+                        background: 'rgba(255, 255, 255, 0.15)',
+                        backdropFilter: 'blur(16px)',
+                        WebkitBackdropFilter: 'blur(16px)',
+                        border: '1px solid rgba(255, 255, 255, 0.25)',
+                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
                       }}
                     >
-                      <span className="text-black/40">{card.icon}</span>
-                      <span className="text-black/40 text-xs font-medium">{card.label}</span>
+                      <span className="text-white/60">{card.icon}</span>
+                      <span className="text-white/60 text-xs font-medium">{card.label}</span>
                     </div>
                   </motion.div>
                 ))}
@@ -286,16 +318,17 @@ const ContactSplit = React.memo(() => {
                     }}
                   >
                     <div
-                      className="px-3 py-2 rounded-lg whitespace-nowrap flex items-center gap-2"
+                      className="px-3 py-2 rounded-xl whitespace-nowrap flex items-center gap-2"
                       style={{
-                        background: 'rgba(0, 0, 0, 0.25)',
-                        backdropFilter: 'blur(16px)',
-                        border: '1px solid rgba(0, 0, 0, 0.15)',
-                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+                        background: 'rgba(255, 255, 255, 0.25)',
+                        backdropFilter: 'blur(20px)',
+                        WebkitBackdropFilter: 'blur(20px)',
+                        border: '1px solid rgba(255, 255, 255, 0.4)',
+                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 0 rgba(0, 0, 0, 0.05)',
                       }}
                     >
-                      <span className="text-black/80">{card.icon}</span>
-                      <span className="text-black/90 text-xs font-medium">{card.label}</span>
+                      <span className="text-white">{card.icon}</span>
+                      <span className="text-white text-xs font-medium drop-shadow-sm">{card.label}</span>
                     </div>
                   </motion.div>
                 ))}
