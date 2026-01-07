@@ -1,16 +1,55 @@
 "use client";
 
 import * as React from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 interface SectionWrapperProps {
   children: React.ReactNode;
   className?: string;
+  animationDelay?: number;
+  disableAnimation?: boolean;
 }
 
-export function SectionWrapper({ children, className }: SectionWrapperProps) {
+export function SectionWrapper({
+  children,
+  className,
+  animationDelay = 0,
+  disableAnimation = false
+}: SectionWrapperProps) {
+  const { ref, isVisible } = useScrollAnimation({
+    threshold: 0.1,
+    rootMargin: '-80px 0px -80px 0px'
+  });
+
+  if (disableAnimation) {
+    return (
+      <div
+        className={cn(
+          "rounded-3xl overflow-hidden",
+          "bg-gradient-to-br from-black via-[#0A0F1A] to-[#1A2428]",
+          className
+        )}
+      >
+        {children}
+      </div>
+    );
+  }
+
   return (
-    <div
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 60, scale: 0.98 }}
+      animate={isVisible
+        ? { opacity: 1, y: 0, scale: 1 }
+        : { opacity: 0, y: 60, scale: 0.98 }
+      }
+      transition={{
+        duration: 0.7,
+        delay: animationDelay,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }}
       className={cn(
         "rounded-3xl overflow-hidden",
         "bg-gradient-to-br from-black via-[#0A0F1A] to-[#1A2428]",
@@ -18,6 +57,6 @@ export function SectionWrapper({ children, className }: SectionWrapperProps) {
       )}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }

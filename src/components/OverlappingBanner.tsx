@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const GridPattern: React.FC = () => {
   return (
@@ -50,17 +51,25 @@ const BottomGlow: React.FC = () => (
 );
 
 const OverlappingBanner: React.FC = () => {
+  const { ref, isVisible } = useScrollAnimation({
+    threshold: 0.2,
+    rootMargin: '-80px 0px -80px 0px'
+  });
+
   return (
     <div className="relative z-10 -mt-16 mb-[-8rem] px-4 sm:px-8 md:px-16 lg:px-24">
       <motion.div
+        ref={ref}
         className="relative w-full rounded-3xl overflow-hidden backdrop-blur-2xl"
         style={{
           background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(0, 0, 0, 0.15) 50%, rgba(255, 255, 255, 0.04) 100%)',
           boxShadow: '0 25px 80px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0.5px 0 rgba(255, 255, 255, 0.15)',
         }}
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
+        initial={{ opacity: 0, y: 60, scale: 0.98 }}
+        animate={isVisible
+          ? { opacity: 1, y: 0, scale: 1 }
+          : { opacity: 0, y: 60, scale: 0.98 }
+        }
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
         <div
@@ -76,8 +85,7 @@ const OverlappingBanner: React.FC = () => {
           <motion.h2
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight max-w-4xl"
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             The <span className="relative inline-block">
@@ -104,8 +112,7 @@ const OverlappingBanner: React.FC = () => {
           <motion.p
             className="mt-6 text-base md:text-lg text-white/70 max-w-2xl"
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             From <span className="text-[#6ad4f2] font-medium">lead</span> to{' '}
