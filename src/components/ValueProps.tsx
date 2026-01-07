@@ -137,7 +137,7 @@ const ValueProps: React.FC = () => {
               ))}
             </div>
 
-            <div className="mt-8">
+            <div className="mt-12">
               <button
                 onClick={() => {
                   const element = document.getElementById('contact');
