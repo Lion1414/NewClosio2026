@@ -113,11 +113,18 @@ const HeroBackground3D: React.FC = () => {
       return g;
     }
 
-    function createSolidO({ radius = 0.36, depth = 0.10 } = {}) {
-      const shape = new THREE.Shape();
-      shape.absellipse(0, 0, radius, radius, 0, Math.PI * 2, false, 0);
+    function createHollowO({ outerRadius = 0.65, ringThickness = 0.12, depth = 0.10 } = {}) {
+      const innerRadius = outerRadius - ringThickness;
 
-      const g = new THREE.ExtrudeGeometry(shape, {
+      const outer = new THREE.Shape();
+      outer.absellipse(0, 0, outerRadius, outerRadius, 0, Math.PI * 2, false, 0);
+
+      const inner = new THREE.Path();
+      inner.absellipse(0, 0, innerRadius, innerRadius, 0, Math.PI * 2, true, 0);
+
+      outer.holes.push(inner);
+
+      const g = new THREE.ExtrudeGeometry(outer, {
         depth,
         bevelEnabled: true,
         bevelThickness: 0.03,
@@ -133,7 +140,7 @@ const HeroBackground3D: React.FC = () => {
     hero3D.add(io);
 
     const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.5, height: 1.3, stroke: 0.12, depth: 0.15 }), glassMaterial(TEAL, 0.40, 0.06, 0.45));
-    const oMesh = new THREE.Mesh(createSolidO({ radius: 0.48, depth: 0.15 }), glassMaterial(WHITE, 0.35, 0.07, 0.45));
+    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.65, ringThickness: 0.12, depth: 0.15 }), glassMaterial(WHITE, 0.35, 0.07, 0.45));
 
     iMesh.position.set(-0.50, 0.0, 0.0);
     oMesh.position.set(0.52, 0.0, 0.0);
