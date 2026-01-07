@@ -138,19 +138,6 @@ const TestimonialSection: React.FC = () => {
           >
             <p className="text-slate-300 text-sm">{current.role}</p>
           </div>
-
-          <div className="flex justify-center gap-2 mt-6">
-            {testimonials.map((_, index) => (
-              <div
-                key={index}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  index === activeIndex
-                    ? 'w-6 bg-gradient-to-r from-[#6ad4f2] to-[#d593c0]'
-                    : 'w-1.5 bg-white/20'
-                }`}
-              />
-            ))}
-          </div>
         </div>
       </div>
     </section>
