@@ -13,12 +13,21 @@ interface FloatingCard {
 }
 
 const floatingCards: FloatingCard[] = [
-  { label: 'Book of Business', x: '52%', y: '12%', opacity: 1, scale: 1, delay: 0 },
-  { label: 'Commissions', x: '72%', y: '32%', opacity: 0.9, scale: 0.95, delay: 0.1 },
-  { label: 'Team Hierarchy', x: '48%', y: '52%', opacity: 1, scale: 1, delay: 0.2 },
-  { label: 'Reminders', x: '78%', y: '58%', opacity: 0.6, scale: 0.9, delay: 0.3 },
-  { label: 'Quick Links', x: '55%', y: '76%', opacity: 0.8, scale: 0.95, delay: 0.4 },
-  { label: 'Dashboard', x: '82%', y: '18%', opacity: 0.5, scale: 0.85, delay: 0.15 },
+  { label: 'Book of Business', x: '8%', y: '8%', opacity: 1, scale: 1, delay: 0 },
+  { label: 'Dashboard', x: '55%', y: '5%', opacity: 0.7, scale: 0.9, delay: 0.15 },
+  { label: 'Commissions', x: '30%', y: '35%', opacity: 0.95, scale: 0.98, delay: 0.1 },
+  { label: 'Team Hierarchy', x: '5%', y: '55%', opacity: 1, scale: 1, delay: 0.2 },
+  { label: 'Reminders', x: '48%', y: '50%', opacity: 0.8, scale: 0.92, delay: 0.3 },
+  { label: 'Quick Links', x: '18%', y: '82%', opacity: 0.9, scale: 0.95, delay: 0.4 },
+];
+
+const backgroundCards: FloatingCard[] = [
+  { label: 'Analytics', x: '75%', y: '15%', opacity: 0.35, scale: 0.85, delay: 0.5 },
+  { label: 'Reports', x: '70%', y: '70%', opacity: 0.25, scale: 0.82, delay: 0.55 },
+  { label: 'Settings', x: '88%', y: '40%', opacity: 0.2, scale: 0.8, delay: 0.6 },
+  { label: 'Notifications', x: '60%', y: '88%', opacity: 0.3, scale: 0.85, delay: 0.65 },
+  { label: 'Policies', x: '92%', y: '75%', opacity: 0.15, scale: 0.78, delay: 0.7 },
+  { label: 'Carriers', x: '85%', y: '8%', opacity: 0.22, scale: 0.8, delay: 0.45 },
 ];
 
 const ContactSplit = React.memo(() => {
@@ -145,6 +154,33 @@ const ContactSplit = React.memo(() => {
                 </div>
 
                 <div className="hidden md:block flex-1 relative overflow-hidden">
+                  {backgroundCards.map((card) => (
+                    <motion.div
+                      key={card.label}
+                      initial={{ opacity: 0, x: 60 }}
+                      whileInView={{ opacity: card.opacity, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.7, delay: card.delay }}
+                      className="absolute"
+                      style={{
+                        left: card.x,
+                        top: card.y,
+                        transform: `scale(${card.scale})`,
+                      }}
+                    >
+                      <div
+                        className="px-4 py-2.5 rounded-lg whitespace-nowrap"
+                        style={{
+                          background: 'rgba(255, 255, 255, 0.04)',
+                          backdropFilter: 'blur(6px)',
+                          border: '1px solid rgba(255, 255, 255, 0.06)',
+                        }}
+                      >
+                        <span className="text-white/30 text-xs font-medium">{card.label}</span>
+                      </div>
+                    </motion.div>
+                  ))}
+
                   {floatingCards.map((card) => (
                     <motion.div
                       key={card.label}
@@ -172,46 +208,6 @@ const ContactSplit = React.memo(() => {
                       </div>
                     </motion.div>
                   ))}
-
-                  <motion.div
-                    initial={{ opacity: 0, x: 80 }}
-                    whileInView={{ opacity: 0.3, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.5 }}
-                    className="absolute"
-                    style={{ left: '92%', top: '42%', transform: 'translateX(-50%)' }}
-                  >
-                    <div
-                      className="px-4 py-2.5 rounded-lg whitespace-nowrap"
-                      style={{
-                        background: 'rgba(255, 255, 255, 0.05)',
-                        backdropFilter: 'blur(8px)',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
-                      }}
-                    >
-                      <span className="text-white/60 text-xs font-medium">Analytics</span>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, x: 60 }}
-                    whileInView={{ opacity: 0.25, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.6 }}
-                    className="absolute"
-                    style={{ left: '88%', top: '82%' }}
-                  >
-                    <div
-                      className="px-4 py-2.5 rounded-lg whitespace-nowrap"
-                      style={{
-                        background: 'rgba(255, 255, 255, 0.04)',
-                        backdropFilter: 'blur(6px)',
-                        border: '1px solid rgba(255, 255, 255, 0.06)',
-                      }}
-                    >
-                      <span className="text-white/50 text-xs font-medium">Reports</span>
-                    </div>
-                  </motion.div>
                 </div>
               </div>
             </motion.div>
