@@ -244,11 +244,12 @@ const Robot3D = () => {
 
     const createHollowO = () => {
       const outerRadius = 0.45;
-      const innerRadius = 0.26;
+      const innerRadius = 0.30;
       const depth = 0.16;
 
       const outerShape = new THREE.Shape();
-      const segments = 64;
+      const segments = 128;
+
       for (let i = 0; i <= segments; i++) {
         const angle = (i / segments) * Math.PI * 2;
         const x = Math.cos(angle) * outerRadius;
@@ -259,6 +260,7 @@ const Robot3D = () => {
           outerShape.lineTo(x, y);
         }
       }
+      outerShape.closePath();
 
       const innerHole = new THREE.Path();
       for (let i = 0; i <= segments; i++) {
@@ -271,6 +273,7 @@ const Robot3D = () => {
           innerHole.lineTo(x, y);
         }
       }
+      innerHole.closePath();
       outerShape.holes.push(innerHole);
 
       const g = new THREE.ExtrudeGeometry(outerShape, {
