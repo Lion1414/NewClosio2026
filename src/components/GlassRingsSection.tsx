@@ -20,7 +20,9 @@ const GlassRingsSection = () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 0.95;
+    renderer.toneMappingExposure = 1.1;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x000000);
@@ -31,37 +33,52 @@ const GlassRingsSection = () => {
     const env = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
     scene.environment = env;
 
-    const key = new THREE.DirectionalLight(0xffffff, 1.5);
-    key.position.set(3, 4, 6);
+    const key = new THREE.DirectionalLight(0xffffff, 2.0);
+    key.position.set(5, 6, 8);
+    key.castShadow = true;
+    key.shadow.mapSize.width = 2048;
+    key.shadow.mapSize.height = 2048;
+    key.shadow.camera.near = 0.5;
+    key.shadow.camera.far = 50;
     scene.add(key);
 
-    const fill = new THREE.DirectionalLight(0xffffff, 0.6);
-    fill.position.set(-4, -1, 4);
+    const fill = new THREE.DirectionalLight(0x6699ff, 0.8);
+    fill.position.set(-5, -2, 3);
     scene.add(fill);
 
-    const rim = new THREE.PointLight(0xffffff, 1.0, 20);
-    rim.position.set(-2, 2, -2);
+    const rim = new THREE.PointLight(0x00d4ff, 2.0, 25);
+    rim.position.set(-3, 3, -3);
     scene.add(rim);
+
+    const accent = new THREE.PointLight(0xffffff, 1.5, 15);
+    accent.position.set(2, -2, 4);
+    scene.add(accent);
 
     const metalMaterial = new THREE.MeshPhysicalMaterial({
       color: new THREE.Color("#E8EEF5"),
-      metalness: 0.95,
-      roughness: 0.15,
-      envMapIntensity: 1.5,
-      clearcoat: 0.8,
-      clearcoatRoughness: 0.2,
+      metalness: 1.0,
+      roughness: 0.12,
+      envMapIntensity: 2.0,
+      clearcoat: 1.0,
+      clearcoatRoughness: 0.1,
+      reflectivity: 1.0,
+      ior: 2.5,
+      thickness: 0.5,
+      transmission: 0,
     });
 
     const group = new THREE.Group();
     scene.add(group);
 
-    const linkGeo = new THREE.TorusGeometry(0.55, 0.14, 24, 48);
+    const linkGeo = new THREE.TorusGeometry(0.55, 0.14, 48, 72);
 
     const chainLinks: THREE.Mesh[] = [];
 
     for (let i = 0; i < 11; i++) {
       const link = new THREE.Mesh(linkGeo, metalMaterial.clone());
       link.position.y = 2.8 - (i * 0.6);
+      link.castShadow = true;
+      link.receiveShadow = true;
 
       if (i % 2 === 0) {
         link.rotation.y = Math.PI / 2;
@@ -102,30 +119,33 @@ const GlassRingsSection = () => {
     canvas.addEventListener('mouseleave', handleCanvasMouseLeave);
 
     const animate = () => {
-      t += 0.01;
+      t += 0.012;
 
-      const baseSwing = Math.sin(t * 0.6) * 0.15;
-      const baseTwist = Math.sin(t * 0.4) * 0.1;
+      const mainSwing = Math.sin(t * 0.8) * 0.28;
+      const secondarySwing = Math.sin(t * 1.3) * 0.12;
 
-      const hoverSway = isHovering ? Math.sin(t * 2.5) * 0.25 : 0;
-      const hoverIntensity = isHovering ? 1.6 : 1.0;
+      const hoverSway = isHovering ? Math.sin(t * 2.8) * 0.35 : 0;
+      const hoverIntensity = isHovering ? 1.8 : 1.0;
 
       chainLinks.forEach((link, i) => {
         const factor = 1 - (i / chainLinks.length);
-        const delay = i * 0.15;
+        const delay = i * 0.2;
+        const waveFactor = Math.sin(t * 0.6 + delay);
 
-        const swing = baseSwing * hoverIntensity;
-        const twist = baseTwist * hoverIntensity;
+        const swingX = (mainSwing + secondarySwing * 0.5) * hoverIntensity;
+        const swingZ = (Math.sin(t * 0.5) * 0.15 + Math.sin(t * 1.1) * 0.08) * hoverIntensity;
 
         if (i % 2 === 0) {
-          link.rotation.x = swing * factor + Math.sin(t * 0.5 + delay) * 0.08 + hoverSway * factor * 0.4;
-          link.rotation.z = twist * factor * 0.6 + hoverSway * factor * 0.3;
+          link.rotation.x = swingX * factor + waveFactor * 0.12 * factor + hoverSway * factor * 0.5;
+          link.rotation.z = swingZ * factor * 0.7;
+          link.position.x = (Math.sin(t * 0.7 + delay) * 0.12 + hoverSway * 0.15) * factor;
         } else {
-          link.rotation.z = swing * factor + Math.sin(t * 0.5 + delay) * 0.08 + hoverSway * factor * 0.4;
-          link.rotation.x = twist * factor * 0.6 + hoverSway * factor * 0.3;
+          link.rotation.z = swingX * factor + waveFactor * 0.12 * factor + hoverSway * factor * 0.5;
+          link.rotation.x = swingZ * factor * 0.7;
+          link.position.x = (Math.sin(t * 0.7 + delay) * 0.12 + hoverSway * 0.15) * factor;
         }
 
-        link.position.x = (Math.sin(t * 0.5 + delay) * 0.05 + hoverSway * 0.08) * factor;
+        link.position.z = Math.sin(t * 0.4 + delay) * 0.03 * factor;
       });
 
       renderer.render(scene, camera);
