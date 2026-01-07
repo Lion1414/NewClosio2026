@@ -576,27 +576,27 @@ const FeatureGrid: React.FC = () => {
   const features = [
     {
       title: 'Book of Business',
-      description: 'Manage your entire portfolio of clients and policies in one organized, searchable database.',
+      description: 'No more digging through spreadsheets or losing track of clients. Your entire portfolio lives in one place, so you always know exactly where every deal stands.',
       icon: BookIcon,
     },
     {
       title: 'Team Hierarchy',
-      description: 'Visualize your agency structure with clear reporting lines and team performance metrics.',
+      description: 'See who reports to who and how your team is actually performing. No more confusion about splits or wondering how your downline is doing.',
       icon: HierarchyIcon,
     },
     {
       title: 'Commission Tracking',
-      description: 'Real-time visibility into your commission structure with automated calculations and transparent breakdowns.',
+      description: 'Stop chasing down commission statements and second-guessing your payouts. Know exactly what you earned, when you earned it, and where it came from.',
       icon: CommissionIcon,
     },
     {
       title: 'Dashboard Analytics',
-      description: 'Powerful insights and metrics to track performance, close rates, and revenue at a glance.',
+      description: 'Get the full picture of your business at a glance. See what is working, what needs attention, and make smarter decisions without crunching numbers yourself.',
       icon: DashboardIcon,
     },
     {
       title: 'Leaderboard',
-      description: 'Track top performers and motivate your team with real-time rankings and achievements.',
+      description: 'Healthy competition drives results. See where you stack up against your peers and celebrate the wins that keep your team hungry for more.',
       icon: MedalsIcon,
     },
   ];
