@@ -12,7 +12,7 @@ const Robot3D = () => {
     const renderer = new THREE.WebGLRenderer({
       canvas,
       antialias: true,
-      alpha: false,
+      alpha: true,
       powerPreference: 'high-performance',
     });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -21,7 +21,7 @@ const Robot3D = () => {
     renderer.toneMappingExposure = 1.15;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    renderer.setClearColor(0x000000, 1);
+    renderer.setClearColor(0x000000, 0);
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 60);
@@ -76,16 +76,17 @@ const Robot3D = () => {
 
     const whiteGloss = new THREE.MeshPhysicalMaterial({
       color: new THREE.Color('#FFFFFF'),
-      metalness: 0.0,
-      roughness: 0.18,
+      metalness: 0.1,
+      roughness: 0.12,
       clearcoat: 1.0,
-      clearcoatRoughness: 0.12,
+      clearcoatRoughness: 0.08,
       transmission: 0.0,
-      thickness: 0.3,
-      ior: 1.5,
-      envMapIntensity: 1.6,
+      thickness: 0.4,
+      ior: 1.6,
+      envMapIntensity: 2.0,
       emissive: new THREE.Color('#FFFFFF'),
-      emissiveIntensity: 0.15,
+      emissiveIntensity: 0.22,
+      reflectivity: 0.95,
     });
 
     const eyeGlowL = new THREE.MeshStandardMaterial({
@@ -199,11 +200,11 @@ const Robot3D = () => {
     robot.add(emblem);
 
     const createItalicHollowI = () => {
-      const width = 0.38;
-      const height = 1.05;
-      const stroke = 0.11;
-      const slant = 0.3;
-      const depth = 0.14;
+      const width = 0.42;
+      const height = 1.15;
+      const stroke = 0.13;
+      const slant = 0.35;
+      const depth = 0.16;
 
       const outer = new THREE.Shape();
       outer.moveTo(-width / 2, -height / 2);
@@ -212,78 +213,98 @@ const Robot3D = () => {
       outer.lineTo(-width / 2 + slant, height / 2);
       outer.lineTo(-width / 2, -height / 2);
 
-      const iw = Math.max(0.02, width - stroke * 2);
-      const ih = Math.max(0.02, height - stroke * 2);
+      const iw = width - stroke * 2;
+      const ih = height - stroke * 2;
+      const innerSlantOffset = slant * 0.85;
+
       const inner = new THREE.Path();
-      inner.moveTo(-iw / 2, -ih / 2);
-      inner.lineTo(iw / 2, -ih / 2);
-      inner.lineTo(iw / 2 + slant * (iw / width), ih / 2);
-      inner.lineTo(-iw / 2 + slant * (iw / width), ih / 2);
-      inner.lineTo(-iw / 2, -ih / 2);
+      inner.moveTo(-iw / 2 + 0.01, -ih / 2 + 0.01);
+      inner.lineTo(iw / 2 + 0.01, -ih / 2 + 0.01);
+      inner.lineTo(iw / 2 + innerSlantOffset, ih / 2 - 0.01);
+      inner.lineTo(-iw / 2 + innerSlantOffset, ih / 2 - 0.01);
+      inner.lineTo(-iw / 2 + 0.01, -ih / 2 + 0.01);
 
       outer.holes.push(inner);
 
       const g = new THREE.ExtrudeGeometry(outer, {
         depth,
         bevelEnabled: true,
-        bevelThickness: 0.04,
-        bevelSize: 0.04,
-        bevelSegments: 3,
+        bevelThickness: 0.05,
+        bevelSize: 0.05,
+        bevelSegments: 4,
       });
       g.center();
       return g;
     };
 
-    const createSolidO = () => {
-      const radius = 0.4;
-      const depth = 0.14;
+    const createHollowO = () => {
+      const outerRadius = 0.45;
+      const innerRadius = 0.30;
+      const depth = 0.16;
 
-      const shape = new THREE.Shape();
-      shape.absellipse(0, 0, radius, radius, 0, Math.PI * 2, false, 0);
+      const outerShape = new THREE.Shape();
+      outerShape.absellipse(0, 0, outerRadius, outerRadius, 0, Math.PI * 2, false, 0);
 
-      const g = new THREE.ExtrudeGeometry(shape, {
+      const innerHole = new THREE.Path();
+      innerHole.absellipse(0, 0, innerRadius, innerRadius, 0, Math.PI * 2, true, 0);
+      outerShape.holes.push(innerHole);
+
+      const g = new THREE.ExtrudeGeometry(outerShape, {
         depth,
         bevelEnabled: true,
-        bevelThickness: 0.04,
-        bevelSize: 0.04,
-        bevelSegments: 3,
+        bevelThickness: 0.05,
+        bevelSize: 0.05,
+        bevelSegments: 4,
       });
       g.center();
       return g;
     };
 
     const iMesh = new THREE.Mesh(createItalicHollowI(), whiteGloss);
-    const oMesh = new THREE.Mesh(createSolidO(), whiteGloss);
+    const oMesh = new THREE.Mesh(createHollowO(), whiteGloss);
 
-    iMesh.position.set(-0.38, 0.0, 0.0);
-    oMesh.position.set(0.4, 0.0, 0.0);
+    iMesh.position.set(-0.42, 0.0, 0.0);
+    oMesh.position.set(0.42, 0.0, 0.0);
 
     emblem.add(iMesh, oMesh);
 
     const backPlate = new THREE.Mesh(
-      new THREE.PlaneGeometry(1.65, 1.15),
+      new THREE.PlaneGeometry(1.85, 1.3),
       new THREE.MeshBasicMaterial({
         color: 0x35E7E0,
         transparent: true,
-        opacity: 0.08,
+        opacity: 0.1,
         depthWrite: false,
       })
     );
-    backPlate.position.set(0, 0, -0.12);
+    backPlate.position.set(0, 0, -0.13);
     emblem.add(backPlate);
 
-    const glowRing = new THREE.Mesh(
-      new THREE.RingGeometry(0.5, 0.52, 64),
+    const glowRingI = new THREE.Mesh(
+      new THREE.RingGeometry(0.4, 0.43, 64),
       new THREE.MeshBasicMaterial({
         color: 0x35E7E0,
         transparent: true,
-        opacity: 0.15,
+        opacity: 0.18,
         side: THREE.DoubleSide,
         depthWrite: false,
       })
     );
-    glowRing.position.set(0.4, 0, -0.1);
-    emblem.add(glowRing);
+    glowRingI.position.set(-0.42, 0, -0.11);
+    emblem.add(glowRingI);
+
+    const glowRingO = new THREE.Mesh(
+      new THREE.RingGeometry(0.55, 0.58, 64),
+      new THREE.MeshBasicMaterial({
+        color: 0xFF64D8,
+        transparent: true,
+        opacity: 0.18,
+        side: THREE.DoubleSide,
+        depthWrite: false,
+      })
+    );
+    glowRingO.position.set(0.42, 0, -0.11);
+    emblem.add(glowRingO);
 
     const fit = () => {
       const w = canvas.clientWidth;
@@ -349,9 +370,12 @@ const Robot3D = () => {
       robot.rotation.y += (-0.2 + tx - robot.rotation.y) * 0.08;
       robot.rotation.x += (-ty - robot.rotation.x) * 0.08;
 
-      const targetEm = hover ? 0.2 : 0.1;
+      const targetEm = hover ? 0.32 : 0.22;
       iMesh.material.emissiveIntensity += (targetEm - iMesh.material.emissiveIntensity) * 0.12;
       oMesh.material.emissiveIntensity += (targetEm - oMesh.material.emissiveIntensity) * 0.12;
+
+      glowRingI.material.opacity = 0.18 + Math.sin(t * 1.5) * 0.08;
+      glowRingO.material.opacity = 0.18 + Math.cos(t * 1.5) * 0.08;
 
       eyeL.material.opacity += ((hover ? 0.38 : 0.28) - eyeL.material.opacity) * 0.12;
       eyeR.material.opacity += ((hover ? 0.38 : 0.28) - eyeR.material.opacity) * 0.12;
@@ -382,7 +406,7 @@ const Robot3D = () => {
     <canvas
       ref={canvasRef}
       className="w-full h-full"
-      style={{ display: 'block', background: '#000' }}
+      style={{ display: 'block', background: 'transparent' }}
     />
   );
 };
