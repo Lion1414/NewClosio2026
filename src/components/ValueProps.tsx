@@ -71,7 +71,19 @@ const ValueProps: React.FC = () => {
                 {/* Monitor Stand */}
                 <div className="relative mt-2 flex flex-col items-center">
                   {/* Stand Neck */}
-                  <div className="relative w-16 h-20 bg-gradient-to-r from-[#D8D8D8] via-white to-[#D8D8D8] rounded-b-lg shadow-xl"></div>
+                  <div className="relative w-16 h-20 bg-gradient-to-r from-[#D8D8D8] via-white to-[#D8D8D8] rounded-b-lg shadow-xl flex items-center justify-center">
+                    {/* IO Logo on Stand */}
+                    <div className="flex items-center gap-[2px]">
+                      {/* Slanted I - Teal */}
+                      <svg width="10" height="24" viewBox="0 0 10 24" fill="none" className="transform -skew-x-12">
+                        <rect x="1" y="0" width="8" height="24" rx="1" fill="#6ad4f2" />
+                      </svg>
+                      {/* O - Black */}
+                      <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
+                        <ellipse cx="10" cy="12" rx="8" ry="10" stroke="#1a1a1a" strokeWidth="3.5" fill="none" />
+                      </svg>
+                    </div>
+                  </div>
                   {/* Stand Base - Circular */}
                   <div className="w-52 h-[10px] bg-gradient-to-r from-[#C0C0C0] via-white to-[#C0C0C0] rounded-full shadow-2xl -mt-1"></div>
                   {/* Shadow under base */}
