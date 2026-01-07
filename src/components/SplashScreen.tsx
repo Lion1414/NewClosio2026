@@ -11,7 +11,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false);
-    }, 1500);
+    }, 2500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -27,9 +27,9 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
       {isVisible && (
         <motion.div
           className="fixed inset-0 z-[9999] bg-black flex items-center justify-center overflow-hidden"
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: 'easeInOut' }}
+          initial={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: "100%" }}
+          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
         >
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none">
             <svg
