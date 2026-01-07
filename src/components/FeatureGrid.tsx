@@ -155,10 +155,10 @@ const HierarchyIcon: React.FC = () => (
       <ellipse cx="105" cy="35" rx="9" ry="15" fill="#ffffff" opacity="0.08" />
     </g>
 
-    <line x1="100" y1="55" x2="100" y2="72" stroke="url(#hierLineGrad)" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
-    <line x1="65" y1="72" x2="135" y2="72" stroke="url(#hierLineGrad)" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
-    <line x1="65" y1="72" x2="65" y2="85" stroke="url(#hierLineGrad)" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
-    <line x1="135" y1="72" x2="135" y2="85" stroke="url(#hierLineGrad)" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
+    <line x1="100" y1="55" x2="100" y2="72" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
+    <line x1="65" y1="72" x2="135" y2="72" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
+    <line x1="65" y1="72" x2="65" y2="85" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
+    <line x1="135" y1="72" x2="135" y2="85" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
 
     <g filter="url(#hierShadow)">
       <rect x="45" y="85" width="40" height="30" rx="4" fill="url(#hierBoxFront)" />
@@ -176,12 +176,12 @@ const HierarchyIcon: React.FC = () => (
       <ellipse cx="140" cy="100" rx="9" ry="15" fill="#ffffff" opacity="0.08" />
     </g>
 
-    <line x1="65" y1="120" x2="65" y2="137" stroke="url(#hierLineGrad)" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
-    <line x1="135" y1="120" x2="135" y2="137" stroke="url(#hierLineGrad)" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
-    <line x1="40" y1="137" x2="160" y2="137" stroke="url(#hierLineGrad)" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
-    <line x1="40" y1="137" x2="40" y2="150" stroke="url(#hierLineGrad)" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
-    <line x1="100" y1="137" x2="100" y2="150" stroke="url(#hierLineGrad)" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
-    <line x1="160" y1="137" x2="160" y2="150" stroke="url(#hierLineGrad)" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
+    <line x1="65" y1="120" x2="65" y2="137" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
+    <line x1="135" y1="120" x2="135" y2="137" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
+    <line x1="40" y1="137" x2="160" y2="137" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
+    <line x1="40" y1="137" x2="40" y2="150" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
+    <line x1="100" y1="137" x2="100" y2="150" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
+    <line x1="160" y1="137" x2="160" y2="150" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" filter="url(#hierGlow)" />
 
     <g filter="url(#hierShadow)">
       <rect x="20" y="150" width="40" height="28" rx="3" fill="url(#hierBoxFront)" />
