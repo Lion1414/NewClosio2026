@@ -49,10 +49,10 @@ const TunnelBackground: React.FC = () => {
 
     // ===== STATIC GRID TUNNEL =====
     const TUNNEL = {
-      slices: 120,
-      spacing: 0.28,
+      slices: 40,
+      spacing: 0.8,
       size: 8,
-      divisions: 20,
+      divisions: 8,
     };
 
     function makeGridSlice(size: number, divisions: number, depth: number) {
@@ -64,7 +64,7 @@ const TunnelBackground: React.FC = () => {
       grid.material.transparent = true;
 
       // Opacity fades with depth for realistic perspective
-      const opacity = Math.max(0.1, 0.65 - depth * 0.008);
+      const opacity = Math.max(0.2, 0.75 - depth * 0.015);
       grid.material.opacity = opacity;
       grid.material.depthWrite = true;
       grid.rotation.x = Math.PI / 2;
@@ -87,11 +87,11 @@ const TunnelBackground: React.FC = () => {
     }
 
     // Add four tunnel walls with subtle grid texture
-    const wallSegments = 40;
+    const wallSegments = 8;
     const wallMat = new THREE.MeshBasicMaterial({
       color: 0x1a1a1a,
       transparent: true,
-      opacity: 0.15,
+      opacity: 0.2,
       side: THREE.DoubleSide,
       depthWrite: true,
     });
@@ -125,9 +125,9 @@ const TunnelBackground: React.FC = () => {
 
     // Add edge lines for the square tunnel structure
     const edgeMaterial = new THREE.LineBasicMaterial({
-      color: 0x888888,
+      color: 0x999999,
       transparent: true,
-      opacity: 0.4
+      opacity: 0.5
     });
 
     const edgePoints = [
