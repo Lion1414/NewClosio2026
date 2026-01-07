@@ -164,6 +164,67 @@ const HeroBackground3D: React.FC = () => {
     ioGlow.position.set(0, 0, -0.10);
     io.add(ioGlow);
 
+    const particleCount = 80;
+    const particleGeometry = new THREE.BufferGeometry();
+    const particlePositions = new Float32Array(particleCount * 3);
+    const particleSizes = new Float32Array(particleCount);
+    const particlePhases = new Float32Array(particleCount);
+
+    for (let i = 0; i < particleCount; i++) {
+      const angle = (i / particleCount) * Math.PI * 2;
+      const radius = 2.0 + Math.random() * 2.5;
+      const height = (Math.random() - 0.5) * 4.0;
+
+      particlePositions[i * 3] = Math.cos(angle) * radius;
+      particlePositions[i * 3 + 1] = height;
+      particlePositions[i * 3 + 2] = Math.sin(angle) * radius;
+
+      particleSizes[i] = 0.04 + Math.random() * 0.08;
+      particlePhases[i] = Math.random() * Math.PI * 2;
+    }
+
+    particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+    particleGeometry.setAttribute('size', new THREE.BufferAttribute(particleSizes, 1));
+    particleGeometry.setAttribute('phase', new THREE.BufferAttribute(particlePhases, 1));
+
+    const particleMaterial = new THREE.PointsMaterial({
+      color: TEAL,
+      size: 0.08,
+      transparent: true,
+      opacity: 0.7,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      sizeAttenuation: true
+    });
+
+    const particles = new THREE.Points(particleGeometry, particleMaterial);
+    hero3D.add(particles);
+
+    const connectionLinesMaterial = new THREE.LineBasicMaterial({
+      color: TEAL,
+      transparent: true,
+      opacity: 0.15,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    });
+
+    const connectionPoints: THREE.Vector3[] = [];
+    for (let i = 0; i < 20; i++) {
+      const angle1 = (i / 20) * Math.PI * 2;
+      const angle2 = ((i + 1) / 20) * Math.PI * 2;
+      const radius = 2.5;
+
+      connectionPoints.push(
+        new THREE.Vector3(Math.cos(angle1) * radius, 0, Math.sin(angle1) * radius),
+        new THREE.Vector3(Math.cos(angle2) * radius, 0, Math.sin(angle2) * radius)
+      );
+    }
+
+    const connectionGeometry = new THREE.BufferGeometry().setFromPoints(connectionPoints);
+    const connectionLines = new THREE.LineSegments(connectionGeometry, connectionLinesMaterial);
+    connectionLines.position.y = 0.35;
+    hero3D.add(connectionLines);
+
     const raycaster = new THREE.Raycaster();
     const pointerNDC = new THREE.Vector2(0, 0);
 
@@ -238,6 +299,25 @@ const HeroBackground3D: React.FC = () => {
       io.rotation.y = Math.sin(t * 0.55) * 0.10;
       io.rotation.x = Math.cos(t * 0.45) * 0.06;
 
+      const positions = particles.geometry.attributes.position.array as Float32Array;
+      const phases = particles.geometry.attributes.phase.array as Float32Array;
+
+      for (let i = 0; i < particleCount; i++) {
+        const i3 = i * 3;
+        const phase = phases[i];
+        const angle = (i / particleCount) * Math.PI * 2 + t * 0.3;
+        const radius = 2.0 + Math.sin(t * 0.5 + phase) * 0.8;
+        const yOscillate = Math.sin(t * 0.6 + phase) * 0.3;
+
+        positions[i3] = Math.cos(angle) * radius;
+        positions[i3 + 1] = positions[i3 + 1] * 0.95 + yOscillate * 0.05;
+        positions[i3 + 2] = Math.sin(angle) * radius;
+      }
+      particles.geometry.attributes.position.needsUpdate = true;
+
+      connectionLines.rotation.y = t * 0.15;
+      (connectionLines.material as THREE.LineBasicMaterial).opacity = 0.15 + Math.sin(t * 2) * 0.05;
+
       const targetEm = hover ? 0.55 : 0.40;
       (ringTop.material as THREE.MeshPhysicalMaterial).emissiveIntensity += (targetEm - (ringTop.material as THREE.MeshPhysicalMaterial).emissiveIntensity) * 0.10;
       (ringBottom.material as THREE.MeshPhysicalMaterial).emissiveIntensity += (targetEm - (ringBottom.material as THREE.MeshPhysicalMaterial).emissiveIntensity) * 0.10;
@@ -277,12 +357,14 @@ const HeroBackground3D: React.FC = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 z-0 pointer-events-none bg-black">
+    <div className="absolute inset-0 z-0 bg-black">
       <canvas
         ref={canvasRef}
-        className="w-full h-full block bg-black"
-        style={{ opacity: 0.92 }}
+        className="w-full h-full block bg-black pointer-events-auto"
+        style={{ opacity: 0.95 }}
       />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(53,231,224,0.03)_50%,_transparent_100%)] pointer-events-none" />
     </div>
   );
 };
