@@ -350,11 +350,32 @@ const Robot3D = () => {
       head.rotation.y = Math.sin(t * 0.6) * 0.1;
 
       if (scrollProgress >= 0.99) {
-        robot.rotation.y += (0.5 + tx - robot.rotation.y) * 0.08;
+        robot.rotation.y += (0.3 + tx - robot.rotation.y) * 0.08;
         robot.rotation.x += (-ty - robot.rotation.x) * 0.08;
+
+        legL.rotation.x += (0 - legL.rotation.x) * 0.12;
+        legR.rotation.x += (0 - legR.rotation.x) * 0.12;
+        kneeL.position.y += (-0.15 - kneeL.position.y) * 0.12;
+        kneeR.position.y += (-0.15 - kneeR.position.y) * 0.12;
+        footL.rotation.x += (0 - footL.rotation.x) * 0.12;
+        footR.rotation.x += (0 - footR.rotation.x) * 0.12;
       } else {
         robot.rotation.y = walkInRotY;
         robot.rotation.x = 0;
+
+        const walkCycle = t * 3.5;
+        const legSwing = 0.4;
+        const kneeFlexLeft = Math.max(0, Math.sin(walkCycle)) * 0.15;
+        const kneeFlexRight = Math.max(0, Math.sin(walkCycle + Math.PI)) * 0.15;
+
+        legL.rotation.x = Math.sin(walkCycle) * legSwing;
+        legR.rotation.x = Math.sin(walkCycle + Math.PI) * legSwing;
+
+        kneeL.position.y = -0.15 - kneeFlexLeft;
+        kneeR.position.y = -0.15 - kneeFlexRight;
+
+        footL.rotation.x = Math.max(0, -Math.sin(walkCycle) * 0.3);
+        footR.rotation.x = Math.max(0, -Math.sin(walkCycle + Math.PI) * 0.3);
       }
 
       raycaster.setFromCamera(pointer, camera);
