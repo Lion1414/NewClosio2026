@@ -41,13 +41,17 @@ const StaticIO3D: React.FC = () => {
     rim.position.set(-2.0, 2.2, -2.8);
     scene.add(rim);
 
-    const accentLight1 = new THREE.PointLight(0x6ad4f2, 2.0, 15);
+    const accentLight1 = new THREE.PointLight(0x6ad4f2, 4.0, 20);
     accentLight1.position.set(3, 1, 3);
     scene.add(accentLight1);
 
-    const accentLight2 = new THREE.PointLight(0x6ad4f2, 1.5, 15);
+    const accentLight2 = new THREE.PointLight(0x6ad4f2, 3.0, 20);
     accentLight2.position.set(-3, -1, 2);
     scene.add(accentLight2);
+
+    const glowLight = new THREE.PointLight(0x6ad4f2, 5.0, 25);
+    glowLight.position.set(0, 0, 4);
+    scene.add(glowLight);
 
     const TEAL = new THREE.Color("#6ad4f2");
     const WHITE = new THREE.Color("#FFFFFF");
@@ -137,8 +141,8 @@ const StaticIO3D: React.FC = () => {
     io.position.set(0, 0.0, 0.0);
     io3D.add(io);
 
-    const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.5, height: 1.3, stroke: 0.14, depth: 0.15 }), solidMaterial(TEAL, 0.4, 0.2));
-    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.65, ringThickness: 0.26, depth: 0.15, segments: 256 }), solidMaterial(WHITE, 0.3, 0.2));
+    const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.5, height: 1.3, stroke: 0.14, depth: 0.15 }), solidMaterial(TEAL, 0.8, 0.15));
+    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.65, ringThickness: 0.26, depth: 0.15, segments: 256 }), solidMaterial(WHITE, 0.5, 0.15));
 
     iMesh.position.set(-0.65, 0.0, 0.0);
     oMesh.position.set(0.65, 0.0, 0.0);

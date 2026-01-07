@@ -305,13 +305,21 @@ const ContactSplit = React.memo(() => {
         </div>
       </section>
 
-      <section className="relative bg-black overflow-visible">
-        <div className="relative h-[500px] w-full pointer-events-none select-none flex items-center justify-center -mb-[200px]">
-          <div className="absolute inset-0 flex items-center justify-center">
+      <section className="relative bg-black overflow-visible z-10">
+        <div className="relative h-[550px] w-full pointer-events-none select-none flex items-center justify-center -mb-[250px]">
+          <div className="absolute inset-0 flex items-center justify-center" style={{ top: '10%' }}>
             <div
-              className="w-[600px] h-[400px] rounded-full blur-[100px] opacity-40"
+              className="w-[700px] h-[500px] rounded-full blur-[80px]"
               style={{
-                background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.5) 0%, rgba(106, 212, 242, 0.2) 40%, transparent 70%)',
+                background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.7) 0%, rgba(106, 212, 242, 0.4) 30%, rgba(106, 212, 242, 0.15) 60%, transparent 80%)',
+              }}
+            />
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center" style={{ top: '10%' }}>
+            <div
+              className="w-[400px] h-[300px] rounded-full blur-[40px]"
+              style={{
+                background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.5) 0%, transparent 70%)',
               }}
             />
           </div>
