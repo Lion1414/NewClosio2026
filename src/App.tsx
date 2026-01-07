@@ -25,6 +25,7 @@ import EstimatedPayouts from './pages/features/EstimatedPayouts';
 import TeamHierarchy from './pages/features/TeamHierarchy';
 import UserManagement from './pages/features/UserManagement';
 import Reminders from './pages/features/Reminders';
+import Schedule from './pages/Schedule';
 import TestimonialSection from './components/TestimonialSection';
 import GlassRingsSection from './components/GlassRingsSection';
 import SplashScreen from './components/SplashScreen';
@@ -104,6 +105,7 @@ function App() {
           <Route path="/features/team-hierarchy" element={<TeamHierarchy />} />
           <Route path="/features/user-management" element={<UserManagement />} />
           <Route path="/features/reminders" element={<Reminders />} />
+          <Route path="/schedule" element={<Schedule />} />
         </Routes>
       </div>
     </>

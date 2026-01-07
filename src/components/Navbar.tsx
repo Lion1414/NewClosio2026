@@ -355,8 +355,8 @@ const Navbar: React.FC<NavbarProps> = () => {
                 transition: 'gap 700ms cubic-bezier(0.4, 0, 0.2, 1)'
               }}
             >
-              <button
-                onClick={handleNavClick('contact')}
+              <Link
+                to="/schedule"
                 className="demo-btn bg-white text-black font-medium whitespace-nowrap rounded-xl hover:bg-white/90"
                 style={{
                   padding: isScrolled ? '6px 16px' : '8px 20px',
@@ -366,7 +366,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 }}
               >
                 <span className="demo-btn-text">Book a Demo</span>
-              </button>
+              </Link>
               <button
                 onClick={() => window.location.href = 'https://closio.com/login'}
                 className="bg-transparent text-white font-medium whitespace-nowrap rounded-xl hover:bg-white/10"
@@ -462,13 +462,14 @@ const Navbar: React.FC<NavbarProps> = () => {
               </div>
 
               <div className="pt-4 px-4 space-y-3 border-t border-white/10 mt-4">
-                <button
-                  onClick={handleNavClick('contact')}
-                  className="demo-btn bg-white text-black font-medium w-full px-5 py-2.5 text-sm rounded-xl hover:bg-white/90 transition-colors"
+                <Link
+                  to="/schedule"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="demo-btn bg-white text-black font-medium w-full px-5 py-2.5 text-sm rounded-xl hover:bg-white/90 transition-colors block text-center"
                   style={{ perspective: '600px' }}
                 >
                   <span className="demo-btn-text">Book a Demo</span>
-                </button>
+                </Link>
                 <button
                   onClick={() => window.location.href = 'https://closio.com/login'}
                   className={`bg-white text-black font-medium w-full px-5 py-2.5 text-sm rounded-xl hover:bg-white/90 transition-all duration-300 ${
