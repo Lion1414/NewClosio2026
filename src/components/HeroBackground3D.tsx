@@ -163,12 +163,14 @@ const HeroBackground3D: React.FC = () => {
 
     let tx = 0, ty = 0;
     let targetIORotationY = 0;
+    let targetIORotationX = 0.15;
     const handleMouseMove = (e: MouseEvent) => {
       updatePointerNDC(e);
       if (window.innerWidth < 900) return;
       tx = (e.clientX / window.innerWidth - 0.5) * 0.2;
       ty = (e.clientY / window.innerHeight - 0.5) * 0.15;
-      targetIORotationY = (e.clientX / window.innerWidth - 0.5) * Math.PI * 1.2;
+      targetIORotationY = (e.clientX / window.innerWidth - 0.5) * 0.5;
+      targetIORotationX = 0.15 + (e.clientY / window.innerHeight - 0.5) * 0.25;
     };
 
     const handleClick = () => {
@@ -286,8 +288,7 @@ const HeroBackground3D: React.FC = () => {
       hero3D.rotation.x += (targetRotX - hero3D.rotation.x) * 0.06;
 
       io.rotation.y += (targetIORotationY - io.rotation.y) * 0.08;
-
-      io.rotation.x = 0.15;
+      io.rotation.x += (targetIORotationX - io.rotation.x) * 0.08;
 
       renderer.render(scene, camera);
       animationId = requestAnimationFrame(animate);
