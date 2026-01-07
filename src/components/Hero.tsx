@@ -136,7 +136,24 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: hasAnimated ? 0 : 1, delay: hasAnimated ? 0 : 3.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            CLOS<em className="italic">I</em>O WAS BUILT FOR YOU
+            CLOS
+            <motion.span
+              className="inline-block text-[0.85em] italic"
+              initial={hasAnimated ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 15, scale: 0.5 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: hasAnimated ? 0 : 1.2, delay: hasAnimated ? 0 : 3.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              I
+            </motion.span>
+            <motion.span
+              className="inline-block text-[0.85em]"
+              initial={hasAnimated ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 15, scale: 0.5 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: hasAnimated ? 0 : 1.2, delay: hasAnimated ? 0 : 4.1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              O
+            </motion.span>
+            {" "}WAS BUILT FOR YOU
           </motion.span>
 
           <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.05] -tracking-[0.02em] mb-6">
