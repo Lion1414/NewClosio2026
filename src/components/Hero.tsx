@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import HeroBackground3D from './HeroBackground3D';
 
 interface TypewriterTextProps {
@@ -52,9 +53,16 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay, className 
 
 const FlipButton: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+    navigate('/schedule');
+  };
 
   return (
     <motion.button
+      onClick={handleClick}
       className="demo-btn relative px-8 py-4 bg-white text-black font-semibold text-base rounded-xl overflow-hidden z-30 group"
       initial={{ opacity: 0, y: 20, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const VerticalLine: React.FC = () => {
   return (
@@ -30,6 +31,8 @@ const valueItems = [
 ];
 
 const ValueProps: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="why-closio" className="py-16 sm:py-20 md:py-28 lg:py-32 bg-black relative overflow-hidden">
       <VerticalLine />
@@ -122,10 +125,7 @@ const ValueProps: React.FC = () => {
 
             <div className="mt-12">
               <button
-                onClick={() => {
-                  const element = document.getElementById('contact');
-                  if (element) element.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={() => { window.scrollTo(0, 0); navigate('/schedule'); }}
                 className="px-8 py-4 bg-white text-black font-semibold rounded-xl hover:bg-white/90 transition-all duration-300 text-base"
               >
                 Book a Demo Now

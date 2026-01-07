@@ -96,6 +96,7 @@ function HoverFooter() {
                 <li key={link.label}>
                   <Link
                     to={link.href}
+                    onClick={() => window.scrollTo(0, 0)}
                     className="text-gray-400 hover:text-[#6ad4f2] transition-colors inline-block"
                   >
                     {link.label}
@@ -115,6 +116,7 @@ function HoverFooter() {
                 <li key={link.label}>
                   <Link
                     to={link.href}
+                    onClick={() => window.scrollTo(0, 0)}
                     className="text-gray-400 hover:text-[#6ad4f2] transition-colors inline-block"
                   >
                     {link.label}
