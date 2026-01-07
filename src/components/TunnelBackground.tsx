@@ -34,16 +34,16 @@ const TunnelBackground: React.FC = () => {
     camera.lookAt(0, 0, -30);
 
     // Lighting for realistic depth with dramatic shadows
-    const ambientLight = new THREE.AmbientLight(0x101010, 0.3);
+    const ambientLight = new THREE.AmbientLight(0x202020, 0.5);
     scene.add(ambientLight);
 
-    const frontLight = new THREE.DirectionalLight(0xffffff, 0.4);
+    const frontLight = new THREE.DirectionalLight(0xffffff, 0.6);
     frontLight.position.set(0, 3, 2);
     frontLight.castShadow = true;
     scene.add(frontLight);
 
-    // Back light from the opening - dimmed for more depth
-    const backLight = new THREE.PointLight(0xffffff, 1.0, 50);
+    // Back light from the opening - brightened for visibility
+    const backLight = new THREE.PointLight(0xffffff, 1.5, 50);
     backLight.position.set(0, 0, -30);
     scene.add(backLight);
 
@@ -52,19 +52,19 @@ const TunnelBackground: React.FC = () => {
       slices: 40,
       spacing: 0.8,
       size: 50,
-      divisions: 8,
+      divisions: 16,
     };
 
     function makeGridSlice(size: number, divisions: number, depth: number) {
       // Remove center cross by making centerColor invisible (black)
       const centerColor = 0x000000;
-      const lineColor = depth < 30 ? 0x555555 : 0x444444;
+      const lineColor = depth < 30 ? 0x999999 : 0x777777;
 
       const grid = new THREE.GridHelper(size, divisions, centerColor, lineColor);
       grid.material.transparent = true;
 
-      // Opacity fades with depth for realistic perspective
-      const opacity = Math.max(0.2, 0.75 - depth * 0.015);
+      // Opacity fades with depth for realistic perspective - increased for visibility
+      const opacity = Math.max(0.3, 0.85 - depth * 0.015);
       grid.material.opacity = opacity;
       grid.material.depthWrite = true;
       grid.rotation.x = Math.PI / 2;
@@ -125,9 +125,9 @@ const TunnelBackground: React.FC = () => {
 
     // Add edge lines for the square tunnel structure (border frame)
     const edgeMaterial = new THREE.LineBasicMaterial({
-      color: 0xaaaaaa,
+      color: 0xcccccc,
       transparent: true,
-      opacity: 0.6
+      opacity: 0.8
     });
 
     const edgePoints = [
@@ -195,9 +195,9 @@ const TunnelBackground: React.FC = () => {
 
     const frameGeometry = new THREE.BufferGeometry().setFromPoints(framePoints);
     const frameMaterial = new THREE.LineBasicMaterial({
-      color: 0xbbbbbb,
+      color: 0xdddddd,
       transparent: true,
-      opacity: 0.4,
+      opacity: 0.6,
       linewidth: 2
     });
     const frame = new THREE.Line(frameGeometry, frameMaterial);
@@ -241,9 +241,9 @@ const TunnelBackground: React.FC = () => {
           background: `
             radial-gradient(60% 55% at 50% 50%,
               rgba(0,0,0,0) 0%,
-              rgba(0,0,0,0.3) 50%,
-              rgba(0,0,0,0.7) 80%,
-              rgba(0,0,0,0.95) 100%)
+              rgba(0,0,0,0.2) 50%,
+              rgba(0,0,0,0.5) 80%,
+              rgba(0,0,0,0.85) 100%)
           `,
         }}
       />
@@ -264,12 +264,12 @@ const TunnelBackground: React.FC = () => {
         style={{
           background: `
             linear-gradient(90deg,
-              rgba(0,0,0,0.8) 0%,
-              rgba(0,0,0,0.3) 15%,
+              rgba(0,0,0,0.6) 0%,
+              rgba(0,0,0,0.2) 15%,
               rgba(0,0,0,0) 30%,
               rgba(0,0,0,0) 70%,
-              rgba(0,0,0,0.3) 85%,
-              rgba(0,0,0,0.8) 100%)
+              rgba(0,0,0,0.2) 85%,
+              rgba(0,0,0,0.6) 100%)
           `,
         }}
       />
