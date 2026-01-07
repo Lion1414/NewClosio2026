@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import * as THREE from 'three';
-import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 
 interface TypewriterTextProps {
   text: string;
@@ -53,192 +51,126 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay = 0, classN
   );
 };
 
+const ShieldIO = () => (
+  <motion.svg
+    viewBox="0 0 400 480"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-full h-full max-w-[420px] mx-auto"
+    initial={{ opacity: 0, scale: 0.9 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 1, ease: "easeOut" }}
+  >
+    <defs>
+      <linearGradient id="shieldGradientMain" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.15" />
+        <stop offset="30%" stopColor="#a0a0a0" stopOpacity="0.08" />
+        <stop offset="70%" stopColor="#404040" stopOpacity="0.05" />
+        <stop offset="100%" stopColor="#1a1a1a" stopOpacity="0.02" />
+      </linearGradient>
+      <linearGradient id="shieldStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.5" />
+        <stop offset="50%" stopColor="#888888" stopOpacity="0.3" />
+        <stop offset="100%" stopColor="#444444" stopOpacity="0.15" />
+      </linearGradient>
+      <linearGradient id="innerGlow" x1="50%" y1="0%" x2="50%" y2="100%">
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.12" />
+        <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+      </linearGradient>
+      <linearGradient id="ioGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.95" />
+        <stop offset="50%" stopColor="#d0d0d0" stopOpacity="0.85" />
+        <stop offset="100%" stopColor="#a0a0a0" stopOpacity="0.75" />
+      </linearGradient>
+      <filter id="shieldShadow" x="-50%" y="-50%" width="200%" height="200%">
+        <feDropShadow dx="0" dy="8" stdDeviation="20" floodColor="#ffffff" floodOpacity="0.08" />
+        <feDropShadow dx="0" dy="2" stdDeviation="6" floodColor="#ffffff" floodOpacity="0.12" />
+      </filter>
+      <filter id="innerShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur" />
+        <feOffset dx="0" dy="2" result="offsetBlur" />
+        <feComposite in="SourceGraphic" in2="offsetBlur" operator="over" />
+      </filter>
+      <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3" result="glow" />
+        <feMerge>
+          <feMergeNode in="glow" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+      <clipPath id="shieldClip">
+        <path d="M200 20 C200 20 340 40 360 60 C380 80 385 120 385 160 C385 280 340 380 200 460 C60 380 15 280 15 160 C15 120 20 80 40 60 C60 40 200 20 200 20 Z" />
+      </clipPath>
+    </defs>
+
+    <g filter="url(#shieldShadow)">
+      <path
+        d="M200 20 C200 20 340 40 360 60 C380 80 385 120 385 160 C385 280 340 380 200 460 C60 380 15 280 15 160 C15 120 20 80 40 60 C60 40 200 20 200 20 Z"
+        fill="url(#shieldGradientMain)"
+        stroke="url(#shieldStroke)"
+        strokeWidth="2"
+      />
+
+      <path
+        d="M200 35 C200 35 325 52 342 70 C359 88 363 122 363 155 C363 262 323 352 200 425 C77 352 37 262 37 155 C37 122 41 88 58 70 C75 52 200 35 200 35 Z"
+        fill="none"
+        stroke="url(#shieldStroke)"
+        strokeWidth="1"
+        strokeOpacity="0.3"
+      />
+
+      <path
+        d="M200 50 C200 50 310 65 325 80 C340 95 343 125 343 152 C343 248 308 328 200 395 C92 328 57 248 57 152 C57 125 60 95 75 80 C90 65 200 50 200 50 Z"
+        fill="url(#innerGlow)"
+      />
+
+      <line x1="200" y1="50" x2="200" y2="395" stroke="#ffffff" strokeOpacity="0.04" strokeWidth="1" />
+      <ellipse cx="200" cy="200" rx="120" ry="100" fill="none" stroke="#ffffff" strokeOpacity="0.03" strokeWidth="1" />
+    </g>
+
+    <g filter="url(#textGlow)">
+      <g transform="translate(200, 235)">
+        <path
+          d="M-65 -65 L-35 -65 L-52 65 L-82 65 Z"
+          fill="url(#ioGradient)"
+          transform="skewX(-8)"
+        />
+
+        <circle
+          cx="45"
+          cy="0"
+          r="55"
+          fill="none"
+          stroke="url(#ioGradient)"
+          strokeWidth="22"
+        />
+      </g>
+    </g>
+
+    <g opacity="0.6">
+      <path
+        d="M200 25 C200 25 335 43 355 62"
+        fill="none"
+        stroke="#ffffff"
+        strokeWidth="1"
+        strokeOpacity="0.3"
+        strokeLinecap="round"
+      />
+      <path
+        d="M45 62 C65 43 200 25 200 25"
+        fill="none"
+        stroke="#ffffff"
+        strokeWidth="1"
+        strokeOpacity="0.15"
+        strokeLinecap="round"
+      />
+    </g>
+  </motion.svg>
+);
+
 const GlassRingsSection = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [line1Complete, setLine1Complete] = useState(false);
-
-  useEffect(() => {
-    if (!canvasRef.current) return;
-
-    const canvas = canvasRef.current;
-
-    const renderer = new THREE.WebGLRenderer({
-      canvas,
-      alpha: false,
-      antialias: true,
-      powerPreference: "high-performance"
-    });
-    renderer.setClearColor(0x000000, 1);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.1;
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x000000);
-    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 80);
-    camera.position.set(0, 0, 9);
-
-    const pmrem = new THREE.PMREMGenerator(renderer);
-    const env = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
-    scene.environment = env;
-
-    const key = new THREE.DirectionalLight(0xffffff, 2.0);
-    key.position.set(5, 6, 8);
-    key.castShadow = true;
-    key.shadow.mapSize.width = 2048;
-    key.shadow.mapSize.height = 2048;
-    key.shadow.camera.near = 0.5;
-    key.shadow.camera.far = 50;
-    scene.add(key);
-
-    const fill = new THREE.DirectionalLight(0x6699ff, 0.8);
-    fill.position.set(-5, -2, 3);
-    scene.add(fill);
-
-    const rim = new THREE.PointLight(0x00d4ff, 2.0, 25);
-    rim.position.set(-3, 3, -3);
-    scene.add(rim);
-
-    const accent = new THREE.PointLight(0xffffff, 1.5, 15);
-    accent.position.set(2, -2, 4);
-    scene.add(accent);
-
-    const metalMaterial = new THREE.MeshPhysicalMaterial({
-      color: new THREE.Color("#E8EEF5"),
-      metalness: 1.0,
-      roughness: 0.12,
-      envMapIntensity: 2.0,
-      clearcoat: 1.0,
-      clearcoatRoughness: 0.1,
-      reflectivity: 1.0,
-      ior: 2.5,
-      thickness: 0.5,
-      transmission: 0,
-    });
-
-    const group = new THREE.Group();
-    scene.add(group);
-
-    const linkGeo = new THREE.TorusGeometry(0.55, 0.14, 48, 72);
-
-    const chainLinks: THREE.Mesh[] = [];
-
-    for (let i = 0; i < 11; i++) {
-      const link = new THREE.Mesh(linkGeo, metalMaterial.clone());
-      link.position.y = 2.8 - (i * 0.6);
-      link.castShadow = true;
-      link.receiveShadow = true;
-
-      if (i % 2 === 0) {
-        link.rotation.y = Math.PI / 2;
-      }
-
-      chainLinks.push(link);
-      group.add(link);
-    }
-
-    const fit = () => {
-      const w = canvas.clientWidth;
-      const h = canvas.clientHeight;
-      renderer.setSize(w, h, false);
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-
-      const isMobile = w < 900;
-      group.scale.setScalar(isMobile ? 0.7 : 1.0);
-    };
-
-    const resizeObserver = new ResizeObserver(fit);
-    resizeObserver.observe(canvas);
-    fit();
-
-    let t = 0;
-    let animationId: number;
-    let isHovering = false;
-
-    const handleCanvasMouseEnter = () => {
-      isHovering = true;
-    };
-
-    const handleCanvasMouseLeave = () => {
-      isHovering = false;
-    };
-
-    canvas.addEventListener('mouseenter', handleCanvasMouseEnter);
-    canvas.addEventListener('mouseleave', handleCanvasMouseLeave);
-
-    const animate = () => {
-      t += 0.012;
-
-      const mainSwing = Math.sin(t * 0.8) * 0.28;
-      const secondarySwing = Math.sin(t * 1.3) * 0.12;
-
-      const hoverSway = isHovering ? Math.sin(t * 2.8) * 0.35 : 0;
-      const hoverIntensity = isHovering ? 1.8 : 1.0;
-
-      chainLinks.forEach((link, i) => {
-        const factor = 1 - (i / chainLinks.length);
-        const delay = i * 0.2;
-        const waveFactor = Math.sin(t * 0.6 + delay);
-
-        const swingX = (mainSwing + secondarySwing * 0.5) * hoverIntensity;
-        const swingZ = (Math.sin(t * 0.5) * 0.15 + Math.sin(t * 1.1) * 0.08) * hoverIntensity;
-
-        if (i % 2 === 0) {
-          link.rotation.x = swingX * factor + waveFactor * 0.12 * factor + hoverSway * factor * 0.5;
-          link.rotation.z = swingZ * factor * 0.7;
-          link.position.x = (Math.sin(t * 0.7 + delay) * 0.12 + hoverSway * 0.15) * factor;
-        } else {
-          link.rotation.z = swingX * factor + waveFactor * 0.12 * factor + hoverSway * factor * 0.5;
-          link.rotation.x = swingZ * factor * 0.7;
-          link.position.x = (Math.sin(t * 0.7 + delay) * 0.12 + hoverSway * 0.15) * factor;
-        }
-
-        link.position.z = Math.sin(t * 0.4 + delay) * 0.03 * factor;
-      });
-
-      renderer.render(scene, camera);
-      animationId = requestAnimationFrame(animate);
-    };
-    animate();
-
-    let targetX = 0, targetY = 0;
-    const handleMouseMove = (e: MouseEvent) => {
-      if (window.innerWidth < 900 || !isHovering) return;
-      const x = (e.clientX / window.innerWidth) - 0.5;
-      const y = (e.clientY / window.innerHeight) - 0.5;
-      targetX = x * 0.12;
-      targetY = y * 0.10;
-    };
-
-    const parallax = () => {
-      if (!isHovering) {
-        targetX += (0 - targetX) * 0.08;
-        targetY += (0 - targetY) * 0.08;
-      }
-
-      group.rotation.y += (targetX - group.rotation.y) * 0.05;
-      group.rotation.x += ((-targetY) - group.rotation.x) * 0.05;
-      requestAnimationFrame(parallax);
-    };
-    parallax();
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      canvas.removeEventListener('mouseenter', handleCanvasMouseEnter);
-      canvas.removeEventListener('mouseleave', handleCanvasMouseLeave);
-      window.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(animationId);
-      resizeObserver.disconnect();
-      renderer.dispose();
-      linkGeo.dispose();
-      metalMaterial.dispose();
-    };
-  }, []);
 
   const featureItems = [
     {
@@ -358,23 +290,13 @@ const GlassRingsSection = () => {
             </div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative order-first lg:order-last"
-          >
+          <div className="relative order-first lg:order-last">
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent rounded-3xl blur-3xl" />
-            <canvas
-              ref={canvasRef}
-              className="w-full h-[500px] lg:h-[600px] block bg-black rounded-2xl"
-              style={{
-                opacity: 1.0,
-                filter: 'saturate(1.08)'
-              }}
-            />
-          </motion.div>
+            <div className="w-full h-[500px] lg:h-[650px] flex items-center justify-center bg-black rounded-2xl relative overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.03)_0%,_transparent_60%)]" />
+              <ShieldIO />
+            </div>
+          </div>
 
         </div>
       </div>
