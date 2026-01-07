@@ -137,7 +137,7 @@ export const TextHoverEffect = ({
 export const FooterBackgroundGradient = () => {
   return (
     <div
-      className="absolute inset-0 z-0 bg-black"
+      className="absolute inset-0 z-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"
     />
   );
 };

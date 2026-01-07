@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-[#1A1F2E]/50 to-[#0B0F14] border-t border-white/12">
+    <footer className="bg-black/60 backdrop-blur-xl border-t border-white/10 relative overflow-hidden">
       <div className="max-w-[calc(100vw-12rem)] mx-auto px-6 py-16">
         {/* Main Footer Content */}
         <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
