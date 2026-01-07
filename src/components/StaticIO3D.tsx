@@ -20,7 +20,7 @@ const StaticIO3D: React.FC = () => {
     renderer.setClearColor(0x000000, 0);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.4;
+    renderer.toneMappingExposure = 1.8;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 90);
@@ -29,31 +29,38 @@ const StaticIO3D: React.FC = () => {
     const pmrem = new THREE.PMREMGenerator(renderer);
     scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
 
-    const key = new THREE.DirectionalLight(0xffffff, 3.5);
+    const ambient = new THREE.AmbientLight(0xffffff, 0.8);
+    scene.add(ambient);
+
+    const key = new THREE.DirectionalLight(0xffffff, 5.0);
     key.position.set(5, 6, 7);
     scene.add(key);
 
-    const fill = new THREE.DirectionalLight(0xffffff, 1.5);
+    const fill = new THREE.DirectionalLight(0xffffff, 3.0);
     fill.position.set(-6, 2, 5);
     scene.add(fill);
 
-    const rim = new THREE.PointLight(0xffffff, 2.5, 30);
+    const rim = new THREE.PointLight(0xffffff, 4.0, 40);
     rim.position.set(-2.0, 2.2, -2.8);
     scene.add(rim);
 
-    const topLight = new THREE.DirectionalLight(0xffffff, 2.0);
+    const topLight = new THREE.DirectionalLight(0xffffff, 3.0);
     topLight.position.set(0, 8, 3);
     scene.add(topLight);
 
-    const accentLight1 = new THREE.PointLight(0x6ad4f2, 6.0, 30);
+    const frontLight = new THREE.DirectionalLight(0xffffff, 4.0);
+    frontLight.position.set(0, 0, 10);
+    scene.add(frontLight);
+
+    const accentLight1 = new THREE.PointLight(0x6ad4f2, 10.0, 40);
     accentLight1.position.set(3, 1, 3);
     scene.add(accentLight1);
 
-    const accentLight2 = new THREE.PointLight(0x6ad4f2, 5.0, 30);
+    const accentLight2 = new THREE.PointLight(0x6ad4f2, 8.0, 40);
     accentLight2.position.set(-3, -1, 2);
     scene.add(accentLight2);
 
-    const glowLight = new THREE.PointLight(0x6ad4f2, 8.0, 35);
+    const glowLight = new THREE.PointLight(0x6ad4f2, 12.0, 45);
     glowLight.position.set(0, 0, 4);
     scene.add(glowLight);
 
@@ -63,36 +70,36 @@ const StaticIO3D: React.FC = () => {
     function polishedMaterial(baseColor: THREE.Color, emissiveIntensity = 0.5, rough = 0.05) {
       return new THREE.MeshPhysicalMaterial({
         color: baseColor,
-        metalness: 0.2,
+        metalness: 0.15,
         roughness: rough,
         transmission: 0,
         transparent: false,
         clearcoat: 1.0,
         clearcoatRoughness: 0.02,
-        envMapIntensity: 2.5,
-        specularIntensity: 1.5,
+        envMapIntensity: 4.0,
+        specularIntensity: 2.0,
         emissive: baseColor,
         emissiveIntensity,
         reflectivity: 1.0,
-        sheen: 0.4,
-        sheenRoughness: 0.15,
+        sheen: 0.5,
+        sheenRoughness: 0.1,
         sheenColor: baseColor
       });
     }
 
     function shieldOutlineMaterial() {
       return new THREE.MeshPhysicalMaterial({
-        color: new THREE.Color("#2a3a40"),
-        metalness: 0.95,
-        roughness: 0.08,
+        color: new THREE.Color("#4a6a70"),
+        metalness: 0.8,
+        roughness: 0.15,
         transparent: true,
-        opacity: 0.6,
+        opacity: 0.85,
         clearcoat: 1.0,
-        clearcoatRoughness: 0.03,
-        envMapIntensity: 2.0,
-        specularIntensity: 1.0,
-        emissive: new THREE.Color("#1a2a30"),
-        emissiveIntensity: 0.15,
+        clearcoatRoughness: 0.05,
+        envMapIntensity: 3.0,
+        specularIntensity: 1.5,
+        emissive: new THREE.Color("#6ad4f2"),
+        emissiveIntensity: 0.4,
         reflectivity: 1.0
       });
     }
@@ -217,16 +224,16 @@ const StaticIO3D: React.FC = () => {
     io3D.add(shieldMesh);
 
     const io = new THREE.Group();
-    io.position.set(0, 0.45, 0.0);
+    io.position.set(0, 0.6, 0.05);
     io3D.add(io);
 
     const iMesh = new THREE.Mesh(
-      createHollowI({ width: 0.42, height: 1.15, stroke: 0.06, slant: 0.20, depth: 0.10 }),
-      polishedMaterial(TEAL, 1.2, 0.03)
+      createHollowI({ width: 0.42, height: 1.15, stroke: 0.06, slant: 0.20, depth: 0.12 }),
+      polishedMaterial(TEAL, 1.8, 0.02)
     );
     const oMesh = new THREE.Mesh(
-      createHollowO({ outerRadius: 0.55, ringThickness: 0.20, depth: 0.10, segments: 256 }),
-      polishedMaterial(WHITE, 0.7, 0.03)
+      createHollowO({ outerRadius: 0.55, ringThickness: 0.20, depth: 0.12, segments: 256 }),
+      polishedMaterial(WHITE, 1.0, 0.02)
     );
 
     iMesh.position.set(-0.55, 0.0, 0.0);
