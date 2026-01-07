@@ -294,19 +294,19 @@ const Robot3D = () => {
     window.addEventListener('mousemove', updatePointer, { passive: true });
     window.addEventListener('click', () => { pulse = 1.0; }, { passive: true });
 
-    let tx = 0;
-    let ty = 0;
+    let targetRotY = -0.3;
+    let targetRotX = 0;
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
       const cx = e.clientX;
       const cy = e.clientY;
       const inside = cx >= rect.left && cx <= rect.right && cy >= rect.top && cy <= rect.bottom;
-      if (!inside) return;
+      if (!inside || scrollProgress < 0.99) return;
 
       const x = (cx - rect.left) / rect.width - 0.5;
       const y = (cy - rect.top) / rect.height - 0.5;
-      tx = x * 0.55;
-      ty = y * 0.42;
+      targetRotY = -0.3 + x * 0.55;
+      targetRotX = -y * 0.42;
     };
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
@@ -350,8 +350,8 @@ const Robot3D = () => {
       head.rotation.y = Math.sin(t * 0.6) * 0.1;
 
       if (scrollProgress >= 0.99) {
-        robot.rotation.y += (0.3 + tx - robot.rotation.y) * 0.08;
-        robot.rotation.x += (-ty - robot.rotation.x) * 0.08;
+        robot.rotation.y += (targetRotY - robot.rotation.y) * 0.08;
+        robot.rotation.x += (targetRotX - robot.rotation.x) * 0.08;
 
         legL.rotation.x += (0 - legL.rotation.x) * 0.12;
         legR.rotation.x += (0 - legR.rotation.x) * 0.12;
@@ -362,6 +362,8 @@ const Robot3D = () => {
       } else {
         robot.rotation.y = walkInRotY;
         robot.rotation.x = 0;
+        targetRotY = -0.3;
+        targetRotX = 0;
 
         const walkCycle = t * 3.5;
         const legSwing = 0.4;
