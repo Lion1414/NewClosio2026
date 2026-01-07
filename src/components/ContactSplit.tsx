@@ -47,7 +47,7 @@ const ContactSplit = React.memo(() => {
             <div className="max-w-3xl mx-auto text-center px-8">
               <h2 className="text-4xl sm:text-5xl font-bold mb-4">
                 Stay in the Loop with{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6ad4f2] to-[#5ac3e1]">
+                <span className="text-[#6ad4f2]">
                   Closio
                 </span>
               </h2>
