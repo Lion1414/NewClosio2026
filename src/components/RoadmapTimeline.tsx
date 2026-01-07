@@ -46,7 +46,7 @@ const RoadmapTimeline: React.FC = () => {
       <div className="mx-auto max-w-6xl px-6 py-20">
         <div className="text-center mb-10">
           <h2 className="text-4xl md:text-5xl font-bold text-white">
-            What's Shipping <span className="text-[#3ca2fa]">Next</span>
+            What's Shipping <span className="text-[#6ad4f2]">Next</span>
           </h2>
           <p className="mt-4 text-base md:text-lg text-white/70">
             Our commitment to continuous innovation and industry-specific features
@@ -71,7 +71,7 @@ const RoadmapTimeline: React.FC = () => {
             Join our beta program and get early access to upcoming features while helping us build the perfect life insurance CRM.
           </p>
           <div className="mt-6">
-            <button className="px-6 py-3 rounded-xl bg-[#3ca2fa]/20 border border-[#3ca2fa]/30 text-white hover:bg-[#3ca2fa]/25 transition">
+            <button className="px-6 py-3 rounded-xl bg-[#6ad4f2]/20 border border-[#6ad4f2]/30 text-white hover:bg-[#6ad4f2]/25 transition">
               Join Beta Program
             </button>
           </div>

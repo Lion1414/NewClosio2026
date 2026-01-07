@@ -96,7 +96,7 @@ const Robot3D = () => {
 
     const eyeGlowL = new THREE.MeshStandardMaterial({
       color: new THREE.Color('#FFFFFF'),
-      emissive: new THREE.Color('#35E7E0'),
+      emissive: new THREE.Color('#6ad4f2'),
       emissiveIntensity: 1.25,
       transparent: true,
       opacity: 0.28,

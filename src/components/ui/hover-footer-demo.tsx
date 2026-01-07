@@ -51,17 +51,17 @@ function HoverFooter() {
 
   const socialLinks = [
     {
-      icon: <TwitterIcon size={18} className="text-[#3ca2fa]" />,
+      icon: <TwitterIcon size={18} className="text-[#6ad4f2]" />,
       text: "Twitter",
       href: "https://twitter.com/closio",
     },
     {
-      icon: <InstagramIcon size={18} className="text-[#3ca2fa]" />,
+      icon: <InstagramIcon size={18} className="text-[#6ad4f2]" />,
       text: "Instagram",
       href: "https://www.instagram.com/closio.app",
     },
     {
-      icon: <FacebookIcon size={18} className="text-[#3ca2fa]" />,
+      icon: <FacebookIcon size={18} className="text-[#6ad4f2]" />,
       text: "Facebook",
       href: "https://facebook.com/closio",
     },

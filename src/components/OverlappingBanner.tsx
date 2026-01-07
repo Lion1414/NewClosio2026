@@ -24,21 +24,21 @@ const OverlappingBanner: React.FC = () => {
           >
             The <span className="relative inline-block">
               <span className="relative z-10">all-in-one</span>
-              <span className="absolute inset-0 bg-[#3ca2fa]/20 rounded-full blur-sm scale-110"></span>
+              <span className="absolute inset-0 bg-[#6ad4f2]/20 rounded-full blur-sm scale-110"></span>
             </span> platform to{' '}
             <span className="relative">
               <span className="text-[#6ad4f2]">manage</span>
-              <span className="absolute bottom-1 left-0 right-0 h-[2px] bg-[#3ca2fa]"></span>
+              <span className="absolute bottom-1 left-0 right-0 h-[2px] bg-[#6ad4f2]"></span>
             </span>{' '}
             your policies,{' '}
             <span className="relative">
               <span className="text-[#6ad4f2]">track</span>
-              <span className="absolute bottom-1 left-0 right-0 h-[2px] bg-[#3ca2fa]"></span>
+              <span className="absolute bottom-1 left-0 right-0 h-[2px] bg-[#6ad4f2]"></span>
             </span>{' '}
             commissions, and{' '}
             <span className="relative inline-block">
               <span className="relative z-10 text-[#6ad4f2]">grow</span>
-              <span className="absolute inset-0 border-2 border-[#3ca2fa]/40 rounded-full scale-125"></span>
+              <span className="absolute inset-0 border-2 border-[#6ad4f2]/40 rounded-full scale-125"></span>
             </span>{' '}
             your book of business.
           </motion.h2>
@@ -54,7 +54,7 @@ const OverlappingBanner: React.FC = () => {
             <span className="text-[#6ad4f2] font-medium">issue paid</span>,{' '}
             <span className="relative inline-block">
               <span className="font-semibold text-white">Closio</span>
-              <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#3ca2fa] to-[#6ad4f2]"></span>
+              <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#6ad4f2]"></span>
             </span>{' '}
             streamlines every step of your insurance workflow.
           </motion.p>

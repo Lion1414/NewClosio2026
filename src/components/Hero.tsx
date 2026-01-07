@@ -43,7 +43,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay, className 
       {displayedText}
       {showCursor && (
         <motion.span
-          className={isGradient ? 'text-[#35E7E0]' : 'text-white'}
+          className={isGradient ? 'text-[#6ad4f2]' : 'text-white'}
           animate={{ opacity: [1, 0, 1] }}
           transition={{ duration: 0.8, repeat: Infinity }}
         >

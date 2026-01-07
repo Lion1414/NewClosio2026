@@ -80,7 +80,7 @@ const ContactUs = () => {
                   <h3 className="text-lg font-medium mb-2">Email Support</h3>
                   <a
                     href="mailto:support@closio.com"
-                    className="text-[#6ad4f2] hover:text-[#5ac3e1] transition-colors text-lg"
+                    className="text-[#6ad4f2] hover:text-[#6ad4f2]/80 transition-colors text-lg"
                   >
                     support@closio.com
                   </a>
@@ -201,7 +201,7 @@ const ContactUs = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3 px-6 bg-gradient-to-r from-[#6ad4f2] to-[#5ac3e1] text-black font-semibold rounded-xl hover:shadow-lg hover:shadow-[#6ad4f2]/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-3 px-6 bg-[#6ad4f2] text-black font-semibold rounded-xl hover:bg-[#6ad4f2]/90 hover:shadow-lg hover:shadow-[#6ad4f2]/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
