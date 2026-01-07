@@ -91,13 +91,15 @@ const HeroBackground3D: React.FC = () => {
       outer.lineTo(-width / 2 + slant, height / 2);
       outer.lineTo(-width / 2, -height / 2);
 
-      const iw = Math.max(0.01, width - stroke * 2);
-      const ih = Math.max(0.01, height - stroke * 2);
+      const iw = width - stroke * 2;
+      const ih = height - stroke * 2;
+      const innerSlant = slant * (ih / height);
+
       const inner = new THREE.Path();
       inner.moveTo(-iw / 2, -ih / 2);
       inner.lineTo(iw / 2, -ih / 2);
-      inner.lineTo(iw / 2 + slant * (iw / width), ih / 2);
-      inner.lineTo(-iw / 2 + slant * (iw / width), ih / 2);
+      inner.lineTo(iw / 2 + innerSlant, ih / 2);
+      inner.lineTo(-iw / 2 + innerSlant, ih / 2);
       inner.lineTo(-iw / 2, -ih / 2);
 
       outer.holes.push(inner);
@@ -105,31 +107,49 @@ const HeroBackground3D: React.FC = () => {
       const g = new THREE.ExtrudeGeometry(outer, {
         depth,
         bevelEnabled: true,
-        bevelThickness: 0.03,
-        bevelSize: 0.03,
-        bevelSegments: 2
+        bevelThickness: 0.04,
+        bevelSize: 0.04,
+        bevelSegments: 3
       });
       g.center();
       return g;
     }
 
-    function createHollowO({ outerRadius = 0.65, ringThickness = 0.12, depth = 0.10 } = {}) {
+    function createHollowO({ outerRadius = 0.65, ringThickness = 0.06, depth = 0.10, segments = 64 } = {}) {
       const innerRadius = outerRadius - ringThickness;
 
       const outer = new THREE.Shape();
-      outer.absellipse(0, 0, outerRadius, outerRadius, 0, Math.PI * 2, false, 0);
+      for (let i = 0; i <= segments; i++) {
+        const angle = (i / segments) * Math.PI * 2;
+        const x = Math.cos(angle) * outerRadius;
+        const y = Math.sin(angle) * outerRadius;
+        if (i === 0) {
+          outer.moveTo(x, y);
+        } else {
+          outer.lineTo(x, y);
+        }
+      }
 
       const inner = new THREE.Path();
-      inner.absellipse(0, 0, innerRadius, innerRadius, 0, Math.PI * 2, true, 0);
+      for (let i = 0; i <= segments; i++) {
+        const angle = (i / segments) * Math.PI * 2;
+        const x = Math.cos(angle) * innerRadius;
+        const y = Math.sin(angle) * innerRadius;
+        if (i === 0) {
+          inner.moveTo(x, y);
+        } else {
+          inner.lineTo(x, y);
+        }
+      }
 
       outer.holes.push(inner);
 
       const g = new THREE.ExtrudeGeometry(outer, {
         depth,
         bevelEnabled: true,
-        bevelThickness: 0.03,
-        bevelSize: 0.03,
-        bevelSegments: 2
+        bevelThickness: 0.04,
+        bevelSize: 0.04,
+        bevelSegments: 3
       });
       g.center();
       return g;
@@ -139,8 +159,8 @@ const HeroBackground3D: React.FC = () => {
     io.position.set(0, 0.0, 0.0);
     hero3D.add(io);
 
-    const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.5, height: 1.3, stroke: 0.12, depth: 0.15 }), glassMaterial(TEAL, 0.40, 0.06, 0.45));
-    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.65, ringThickness: 0.12, depth: 0.15 }), glassMaterial(WHITE, 0.35, 0.07, 0.45));
+    const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.5, height: 1.3, stroke: 0.14, depth: 0.15 }), glassMaterial(TEAL, 0.40, 0.06, 0.45));
+    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.65, ringThickness: 0.14, depth: 0.15, segments: 64 }), glassMaterial(WHITE, 0.35, 0.07, 0.45));
 
     iMesh.position.set(-0.50, 0.0, 0.0);
     oMesh.position.set(0.52, 0.0, 0.0);
