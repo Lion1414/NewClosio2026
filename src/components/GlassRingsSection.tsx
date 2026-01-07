@@ -20,7 +20,7 @@ const GlassRingsSection = () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.05;
+    renderer.toneMappingExposure = 0.95;
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x000000);
@@ -31,22 +31,21 @@ const GlassRingsSection = () => {
     const env = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
     scene.environment = env;
 
-    const key = new THREE.DirectionalLight(0xffffff, 2.0);
+    const key = new THREE.DirectionalLight(0xffffff, 1.5);
     key.position.set(3, 4, 6);
     scene.add(key);
 
-    const fill = new THREE.DirectionalLight(0xffffff, 1.1);
+    const fill = new THREE.DirectionalLight(0xffffff, 0.6);
     fill.position.set(-4, -1, 4);
     scene.add(fill);
 
-    const rim = new THREE.PointLight(0xffffff, 1.4, 20);
+    const rim = new THREE.PointLight(0xffffff, 1.0, 20);
     rim.position.set(-2, 2, -2);
     scene.add(rim);
 
     const C_TEAL = new THREE.Color("#37E6E0");
     const C_PINK = new THREE.Color("#FF63D8");
     const C_WHITE = new THREE.Color("#FFFFFF");
-    const C_GRAY = new THREE.Color("#B8BCC7");
 
     const makeGlass = (tint: THREE.Color, emissiveStrength = 0.35) => new THREE.MeshPhysicalMaterial({
       color: tint.clone().lerp(C_WHITE, 0.55),
@@ -59,7 +58,7 @@ const GlassRingsSection = () => {
       opacity: 1.0,
       clearcoat: 1.0,
       clearcoatRoughness: 0.12,
-      envMapIntensity: 1.25,
+      envMapIntensity: 0.8,
       specularIntensity: 1.0,
       emissive: tint.clone().lerp(C_WHITE, 0.2),
       emissiveIntensity: emissiveStrength
@@ -70,7 +69,7 @@ const GlassRingsSection = () => {
 
     const geo = new THREE.TorusGeometry(1, 0.16, 48, 220);
 
-    const ring3 = new THREE.Mesh(geo, makeGlass(C_GRAY, 0.18));
+    const ring3 = new THREE.Mesh(geo, makeGlass(C_TEAL, 0.18));
     ring3.scale.set(2.2, 2.2, 2.2);
     ring3.rotation.set(0, 0, 0);
     ring3.position.set(0, -0.6, 0);
@@ -87,11 +86,6 @@ const GlassRingsSection = () => {
     ring2.rotation.set(0, 0, 0);
     ring2.position.set(0, 1.0, 0);
     group.add(ring2);
-
-    const glowMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.06 });
-    const glow1 = new THREE.Mesh(new THREE.PlaneGeometry(10, 6), glowMat.clone());
-    glow1.position.set(0, 0.1, -2.2);
-    group.add(glow1);
 
     const fit = () => {
       const w = canvas.clientWidth;
