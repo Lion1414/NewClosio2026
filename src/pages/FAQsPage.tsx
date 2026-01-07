@@ -1,6 +1,37 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+
+const TypewriterHeading: React.FC<{ text: string }> = ({ text }) => {
+  const [displayText, setDisplayText] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
+  const hasStartedRef = useRef(false);
+
+  useEffect(() => {
+    if (hasStartedRef.current) return;
+    hasStartedRef.current = true;
+
+    let currentIndex = 0;
+    const interval = setInterval(() => {
+      if (currentIndex <= text.length) {
+        setDisplayText(text.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(interval);
+        setTimeout(() => setShowCursor(false), 500);
+      }
+    }, 60);
+
+    return () => clearInterval(interval);
+  }, [text]);
+
+  return (
+    <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-white/40 tracking-tight">
+      {displayText}
+      {showCursor && <span className="animate-pulse">|</span>}
+    </h1>
+  );
+};
 
 interface FAQItem {
   question: string;
@@ -93,7 +124,7 @@ const FAQsPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">Frequently Asked Questions</h1>
+          <TypewriterHeading text="Frequently Asked Questions" />
 
           <p className="text-white/60 text-lg mb-12">
             Find answers to common questions about Closio
