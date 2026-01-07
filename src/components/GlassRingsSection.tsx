@@ -12,10 +12,11 @@ const GlassRingsSection = () => {
 
     const renderer = new THREE.WebGLRenderer({
       canvas,
-      alpha: true,
+      alpha: false,
       antialias: true,
       powerPreference: "high-performance"
     });
+    renderer.setClearColor(0x000000, 1);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -68,27 +69,27 @@ const GlassRingsSection = () => {
 
     const geo = new THREE.TorusGeometry(1, 0.16, 48, 220);
 
+    const ring3 = new THREE.Mesh(geo, makeGlass(C_GRAY, 0.18));
+    ring3.scale.set(2.2, 2.2, 2.2);
+    ring3.rotation.set(0, 0, 0);
+    ring3.position.set(0, -0.6, 0);
+    group.add(ring3);
+
     const ring1 = new THREE.Mesh(geo, makeGlass(C_TEAL, 0.32));
     ring1.scale.set(1.8, 1.8, 1.8);
-    ring1.rotation.set(0.55, 0.25, 0.1);
-    ring1.position.set(0.8, 0.3, 0);
+    ring1.rotation.set(0, 0, 0);
+    ring1.position.set(0, 0.2, 0);
     group.add(ring1);
 
     const ring2 = new THREE.Mesh(geo, makeGlass(C_PINK, 0.28));
     ring2.scale.set(1.4, 1.4, 1.4);
-    ring2.rotation.set(-0.35, 0.9, -0.2);
-    ring2.position.set(1.2, -0.5, -0.2);
+    ring2.rotation.set(0, 0, 0);
+    ring2.position.set(0, 1.0, 0);
     group.add(ring2);
-
-    const ring3 = new THREE.Mesh(geo, makeGlass(C_GRAY, 0.18));
-    ring3.scale.set(2.2, 2.2, 2.2);
-    ring3.rotation.set(0.15, -0.55, 0.55);
-    ring3.position.set(0.2, 0.8, -0.35);
-    group.add(ring3);
 
     const glowMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.06 });
     const glow1 = new THREE.Mesh(new THREE.PlaneGeometry(10, 6), glowMat.clone());
-    glow1.position.set(0.5, 0.1, -2.2);
+    glow1.position.set(0, 0.1, -2.2);
     group.add(glow1);
 
     const fit = () => {
@@ -113,9 +114,9 @@ const GlassRingsSection = () => {
     const animate = () => {
       t += 0.008;
 
-      ring1.rotation.z += 0.003;
-      ring2.rotation.y += 0.0022;
-      ring3.rotation.x += 0.0018;
+      ring1.rotation.y += 0.006;
+      ring2.rotation.y -= 0.005;
+      ring3.rotation.y += 0.004;
 
       group.position.y = Math.sin(t) * 0.08;
 
@@ -210,7 +211,7 @@ const GlassRingsSection = () => {
 
           <canvas
             ref={canvasRef}
-            className="w-full h-[500px] lg:h-[600px] order-first lg:order-last block"
+            className="w-full h-[500px] lg:h-[600px] order-first lg:order-last block bg-black"
             style={{
               opacity: 0.85,
               filter: 'saturate(1.08)'
