@@ -22,7 +22,7 @@ const TunnelBackground: React.FC = () => {
 
     // Scene + camera
     const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0x000000, 8, 35);
+    scene.fog = new THREE.Fog(0x000000, 5, 30);
 
     const camera = new THREE.PerspectiveCamera(
       75,
@@ -33,17 +33,17 @@ const TunnelBackground: React.FC = () => {
     camera.position.set(0, 0, 0.5);
     camera.lookAt(0, 0, -30);
 
-    // Lighting for realistic depth
-    const ambientLight = new THREE.AmbientLight(0x202020, 0.5);
+    // Lighting for realistic depth with dramatic shadows
+    const ambientLight = new THREE.AmbientLight(0x101010, 0.3);
     scene.add(ambientLight);
 
-    const frontLight = new THREE.DirectionalLight(0xffffff, 0.6);
+    const frontLight = new THREE.DirectionalLight(0xffffff, 0.4);
     frontLight.position.set(0, 3, 2);
     frontLight.castShadow = true;
     scene.add(frontLight);
 
-    // Back light from the opening
-    const backLight = new THREE.PointLight(0xffffff, 1.5, 50);
+    // Back light from the opening - dimmed for more depth
+    const backLight = new THREE.PointLight(0xffffff, 1.0, 50);
     backLight.position.set(0, 0, -30);
     scene.add(backLight);
 
@@ -51,13 +51,13 @@ const TunnelBackground: React.FC = () => {
     const TUNNEL = {
       slices: 40,
       spacing: 0.8,
-      size: 35,
+      size: 50,
       divisions: 8,
     };
 
     function makeGridSlice(size: number, divisions: number, depth: number) {
-      // Gray grid lines with distance-based coloring
-      const centerColor = depth < 30 ? 0x888888 : 0x666666;
+      // Remove center cross by making centerColor invisible (black)
+      const centerColor = 0x000000;
       const lineColor = depth < 30 ? 0x555555 : 0x444444;
 
       const grid = new THREE.GridHelper(size, divisions, centerColor, lineColor);
@@ -86,12 +86,12 @@ const TunnelBackground: React.FC = () => {
       tunnel.add(g);
     }
 
-    // Add four tunnel walls with subtle grid texture
+    // Add four tunnel walls with subtle grid texture and more shadow
     const wallSegments = 8;
     const wallMat = new THREE.MeshBasicMaterial({
-      color: 0x1a1a1a,
+      color: 0x0a0a0a,
       transparent: true,
-      opacity: 0.2,
+      opacity: 0.4,
       side: THREE.DoubleSide,
       depthWrite: true,
     });
@@ -156,7 +156,7 @@ const TunnelBackground: React.FC = () => {
     });
 
     // LARGE SQUARE OPENING AT THE END - frames content area
-    const openingSize = TUNNEL.size * 12; // Much larger to frame full screen
+    const openingSize = TUNNEL.size * 15; // Massive opening to frame full screen
     const openingGeo = new THREE.PlaneGeometry(openingSize, openingSize);
     const openingMat = new THREE.MeshBasicMaterial({
       color: 0xffffff,
@@ -239,10 +239,11 @@ const TunnelBackground: React.FC = () => {
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background: `
-            radial-gradient(75% 70% at 50% 50%,
+            radial-gradient(60% 55% at 50% 50%,
               rgba(0,0,0,0) 0%,
-              rgba(0,0,0,0.1) 60%,
-              rgba(0,0,0,0.4) 100%)
+              rgba(0,0,0,0.3) 50%,
+              rgba(0,0,0,0.7) 80%,
+              rgba(0,0,0,0.95) 100%)
           `,
         }}
       />
@@ -252,8 +253,23 @@ const TunnelBackground: React.FC = () => {
           background: `
             linear-gradient(180deg,
               rgba(0,0,0,1) 0%,
-              rgba(0,0,0,0.8) 8%,
-              rgba(0,0,0,0) 20%)
+              rgba(0,0,0,0.9) 6%,
+              rgba(0,0,0,0.4) 15%,
+              rgba(0,0,0,0) 25%)
+          `,
+        }}
+      />
+      <div
+        className="absolute inset-0 z-[3] pointer-events-none"
+        style={{
+          background: `
+            linear-gradient(90deg,
+              rgba(0,0,0,0.8) 0%,
+              rgba(0,0,0,0.3) 15%,
+              rgba(0,0,0,0) 30%,
+              rgba(0,0,0,0) 70%,
+              rgba(0,0,0,0.3) 85%,
+              rgba(0,0,0,0.8) 100%)
           `,
         }}
       />
