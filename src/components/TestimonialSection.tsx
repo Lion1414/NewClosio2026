@@ -28,6 +28,56 @@ const testimonials: Testimonial[] = [
   }
 ];
 
+const TypewriterText: React.FC<{ text: string }> = ({ text }) => {
+  const [displayText, setDisplayText] = useState('');
+  const [hasStarted, setHasStarted] = useState(false);
+  const elementRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasStarted) {
+            setHasStarted(true);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasStarted]);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    let currentIndex = 0;
+    const interval = setInterval(() => {
+      if (currentIndex <= text.length) {
+        setDisplayText(text.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 80);
+
+    return () => clearInterval(interval);
+  }, [text, hasStarted]);
+
+  return (
+    <div ref={elementRef} className="text-center mb-8">
+      <h2 className="text-6xl sm:text-7xl lg:text-8xl font-bold text-neutral-800/30 tracking-tight">
+        {displayText}
+        <span className="animate-pulse">|</span>
+      </h2>
+    </div>
+  );
+};
+
 const TestimonialSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -67,6 +117,7 @@ const TestimonialSection: React.FC = () => {
   return (
     <section ref={sectionRef} className="relative py-12 sm:py-14 lg:py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
+        <TypewriterText text="Testimonials" />
         <div className="bg-black rounded-3xl p-6 sm:p-8 lg:p-10 text-center">
           <div className="mb-6">
             <img
