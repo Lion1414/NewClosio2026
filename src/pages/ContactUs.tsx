@@ -221,6 +221,7 @@ const ContactUs = () => {
             </p>
             <Link
               to="/faqs"
+              onClick={() => window.scrollTo(0, 0)}
               className="inline-block px-6 py-2 border border-[#6ad4f2] text-[#6ad4f2] rounded-xl hover:bg-[#6ad4f2]/10 transition-colors"
             >
               Visit FAQs
