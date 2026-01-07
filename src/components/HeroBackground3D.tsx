@@ -18,13 +18,12 @@ const HeroBackground3D: React.FC = () => {
       powerPreference: "high-performance",
     });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x000000, 1);
+    renderer.setClearColor(0x000000, 0);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.15;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x000000);
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 90);
     camera.position.set(0.0, 0.2, 7.5);
 
@@ -115,32 +114,14 @@ const HeroBackground3D: React.FC = () => {
       return g;
     }
 
-    function createHollowO({ outerRadius = 0.65, ringThickness = 0.06, depth = 0.10, segments = 64 } = {}) {
+    function createHollowO({ outerRadius = 0.65, ringThickness = 0.06, depth = 0.10, segments = 128 } = {}) {
       const innerRadius = outerRadius - ringThickness;
 
       const outer = new THREE.Shape();
-      for (let i = 0; i <= segments; i++) {
-        const angle = (i / segments) * Math.PI * 2;
-        const x = Math.cos(angle) * outerRadius;
-        const y = Math.sin(angle) * outerRadius;
-        if (i === 0) {
-          outer.moveTo(x, y);
-        } else {
-          outer.lineTo(x, y);
-        }
-      }
+      outer.absellipse(0, 0, outerRadius, outerRadius, 0, Math.PI * 2, false, 0);
 
       const inner = new THREE.Path();
-      for (let i = 0; i <= segments; i++) {
-        const angle = (i / segments) * Math.PI * 2;
-        const x = Math.cos(angle) * innerRadius;
-        const y = Math.sin(angle) * innerRadius;
-        if (i === 0) {
-          inner.moveTo(x, y);
-        } else {
-          inner.lineTo(x, y);
-        }
-      }
+      inner.absellipse(0, 0, innerRadius, innerRadius, 0, Math.PI * 2, true, 0);
 
       outer.holes.push(inner);
 
@@ -149,7 +130,8 @@ const HeroBackground3D: React.FC = () => {
         bevelEnabled: true,
         bevelThickness: 0.04,
         bevelSize: 0.04,
-        bevelSegments: 3
+        bevelSegments: 3,
+        curveSegments: segments
       });
       g.center();
       return g;
@@ -160,7 +142,7 @@ const HeroBackground3D: React.FC = () => {
     hero3D.add(io);
 
     const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.5, height: 1.3, stroke: 0.14, depth: 0.15 }), glassMaterial(TEAL, 0.40, 0.06, 0.45));
-    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.65, ringThickness: 0.14, depth: 0.15, segments: 64 }), glassMaterial(WHITE, 0.35, 0.07, 0.45));
+    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.65, ringThickness: 0.14, depth: 0.15, segments: 128 }), glassMaterial(WHITE, 0.35, 0.07, 0.45));
 
     iMesh.position.set(-0.50, 0.0, 0.0);
     oMesh.position.set(0.52, 0.0, 0.0);
@@ -250,7 +232,7 @@ const HeroBackground3D: React.FC = () => {
 
     gsap.to(io.rotation, {
       y: Math.PI * 2,
-      duration: 35,
+      duration: 50,
       ease: "none",
       repeat: -1,
       delay: 2.5
@@ -342,9 +324,10 @@ const HeroBackground3D: React.FC = () => {
 
   return (
     <div className="absolute inset-0 z-0 bg-black">
+      <div className="absolute inset-0 bg-gradient-to-l from-neutral-900 via-black to-black pointer-events-none" />
       <canvas
         ref={canvasRef}
-        className="w-full h-full block bg-black pointer-events-auto"
+        className="w-full h-full block bg-transparent pointer-events-auto"
         style={{ opacity: 1 }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60 pointer-events-none" />

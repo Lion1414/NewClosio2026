@@ -7,21 +7,21 @@ const FlipButton: React.FC = () => {
 
   return (
     <motion.button
-      className="demo-btn relative px-8 py-4 bg-gradient-to-r from-[#35E7E0] to-[#6ad4f2] text-black font-semibold text-base rounded-xl overflow-hidden z-30 group"
+      className="demo-btn relative px-8 py-4 bg-white text-black font-semibold text-base rounded-xl overflow-hidden z-30 group"
       initial={{ opacity: 0, y: 20, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.6, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(53, 231, 224, 0.6)" }}
+      whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 255, 255, 0.3)" }}
       whileTap={{ scale: 0.98 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
     >
       <motion.div
-        className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20"
+        className="absolute inset-0 bg-neutral-100 opacity-0 group-hover:opacity-100"
         transition={{ duration: 0.3 }}
       />
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30"
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-neutral-200 to-transparent opacity-0 group-hover:opacity-50"
         animate={isHovered ? { x: ["-200%", "200%"] } : {}}
         transition={{ duration: 1, ease: "easeInOut" }}
       />
