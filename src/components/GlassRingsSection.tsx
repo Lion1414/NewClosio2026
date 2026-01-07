@@ -153,7 +153,7 @@ const GlassRingsSection = () => {
   }, []);
 
   return (
-    <section className="relative py-20 lg:py-32 overflow-hidden">
+    <section className="relative py-20 lg:py-32 overflow-hidden bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
@@ -209,18 +209,15 @@ const GlassRingsSection = () => {
             </div>
           </div>
 
-          <div ref={containerRef} className="relative h-[500px] lg:h-[600px]">
-            <div className="absolute inset-0 pointer-events-none">
-              <canvas
-                ref={canvasRef}
-                className="w-full h-full opacity-85 saturate-[1.08]"
-                style={{
-                  filter: 'saturate(1.08)',
-                  display: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'none' : 'block'
-                }}
-              />
-            </div>
-
+          <div ref={containerRef} className="relative h-[500px] lg:h-[600px] order-first lg:order-last">
+            <canvas
+              ref={canvasRef}
+              className="w-full h-full block"
+              style={{
+                opacity: 0.85,
+                filter: 'saturate(1.08)'
+              }}
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none" />
           </div>
 
