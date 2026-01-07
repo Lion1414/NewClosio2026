@@ -39,7 +39,7 @@ const ContactSplit = React.memo(() => {
     <section id="contact" className="py-20 relative bg-black overflow-hidden rounded-3xl">
       <div className="max-w-7xl mx-auto px-6">
         <div className="relative min-h-[500px]">
-          <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-full h-[500px] pointer-events-none select-none z-0">
+          <div className="absolute -bottom-[180px] left-0 w-full h-[600px] pointer-events-none select-none z-0">
             <StaticIO3D />
           </div>
 
