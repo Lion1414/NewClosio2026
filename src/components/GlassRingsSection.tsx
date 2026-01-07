@@ -155,20 +155,20 @@ const GlassRingsSection = () => {
           <div className="relative z-10 space-y-6">
             <div className="inline-block">
               <span className="text-[#37E6E0] text-sm font-semibold tracking-wider uppercase bg-[#37E6E0]/10 px-4 py-2 rounded-full border border-[#37E6E0]/20">
-                Crystal Clear Transparency
+                Secure & Reliable Platform
               </span>
             </div>
 
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              <span className="block text-white">Complete Visibility</span>
+              <span className="block text-white">Built by Experts</span>
               <span className="block bg-gradient-to-r from-[#37E6E0] to-[#FF63D8] bg-clip-text text-transparent">
-                Into Every Deal
+                Built for You
               </span>
             </h2>
 
             <p className="text-lg sm:text-xl text-slate-300 leading-relaxed">
-              No more guessing games with your commissions. Closio provides crystal-clear insight into
-              every transaction, giving you complete confidence in your earnings and pipeline.
+              CLOSIO is powered by a dedicated team of industry professionals committed to delivering
+              enterprise-grade security and continuous innovation. Your data and success are our top priorities.
             </p>
 
             <div className="space-y-4 pt-4">
@@ -177,8 +177,8 @@ const GlassRingsSection = () => {
                   <div className="w-2 h-2 rounded-full bg-[#37E6E0]"></div>
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold text-lg mb-1">Real-Time Commission Tracking</h3>
-                  <p className="text-slate-400">See exactly what you've earned and what's pending, updated instantly.</p>
+                  <h3 className="text-white font-semibold text-lg mb-1">Bank-Level Security</h3>
+                  <p className="text-slate-400">Enterprise-grade encryption and security protocols protect your data 24/7.</p>
                 </div>
               </div>
 
@@ -187,8 +187,8 @@ const GlassRingsSection = () => {
                   <div className="w-2 h-2 rounded-full bg-[#FF63D8]"></div>
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold text-lg mb-1">Transparent Pipeline Management</h3>
-                  <p className="text-slate-400">Every deal stage visible at a glance. No hidden surprises.</p>
+                  <h3 className="text-white font-semibold text-lg mb-1">Expert Team Support</h3>
+                  <p className="text-slate-400">Our experienced team is dedicated to your success, every step of the way.</p>
                 </div>
               </div>
 
@@ -197,8 +197,8 @@ const GlassRingsSection = () => {
                   <div className="w-2 h-2 rounded-full bg-slate-200"></div>
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold text-lg mb-1">Trust Through Clarity</h3>
-                  <p className="text-slate-400">Build stronger relationships with complete visibility for your entire team.</p>
+                  <h3 className="text-white font-semibold text-lg mb-1">Continuous Innovation</h3>
+                  <p className="text-slate-400">Regular updates and new features keep our CRM ahead of the curve.</p>
                 </div>
               </div>
             </div>
