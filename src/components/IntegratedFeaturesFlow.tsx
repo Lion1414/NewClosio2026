@@ -22,7 +22,7 @@ const features: Feature[] = [
 
 export default function IntegratedFeaturesFlow() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: false, margin: "-100px" });
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
     <section ref={sectionRef} className="relative w-full bg-black py-20">
