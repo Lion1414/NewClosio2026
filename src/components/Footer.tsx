@@ -69,32 +69,6 @@ const Footer: React.FC = () => {
       <div className="absolute top-[-15px] left-0 right-0 h-[35px] bg-gradient-to-r from-transparent via-white/30 to-transparent blur-xl" />
       <div className="absolute top-[-30px] left-1/2 -translate-x-1/2 w-[50%] h-[60px] bg-gradient-to-r from-transparent via-white/20 to-transparent blur-2xl" />
 
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
-        <div
-          className="absolute bottom-0 right-0 w-[70%] h-[80%]"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px)
-            `,
-            backgroundSize: '50px 50px',
-            maskImage: 'radial-gradient(ellipse at bottom right, black 0%, rgba(0,0,0,0.6) 40%, transparent 70%)',
-            WebkitMaskImage: 'radial-gradient(ellipse at bottom right, black 0%, rgba(0,0,0,0.6) 40%, transparent 70%)',
-          }}
-        />
-        <div
-          className="absolute bottom-0 right-0 w-[60%] h-[70%]"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(255, 255, 255, 0.12) 1px, transparent 1px)
-            `,
-            backgroundSize: '100px 100px',
-            maskImage: 'radial-gradient(ellipse at bottom right, black 0%, rgba(0,0,0,0.5) 35%, transparent 65%)',
-            WebkitMaskImage: 'radial-gradient(ellipse at bottom right, black 0%, rgba(0,0,0,0.5) 35%, transparent 65%)',
-          }}
-        />
-      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-40 md:pt-52 lg:pt-[220px] pb-12 sm:pb-16 relative z-10">
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 mb-12">
           <div className="col-span-2 sm:col-span-2 md:col-span-3 lg:col-span-2">
