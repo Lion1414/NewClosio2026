@@ -199,7 +199,6 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 15, scale: 0.5 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 1.2, delay: 3.8, ease: [0.16, 1, 0.3, 1] }}
-              style={{ textShadow: "0 0 10px rgba(106, 212, 242, 0.5)" }}
             >
               I
             </motion.span>
