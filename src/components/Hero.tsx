@@ -121,7 +121,7 @@ const FlipButton: React.FC = () => {
         transition={{ duration: 1.2, ease: "easeInOut" }}
       />
       <span className="flex items-center justify-center overflow-visible h-6 relative z-10">
-        Book a Demo Now
+        Get in touch
       </span>
     </motion.button>
   );
