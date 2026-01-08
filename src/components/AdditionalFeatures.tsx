@@ -8,16 +8,16 @@ const AdditionalFeatures: React.FC = () => {
     offset: ["start 0.8", "end 0.3"]
   });
 
-  // Shadow opacity - stays visible
-  const shadowOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 0.65]);
+  // Shadow opacity - fades in, stays visible, then fades out
+  const shadowOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 0.65, 0.65, 0]);
 
-  // First text animation - fades in and stays
-  const text1Opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
-  const text1Y = useTransform(scrollYProgress, [0, 0.3], [30, 0]);
+  // First text animation - fades in, stays, then fades out
+  const text1Opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  const text1Y = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [30, 0, 0, -20]);
 
-  // Second text animation - fades in and stays
-  const text2Opacity = useTransform(scrollYProgress, [0.2, 0.5], [0, 1]);
-  const text2Y = useTransform(scrollYProgress, [0.2, 0.5], [30, 0]);
+  // Second text animation - fades in, stays, then fades out
+  const text2Opacity = useTransform(scrollYProgress, [0.2, 0.5, 0.7, 1], [0, 1, 1, 0]);
+  const text2Y = useTransform(scrollYProgress, [0.2, 0.5, 0.7, 1], [30, 0, 0, -20]);
 
   return (
     <section ref={sectionRef} className="py-40 sm:py-44 md:py-48 lg:py-56 bg-black">
