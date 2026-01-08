@@ -6,11 +6,11 @@ const VerticalLine: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"]
+    offset: ["start 0.8", "end start"]
   });
 
-  const verticalScale = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
-  const horizontalScale = useTransform(scrollYProgress, [0.3, 0.6], [0, 1]);
+  const verticalScale = useTransform(scrollYProgress, [0, 0.15], [0, 1]);
+  const horizontalScale = useTransform(scrollYProgress, [0.15, 0.35], [0, 1]);
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none overflow-visible">
