@@ -27,38 +27,18 @@ const AdditionalFeatures: React.FC = () => {
             >
               <defs>
                 <filter id="glow">
-                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
                   <feMerge>
                     <feMergeNode in="coloredBlur"/>
                     <feMergeNode in="SourceGraphic"/>
                   </feMerge>
                 </filter>
               </defs>
-              <line
-                x1="200"
-                y1="30"
-                x2="1000"
-                y2="30"
-                stroke="rgba(255, 255, 255, 0.4)"
-                strokeWidth="2"
-                filter="url(#glow)"
-              />
-              <line
-                x1="200"
-                y1="30"
-                x2="20"
-                y2="200"
-                stroke="rgba(255, 255, 255, 0.4)"
-                strokeWidth="2"
-                filter="url(#glow)"
-              />
-              <line
-                x1="1000"
-                y1="30"
-                x2="1180"
-                y2="200"
-                stroke="rgba(255, 255, 255, 0.4)"
-                strokeWidth="2"
+              <path
+                d="M 20 200 L 200 30 Q 250 10, 300 10 L 900 10 Q 950 10, 1000 30 L 1180 200"
+                stroke="rgba(255, 255, 255, 0.3)"
+                strokeWidth="1.5"
+                fill="none"
                 filter="url(#glow)"
               />
             </svg>
