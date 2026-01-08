@@ -49,23 +49,6 @@ const AdditionalFeatures: React.FC = () => {
               z-index: 0;
               pointer-events: none;
             }
-
-            .glow-shell::after {
-              content: "";
-              position: absolute;
-              left: 50%;
-              top: -68px;
-              transform: translateX(-50%);
-              width: 0;
-              height: 0;
-              border-left: 300px solid transparent;
-              border-right: 300px solid transparent;
-              border-top: 96px solid rgba(255, 255, 255, 0.15);
-              filter: blur(8px);
-              opacity: 0.4;
-              z-index: 1;
-              pointer-events: none;
-            }
           `}</style>
 
           <div className="relative z-10 flex flex-col items-center gap-3">
