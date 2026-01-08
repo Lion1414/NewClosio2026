@@ -172,38 +172,38 @@ const ContactSplit = React.memo(() => {
             transition={{ duration: 0.8 }}
             className="relative rounded-2xl overflow-hidden"
             style={{
-              background: '#6ad4f2',
-              boxShadow: '0 25px 50px -12px rgba(106, 212, 242, 0.3), 0 0 80px rgba(106, 212, 242, 0.15)',
+              background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%)',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 80px rgba(255, 255, 255, 0.05)',
             }}
           >
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.1) 100%)',
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.03) 100%)',
               }}
             />
             <div
               className="absolute top-0 left-0 right-0 h-[1px]"
               style={{
-                background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 20%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.6) 80%, transparent 100%)',
+                background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 20%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.2) 80%, transparent 100%)',
               }}
             />
             <div
               className="absolute bottom-0 left-0 right-0 h-[1px]"
               style={{
-                background: 'linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.1) 50%, transparent 100%)',
+                background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%)',
               }}
             />
             <div
               className="absolute -top-20 -left-20 w-[300px] h-[300px] rounded-full pointer-events-none"
               style={{
-                background: 'radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)',
               }}
             />
             <div
               className="absolute -bottom-32 -right-32 w-[400px] h-[400px] rounded-full pointer-events-none"
               style={{
-                background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%)',
               }}
             />
 
@@ -211,7 +211,7 @@ const ContactSplit = React.memo(() => {
               <div
                 className="absolute inset-y-0 left-0 w-[55%] pointer-events-none"
                 style={{
-                  background: 'linear-gradient(90deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 40%, transparent 100%)',
+                  background: 'linear-gradient(90deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 40%, transparent 100%)',
                 }}
               />
               <div className="flex-1 p-8 md:p-10 lg:p-12 flex flex-col justify-center relative z-10">
@@ -296,15 +296,15 @@ const ContactSplit = React.memo(() => {
                     <div
                       className="px-4 py-2.5 rounded-xl whitespace-nowrap flex items-center gap-2.5"
                       style={{
-                        background: 'rgba(255, 255, 255, 0.15)',
-                        backdropFilter: 'blur(16px)',
-                        WebkitBackdropFilter: 'blur(16px)',
-                        border: '1px solid rgba(255, 255, 255, 0.25)',
-                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        backdropFilter: 'blur(20px)',
+                        WebkitBackdropFilter: 'blur(20px)',
+                        border: '1px solid rgba(255, 255, 255, 0.15)',
+                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                       }}
                     >
-                      <span className="text-white/60">{card.icon}</span>
-                      <span className="text-white/60 text-sm font-medium">{card.label}</span>
+                      <span className="text-white/70">{card.icon}</span>
+                      <span className="text-white/70 text-sm font-medium">{card.label}</span>
                     </div>
                   </motion.div>
                 ))}
@@ -326,11 +326,11 @@ const ContactSplit = React.memo(() => {
                     <div
                       className="px-5 py-3 rounded-xl whitespace-nowrap flex items-center gap-3"
                       style={{
-                        background: 'rgba(255, 255, 255, 0.25)',
-                        backdropFilter: 'blur(20px)',
-                        WebkitBackdropFilter: 'blur(20px)',
-                        border: '1px solid rgba(255, 255, 255, 0.4)',
-                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 0 rgba(0, 0, 0, 0.05)',
+                        background: 'rgba(255, 255, 255, 0.12)',
+                        backdropFilter: 'blur(24px)',
+                        WebkitBackdropFilter: 'blur(24px)',
+                        border: '1px solid rgba(255, 255, 255, 0.25)',
+                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.1)',
                       }}
                     >
                       <span className="text-white">{card.icon}</span>
