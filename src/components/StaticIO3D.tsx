@@ -155,16 +155,16 @@ const StaticIO3D: React.FC = () => {
     io3D.add(io);
 
     const iMesh = new THREE.Mesh(
-      createHollowI({ width: 0.45, height: 1.2, stroke: 0.12, slant: -0.22, depth: 0.20 }),
-      solidMaterial(TEAL, 0.12, 0.5)
+      createHollowI({ width: 0.6, height: 1.5, stroke: 0.16, slant: 0.26, depth: 0.25 }),
+      solidMaterial(TEAL, 0.35, 0.3)
     );
     const oMesh = new THREE.Mesh(
-      createHollowO({ outerRadius: 0.58, ringThickness: 0.22, depth: 0.20, segments: 256 }),
-      solidMaterial(WHITE, 0.08, 0.5)
+      createHollowO({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }),
+      solidMaterial(WHITE, 0.15, 0.35)
     );
 
-    iMesh.position.set(-0.58, 0.0, 0.0);
-    oMesh.position.set(0.58, 0.0, 0.0);
+    iMesh.position.set(-0.60, 0.0, 0.0);
+    oMesh.position.set(0.62, 0.0, 0.0);
 
     io.add(iMesh, oMesh);
 
