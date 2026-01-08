@@ -123,39 +123,36 @@ const FlipButton: React.FC = () => {
 
 const HeroGrid: React.FC = () => {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-[2]">
       <div
-        className="absolute top-0 bottom-0 right-0 w-[70%]"
+        className="absolute top-0 bottom-0 right-0 w-[65%]"
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(106, 212, 242, 0.03) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(106, 212, 242, 0.03) 1px, transparent 1px)
+            linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px)
           `,
-          backgroundSize: '60px 60px',
+          backgroundSize: '50px 50px',
           maskImage: `
-            linear-gradient(to left, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 40%, transparent 70%),
-            linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%),
-            linear-gradient(to top, transparent 0%, rgba(0,0,0,1) 10%)
+            linear-gradient(to left, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 30%, transparent 55%)
           `,
-          maskComposite: 'intersect',
           WebkitMaskImage: `
-            linear-gradient(to left, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 40%, transparent 70%)
+            linear-gradient(to left, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 30%, transparent 55%)
           `,
         }}
       />
       <div
-        className="absolute top-0 bottom-0 right-0 w-[70%]"
+        className="absolute top-0 bottom-0 right-0 w-[65%]"
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(106, 212, 242, 0.06) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(106, 212, 242, 0.06) 1px, transparent 1px)
+            linear-gradient(to right, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.12) 1px, transparent 1px)
           `,
-          backgroundSize: '180px 180px',
+          backgroundSize: '150px 150px',
           maskImage: `
-            linear-gradient(to left, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 35%, transparent 60%)
+            linear-gradient(to left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 25%, transparent 50%)
           `,
           WebkitMaskImage: `
-            linear-gradient(to left, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 35%, transparent 60%)
+            linear-gradient(to left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 25%, transparent 50%)
           `,
         }}
       />
