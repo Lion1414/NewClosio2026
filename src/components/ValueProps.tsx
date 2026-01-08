@@ -9,7 +9,7 @@ const VerticalLine: React.FC = () => {
     offset: ["start 0.6", "end 0.2"]
   });
 
-  const pathLength = useTransform(scrollYProgress, [0.2, 0.8], [0, 1]);
+  const pathLength = useTransform(scrollYProgress, [0.15, 0.8], [0, 1]);
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none overflow-visible">
@@ -22,7 +22,7 @@ const VerticalLine: React.FC = () => {
         <motion.path
           d="M 53 -5 L 53 28 Q 53 35, 46 35 L -5 35"
           stroke="rgba(255, 255, 255, 0.15)"
-          strokeWidth="20"
+          strokeWidth="2"
           fill="none"
           strokeLinecap="round"
           style={{
