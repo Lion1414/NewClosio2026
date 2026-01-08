@@ -121,6 +121,48 @@ const FlipButton: React.FC = () => {
   );
 };
 
+const HeroGrid: React.FC = () => {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div
+        className="absolute top-0 bottom-0 right-0 w-[70%]"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(106, 212, 242, 0.03) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(106, 212, 242, 0.03) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px',
+          maskImage: `
+            linear-gradient(to left, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 40%, transparent 70%),
+            linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%),
+            linear-gradient(to top, transparent 0%, rgba(0,0,0,1) 10%)
+          `,
+          maskComposite: 'intersect',
+          WebkitMaskImage: `
+            linear-gradient(to left, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 40%, transparent 70%)
+          `,
+        }}
+      />
+      <div
+        className="absolute top-0 bottom-0 right-0 w-[70%]"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(106, 212, 242, 0.06) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(106, 212, 242, 0.06) 1px, transparent 1px)
+          `,
+          backgroundSize: '180px 180px',
+          maskImage: `
+            linear-gradient(to left, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 35%, transparent 60%)
+          `,
+          WebkitMaskImage: `
+            linear-gradient(to left, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 35%, transparent 60%)
+          `,
+        }}
+      />
+    </div>
+  );
+};
+
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
 
@@ -140,6 +182,7 @@ const Hero: React.FC = () => {
     >
       <motion.div style={{ opacity, scale }} className="absolute inset-0">
         <HeroBackground3D />
+        <HeroGrid />
       </motion.div>
 
       <motion.div
