@@ -87,76 +87,9 @@ const StaticIO3D: React.FC = () => {
       });
     }
 
-    function shieldOutlineMaterial() {
-      return new THREE.MeshPhysicalMaterial({
-        color: new THREE.Color("#4a6a70"),
-        metalness: 0.8,
-        roughness: 0.15,
-        transparent: true,
-        opacity: 0.85,
-        clearcoat: 1.0,
-        clearcoatRoughness: 0.05,
-        envMapIntensity: 3.0,
-        specularIntensity: 1.5,
-        emissive: new THREE.Color("#6ad4f2"),
-        emissiveIntensity: 0.4,
-        reflectivity: 1.0
-      });
-    }
-
     const io3D = new THREE.Group();
     scene.add(io3D);
-    io3D.position.set(0, -0.6, 0.0);
-
-    function createShieldOutline(width = 2.6, height = 3.0, strokeWidth = 0.08, depth = 0.06, cornerRadius = 0.25) {
-      const w = width / 2;
-      const h = height / 2;
-      const r = cornerRadius;
-      const bottomTaper = 0.55;
-      const bottomPointY = -h - 0.45;
-
-      const outerShape = new THREE.Shape();
-      outerShape.moveTo(-w + r, h);
-      outerShape.lineTo(w - r, h);
-      outerShape.quadraticCurveTo(w, h, w, h - r);
-      outerShape.lineTo(w, -h * 0.3);
-      outerShape.quadraticCurveTo(w, -h * 0.5, w * bottomTaper, -h);
-      outerShape.lineTo(0, bottomPointY);
-      outerShape.lineTo(-w * bottomTaper, -h);
-      outerShape.quadraticCurveTo(-w, -h * 0.5, -w, -h * 0.3);
-      outerShape.lineTo(-w, h - r);
-      outerShape.quadraticCurveTo(-w, h, -w + r, h);
-
-      const iw = w - strokeWidth;
-      const ih = h - strokeWidth;
-      const ir = Math.max(0.05, r - strokeWidth * 0.5);
-      const iBottomTaper = bottomTaper;
-      const iBottomPointY = bottomPointY + strokeWidth * 1.5;
-
-      const innerPath = new THREE.Path();
-      innerPath.moveTo(-iw + ir, ih);
-      innerPath.lineTo(iw - ir, ih);
-      innerPath.quadraticCurveTo(iw, ih, iw, ih - ir);
-      innerPath.lineTo(iw, -ih * 0.3);
-      innerPath.quadraticCurveTo(iw, -ih * 0.5, iw * iBottomTaper, -ih);
-      innerPath.lineTo(0, iBottomPointY);
-      innerPath.lineTo(-iw * iBottomTaper, -ih);
-      innerPath.quadraticCurveTo(-iw, -ih * 0.5, -iw, -ih * 0.3);
-      innerPath.lineTo(-iw, ih - ir);
-      innerPath.quadraticCurveTo(-iw, ih, -iw + ir, ih);
-
-      outerShape.holes.push(innerPath);
-
-      const g = new THREE.ExtrudeGeometry(outerShape, {
-        depth,
-        bevelEnabled: true,
-        bevelThickness: 0.015,
-        bevelSize: 0.015,
-        bevelSegments: 3
-      });
-      g.center();
-      return g;
-    }
+    io3D.position.set(0, -0.2, 0.0);
 
     function createHollowI({
       width = 0.38,
@@ -219,12 +152,8 @@ const StaticIO3D: React.FC = () => {
       return g;
     }
 
-    const shieldMesh = new THREE.Mesh(createShieldOutline(), shieldOutlineMaterial());
-    shieldMesh.position.set(0, 0.2, -0.1);
-    io3D.add(shieldMesh);
-
     const io = new THREE.Group();
-    io.position.set(0, 0.45, 0.0);
+    io.position.set(0, 0.0, 0.0);
     io3D.add(io);
 
     const iMesh = new THREE.Mesh(
@@ -265,9 +194,6 @@ const StaticIO3D: React.FC = () => {
       const swing = Math.sin(t * 0.3) * 0.02;
       io.rotation.x = swing;
       io.rotation.y = Math.sin(t * 0.2) * 0.01;
-
-      shieldMesh.rotation.x = swing * 0.5;
-      shieldMesh.rotation.y = Math.sin(t * 0.2) * 0.005;
 
       renderer.render(scene, camera);
       animationId = requestAnimationFrame(animate);
