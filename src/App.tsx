@@ -10,8 +10,6 @@ import AdditionalFeatures from './components/AdditionalFeatures';
 import DealMap from './components/DealMap';
 import FullWidthVideo from './components/FullWidthVideo';
 import FeatureShowcase from './components/FeatureShowcase';
-import TestimonialsCarousel from './components/TestimonialsCarousel';
-import FAQAccordion from './components/FAQAccordion';
 import ContactSplit from './components/ContactSplit';
 import HoverFooter from './components/ui/hover-footer-demo';
 import { SectionWrapper } from './components/ui/section-wrapper';
@@ -19,14 +17,6 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
 import FAQsPage from './pages/FAQsPage';
 import ContactUs from './pages/ContactUs';
-import Dashboard from './pages/features/Dashboard';
-import Leaderboard from './pages/features/Leaderboard';
-import BookOfBusiness from './pages/features/BookOfBusiness';
-import Commission from './pages/features/Commission';
-import EstimatedPayouts from './pages/features/EstimatedPayouts';
-import TeamHierarchy from './pages/features/TeamHierarchy';
-import UserManagement from './pages/features/UserManagement';
-import Reminders from './pages/features/Reminders';
 import Schedule from './pages/Schedule';
 import TestimonialSection from './components/TestimonialSection';
 import GlassRingsSection from './components/GlassRingsSection';
@@ -107,14 +97,6 @@ function App() {
           <Route path="/terms-conditions" element={<TermsConditions />} />
           <Route path="/faqs" element={<FAQsPage />} />
           <Route path="/contact" element={<ContactUs />} />
-          <Route path="/features/dashboard" element={<Dashboard />} />
-          <Route path="/features/leaderboard" element={<Leaderboard />} />
-          <Route path="/features/book-of-business" element={<BookOfBusiness />} />
-          <Route path="/features/commission" element={<Commission />} />
-          <Route path="/features/estimated-payouts" element={<EstimatedPayouts />} />
-          <Route path="/features/team-hierarchy" element={<TeamHierarchy />} />
-          <Route path="/features/user-management" element={<UserManagement />} />
-          <Route path="/features/reminders" element={<Reminders />} />
           <Route path="/schedule" element={<Schedule />} />
         </Routes>
       </div>

@@ -10,17 +10,6 @@ const NAV_ITEMS = [
   { id: 'home', label: 'Home' }
 ];
 
-const FEATURES_ITEMS = [
-  { path: '/features/dashboard', label: 'Dashboard', description: 'Real-time insights at a glance' },
-  { path: '/features/leaderboard', label: 'Leaderboard', description: 'Track top performers' },
-  { path: '/features/book-of-business', label: 'Book of Business', description: 'Manage your portfolio' },
-  { path: '/features/commission', label: 'Commission', description: 'Calculate earnings instantly' },
-  { path: '/features/estimated-payouts', label: 'Estimated Payouts', description: 'Forecast your income' },
-  { path: '/features/team-hierarchy', label: 'Team Hierarchy', description: 'Visualize team structure' },
-  { path: '/features/user-management', label: 'User Management', description: 'Control access & roles' },
-  { path: '/features/reminders', label: 'Reminders & More', description: 'Never miss important dates' }
-];
-
 const DOCS_ITEMS = [
   { path: '/privacy-policy', label: 'Privacy Policy' },
   { path: '/terms-conditions', label: 'Terms & Conditions' },
@@ -33,10 +22,8 @@ const Navbar: React.FC<NavbarProps> = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('');
-  const [featuresDropdownOpen, setFeaturesDropdownOpen] = useState(false);
   const [docsDropdownOpen, setDocsDropdownOpen] = useState(false);
   const [isScrollingDown, setIsScrollingDown] = useState(false);
-  const featuresDropdownRef = useRef<HTMLDivElement>(null);
   const docsDropdownRef = useRef<HTMLDivElement>(null);
   const lastScrollY = useRef(0);
   const location = useLocation();
@@ -56,7 +43,6 @@ const Navbar: React.FC<NavbarProps> = () => {
           const progress = Math.min(scrollY / maxScroll, 1);
           setScrollProgress(progress);
 
-          // Track scroll direction
           if (scrollY > lastScrollY.current && scrollY > 100) {
             setIsScrollingDown(true);
           } else {
@@ -70,7 +56,7 @@ const Navbar: React.FC<NavbarProps> = () => {
       }
     };
 
-    handleScroll(); // Initial call
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -103,9 +89,6 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (featuresDropdownRef.current && !featuresDropdownRef.current.contains(event.target as Node)) {
-        setFeaturesDropdownOpen(false);
-      }
       if (docsDropdownRef.current && !docsDropdownRef.current.contains(event.target as Node)) {
         setDocsDropdownOpen(false);
       }
@@ -171,7 +154,6 @@ const Navbar: React.FC<NavbarProps> = () => {
           }}
         >
           <div className="flex items-center justify-between h-14">
-            {/* Logo */}
             <Link
               to="/"
               className="flex items-center gap-2 flex-shrink-0"
@@ -190,7 +172,6 @@ const Navbar: React.FC<NavbarProps> = () => {
               />
             </Link>
 
-            {/* Desktop Nav Links - Center */}
             <div
               className="hidden lg:flex items-center justify-center"
               style={{
@@ -218,75 +199,6 @@ const Navbar: React.FC<NavbarProps> = () => {
                 );
               })}
 
-              {/* Features Dropdown */}
-              <div
-                className="relative flex items-center h-8"
-                ref={featuresDropdownRef}
-                onMouseEnter={() => setFeaturesDropdownOpen(true)}
-                onMouseLeave={() => setFeaturesDropdownOpen(false)}
-              >
-                <button
-                  onClick={() => setFeaturesDropdownOpen(!featuresDropdownOpen)}
-                  className={`nav-underline-glow font-medium inline-flex items-center gap-1 h-8 ${
-                    FEATURES_ITEMS.some(item => item.path === location.pathname)
-                      ? 'text-[#6ad4f2] is-active'
-                      : 'text-white/80 hover:text-white'
-                  }`}
-                  style={{
-                    fontSize: isScrolled ? '14px' : '15px',
-                    transition: 'font-size 700ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms ease'
-                  }}
-                >
-                  Features
-                  <svg
-                    width="10"
-                    height="10"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className={`transition-transform duration-300 ${featuresDropdownOpen ? 'rotate-180' : ''}`}
-                  >
-                    <path d="M6 9l6 6 6-6"/>
-                  </svg>
-                </button>
-
-                {featuresDropdownOpen && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3">
-                    <div className="w-[720px] p-4 bg-black/95 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl">
-                      <div className="grid grid-cols-3 gap-3">
-                        {FEATURES_ITEMS.map((item) => (
-                          <Link
-                            key={item.path}
-                            to={item.path}
-                            onClick={() => { setFeaturesDropdownOpen(false); window.scrollTo(0, 0); }}
-                            className={`group flex flex-col px-3 py-2.5 rounded-md transition-all duration-200 ${
-                              location.pathname === item.path
-                                ? 'bg-[#6ad4f2]/10 border border-[#6ad4f2]/30'
-                                : 'bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/20'
-                            }`}
-                          >
-                            <span className={`text-sm font-semibold mb-1 transition-colors ${
-                              location.pathname === item.path
-                                ? 'text-[#6ad4f2]'
-                                : 'text-white group-hover:text-[#6ad4f2]'
-                            }`}>
-                              {item.label}
-                            </span>
-                            <span className="text-xs text-white/50 leading-snug">
-                              {item.description}
-                            </span>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Resources Dropdown */}
               <div
                 className="relative flex items-center h-8"
                 ref={docsDropdownRef}
@@ -344,7 +256,6 @@ const Navbar: React.FC<NavbarProps> = () => {
               </div>
             </div>
 
-            {/* CTA Buttons - Right */}
             <div
               className="hidden lg:flex items-center flex-shrink-0"
               style={{
@@ -381,7 +292,6 @@ const Navbar: React.FC<NavbarProps> = () => {
               </button>
             </div>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
@@ -393,7 +303,6 @@ const Navbar: React.FC<NavbarProps> = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
           <div
@@ -416,29 +325,6 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </button>
               ))}
 
-              {/* Features Section */}
-              <div className="pt-3 mt-3 border-t border-white/10">
-                <div className="px-4 py-2 text-xs font-semibold text-white/40 uppercase tracking-wider">
-                  Features
-                </div>
-                {FEATURES_ITEMS.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => { setMobileMenuOpen(false); window.scrollTo(0, 0); }}
-                    className={`w-full flex flex-col text-left px-4 py-3 rounded-xl transition-colors ${
-                      location.pathname === item.path
-                        ? 'bg-[#6ad4f2]/20 text-[#6ad4f2]'
-                        : 'text-gray-300 hover:bg-white/5 hover:text-white'
-                    }`}
-                  >
-                    <span className="text-sm font-medium">{item.label}</span>
-                    <span className="text-xs text-white/40 mt-0.5">{item.description}</span>
-                  </Link>
-                ))}
-              </div>
-
-              {/* Resources Section */}
               <div className="pt-3 mt-3 border-t border-white/10">
                 <div className="px-4 py-2 text-xs font-semibold text-white/40 uppercase tracking-wider">
                   Resources
