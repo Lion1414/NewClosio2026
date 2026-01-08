@@ -102,14 +102,14 @@ const GlassRingsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="inline-block"
+              className="flex justify-center lg:justify-start"
             >
               <span className="text-white/80 text-[10px] sm:text-xs font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
                 Secure & Reliable Platform
               </span>
             </motion.div>
 
-            <div className="space-y-2">
+            <div className="space-y-2 text-center lg:text-left">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
                 <span className="block text-white min-h-[1.2em]">
                   <TypewriterText
@@ -134,13 +134,13 @@ const GlassRingsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-base sm:text-lg text-white/50 leading-relaxed max-w-lg"
+              className="text-base sm:text-lg text-white/50 leading-relaxed max-w-lg mx-auto lg:mx-0 text-center lg:text-left"
             >
               CLOSIO is powered by a dedicated team of industry professionals committed to delivering
               enterprise-grade security and continuous innovation. Your data and success are our top priorities.
             </motion.p>
 
-            <div className="space-y-3 sm:space-y-4 pt-4 sm:pt-6">
+            <div className="space-y-3 sm:space-y-4 pt-4 sm:pt-6 max-w-lg mx-auto lg:mx-0">
               {featureItems.map((item, index) => (
                 <motion.div
                   key={item.title}
