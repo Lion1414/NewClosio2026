@@ -288,7 +288,7 @@ const Robot3D = () => {
     };
 
     const iMesh = new THREE.Mesh(createItalicHollowI(), tealMetal);
-    const oMesh = new THREE.Mesh(createHollowO(), blackMetal);
+    const oMesh = new THREE.Mesh(createHollowO(), whiteMetalBright);
 
     iMesh.position.set(-0.5, 0.0, 0.0);
     oMesh.position.set(0.5, 0.0, 0.0);
