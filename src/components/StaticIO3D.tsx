@@ -163,8 +163,8 @@ const StaticIO3D: React.FC = () => {
       solidMaterial(WHITE, 0.08, 0.5)
     );
 
-    oMesh.position.set(-0.58, 0.0, 0.0);
-    iMesh.position.set(0.58, 0.0, 0.0);
+    iMesh.position.set(-0.58, 0.0, 0.0);
+    oMesh.position.set(0.58, 0.0, 0.0);
 
     io.add(iMesh, oMesh);
 
