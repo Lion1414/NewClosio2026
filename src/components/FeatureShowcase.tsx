@@ -184,37 +184,64 @@ const FeatureShowcase: React.FC = () => {
     const container = scrollContainerRef.current;
     if (!section || !container) return;
 
+    let isScrollingHorizontally = false;
+
     const handleWheel = (e: WheelEvent) => {
       const rect = section.getBoundingClientRect();
-      const isInView = rect.top <= 100 && rect.bottom >= window.innerHeight / 2;
+      const sectionTop = rect.top;
+      const sectionBottom = rect.bottom;
+      const viewportHeight = window.innerHeight;
 
-      if (!isInView) return;
+      // Check if section is in the main viewport area
+      const isInScrollZone = sectionTop <= viewportHeight * 0.3 && sectionBottom >= viewportHeight * 0.3;
+
+      if (!isInScrollZone) {
+        isScrollingHorizontally = false;
+        return;
+      }
 
       const scrollLeft = container.scrollLeft;
       const maxScroll = container.scrollWidth - container.clientWidth;
-      const isAtStart = scrollLeft <= 0;
-      const isAtEnd = scrollLeft >= maxScroll - 1;
+      const isAtStart = scrollLeft <= 5;
+      const isAtEnd = scrollLeft >= maxScroll - 5;
 
-      // If scrolling down and not at end, hijack scroll
-      if (e.deltaY > 0 && !isAtEnd) {
+      // Scrolling down
+      if (e.deltaY > 0) {
+        // If we're at the end of horizontal scroll, allow vertical scroll to continue
+        if (isAtEnd) {
+          isScrollingHorizontally = false;
+          return;
+        }
+
+        // Otherwise, hijack and scroll horizontally
         e.preventDefault();
-        container.scrollLeft += e.deltaY;
+        e.stopPropagation();
+        container.scrollLeft += e.deltaY * 1.5;
+        isScrollingHorizontally = true;
         setIsScrollLocked(true);
       }
-      // If scrolling up and not at start, hijack scroll
-      else if (e.deltaY < 0 && !isAtStart) {
-        e.preventDefault();
-        container.scrollLeft += e.deltaY;
-        setIsScrollLocked(true);
-      }
-      // Otherwise allow normal scroll
-      else {
-        setIsScrollLocked(false);
+      // Scrolling up
+      else if (e.deltaY < 0) {
+        // If we're at the start of horizontal scroll, allow vertical scroll to continue up
+        if (isAtStart && sectionTop >= -50) {
+          isScrollingHorizontally = false;
+          return;
+        }
+
+        // If we're already in the section, hijack scroll
+        if (sectionTop < 0 || !isAtStart) {
+          e.preventDefault();
+          e.stopPropagation();
+          container.scrollLeft += e.deltaY * 1.5;
+          isScrollingHorizontally = true;
+          setIsScrollLocked(true);
+        }
       }
     };
 
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    return () => window.removeEventListener('wheel', handleWheel);
+    // Capture phase to ensure we catch the event first
+    window.addEventListener('wheel', handleWheel, { passive: false, capture: true });
+    return () => window.removeEventListener('wheel', handleWheel, { capture: true });
   }, []);
 
   return (
