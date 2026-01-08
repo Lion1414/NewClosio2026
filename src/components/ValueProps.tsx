@@ -169,7 +169,7 @@ const ValueProps: React.FC = () => {
                 onClick={() => { window.scrollTo(0, 0); navigate('/schedule'); }}
                 className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-black font-semibold rounded-xl hover:bg-white/90 transition-all duration-300 text-sm sm:text-base min-h-[44px]"
               >
-                Book a Demo Now
+                Book a Demo
               </button>
             </div>
           </div>
