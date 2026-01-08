@@ -23,9 +23,9 @@ export default function IntegratedFeaturesFlow() {
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_55%)]" />
 
         <div className="relative mx-auto mt-2 flex h-[580px] w-full max-w-[900px] items-center justify-center">
-          <div className="pointer-events-none absolute top-[140px] left-[calc(50%+160px)] -translate-x-1/2 h-40 w-96 opacity-25 [background-image:radial-gradient(rgba(255,255,255,0.10)_1px,transparent_1px)] [background-size:12px_12px]" />
+          <div className="pointer-events-none absolute top-[140px] left-[calc(50%-160px)] -translate-x-1/2 h-40 w-96 opacity-25 [background-image:radial-gradient(rgba(255,255,255,0.10)_1px,transparent_1px)] [background-size:12px_12px]" />
 
-          <div className="absolute left-[calc(50%+160px)] top-[50px] -translate-x-1/2" style={{ perspective: '1200px' }}>
+          <div className="absolute left-[calc(50%-160px)] top-[50px] -translate-x-1/2" style={{ perspective: '1200px' }}>
             {/* Panel 1 - Bottom */}
             <motion.div
               initial={{ opacity: 0, y: 20, scale: 0.9, rotateX: 2 }}
