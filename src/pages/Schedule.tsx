@@ -9,6 +9,15 @@ const Schedule = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
   }, []);
 
   return (
@@ -46,31 +55,12 @@ const Schedule = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-[#6ad4f2]/10 via-transparent to-transparent rounded-3xl blur-3xl" />
 
           <div className="relative bg-white/[0.03] backdrop-blur-sm rounded-3xl border border-white/10 overflow-hidden">
-            <div className="p-8 md:p-12">
-              <div className="aspect-[16/10] w-full bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#6ad4f2]/20 to-[#6ad4f2]/5 border border-[#6ad4f2]/20 flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-[#6ad4f2]">
-                      <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5"/>
-                      <path d="M3 10h18" stroke="currentColor" strokeWidth="1.5"/>
-                      <path d="M8 2v4M16 2v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                      <circle cx="12" cy="16" r="2" fill="currentColor"/>
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">
-                    Calendly Widget Area
-                  </h3>
-                  <p className="text-white/50 text-sm max-w-md mx-auto mb-6">
-                    Replace this placeholder with your Calendly embed code.
-                    The widget will appear here for users to schedule their demo.
-                  </p>
-                  <div className="inline-block px-4 py-2 bg-white/5 rounded-lg border border-white/10">
-                    <code className="text-xs text-[#6ad4f2]">
-                      {'<!-- Calendly inline widget -->'}
-                    </code>
-                  </div>
-                </div>
-              </div>
+            <div className="p-4 md:p-6">
+              <div
+                className="calendly-inline-widget w-full rounded-2xl overflow-hidden"
+                data-url="https://calendly.com/closio/closio-onboarding?hide_gdpr_banner=1&background_color=0a0a0a&text_color=e8eef5&primary_color=6ad4f2"
+                style={{ minWidth: '320px', height: '700px' }}
+              />
             </div>
           </div>
         </motion.div>
