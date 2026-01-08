@@ -70,17 +70,15 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay, className 
   }, [text, delay]);
 
   return (
-    <span className={`inline-block ${className}`}>
+    <span className={`inline-block whitespace-nowrap ${className}`}>
       {displayedText}
-      {showCursor && (
-        <motion.span
-          className={isGradient ? 'text-[#6ad4f2]' : 'text-white'}
-          animate={{ opacity: [1, 0, 1] }}
-          transition={{ duration: 0.8, repeat: Infinity }}
-        >
-          |
-        </motion.span>
-      )}
+      <motion.span
+        className={isGradient ? 'text-[#6ad4f2]' : 'text-white'}
+        animate={{ opacity: showCursor ? [1, 0, 1] : 0 }}
+        transition={{ duration: 0.8, repeat: showCursor ? Infinity : 0 }}
+      >
+        |
+      </motion.span>
     </span>
   );
 };
