@@ -197,9 +197,9 @@ const FeatureShowcase: React.FC = () => {
       // Check if section is in viewport
       const isInViewport = sectionTop < viewportHeight && sectionBottom > 0;
 
-      // Engage scroll hijacking when section is positioned to show header and cards
-      // Locks in when section top reaches ~10% from top (header + cards visible)
-      const shouldEngage = sectionTop <= 100 && sectionBottom > viewportHeight * 0.4;
+      // Engage scroll hijacking when header and cards are fully in view
+      // Locks in when section top reaches ~250px from top (header fully visible)
+      const shouldEngage = sectionTop <= 250 && sectionBottom > viewportHeight * 0.4;
 
       if (!isInViewport || !shouldEngage) {
         return;
@@ -243,8 +243,9 @@ const FeatureShowcase: React.FC = () => {
       }
       // Scrolling up
       else if (e.deltaY < 0) {
-        // Allow vertical scroll up when at first card and near top of section
-        if (isAtStart && sectionTop >= -50) {
+        // Allow vertical scroll up when at first card
+        // Release control once at first card to let user scroll away
+        if (isAtStart) {
           return;
         }
 
