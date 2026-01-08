@@ -74,25 +74,23 @@ const AdditionalFeatures: React.FC = () => {
 
           <div className="relative z-10 flex flex-col items-center gap-3">
             <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide text-center m-0"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-center m-0"
               style={{
-                color: useTransform(
-                  [colorR, colorG, colorB],
-                  ([r, g, b]) => `rgb(${r}, ${g}, ${b})`
-                ),
-                lineHeight: 1.25
+                color: '#9CA3AF',
+                lineHeight: 1.25,
+                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+                letterSpacing: '-0.02em'
               }}
             >
               The platform starts here
             </motion.h2>
             <motion.p
-              className="text-xl sm:text-2xl md:text-3xl font-light tracking-wide text-center m-0"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-center m-0"
               style={{
-                color: useTransform(
-                  [colorR, colorG, colorB],
-                  ([r, g, b]) => `rgb(${r}, ${g}, ${b})`
-                ),
-                lineHeight: 1.25
+                color: '#9CA3AF',
+                lineHeight: 1.25,
+                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+                letterSpacing: '-0.02em'
               }}
             >
               more advanced capabilities continue below
