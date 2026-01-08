@@ -177,7 +177,7 @@ const FeatureShowcase: React.FC = () => {
     return () => container.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Scroll hijacking effect
+  // Scroll hijacking effect with complete scroll lock
   useEffect(() => {
     const section = sectionRef.current;
     const container = scrollContainerRef.current;
@@ -194,16 +194,13 @@ const FeatureShowcase: React.FC = () => {
       const sectionBottom = rect.bottom;
       const viewportHeight = window.innerHeight;
 
-      // Check if section is visible in viewport
-      const isVisible = sectionTop <= viewportHeight * 0.15 && sectionBottom > viewportHeight * 0.5;
+      // Check if section is in viewport - more aggressive engagement
+      const isInViewport = sectionTop < viewportHeight && sectionBottom > 0;
 
-      if (!isVisible) {
-        return;
-      }
+      // Determine if we should engage the scroll hijacking
+      const shouldEngage = sectionTop <= viewportHeight * 0.2 && sectionBottom > viewportHeight * 0.3;
 
-      // Debounce rapid scroll events
-      if (now - lastScrollTime < 100) {
-        e.preventDefault();
+      if (!isInViewport || !shouldEngage) {
         return;
       }
 
@@ -216,16 +213,17 @@ const FeatureShowcase: React.FC = () => {
 
       // Scrolling down
       if (e.deltaY > 0) {
-        // Only allow vertical scroll if we're at the last card
-        if (isAtEnd) {
+        // Only allow vertical scroll past this section if at last card AND bottom is visible
+        if (isAtEnd && sectionBottom <= viewportHeight) {
           return;
         }
 
-        // Block vertical scrolling and navigate horizontally
+        // ALWAYS block vertical scroll when not at end
         e.preventDefault();
         e.stopPropagation();
 
-        if (!isAnimating) {
+        // Navigate to next card if not animating and not at end
+        if (!isAnimating && !isAtEnd && now - lastScrollTime > 50) {
           isAnimating = true;
           lastScrollTime = now;
 
@@ -239,21 +237,22 @@ const FeatureShowcase: React.FC = () => {
           clearTimeout(scrollTimeout);
           scrollTimeout = setTimeout(() => {
             isAnimating = false;
-          }, 600);
+          }, 500);
         }
       }
       // Scrolling up
       else if (e.deltaY < 0) {
-        // Allow vertical scroll up only if at first card AND section is at/near viewport top
-        if (isAtStart && sectionTop >= -50) {
+        // Only allow vertical scroll up if at first card AND section top is above/at viewport top
+        if (isAtStart && sectionTop >= -100) {
           return;
         }
 
-        // Otherwise, navigate horizontally or block if at first card mid-section
+        // ALWAYS block vertical scroll when in middle of section or not at start
         e.preventDefault();
         e.stopPropagation();
 
-        if (!isAnimating && !isAtStart) {
+        // Navigate to previous card if not animating and not at start
+        if (!isAnimating && !isAtStart && now - lastScrollTime > 50) {
           isAnimating = true;
           lastScrollTime = now;
 
@@ -267,7 +266,7 @@ const FeatureShowcase: React.FC = () => {
           clearTimeout(scrollTimeout);
           scrollTimeout = setTimeout(() => {
             isAnimating = false;
-          }, 600);
+          }, 500);
         }
       }
     };
