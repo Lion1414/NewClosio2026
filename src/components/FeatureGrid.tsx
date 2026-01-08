@@ -381,20 +381,20 @@ const DashboardIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
     <defs>
       <linearGradient id="barFrontCyan" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#67e8f9" />
-        <stop offset="30%" stopColor="#22d3ee" />
-        <stop offset="70%" stopColor="#06b6d4" />
-        <stop offset="100%" stopColor="#0891b2" />
+        <stop offset="0%" stopColor="#ffffff" />
+        <stop offset="30%" stopColor="#f9fafb" />
+        <stop offset="70%" stopColor="#e5e7eb" />
+        <stop offset="100%" stopColor="#d1d5db" />
       </linearGradient>
       <linearGradient id="barSideCyan" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#0891b2" />
-        <stop offset="50%" stopColor="#0e7490" />
-        <stop offset="100%" stopColor="#155e75" />
+        <stop offset="0%" stopColor="#d1d5db" />
+        <stop offset="50%" stopColor="#9ca3af" />
+        <stop offset="100%" stopColor="#6b7280" />
       </linearGradient>
       <linearGradient id="barTopCyan" x1="0%" y1="100%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#22d3ee" />
-        <stop offset="50%" stopColor="#67e8f9" />
-        <stop offset="100%" stopColor="#a5f3fc" />
+        <stop offset="0%" stopColor="#f3f4f6" />
+        <stop offset="50%" stopColor="#ffffff" />
+        <stop offset="100%" stopColor="#ffffff" />
       </linearGradient>
       <linearGradient id="barHighlightCyan" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
@@ -402,7 +402,7 @@ const DashboardIcon: React.FC = () => (
         <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
       </linearGradient>
       <filter id="barShadowCyan" x="-30%" y="-30%" width="160%" height="160%">
-        <feDropShadow dx="3" dy="5" stdDeviation="6" floodColor="#0e7490" floodOpacity="0.5" />
+        <feDropShadow dx="3" dy="5" stdDeviation="6" floodColor="#000000" floodOpacity="0.3" />
       </filter>
       <filter id="barGlowCyan" x="-50%" y="-50%" width="200%" height="200%">
         <feGaussianBlur stdDeviation="2" result="blur" />
@@ -413,12 +413,12 @@ const DashboardIcon: React.FC = () => (
       </filter>
     </defs>
 
-    <line x1="25" y1="45" x2="25" y2="160" stroke="#67e8f9" strokeWidth="2.5" opacity="0.5" strokeLinecap="round" />
-    <line x1="25" y1="160" x2="180" y2="160" stroke="#67e8f9" strokeWidth="2.5" opacity="0.5" strokeLinecap="round" />
+    <line x1="25" y1="45" x2="25" y2="160" stroke="#ffffff" strokeWidth="2.5" opacity="0.5" strokeLinecap="round" />
+    <line x1="25" y1="160" x2="180" y2="160" stroke="#ffffff" strokeWidth="2.5" opacity="0.5" strokeLinecap="round" />
 
-    <line x1="25" y1="70" x2="180" y2="70" stroke="#22d3ee" strokeWidth="1" opacity="0.15" strokeDasharray="4 4" />
-    <line x1="25" y1="100" x2="180" y2="100" stroke="#22d3ee" strokeWidth="1" opacity="0.15" strokeDasharray="4 4" />
-    <line x1="25" y1="130" x2="180" y2="130" stroke="#22d3ee" strokeWidth="1" opacity="0.15" strokeDasharray="4 4" />
+    <line x1="25" y1="70" x2="180" y2="70" stroke="#ffffff" strokeWidth="1" opacity="0.15" strokeDasharray="4 4" />
+    <line x1="25" y1="100" x2="180" y2="100" stroke="#ffffff" strokeWidth="1" opacity="0.15" strokeDasharray="4 4" />
+    <line x1="25" y1="130" x2="180" y2="130" stroke="#ffffff" strokeWidth="1" opacity="0.15" strokeDasharray="4 4" />
 
     <g filter="url(#barShadowCyan)">
       <rect x="38" y="118" width="20" height="42" rx="2" fill="url(#barFrontCyan)" />
