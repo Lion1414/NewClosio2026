@@ -23,15 +23,27 @@ export default function IntegratedFeaturesFlow() {
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_55%)]" />
 
         <div className="relative mx-auto mt-2 flex h-[480px] w-full items-center justify-center">
-          <div className="pointer-events-none absolute top-[120px] left-1/2 -translate-x-1/2 h-32 w-80 opacity-25 [background-image:radial-gradient(rgba(255,255,255,0.10)_1px,transparent_1px)] [background-size:12px_12px]" />
+          <div className="pointer-events-none absolute top-[140px] left-[38%] -translate-x-1/2 h-40 w-96 opacity-25 [background-image:radial-gradient(rgba(255,255,255,0.10)_1px,transparent_1px)] [background-size:12px_12px]" />
 
-          <div className="absolute left-1/2 top-[50px] -translate-x-1/2" style={{ perspective: '1200px' }}>
+          <div className="absolute left-[38%] top-[50px] -translate-x-1/2" style={{ perspective: '1200px' }}>
             {/* Panel 1 - Bottom */}
             <motion.div
               initial={{ opacity: 0, y: 20, scale: 0.9, rotateX: 2 }}
-              animate={isInView ? { opacity: 1, y: 0, scale: 1, rotateX: 1 } : { opacity: 0, y: 20, scale: 0.9, rotateX: 2 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute left-1/2 top-[-60px] h-32 w-64 -translate-x-1/2 rounded-[32px] border border-white/[0.06] bg-gradient-to-b from-[#1a1a2e]/40 via-white/[0.02] to-transparent backdrop-blur-[2px]"
+              animate={isInView ? {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                rotateX: 1,
+                rotateZ: [0, -0.5, 0.5, 0]
+              } : { opacity: 0, y: 20, scale: 0.9, rotateX: 2 }}
+              transition={{
+                opacity: { duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] },
+                y: { duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] },
+                scale: { duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] },
+                rotateX: { duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] },
+                rotateZ: { duration: 3, delay: 1.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.5 }
+              }}
+              className="absolute left-1/2 top-[-90px] h-44 w-80 -translate-x-1/2 rounded-[32px] border border-white/[0.06] bg-gradient-to-b from-[#1a1a2e]/40 via-white/[0.02] to-transparent backdrop-blur-[2px]"
               style={{
                 boxShadow: '0 8px 40px rgba(0,0,0,0.4), 0 2px 12px rgba(0,0,0,0.6), 0 0 60px rgba(26,26,46,0.4), inset 0 1px 0 rgba(255,255,255,0.08)',
                 transformStyle: 'preserve-3d'
@@ -41,9 +53,21 @@ export default function IntegratedFeaturesFlow() {
             {/* Panel 2 */}
             <motion.div
               initial={{ opacity: 0, y: 20, scale: 0.9, rotateX: 2 }}
-              animate={isInView ? { opacity: 1, y: 0, scale: 1, rotateX: 1 } : { opacity: 0, y: 20, scale: 0.9, rotateX: 2 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute left-1/2 top-[-45px] h-32 w-64 -translate-x-1/2 rounded-[32px] border border-white/[0.08] bg-gradient-to-b from-[#16213e]/50 via-white/[0.03] to-white/[0.01] backdrop-blur-[3px]"
+              animate={isInView ? {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                rotateX: 1,
+                rotateZ: [0, -0.5, 0.5, 0]
+              } : { opacity: 0, y: 20, scale: 0.9, rotateX: 2 }}
+              transition={{
+                opacity: { duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
+                y: { duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
+                scale: { duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
+                rotateX: { duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
+                rotateZ: { duration: 3, delay: 1.6, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.5 }
+              }}
+              className="absolute left-1/2 top-[-68px] h-44 w-80 -translate-x-1/2 rounded-[32px] border border-white/[0.08] bg-gradient-to-b from-[#16213e]/50 via-white/[0.03] to-white/[0.01] backdrop-blur-[3px]"
               style={{
                 boxShadow: '0 10px 48px rgba(0,0,0,0.45), 0 4px 16px rgba(0,0,0,0.65), 0 0 70px rgba(22,33,62,0.5), inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(0,0,0,0.3)',
                 transformStyle: 'preserve-3d'
@@ -53,48 +77,84 @@ export default function IntegratedFeaturesFlow() {
             {/* Panel 3 - Middle */}
             <motion.div
               initial={{ opacity: 0, y: 20, scale: 0.9, rotateX: 1.5 }}
-              animate={isInView ? { opacity: 1, y: 0, scale: 1, rotateX: 0.8 } : { opacity: 0, y: 20, scale: 0.9, rotateX: 1.5 }}
-              transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute left-1/2 top-[-30px] h-32 w-64 -translate-x-1/2 rounded-[32px] border border-white/[0.12] bg-gradient-to-b from-[#0f3460]/60 via-white/[0.05] to-white/[0.02] backdrop-blur-[4px]"
+              animate={isInView ? {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                rotateX: 0.8,
+                rotateZ: [0, -0.5, 0.5, 0]
+              } : { opacity: 0, y: 20, scale: 0.9, rotateX: 1.5 }}
+              transition={{
+                opacity: { duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
+                y: { duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
+                scale: { duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
+                rotateX: { duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
+                rotateZ: { duration: 3, delay: 1.7, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.5 }
+              }}
+              className="absolute left-1/2 top-[-45px] h-44 w-80 -translate-x-1/2 rounded-[32px] border border-white/[0.12] bg-gradient-to-b from-[#0f3460]/60 via-white/[0.05] to-white/[0.02] backdrop-blur-[4px]"
               style={{
                 boxShadow: '0 12px 56px rgba(0,0,0,0.5), 0 6px 20px rgba(0,0,0,0.7), 0 0 80px rgba(15,52,96,0.6), inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -1px 0 rgba(0,0,0,0.35)',
                 transformStyle: 'preserve-3d'
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-t from-transparent via-white/[0.03] to-transparent rounded-[32px]" />
-              <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-white/[0.08] to-transparent rounded-t-[32px]" />
+              <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-white/[0.08] to-transparent rounded-t-[32px]" />
             </motion.div>
 
             {/* Panel 4 */}
             <motion.div
               initial={{ opacity: 0, y: 20, scale: 0.9, rotateX: 1 }}
-              animate={isInView ? { opacity: 1, y: 0, scale: 1, rotateX: 0.5 } : { opacity: 0, y: 20, scale: 0.9, rotateX: 1 }}
-              transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute left-1/2 top-[-15px] h-32 w-64 -translate-x-1/2 rounded-[32px] border border-white/[0.16] bg-gradient-to-b from-[#16213e]/70 via-white/[0.08] to-white/[0.04] backdrop-blur-[6px]"
+              animate={isInView ? {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                rotateX: 0.5,
+                rotateZ: [0, -0.5, 0.5, 0]
+              } : { opacity: 0, y: 20, scale: 0.9, rotateX: 1 }}
+              transition={{
+                opacity: { duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] },
+                y: { duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] },
+                scale: { duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] },
+                rotateX: { duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] },
+                rotateZ: { duration: 3, delay: 1.8, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.5 }
+              }}
+              className="absolute left-1/2 top-[-23px] h-44 w-80 -translate-x-1/2 rounded-[32px] border border-white/[0.16] bg-gradient-to-b from-[#16213e]/70 via-white/[0.08] to-white/[0.04] backdrop-blur-[6px]"
               style={{
                 boxShadow: '0 14px 64px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.75), 0 0 90px rgba(22,33,62,0.7), inset 0 2px 0 rgba(255,255,255,0.22), inset 0 -2px 0 rgba(0,0,0,0.4)',
                 transformStyle: 'preserve-3d'
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-t from-transparent via-white/[0.05] to-transparent rounded-[32px]" />
-              <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-white/[0.12] to-transparent rounded-t-[32px]" />
+              <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-b from-white/[0.12] to-transparent rounded-t-[32px]" />
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.25] to-transparent" />
             </motion.div>
 
             {/* Panel 5 - Top */}
             <motion.div
               initial={{ opacity: 0, y: 20, scale: 0.9, rotateX: 0.5 }}
-              animate={isInView ? { opacity: 1, y: 0, scale: 1, rotateX: 0 } : { opacity: 0, y: 20, scale: 0.9, rotateX: 0.5 }}
-              transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute left-1/2 top-[0px] h-32 w-64 -translate-x-1/2 rounded-[32px] border-2 border-white/[0.22] bg-gradient-to-b from-[#1a1a2e]/80 via-white/[0.12] to-white/[0.06] backdrop-blur-[8px] overflow-hidden"
+              animate={isInView ? {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                rotateX: 0,
+                rotateZ: [0, -0.5, 0.5, 0]
+              } : { opacity: 0, y: 20, scale: 0.9, rotateX: 0.5 }}
+              transition={{
+                opacity: { duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
+                y: { duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
+                scale: { duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
+                rotateX: { duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
+                rotateZ: { duration: 3, delay: 1.9, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.5 }
+              }}
+              className="absolute left-1/2 top-[0px] h-44 w-80 -translate-x-1/2 rounded-[32px] border-2 border-white/[0.22] bg-gradient-to-b from-[#1a1a2e]/80 via-white/[0.12] to-white/[0.06] backdrop-blur-[8px] overflow-hidden"
               style={{
                 boxShadow: '0 16px 72px rgba(0,0,0,0.6), 0 10px 28px rgba(0,0,0,0.8), 0 0 100px rgba(26,26,46,0.8), inset 0 2px 0 rgba(255,255,255,0.28), inset 0 -2px 20px rgba(0,0,0,0.25), 0 0 1px rgba(255,255,255,0.2)',
                 transformStyle: 'preserve-3d'
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.08] to-transparent" />
-              <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-white/[0.18] to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/[0.25] to-transparent" />
+              <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-white/[0.18] to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/[0.25] to-transparent" />
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.35] to-transparent" />
               <div className="absolute inset-0 rounded-[32px] ring-1 ring-inset ring-white/[0.15]" />
             </motion.div>
@@ -103,7 +163,7 @@ export default function IntegratedFeaturesFlow() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              className="pointer-events-none absolute left-1/2 top-[60px] h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/[0.12] blur-3xl"
+              className="pointer-events-none absolute left-1/2 top-[80px] h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/[0.12] blur-3xl"
             />
           </div>
 
@@ -118,7 +178,7 @@ export default function IntegratedFeaturesFlow() {
           >
             <g opacity="0.9">
               <motion.path
-                d="M450 198 L450 360"
+                d="M342 218 L342 360"
                 stroke="rgba(255,255,255,0.25)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -126,7 +186,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.8, delay: 0.7, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 360 C450 378, 210 385, 112 420"
+                d="M342 360 C342 378, 210 385, 112 420"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -134,7 +194,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 360 C450 380, 390 390, 338 420"
+                d="M342 360 C342 380, 300 390, 260 420"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -142,7 +202,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 0.9, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 360 C450 380, 500 390, 562 420"
+                d="M342 360 C342 380, 380 390, 445 420"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -150,7 +210,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.0, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 360 C450 378, 680 385, 788 420"
+                d="M342 360 C342 378, 580 385, 630 420"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -161,7 +221,7 @@ export default function IntegratedFeaturesFlow() {
 
             <g opacity="0.55" filter="url(#blurGlow)">
               <motion.path
-                d="M450 198 L450 360"
+                d="M342 218 L342 360"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
@@ -169,7 +229,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.8, delay: 0.7, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 360 C450 378, 210 385, 112 420"
+                d="M342 360 C342 378, 210 385, 112 420"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
@@ -177,7 +237,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 360 C450 380, 390 390, 338 420"
+                d="M342 360 C342 380, 300 390, 260 420"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
@@ -185,7 +245,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 0.9, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 360 C450 380, 500 390, 562 420"
+                d="M342 360 C342 380, 380 390, 445 420"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
@@ -193,7 +253,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.0, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 360 C450 378, 680 385, 788 420"
+                d="M342 360 C342 378, 580 385, 630 420"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
