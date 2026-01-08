@@ -109,7 +109,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
     >
       <div className="w-full max-w-[95%] sm:max-w-[90%] lg:max-w-[85%] mx-auto">
         <div
-          className="bg-[#f5f5f7] backdrop-blur-xl rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-200"
+          className="bg-[#dfe8f0] backdrop-blur-xl rounded-2xl sm:rounded-3xl overflow-hidden border border-[#c5d4e0]"
           style={{
             boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.03)'
           }}
@@ -126,15 +126,15 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
                   {feature.description}
                 </p>
 
-                <div className="pt-3 sm:pt-4 border-t border-gray-200">
-                  <h3 className="text-[10px] sm:text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 sm:mb-3">
+                <div className="pt-3 sm:pt-4 border-t border-[#c5d4e0]">
+                  <h3 className="text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 sm:mb-3">
                     Replaces
                   </h3>
                   <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {feature.replaces.map((item, idx) => (
                       <span
                         key={idx}
-                        className="inline-flex items-center px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium bg-white text-gray-600 border border-gray-200"
+                        className="inline-flex items-center px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium bg-white/80 text-gray-600 border border-[#c5d4e0]"
                       >
                         {item}
                       </span>
