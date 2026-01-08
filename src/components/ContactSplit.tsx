@@ -345,24 +345,24 @@ const ContactSplit = React.memo(() => {
       </section>
 
       <section className="relative bg-black overflow-visible z-10">
-        <div className="relative h-[600px] w-full pointer-events-none select-none flex items-center justify-center -mb-[300px]">
-          <div className="absolute inset-0 flex items-center justify-center" style={{ top: '25%' }}>
+        <div className="relative h-[500px] w-full pointer-events-none select-none flex items-center justify-center -mb-[200px]" style={{ transform: 'translateY(-80px)' }}>
+          <div className="absolute inset-0 flex items-center justify-center" style={{ top: '20%' }}>
             <div
-              className="w-[800px] h-[550px] rounded-full blur-[90px]"
+              className="w-[700px] h-[480px] rounded-full blur-[90px]"
               style={{
                 background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.7) 0%, rgba(106, 212, 242, 0.4) 30%, rgba(106, 212, 242, 0.15) 60%, transparent 80%)',
               }}
             />
           </div>
-          <div className="absolute inset-0 flex items-center justify-center" style={{ top: '25%' }}>
+          <div className="absolute inset-0 flex items-center justify-center" style={{ top: '20%' }}>
             <div
-              className="w-[450px] h-[350px] rounded-full blur-[50px]"
+              className="w-[380px] h-[300px] rounded-full blur-[50px]"
               style={{
                 background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.5) 0%, transparent 70%)',
               }}
             />
           </div>
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 scale-[0.85]">
             <StaticIO3D />
           </div>
         </div>
