@@ -1,16 +1,11 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-type Feature = {
-  title: string;
-  href: string;
-};
-
-const features: Feature[] = [
-  { title: "User Management", href: "/features/user-management" },
-  { title: "Quick Links", href: "/features/quick-links" },
-  { title: "Estimated Payout", href: "/features/estimated-payouts" },
-  { title: "Reminders", href: "/features/reminders" },
+const features = [
+  "User Management",
+  "Quick Links",
+  "Estimated Payout",
+  "Reminders",
 ];
 
 export default function IntegratedFeaturesFlow() {
@@ -270,28 +265,25 @@ export default function IntegratedFeaturesFlow() {
           </motion.svg>
 
           <div className="absolute bottom-0 left-1/2 flex w-full max-w-[900px] -translate-x-1/2 justify-between gap-3 px-2" style={{ perspective: '1000px' }}>
-            {features.map(({ title, href }, index) => (
-              <motion.a
+            {features.map((title, index) => (
+              <motion.div
                 key={title}
-                href={href}
                 initial={{ opacity: 0, y: 30, rotateX: -5 }}
                 animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : { opacity: 0, y: 30, rotateX: -5 }}
                 transition={{ duration: 0.5, delay: 0.9 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -4, scale: 1.03, rotateX: -2 }}
-                className="group relative flex w-full max-w-[200px] flex-col items-center justify-center gap-2 rounded-2xl border border-white/[0.12] bg-white/[0.04] px-4 py-6 backdrop-blur-md transition-colors hover:border-white/[0.25] hover:bg-white/[0.06]"
+                className="relative flex w-full max-w-[200px] flex-col items-center justify-center gap-2 rounded-2xl border border-white/[0.12] bg-white/[0.04] px-4 py-6 backdrop-blur-md"
                 style={{
                   boxShadow: '0 8px 32px rgba(0,0,0,0.4), 0 2px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -1px 0 rgba(0,0,0,0.2)',
                   transformStyle: 'preserve-3d'
                 }}
               >
-                {/* Top edge highlight */}
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                 <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-white/5 to-transparent rounded-t-2xl pointer-events-none" />
 
                 <div className="text-center">
-                  <div className="text-sm font-medium text-white/85 transition group-hover:text-white">{title}</div>
+                  <div className="text-sm font-medium text-white/85">{title}</div>
                 </div>
-              </motion.a>
+              </motion.div>
             ))}
           </div>
         </div>
