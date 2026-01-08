@@ -602,10 +602,10 @@ const HorizontalLine: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 0.8", "end start"]
+    offset: ["start 0.8", "end 0.5"]
   });
 
-  const pathLength = useTransform(scrollYProgress, [0.2, 0.5], [0, 1]);
+  const pathLength = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none overflow-visible">
@@ -627,7 +627,6 @@ const HorizontalLine: React.FC = () => {
           initial={{ pathLength: 0 }}
           transition={{
             duration: 0.6,
-            delay: 0.3,
             ease: [0.25, 0.1, 0.25, 1]
           }}
         />
