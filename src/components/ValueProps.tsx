@@ -19,18 +19,11 @@ const VerticalLine: React.FC = () => {
         preserveAspectRatio="none"
         style={{ overflow: 'visible' }}
       >
-        <defs>
-          <filter id="lineGlow" x="-100%" y="-100%" width="300%" height="300%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
-        </defs>
         <motion.path
           d="M 53 -5 L 53 28 Q 53 35, 46 35 L -5 35"
           stroke="rgba(255, 255, 255, 0.15)"
-          strokeWidth="2.5"
+          strokeWidth="1"
           fill="none"
-          filter="url(#lineGlow)"
           strokeLinecap="round"
           style={{
             pathLength,
