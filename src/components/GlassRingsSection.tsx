@@ -14,7 +14,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay = 0, classN
   const [isTyping, setIsTyping] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: '0px 0px -50px 0px', amount: 0.1 });
 
   useEffect(() => {
     if (isInView && !hasStarted) {
@@ -39,13 +39,13 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay = 0, classN
         setIsTyping(false);
         onComplete?.();
       }
-    }, 45);
+    }, 50);
 
     return () => clearInterval(interval);
   }, [isTyping, text, hasStarted, onComplete]);
 
   return (
-    <span ref={ref} className={className}>
+    <span ref={ref} className={`inline-block min-w-[1px] min-h-[1em] ${className}`}>
       {displayedText}
       {isTyping && <span className="animate-pulse">|</span>}
     </span>
