@@ -68,21 +68,21 @@ const StaticIO3D: React.FC = () => {
     const TEAL = new THREE.Color("#6ad4f2");
     const WHITE = new THREE.Color("#E8E8E8");
 
-    function solidMaterial(baseColor: THREE.Color, emissiveIntensity = 0.15, rough = 0.45) {
+    function solidMaterial(baseColor: THREE.Color, emissiveIntensity = 0.15, rough = 0.45, matte = false) {
       return new THREE.MeshPhysicalMaterial({
         color: baseColor,
-        metalness: 0.08,
-        roughness: rough,
+        metalness: matte ? 0.02 : 0.08,
+        roughness: matte ? 0.7 : rough,
         transmission: 0,
         transparent: false,
-        clearcoat: 0.4,
-        clearcoatRoughness: 0.15,
-        envMapIntensity: 0.9,
-        specularIntensity: 0.5,
+        clearcoat: matte ? 0.05 : 0.4,
+        clearcoatRoughness: matte ? 0.6 : 0.15,
+        envMapIntensity: matte ? 0.3 : 0.9,
+        specularIntensity: matte ? 0.1 : 0.5,
         emissive: baseColor,
-        emissiveIntensity,
-        reflectivity: 0.5,
-        sheen: 0.1,
+        emissiveIntensity: matte ? emissiveIntensity * 0.5 : emissiveIntensity,
+        reflectivity: matte ? 0.1 : 0.5,
+        sheen: matte ? 0 : 0.1,
         sheenRoughness: 0.3,
         sheenColor: baseColor
       });
@@ -159,7 +159,7 @@ const StaticIO3D: React.FC = () => {
 
     const iMesh = new THREE.Mesh(
       createHollowI({ width: 0.35, height: 1.0, stroke: 0.10, slant: 0.18, depth: 0.15 }),
-      solidMaterial(TEAL, 0.25, 0.35)
+      solidMaterial(TEAL, 0.2, 0.6, true)
     );
     const oMesh = new THREE.Mesh(
       createHollowO({ outerRadius: 0.50, ringThickness: 0.18, depth: 0.15, segments: 256 }),

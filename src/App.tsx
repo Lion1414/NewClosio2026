@@ -73,7 +73,7 @@ function HomePage() {
 
         <FeatureShowcase />
 
-        <SectionWrapper>
+        <SectionWrapper className="!overflow-visible !bg-black !bg-none">
           <ContactSplit />
         </SectionWrapper>
 
