@@ -71,27 +71,27 @@ const Footer: React.FC = () => {
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
         <div
-          className="absolute bottom-0 right-0 w-[70%] h-[80%] opacity-60"
+          className="absolute bottom-0 right-0 w-[70%] h-[80%]"
           style={{
             backgroundImage: `
-              linear-gradient(to right, rgba(44, 102, 255, 0.15) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(44, 102, 255, 0.15) 1px, transparent 1px)
+              linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px)
             `,
-            backgroundSize: '40px 40px',
-            maskImage: 'radial-gradient(ellipse at bottom right, black 0%, transparent 70%)',
-            WebkitMaskImage: 'radial-gradient(ellipse at bottom right, black 0%, transparent 70%)',
+            backgroundSize: '50px 50px',
+            maskImage: 'radial-gradient(ellipse at bottom right, black 0%, rgba(0,0,0,0.6) 40%, transparent 70%)',
+            WebkitMaskImage: 'radial-gradient(ellipse at bottom right, black 0%, rgba(0,0,0,0.6) 40%, transparent 70%)',
           }}
         />
         <div
-          className="absolute bottom-0 right-0 w-[60%] h-[70%] opacity-40"
+          className="absolute bottom-0 right-0 w-[60%] h-[70%]"
           style={{
             backgroundImage: `
-              linear-gradient(to right, rgba(106, 212, 242, 0.2) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(106, 212, 242, 0.2) 1px, transparent 1px)
+              linear-gradient(to right, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(255, 255, 255, 0.12) 1px, transparent 1px)
             `,
-            backgroundSize: '80px 80px',
-            maskImage: 'radial-gradient(ellipse at bottom right, black 0%, transparent 65%)',
-            WebkitMaskImage: 'radial-gradient(ellipse at bottom right, black 0%, transparent 65%)',
+            backgroundSize: '100px 100px',
+            maskImage: 'radial-gradient(ellipse at bottom right, black 0%, rgba(0,0,0,0.5) 35%, transparent 65%)',
+            WebkitMaskImage: 'radial-gradient(ellipse at bottom right, black 0%, rgba(0,0,0,0.5) 35%, transparent 65%)',
           }}
         />
       </div>
