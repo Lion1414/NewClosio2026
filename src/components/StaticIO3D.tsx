@@ -155,7 +155,7 @@ const StaticIO3D: React.FC = () => {
     io3D.add(io);
 
     const iMesh = new THREE.Mesh(
-      createHollowI({ width: 0.45, height: 1.2, stroke: 0.12, slant: 0.22, depth: 0.20 }),
+      createHollowI({ width: 0.45, height: 1.2, stroke: 0.12, slant: -0.22, depth: 0.20 }),
       solidMaterial(TEAL, 0.12, 0.5)
     );
     const oMesh = new THREE.Mesh(
@@ -163,13 +163,13 @@ const StaticIO3D: React.FC = () => {
       solidMaterial(WHITE, 0.08, 0.5)
     );
 
-    iMesh.position.set(-0.58, 0.0, 0.0);
-    oMesh.position.set(0.58, 0.0, 0.0);
+    oMesh.position.set(-0.58, 0.0, 0.0);
+    iMesh.position.set(0.58, 0.0, 0.0);
 
     io.add(iMesh, oMesh);
 
     io.rotation.x = 0.15;
-    io.rotation.y = -0.25;
+    io.rotation.y = 0.25;
 
     io.scale.set(0, 0, 0);
     gsap.to(io.scale, {
@@ -182,9 +182,9 @@ const StaticIO3D: React.FC = () => {
     });
 
     gsap.fromTo(io.rotation,
-      { y: Math.PI * 0.3 },
+      { y: -Math.PI * 0.3 },
       {
-        y: -0.25,
+        y: 0.25,
         duration: 1.5,
         ease: "power3.out",
         delay: 0.2
@@ -237,7 +237,7 @@ const StaticIO3D: React.FC = () => {
       io.position.y = floatY;
       io.position.x = floatX;
 
-      io.rotation.y = -0.25 + Math.sin(t * 0.25) * 0.06;
+      io.rotation.y = 0.25 + Math.sin(t * 0.25) * 0.06;
       io.rotation.x = 0.15 + Math.sin(t * 0.35) * 0.03;
 
       renderer.render(scene, camera);
