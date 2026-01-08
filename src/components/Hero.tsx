@@ -43,7 +43,6 @@ interface TypewriterTextProps {
 const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay, className = '', isGradient = false }) => {
   const [displayedText, setDisplayedText] = useState('');
   const [showCursor, setShowCursor] = useState(false);
-  const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
     let startTimeout: NodeJS.Timeout;
@@ -60,7 +59,6 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay, className 
         } else {
           clearInterval(typeInterval);
           setShowCursor(false);
-          setIsComplete(true);
         }
       }, 80);
     }, delay);
@@ -73,7 +71,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay, className 
 
   return (
     <span className={`inline-block ${className}`}>
-      {isComplete ? text : displayedText}
+      {displayedText}
       {showCursor && (
         <motion.span
           className={isGradient ? 'text-[#6ad4f2]' : 'text-white'}
