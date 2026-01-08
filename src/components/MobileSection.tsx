@@ -15,9 +15,9 @@ const MobileSection: React.FC = () => {
       <Robot3DContainer />
       <div className="absolute inset-0 flex items-end justify-end overflow-hidden">
         <div className="relative w-full h-full flex items-end justify-end pr-0 pb-0">
-          <div className="absolute right-8 sm:right-12 md:right-16 lg:right-24 top-1/2 -translate-y-1/2 text-right z-20">
-            <p className="text-gray-400 text-lg sm:text-xl md:text-2xl lg:text-3xl font-light leading-relaxed">
-              Experience the power,<br />
+          <div className="absolute right-8 sm:right-12 md:right-16 lg:right-24 top-[12%] text-right z-20">
+            <p className="text-gray-400 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed">
+              / Experience the power,<br />
               Mobile friendly
             </p>
           </div>
