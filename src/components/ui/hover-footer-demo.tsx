@@ -25,19 +25,6 @@ const FacebookIcon = ({ size = 18, className = "" }: { size?: number; className?
 function HoverFooter() {
   const footerLinks = [
     {
-      title: "Features",
-      links: [
-        { label: "Dashboard", href: "/features/dashboard" },
-        { label: "Leaderboard", href: "/features/leaderboard" },
-        { label: "Book of Business", href: "/features/book-of-business" },
-        { label: "Commission", href: "/features/commission" },
-        { label: "Estimated Payouts", href: "/features/estimated-payouts" },
-        { label: "Team Hierarchy", href: "/features/team-hierarchy" },
-        { label: "User Management", href: "/features/user-management" },
-        { label: "Reminders & More", href: "/features/reminders" },
-      ],
-    },
-    {
       title: "Resources",
       links: [
         { label: "Privacy Policy", href: "/privacy-policy" },
@@ -86,33 +73,13 @@ function HoverFooter() {
             </p>
           </div>
 
-          {/* Features */}
-          <div className="lg:col-span-3">
-            <h4 className="text-gray-400 text-base font-semibold mb-5 tracking-tight">
-              /Features
-            </h4>
-            <ul className="space-y-2.5 text-sm">
-              {footerLinks[0].links.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    to={link.href}
-                    onClick={() => window.scrollTo(0, 0)}
-                    className="text-gray-400 hover:text-[#6ad4f2] transition-colors inline-block"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Resources */}
           <div className="lg:col-span-3">
             <h4 className="text-gray-400 text-base font-semibold mb-5 tracking-tight">
               /Resources
             </h4>
             <ul className="space-y-2.5 text-sm">
-              {footerLinks[1].links.map((link) => (
+              {footerLinks[0].links.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
