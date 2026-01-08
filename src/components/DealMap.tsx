@@ -163,7 +163,7 @@ export default function DealMap() {
 
   return (
     <section ref={sectionRef} className="py-16 md:py-12 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-[#f8f9fa] to-white" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black to-white" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-10 md:mb-8">
@@ -172,7 +172,7 @@ export default function DealMap() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl lg:text-4xl font-bold text-[#1a1a2e] whitespace-nowrap"
+            className="text-3xl lg:text-4xl font-bold text-white whitespace-nowrap"
           >
             <TypewriterText text="/ POLICY MAP SOLUTIONS" delay={200} isVisible={isInView} />
           </motion.h2>
@@ -182,7 +182,7 @@ export default function DealMap() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-base text-[#4a4a5a] md:max-w-xl md:text-right"
+            className="text-base text-[#1a1a1a] md:max-w-xl md:text-right"
           >
             Visualize your agency's reach in real-time. Watch as policies are sold across the nation.
           </motion.p>
