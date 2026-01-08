@@ -133,7 +133,7 @@ const FeatureShowcase: React.FC = () => {
   });
 
   return (
-    <section className="relative bg-white overflow-hidden py-16 md:py-24">
+    <section className="relative bg-black overflow-hidden py-16 md:py-24">
       <motion.div
         ref={headerRef}
         initial={{ opacity: 0, y: 40 }}
@@ -147,7 +147,7 @@ const FeatureShowcase: React.FC = () => {
         }}
         className="pt-8 md:pt-12 pb-12 md:pb-16"
       >
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0f1419] text-center">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center">
           No Limits on what you can do
         </h2>
       </motion.div>
