@@ -100,15 +100,12 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   const handleNavClick = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     if (id === 'home') {
       if (!isHomePage) {
         navigate('/');
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 100);
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       if (!isHomePage) {
         navigate('/');
@@ -184,7 +181,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 return (
                   <a
                     key={item.id}
-                    href={`#${item.id}`}
+                    href={item.id === 'home' ? '/' : `#${item.id}`}
                     onClick={handleNavClick(item.id)}
                     className={`nav-underline-glow font-medium inline-flex items-center h-8 ${
                       !isActive ? 'text-white/80 hover:text-white' : 'text-[#6ad4f2]'
