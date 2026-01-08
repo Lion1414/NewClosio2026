@@ -183,13 +183,10 @@ const FeatureShowcase: React.FC = () => {
     const container = scrollContainerRef.current;
     if (!section || !container) return;
 
-    let isScrolling = false;
+    let isAnimating = false;
     let scrollTimeout: NodeJS.Timeout;
 
     const handleWheel = (e: WheelEvent) => {
-      // Prevent multiple rapid scroll events
-      if (isScrolling) return;
-
       const rect = section.getBoundingClientRect();
       const sectionTop = rect.top;
       const sectionBottom = rect.bottom;
@@ -208,59 +205,67 @@ const FeatureShowcase: React.FC = () => {
       const currentCard = Math.round(scrollLeft / cardWidth);
 
       const isAtStart = currentCard === 0;
-      const isAtEnd = currentCard === features.length - 1;
+      const isAtEnd = currentCard >= features.length - 1;
 
       // Scrolling down
       if (e.deltaY > 0) {
-        // If we're at the end, allow normal scroll to continue
+        // Only allow vertical scroll if we're truly at the last card
         if (isAtEnd) {
           return;
         }
 
-        // Hijack the scroll
+        // Block ALL vertical scrolling until last card
         e.preventDefault();
         e.stopPropagation();
-        isScrolling = true;
 
-        // Scroll to next card
-        const nextCard = Math.min(currentCard + 1, features.length - 1);
-        container.scrollTo({
-          left: nextCard * cardWidth,
-          behavior: 'smooth'
-        });
-        setCurrentIndex(nextCard);
+        // Only navigate if not currently animating
+        if (!isAnimating) {
+          isAnimating = true;
 
-        // Reset scrolling flag after animation
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          isScrolling = false;
-        }, 600);
+          // Scroll to next card
+          const nextCard = Math.min(currentCard + 1, features.length - 1);
+          container.scrollTo({
+            left: nextCard * cardWidth,
+            behavior: 'smooth'
+          });
+          setCurrentIndex(nextCard);
+
+          // Reset animation flag
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            isAnimating = false;
+          }, 800);
+        }
       }
       // Scrolling up
       else if (e.deltaY < 0) {
-        // If at start and section is at top, allow scroll up
+        // If at start and section is near top, allow scroll up
         if (isAtStart && sectionTop >= -10) {
           return;
         }
 
-        // Hijack the scroll
+        // Block ALL vertical scrolling while in section
         e.preventDefault();
         e.stopPropagation();
-        isScrolling = true;
 
-        // Scroll to previous card
-        const prevCard = Math.max(currentCard - 1, 0);
-        container.scrollTo({
-          left: prevCard * cardWidth,
-          behavior: 'smooth'
-        });
-        setCurrentIndex(prevCard);
+        // Only navigate if not currently animating
+        if (!isAnimating) {
+          isAnimating = true;
 
-        // Reset scrolling flag after animation
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          isScrolling = false;
-        }, 600);
+          // Scroll to previous card
+          const prevCard = Math.max(currentCard - 1, 0);
+          container.scrollTo({
+            left: prevCard * cardWidth,
+            behavior: 'smooth'
+          });
+          setCurrentIndex(prevCard);
+
+          // Reset animation flag
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            isAnimating = false;
+          }, 800);
+        }
       }
     };
 
