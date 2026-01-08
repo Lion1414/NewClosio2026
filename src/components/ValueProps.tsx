@@ -34,13 +34,15 @@ const ValueProps: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="why-closio" className="py-16 sm:py-20 md:py-28 lg:py-32 bg-black relative overflow-hidden">
-      <VerticalLine />
+    <section id="why-closio" className="py-12 sm:py-16 md:py-20 lg:py-28 xl:py-32 bg-black relative overflow-hidden">
+      <div className="hidden lg:block">
+        <VerticalLine />
+      </div>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid gap-12 lg:gap-20 grid-cols-1 lg:grid-cols-[1.5fr_1fr] items-center">
+        <div className="grid gap-8 sm:gap-10 md:gap-12 lg:gap-20 grid-cols-1 lg:grid-cols-[1.5fr_1fr] items-center">
 
-          <div className="order-1 flex items-center justify-start">
-            <div className="relative w-full max-w-5xl">
+          <div className="order-2 lg:order-1 flex items-center justify-center lg:justify-start">
+            <div className="relative w-full max-w-[320px] sm:max-w-md md:max-w-lg lg:max-w-5xl">
               {/* Mac Monitor Frame */}
               <div className="relative">
                 {/* Monitor Bezel - Ultra Slim */}
@@ -85,21 +87,21 @@ const ValueProps: React.FC = () => {
             </div>
           </div>
 
-          <div className="order-2 lg:pl-16 lg:max-w-md">
+          <div className="order-1 lg:order-2 lg:pl-8 xl:pl-16 lg:max-w-md">
             <motion.div
-              className="mb-8"
+              className="mb-6 sm:mb-8"
               initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-3">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2 sm:mb-3">
                 WHY CLOS<span
-                  className="italic mx-1"
+                  className="italic mx-0.5 sm:mx-1"
                   style={{ WebkitTextStroke: '1.5px currentColor', WebkitTextFillColor: 'transparent' }}
                 >I</span>O
               </h2>
-              <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
+              <p className="text-xs sm:text-sm md:text-base text-gray-400 leading-relaxed">
                 A CRM built thoughtfully for the workflows and operational demands of life-insurance teams.
               </p>
             </motion.div>
@@ -108,14 +110,14 @@ const ValueProps: React.FC = () => {
               {valueItems.map((item) => (
                 <div
                   key={item.number}
-                  className="group py-4 border-b border-white/20 last:border-b-0"
+                  className="group py-3 sm:py-4 border-b border-white/20 last:border-b-0"
                 >
-                  <div className="flex items-start gap-3 sm:gap-4">
-                    <span className="text-[#6ad4f2] group-hover:text-[#d593c0] text-xs font-semibold tracking-wider pt-1 transition-colors duration-300">
+                  <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                    <span className="text-[#6ad4f2] group-hover:text-[#d593c0] text-[10px] sm:text-xs font-semibold tracking-wider pt-0.5 sm:pt-1 transition-colors duration-300">
                       {item.number}
                     </span>
                     <h3
-                      className="text-lg sm:text-xl font-medium text-white transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-[#d593c0] group-hover:to-[#6ad4f2] group-hover:bg-clip-text group-hover:text-transparent"
+                      className="text-base sm:text-lg md:text-xl font-medium text-white transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-[#d593c0] group-hover:to-[#6ad4f2] group-hover:bg-clip-text group-hover:text-transparent"
                     >
                       {item.title}
                     </h3>
@@ -124,10 +126,10 @@ const ValueProps: React.FC = () => {
               ))}
             </div>
 
-            <div className="mt-12">
+            <div className="mt-8 sm:mt-10 lg:mt-12">
               <button
                 onClick={() => { window.scrollTo(0, 0); navigate('/schedule'); }}
-                className="px-8 py-4 bg-white text-black font-semibold rounded-xl hover:bg-white/90 transition-all duration-300 text-base"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-black font-semibold rounded-xl hover:bg-white/90 transition-all duration-300 text-sm sm:text-base min-h-[44px]"
               >
                 Book a Demo Now
               </button>

@@ -248,14 +248,14 @@ const ContactSplit = React.memo(() => {
                             }
                           }}
                           placeholder="Enter your email"
-                          className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:border-white/60 focus:ring-2 focus:ring-white/30 outline-none transition-all text-white placeholder:text-white/60 text-sm backdrop-blur-sm"
+                          className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:border-white/60 focus:ring-2 focus:ring-white/30 outline-none transition-all text-white placeholder:text-white/60 text-sm backdrop-blur-sm min-h-[44px]"
                           disabled={status === 'loading'}
                         />
                       </div>
                       <button
                         type="submit"
                         disabled={status === 'loading'}
-                        className="px-5 py-3 bg-white text-black font-semibold rounded-lg hover:bg-white/90 hover:shadow-lg hover:shadow-white/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-sm"
+                        className="px-5 py-3 bg-white text-black font-semibold rounded-lg hover:bg-white/90 hover:shadow-lg hover:shadow-white/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-sm min-h-[44px]"
                       >
                         {status === 'loading' ? (
                           <span className="flex items-center justify-center gap-2">
@@ -344,11 +344,11 @@ const ContactSplit = React.memo(() => {
         </div>
       </section>
 
-      <section className="relative bg-black overflow-visible z-10">
-        <div className="relative h-[500px] w-full pointer-events-none select-none flex items-center justify-center -mb-[200px]" style={{ transform: 'translateY(-80px)' }}>
+      <section className="relative bg-black overflow-hidden z-10">
+        <div className="relative h-[300px] sm:h-[400px] md:h-[500px] w-full pointer-events-none select-none flex items-center justify-center -mb-[100px] sm:-mb-[150px] md:-mb-[200px]" style={{ transform: 'translateY(-40px)' }}>
           <div className="absolute inset-0 flex items-center justify-center" style={{ top: '20%' }}>
             <div
-              className="w-[700px] h-[480px] rounded-full blur-[90px]"
+              className="w-[300px] sm:w-[500px] md:w-[700px] h-[250px] sm:h-[350px] md:h-[480px] rounded-full blur-[60px] sm:blur-[75px] md:blur-[90px]"
               style={{
                 background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.7) 0%, rgba(106, 212, 242, 0.4) 30%, rgba(106, 212, 242, 0.15) 60%, transparent 80%)',
               }}
@@ -356,13 +356,13 @@ const ContactSplit = React.memo(() => {
           </div>
           <div className="absolute inset-0 flex items-center justify-center" style={{ top: '20%' }}>
             <div
-              className="w-[380px] h-[300px] rounded-full blur-[50px]"
+              className="w-[180px] sm:w-[280px] md:w-[380px] h-[150px] sm:h-[220px] md:h-[300px] rounded-full blur-[30px] sm:blur-[40px] md:blur-[50px]"
               style={{
                 background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.5) 0%, transparent 70%)',
               }}
             />
           </div>
-          <div className="absolute inset-0 scale-[0.85]">
+          <div className="absolute inset-0 scale-[0.6] sm:scale-[0.75] md:scale-[0.85]">
             <StaticIO3D />
           </div>
         </div>

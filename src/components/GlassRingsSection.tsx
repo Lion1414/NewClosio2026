@@ -89,14 +89,14 @@ const GlassRingsSection = () => {
   ];
 
   return (
-    <section className="relative py-24 lg:py-36 overflow-hidden bg-black">
+    <section className="relative py-16 sm:py-20 md:py-24 lg:py-36 overflow-hidden bg-black">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(255,255,255,0.03)_0%,_transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(255,255,255,0.02)_0%,_transparent_50%)]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 md:gap-16 lg:gap-20 items-center">
 
-          <div className="relative z-10 space-y-8">
+          <div className="relative z-10 space-y-6 sm:space-y-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -104,13 +104,13 @@ const GlassRingsSection = () => {
               transition={{ duration: 0.5 }}
               className="inline-block"
             >
-              <span className="text-white/80 text-xs font-semibold tracking-[0.2em] uppercase px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+              <span className="text-white/80 text-[10px] sm:text-xs font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
                 Secure & Reliable Platform
               </span>
             </motion.div>
 
             <div className="space-y-2">
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
                 <span className="block text-white min-h-[1.2em]">
                   <TypewriterText
                     text="Built by Experts"
@@ -134,13 +134,13 @@ const GlassRingsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg text-white/50 leading-relaxed max-w-lg"
+              className="text-base sm:text-lg text-white/50 leading-relaxed max-w-lg"
             >
               CLOSIO is powered by a dedicated team of industry professionals committed to delivering
               enterprise-grade security and continuous innovation. Your data and success are our top priorities.
             </motion.p>
 
-            <div className="space-y-4 pt-6">
+            <div className="space-y-3 sm:space-y-4 pt-4 sm:pt-6">
               {featureItems.map((item, index) => (
                 <motion.div
                   key={item.title}
@@ -150,19 +150,19 @@ const GlassRingsSection = () => {
                   transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                   className="group relative"
                 >
-                  <div className="relative p-5 rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-white/15 hover:bg-white/[0.06]">
+                  <div className="relative p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-white/15 hover:bg-white/[0.06]">
                     <div className="absolute inset-0 bg-gradient-to-r from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute top-0 left-0 w-24 h-24 bg-white/[0.03] rounded-full blur-2xl -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                    <div className="relative flex items-start gap-4">
-                      <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center border border-white/10 text-white/70 group-hover:text-white group-hover:border-white/20 transition-all duration-300">
+                    <div className="relative flex items-start gap-3 sm:gap-4">
+                      <div className="flex-shrink-0 w-10 h-10 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center border border-white/10 text-white/70 group-hover:text-white group-hover:border-white/20 transition-all duration-300">
                         {item.icon}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-white font-semibold text-base mb-1 group-hover:text-white transition-colors">
+                        <h3 className="text-white font-semibold text-sm sm:text-base mb-0.5 sm:mb-1 group-hover:text-white transition-colors">
                           {item.title}
                         </h3>
-                        <p className="text-white/40 text-sm leading-relaxed group-hover:text-white/50 transition-colors">
+                        <p className="text-white/40 text-xs sm:text-sm leading-relaxed group-hover:text-white/50 transition-colors">
                           {item.description}
                         </p>
                       </div>
@@ -174,7 +174,7 @@ const GlassRingsSection = () => {
           </div>
 
           <div className="relative order-first lg:order-last">
-            <div className="w-full h-[500px] lg:h-[650px] flex items-center justify-center relative">
+            <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[650px] flex items-center justify-center relative overflow-hidden">
               <ShieldIO />
             </div>
           </div>

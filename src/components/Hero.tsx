@@ -93,7 +93,7 @@ const FlipButton: React.FC = () => {
   return (
     <motion.button
       onClick={handleClick}
-      className="demo-btn relative px-8 py-4 bg-white text-black font-semibold text-base rounded-xl overflow-hidden z-30 group"
+      className="demo-btn relative px-6 sm:px-8 py-3 sm:py-4 bg-white text-black font-semibold text-sm sm:text-base rounded-xl overflow-hidden z-30 group min-h-[44px]"
       initial={{ opacity: 0, y: 20, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.6, delay: 5.8, ease: [0.16, 1, 0.3, 1] }}

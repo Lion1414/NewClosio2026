@@ -68,39 +68,35 @@ const Footer: React.FC = () => {
       <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-white/90 to-transparent blur-[2px]" />
       <div className="absolute top-[-15px] left-0 right-0 h-[35px] bg-gradient-to-r from-transparent via-white/30 to-transparent blur-xl" />
       <div className="absolute top-[-30px] left-1/2 -translate-x-1/2 w-[50%] h-[60px] bg-gradient-to-r from-transparent via-white/20 to-transparent blur-2xl" />
-      <div className="max-w-[calc(100vw-12rem)] mx-auto px-6 pt-[220px] pb-16">
-        {/* Main Footer Content */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
-          {/* Brand Section */}
-          <div className="lg:col-span-2">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-40 md:pt-52 lg:pt-[220px] pb-12 sm:pb-16">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 mb-12">
+          <div className="col-span-2 sm:col-span-2 md:col-span-3 lg:col-span-2">
             <p className="text-[#A8B3C7] mb-6 leading-relaxed">
               The proprietary CRM built exclusively for life insurance professionals. 
               Close more deals, track commissions clearly, and grow your agency with confidence.
             </p>
             
-            {/* Newsletter Signup */}
             <div className="mb-6">
               <h4 className="font-semibold mb-3 text-gray-400">/Stay Updated</h4>
-              <div className="flex">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-0">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-2 bg-white/10 border border-white/20 rounded-l-xl focus:border-[#2C66FF] focus:ring-2 focus:ring-[#2C66FF]/20 outline-none transition-all text-sm"
+                  className="flex-1 px-4 py-3 sm:py-2 bg-white/10 border border-white/20 rounded-xl sm:rounded-l-xl sm:rounded-r-none focus:border-[#2C66FF] focus:ring-2 focus:ring-[#2C66FF]/20 outline-none transition-all text-sm min-h-[44px]"
                 />
-                <button className="px-4 py-2 bg-gradient-to-r from-[#2C66FF] to-[#2B4FB3] rounded-r-xl hover:scale-105 transition-all text-sm">
-                  →
+                <button className="px-4 py-3 sm:py-2 bg-gradient-to-r from-[#2C66FF] to-[#2B4FB3] rounded-xl sm:rounded-l-none sm:rounded-r-xl hover:scale-105 transition-all text-sm min-h-[44px]">
+                  Subscribe
                 </button>
               </div>
             </div>
 
-            {/* Social Links */}
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap gap-2 sm:gap-4">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
                   aria-label={social.label}
-                  className="px-3 py-2 bg-white/10 rounded-xl hover:bg-[#2C66FF] transition-all hover:scale-110 text-xs"
+                  className="px-3 py-2 bg-white/10 rounded-xl hover:bg-[#2C66FF] transition-all hover:scale-110 text-xs min-h-[44px] min-w-[44px] flex items-center justify-center"
                 >
                   {social.label}
                 </a>
@@ -128,19 +124,18 @@ const Footer: React.FC = () => {
           ))}
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/12 flex flex-col md:flex-row justify-between items-center">
-          <div className="text-[#A8B3C7] text-sm mb-4 md:mb-0">
+        <div className="pt-6 sm:pt-8 border-t border-white/12 flex flex-col gap-4 sm:gap-0 sm:flex-row justify-between items-center">
+          <div className="text-[#A8B3C7] text-xs sm:text-sm text-center sm:text-left">
             © {new Date().getFullYear()} Closio. All rights reserved.
           </div>
 
-          <div className="flex items-center space-x-6">
-            <div className="text-[#A8B3C7] text-sm">
+          <div className="flex items-center gap-4 sm:gap-6">
+            <div className="text-[#A8B3C7] text-xs sm:text-sm hidden sm:block">
               Made for life insurance professionals
             </div>
             <button
               onClick={scrollToTop}
-              className="w-10 h-10 bg-white/10 hover:bg-[#2C66FF] rounded-xl flex items-center justify-center transition-all hover:scale-110 text-xl"
+              className="w-11 h-11 bg-white/10 hover:bg-[#2C66FF] rounded-xl flex items-center justify-center transition-all hover:scale-110 text-xl min-w-[44px] min-h-[44px]"
               aria-label="Back to top"
             >
               ↑
