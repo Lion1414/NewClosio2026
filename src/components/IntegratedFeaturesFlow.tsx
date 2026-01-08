@@ -47,7 +47,7 @@ export default function IntegratedFeaturesFlow() {
         <div className="relative mx-auto mt-2 flex h-[720px] w-full max-w-[900px] items-center justify-center">
 
           <div className="absolute left-1/2 top-[30px] -translate-x-1/2" style={{ perspective: '1200px' }}>
-            {/* Panel 1 - Bottom */}
+            {/* Panel 1 - Bottom (most faded) */}
             <motion.div
               initial={{ opacity: 0, y: 20, scale: 0.9, rotateX: 2 }}
               animate={isInView ? {
@@ -64,9 +64,9 @@ export default function IntegratedFeaturesFlow() {
                 rotateX: { duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] },
                 rotateZ: { duration: 3, delay: 1.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.5 }
               }}
-              className="absolute left-1/2 top-[-90px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border border-white/[0.06] bg-gradient-to-b from-[#1a1a2e]/40 via-white/[0.02] to-transparent backdrop-blur-[2px]"
+              className="absolute left-1/2 top-[-90px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border border-white/[0.04] bg-gradient-to-b from-white/[0.02] via-white/[0.01] to-transparent backdrop-blur-[2px]"
               style={{
-                boxShadow: '0 8px 40px rgba(0,0,0,0.4), 0 2px 12px rgba(0,0,0,0.6), 0 0 60px rgba(26,26,46,0.4), inset 0 1px 0 rgba(255,255,255,0.08)',
+                boxShadow: '0 8px 40px rgba(0,0,0,0.4), 0 2px 12px rgba(0,0,0,0.6), 0 0 40px rgba(255,255,255,0.02), inset 0 1px 0 rgba(255,255,255,0.06)',
                 transformStyle: 'preserve-3d'
               }}
             />
@@ -88,9 +88,9 @@ export default function IntegratedFeaturesFlow() {
                 rotateX: { duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
                 rotateZ: { duration: 3, delay: 1.6, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.5 }
               }}
-              className="absolute left-1/2 top-[-68px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border border-white/[0.08] bg-gradient-to-b from-[#16213e]/50 via-white/[0.03] to-white/[0.01] backdrop-blur-[3px]"
+              className="absolute left-1/2 top-[-68px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border border-white/[0.06] bg-gradient-to-b from-white/[0.03] via-white/[0.02] to-white/[0.01] backdrop-blur-[3px]"
               style={{
-                boxShadow: '0 10px 48px rgba(0,0,0,0.45), 0 4px 16px rgba(0,0,0,0.65), 0 0 70px rgba(22,33,62,0.5), inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(0,0,0,0.3)',
+                boxShadow: '0 10px 48px rgba(0,0,0,0.45), 0 4px 16px rgba(0,0,0,0.65), 0 0 50px rgba(255,255,255,0.03), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.3)',
                 transformStyle: 'preserve-3d'
               }}
             />
@@ -112,14 +112,14 @@ export default function IntegratedFeaturesFlow() {
                 rotateX: { duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
                 rotateZ: { duration: 3, delay: 1.7, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.5 }
               }}
-              className="absolute left-1/2 top-[-45px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border border-white/[0.12] bg-gradient-to-b from-[#0f3460]/60 via-white/[0.05] to-white/[0.02] backdrop-blur-[4px]"
+              className="absolute left-1/2 top-[-45px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border border-white/[0.08] bg-gradient-to-b from-white/[0.05] via-white/[0.03] to-white/[0.01] backdrop-blur-[4px]"
               style={{
-                boxShadow: '0 12px 56px rgba(0,0,0,0.5), 0 6px 20px rgba(0,0,0,0.7), 0 0 80px rgba(15,52,96,0.6), inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -1px 0 rgba(0,0,0,0.35)',
+                boxShadow: '0 12px 56px rgba(0,0,0,0.5), 0 6px 20px rgba(0,0,0,0.7), 0 0 60px rgba(255,255,255,0.04), inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(0,0,0,0.35)',
                 transformStyle: 'preserve-3d'
               }}
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-transparent via-white/[0.03] to-transparent rounded-[32px]" />
-              <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-white/[0.08] to-transparent rounded-t-[32px]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-transparent via-white/[0.02] to-transparent rounded-[32px]" />
+              <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-white/[0.06] to-transparent rounded-t-[32px]" />
             </motion.div>
 
             {/* Panel 4 */}
@@ -139,18 +139,18 @@ export default function IntegratedFeaturesFlow() {
                 rotateX: { duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] },
                 rotateZ: { duration: 3, delay: 1.8, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.5 }
               }}
-              className="absolute left-1/2 top-[-23px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border border-white/[0.16] bg-gradient-to-b from-[#16213e]/70 via-white/[0.08] to-white/[0.04] backdrop-blur-[6px]"
+              className="absolute left-1/2 top-[-23px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border border-white/[0.12] bg-gradient-to-b from-white/[0.07] via-white/[0.04] to-white/[0.02] backdrop-blur-[6px]"
               style={{
-                boxShadow: '0 14px 64px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.75), 0 0 90px rgba(22,33,62,0.7), inset 0 2px 0 rgba(255,255,255,0.22), inset 0 -2px 0 rgba(0,0,0,0.4)',
+                boxShadow: '0 14px 64px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.75), 0 0 70px rgba(255,255,255,0.05), inset 0 2px 0 rgba(255,255,255,0.16), inset 0 -2px 0 rgba(0,0,0,0.4)',
                 transformStyle: 'preserve-3d'
               }}
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-transparent via-white/[0.05] to-transparent rounded-[32px]" />
-              <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-b from-white/[0.12] to-transparent rounded-t-[32px]" />
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.25] to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-transparent via-white/[0.03] to-transparent rounded-[32px]" />
+              <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-b from-white/[0.08] to-transparent rounded-t-[32px]" />
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.2] to-transparent" />
             </motion.div>
 
-            {/* Panel 5 - Top */}
+            {/* Panel 5 - Top (most visible) */}
             <motion.div
               initial={{ opacity: 0, y: 20, scale: 0.9, rotateX: 0.5 }}
               animate={isInView ? {
@@ -167,19 +167,19 @@ export default function IntegratedFeaturesFlow() {
                 rotateX: { duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
                 rotateZ: { duration: 3, delay: 1.9, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.5 }
               }}
-              className="absolute left-1/2 top-[0px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border-2 border-white/[0.22] bg-gradient-to-b from-[#1a1a2e]/80 via-white/[0.12] to-white/[0.06] backdrop-blur-[8px] overflow-hidden"
+              className="absolute left-1/2 top-[0px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border border-white/[0.18] bg-gradient-to-b from-white/[0.1] via-white/[0.06] to-white/[0.03] backdrop-blur-[8px] overflow-hidden"
               style={{
-                boxShadow: '0 16px 72px rgba(0,0,0,0.6), 0 10px 28px rgba(0,0,0,0.8), 0 0 100px rgba(26,26,46,0.8), inset 0 2px 0 rgba(255,255,255,0.28), inset 0 -2px 20px rgba(0,0,0,0.25), 0 0 1px rgba(255,255,255,0.2)',
+                boxShadow: '0 16px 72px rgba(0,0,0,0.6), 0 10px 28px rgba(0,0,0,0.8), 0 0 80px rgba(255,255,255,0.06), inset 0 2px 0 rgba(255,255,255,0.22), inset 0 -2px 20px rgba(0,0,0,0.25), 0 0 1px rgba(255,255,255,0.15)',
                 transformStyle: 'preserve-3d'
               }}
             >
-              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.08] to-transparent" />
-              <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-white/[0.18] to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.05] to-transparent" />
+              <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-white/[0.12] to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/[0.25] to-transparent" />
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.35] to-transparent" />
-              <div className="absolute inset-0 rounded-[32px] ring-1 ring-inset ring-white/[0.15]" />
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.3] to-transparent" />
+              <div className="absolute inset-0 rounded-[32px] ring-1 ring-inset ring-white/[0.1]" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-lg font-medium text-white/90 whitespace-nowrap">Core Dashboard</span>
+                <span className="text-2xl font-semibold text-white/95 whitespace-nowrap tracking-tight">Core Dashboard</span>
               </div>
             </motion.div>
 
@@ -187,7 +187,7 @@ export default function IntegratedFeaturesFlow() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              className="pointer-events-none absolute left-1/2 top-[90px] h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/[0.12] blur-3xl"
+              className="pointer-events-none absolute left-1/2 top-[90px] h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/[0.08] blur-3xl"
             />
           </div>
 
@@ -300,14 +300,14 @@ export default function IntegratedFeaturesFlow() {
                 initial={{ opacity: 0, y: 30, rotateX: -5 }}
                 animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : { opacity: 0, y: 30, rotateX: -5 }}
                 transition={{ duration: 0.5, delay: 0.9 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="relative flex w-full max-w-[200px] flex-col items-center justify-center gap-2 rounded-2xl border border-white/[0.12] bg-white/[0.04] px-4 py-6 backdrop-blur-md"
+                className="relative flex w-full max-w-[200px] flex-col items-center justify-center gap-2 rounded-2xl border border-white/[0.1] bg-gradient-to-b from-white/[0.06] via-white/[0.03] to-white/[0.01] px-4 py-6 backdrop-blur-md"
                 style={{
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.4), 0 2px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -1px 0 rgba(0,0,0,0.2)',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.4), 0 2px 12px rgba(0,0,0,0.5), 0 0 30px rgba(255,255,255,0.03), inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(0,0,0,0.2)',
                   transformStyle: 'preserve-3d'
                 }}
               >
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-                <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-white/5 to-transparent rounded-t-2xl pointer-events-none" />
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+                <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-white/[0.06] to-transparent rounded-t-2xl pointer-events-none" />
 
                 <div className="text-center">
                   <div className="text-sm font-medium text-white/85">{feature.title}</div>
