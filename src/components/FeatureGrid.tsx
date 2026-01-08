@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { motion, AnimatePresence, useInView, useScroll, useTransform } from 'framer-motion';
 
 interface TypewriterTextProps {
   text: string;
@@ -599,8 +599,24 @@ const MedalsIcon: React.FC = () => (
 );
 
 const HorizontalLine: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const horizontalScale = useTransform(scrollYProgress, [0.2, 0.5], [0, 1]);
+
   return (
-    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[20px] bg-white pointer-events-none" />
+    <div ref={sectionRef} className="absolute inset-0 pointer-events-none overflow-visible">
+      <motion.div
+        className="absolute left-0 top-1/2 -translate-y-1/2 h-[20px] bg-gray-600/30 origin-left"
+        style={{
+          width: '100%',
+          scaleX: horizontalScale,
+        }}
+      />
+    </div>
   );
 };
 
