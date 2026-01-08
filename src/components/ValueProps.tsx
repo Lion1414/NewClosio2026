@@ -1,12 +1,35 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
 const VerticalLine: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const yPosition = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+  const xPosition = useTransform(scrollYProgress, [0, 1], ['50%', '0%']);
+
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-visible">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[20px] h-[42%] bg-white" />
-      <div className="absolute top-[42%] left-0 right-1/2 h-[20px] bg-white" />
+    <div ref={sectionRef} className="absolute inset-0 pointer-events-none overflow-visible">
+      <motion.div
+        className="absolute top-0 w-[20px] h-[42%] bg-gray-600/30"
+        style={{
+          left: xPosition,
+          y: yPosition,
+          x: '-50%'
+        }}
+      />
+      <motion.div
+        className="absolute top-[42%] right-1/2 h-[20px] bg-gray-600/30"
+        style={{
+          left: '0',
+          width: xPosition,
+          y: yPosition
+        }}
+      />
     </div>
   );
 };
