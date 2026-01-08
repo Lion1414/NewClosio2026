@@ -1,23 +1,16 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import {
-  BarChart3,
-  DollarSign,
-  Trophy,
-  BookOpen,
-} from "lucide-react";
 
 type Feature = {
   title: string;
   href: string;
-  Icon: React.ComponentType<any>;
 };
 
 const features: Feature[] = [
-  { title: "Dashboard", href: "/features/dashboard", Icon: BarChart3 },
-  { title: "Commission", href: "/features/commission", Icon: DollarSign },
-  { title: "Leaderboard", href: "/features/leaderboard", Icon: Trophy },
-  { title: "Book of Business", href: "/features/book-of-business", Icon: BookOpen },
+  { title: "User Management", href: "/features/user-management" },
+  { title: "Quick Links", href: "/features/quick-links" },
+  { title: "Estimated Payout", href: "/features/estimated-payouts" },
+  { title: "Reminders", href: "/features/reminders" },
 ];
 
 export default function IntegratedFeaturesFlow() {
@@ -125,9 +118,9 @@ export default function IntegratedFeaturesFlow() {
           >
             <g opacity="0.9">
               <motion.path
-                d="M405 118 L405 360"
+                d="M405 182 L405 360"
                 stroke="rgba(255,255,255,0.25)"
-                strokeWidth="2"
+                strokeWidth="3"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 0.8, delay: 0.7, ease: "easeInOut" }}
@@ -135,7 +128,7 @@ export default function IntegratedFeaturesFlow() {
               <motion.path
                 d="M405 360 C405 378, 230 385, 130 420"
                 stroke="rgba(255,255,255,0.22)"
-                strokeWidth="2"
+                strokeWidth="3"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
@@ -143,7 +136,7 @@ export default function IntegratedFeaturesFlow() {
               <motion.path
                 d="M405 360 C405 380, 350 390, 310 420"
                 stroke="rgba(255,255,255,0.22)"
-                strokeWidth="2"
+                strokeWidth="3"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 0.6, delay: 0.9, ease: "easeInOut" }}
@@ -151,7 +144,7 @@ export default function IntegratedFeaturesFlow() {
               <motion.path
                 d="M405 360 C405 380, 470 390, 490 420"
                 stroke="rgba(255,255,255,0.22)"
-                strokeWidth="2"
+                strokeWidth="3"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 0.6, delay: 1.0, ease: "easeInOut" }}
@@ -159,7 +152,7 @@ export default function IntegratedFeaturesFlow() {
               <motion.path
                 d="M405 360 C405 378, 620 385, 670 420"
                 stroke="rgba(255,255,255,0.22)"
-                strokeWidth="2"
+                strokeWidth="3"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 0.6, delay: 1.2, ease: "easeInOut" }}
@@ -168,9 +161,9 @@ export default function IntegratedFeaturesFlow() {
 
             <g opacity="0.55" filter="url(#blurGlow)">
               <motion.path
-                d="M405 118 L405 360"
+                d="M405 182 L405 360"
                 stroke="rgba(255,255,255,0.22)"
-                strokeWidth="6"
+                strokeWidth="8"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 0.8, delay: 0.7, ease: "easeInOut" }}
@@ -178,7 +171,7 @@ export default function IntegratedFeaturesFlow() {
               <motion.path
                 d="M405 360 C405 378, 230 385, 130 420"
                 stroke="rgba(255,255,255,0.18)"
-                strokeWidth="6"
+                strokeWidth="8"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
@@ -186,7 +179,7 @@ export default function IntegratedFeaturesFlow() {
               <motion.path
                 d="M405 360 C405 380, 350 390, 310 420"
                 stroke="rgba(255,255,255,0.18)"
-                strokeWidth="6"
+                strokeWidth="8"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 0.6, delay: 0.9, ease: "easeInOut" }}
@@ -194,7 +187,7 @@ export default function IntegratedFeaturesFlow() {
               <motion.path
                 d="M405 360 C405 380, 470 390, 490 420"
                 stroke="rgba(255,255,255,0.18)"
-                strokeWidth="6"
+                strokeWidth="8"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 0.6, delay: 1.0, ease: "easeInOut" }}
@@ -202,7 +195,7 @@ export default function IntegratedFeaturesFlow() {
               <motion.path
                 d="M405 360 C405 378, 620 385, 670 420"
                 stroke="rgba(255,255,255,0.18)"
-                strokeWidth="6"
+                strokeWidth="8"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 0.6, delay: 1.2, ease: "easeInOut" }}
@@ -217,7 +210,7 @@ export default function IntegratedFeaturesFlow() {
           </motion.svg>
 
           <div className="absolute bottom-0 left-1/2 flex w-full max-w-4xl -translate-x-1/2 justify-between gap-3 px-2" style={{ perspective: '1000px' }}>
-            {features.map(({ title, href, Icon }, index) => (
+            {features.map(({ title, href }, index) => (
               <motion.a
                 key={title}
                 href={href}
@@ -225,7 +218,7 @@ export default function IntegratedFeaturesFlow() {
                 animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : { opacity: 0, y: 30, rotateX: -5 }}
                 transition={{ duration: 0.5, delay: 0.9 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -4, scale: 1.03, rotateX: -2 }}
-                className="group relative flex w-full max-w-[220px] flex-col items-center gap-2 rounded-2xl border border-white/[0.12] bg-white/[0.04] px-4 py-4 backdrop-blur-md transition-colors hover:border-white/[0.25] hover:bg-white/[0.06]"
+                className="group relative flex w-full max-w-[220px] flex-col items-center justify-center gap-2 rounded-2xl border border-white/[0.12] bg-white/[0.04] px-4 py-6 backdrop-blur-md transition-colors hover:border-white/[0.25] hover:bg-white/[0.06]"
                 style={{
                   boxShadow: '0 8px 32px rgba(0,0,0,0.4), 0 2px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -1px 0 rgba(0,0,0,0.2)',
                   transformStyle: 'preserve-3d'
@@ -234,17 +227,6 @@ export default function IntegratedFeaturesFlow() {
                 {/* Top edge highlight */}
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                 <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-white/5 to-transparent rounded-t-2xl pointer-events-none" />
-
-                <div className="relative grid h-14 w-14 place-items-center rounded-xl border border-white/[0.15] bg-black/50 transition-all group-hover:border-white/[0.25]"
-                  style={{
-                    boxShadow: '0 4px 20px rgba(0,0,0,0.5), 0 0 30px rgba(255,255,255,0.06), inset 0 1px 0 rgba(255,255,255,0.12)'
-                  }}
-                >
-                  <Icon className="h-6 w-6 text-white/80 transition group-hover:text-white group-hover:scale-110" />
-                  <div className="pointer-events-none absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.14),transparent_60%)] opacity-0 transition group-hover:opacity-100" />
-                  {/* Icon container edge highlight */}
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-t-xl" />
-                </div>
 
                 <div className="text-center">
                   <div className="text-sm font-medium text-white/85 transition group-hover:text-white">{title}</div>
