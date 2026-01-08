@@ -39,13 +39,13 @@ const AdditionalFeatures: React.FC = () => {
               border-radius: inherit;
               background: linear-gradient(
                 180deg,
-                rgba(255, 255, 255, 0.25),
-                rgba(255, 255, 255, 0.12) 25%,
-                rgba(255, 255, 255, 0.04) 50%,
-                rgba(255, 255, 255, 0.00) 75%
+                rgba(255, 255, 255, 0.2) 0%,
+                rgba(255, 255, 255, 0.08) 20%,
+                rgba(255, 255, 255, 0.02) 40%,
+                rgba(255, 255, 255, 0.00) 60%
               );
-              filter: blur(6px);
-              opacity: 0.7;
+              filter: blur(4px);
+              opacity: 0.65;
               z-index: 0;
               pointer-events: none;
             }
@@ -53,19 +53,20 @@ const AdditionalFeatures: React.FC = () => {
             .glow-shell::after {
               content: "";
               position: absolute;
-              left: 6%;
-              right: 6%;
-              top: 36px;
+              left: 8%;
+              right: 8%;
+              top: 28px;
               height: 2px;
               border-radius: 999px;
               background: linear-gradient(
                 90deg,
                 transparent,
-                rgba(255, 255, 255, 0.55),
+                rgba(255, 255, 255, 0.5) 30%,
+                rgba(255, 255, 255, 0.5) 70%,
                 transparent
               );
               filter: blur(2px);
-              opacity: 0.8;
+              opacity: 0.75;
               z-index: 1;
               pointer-events: none;
             }
