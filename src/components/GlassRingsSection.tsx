@@ -173,7 +173,7 @@ const ShieldIO = () => {
           height="100"
           rx="2"
           fill="#6ad4f2"
-          fillOpacity="0.85"
+          fillOpacity="0.6"
           transform="skewX(-8)"
         />
       </g>
