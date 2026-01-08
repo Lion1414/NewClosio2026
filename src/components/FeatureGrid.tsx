@@ -763,7 +763,7 @@ const FeatureGrid: React.FC = () => {
         >
           <h2 className="text-4xl sm:text-5xl font-bold leading-[1.15] md:max-w-md">
             <TypewriterText
-              text="/ CORE FEATURES"
+              text="/ Our Core Features"
               delay={200}
               className="text-white"
             />
