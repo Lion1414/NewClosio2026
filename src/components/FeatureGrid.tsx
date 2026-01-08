@@ -58,7 +58,7 @@ interface Sparkle {
   repeatDelay: number;
 }
 
-const SparkleEffect: React.FC<{ isHovered: boolean }> = ({ isHovered }) => {
+const SparkleEffect: React.FC<{ isHovered: boolean; isDashboard: boolean }> = ({ isHovered, isDashboard }) => {
   const particles = useMemo<Sparkle[]>(() =>
     Array.from({ length: 20 }, (_, i) => ({
       id: i,
@@ -89,13 +89,15 @@ const SparkleEffect: React.FC<{ isHovered: boolean }> = ({ isHovered }) => {
                 delay: particle.delay,
                 ease: 'easeOut',
               }}
-              className="absolute rounded-full bg-white"
+              className={`absolute rounded-full ${isDashboard ? 'bg-black' : 'bg-white'}`}
               style={{
                 left: `${particle.x}%`,
                 top: `${particle.y}%`,
                 width: particle.size,
                 height: particle.size,
-                boxShadow: '0 0 4px rgba(255, 255, 255, 0.6)',
+                boxShadow: isDashboard
+                  ? '0 0 4px rgba(0, 0, 0, 0.6)'
+                  : '0 0 4px rgba(255, 255, 255, 0.6)',
               }}
             />
           ))}
@@ -627,7 +629,7 @@ const GridPattern: React.FC<{ isDashboard: boolean; index: number }> = ({ isDash
             <path
               d="M 20 0 L 0 0 0 20"
               fill="none"
-              stroke={isDashboard ? '#0891b2' : '#ffffff'}
+              stroke={isDashboard ? '#000000' : '#ffffff'}
               strokeWidth="1"
             />
           </pattern>
@@ -644,7 +646,7 @@ const BottomGlow: React.FC<{ isDashboard: boolean }> = ({ isDashboard }) => (
       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-40 blur-3xl"
       style={{
         background: isDashboard
-          ? 'radial-gradient(ellipse at 50% 100%, rgba(8, 145, 178, 0.8), transparent 70%)'
+          ? 'radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.4), transparent 70%)'
           : 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.5), transparent 70%)',
       }}
     />
@@ -652,7 +654,7 @@ const BottomGlow: React.FC<{ isDashboard: boolean }> = ({ isDashboard }) => (
       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-28 blur-2xl"
       style={{
         background: isDashboard
-          ? 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.5), transparent 70%)'
+          ? 'radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.3), transparent 70%)'
           : 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.4), transparent 70%)',
       }}
     />
@@ -660,7 +662,7 @@ const BottomGlow: React.FC<{ isDashboard: boolean }> = ({ isDashboard }) => (
       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-16 blur-xl"
       style={{
         background: isDashboard
-          ? 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.7), transparent 70%)'
+          ? 'radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.5), transparent 70%)'
           : 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.3), transparent 70%)',
       }}
     />
@@ -693,14 +695,14 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
       } ${isDashboard ? 'border-0' : 'border border-white/10'}`}
       style={{
         background: isDashboard
-          ? '#6ad4f2'
+          ? '#ffffff'
           : '#000000',
         willChange: 'transform, opacity',
       }}
     >
       <GridPattern isDashboard={isDashboard} index={index} />
       <BottomGlow isDashboard={isDashboard} />
-      <SparkleEffect isHovered={isHovered} />
+      <SparkleEffect isHovered={isHovered} isDashboard={isDashboard} />
       <div className="relative p-8 flex flex-col h-full min-h-[340px] z-10">
         <div className="w-44 h-44 mb-6">
           <Icon />
