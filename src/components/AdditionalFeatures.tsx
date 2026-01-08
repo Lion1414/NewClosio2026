@@ -5,19 +5,16 @@ const AdditionalFeatures: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 0.8", "end 0.3"]
+    offset: ["start 0.9", "end 0.2"]
   });
 
-  // Shadow opacity - fades in, stays visible, then fades out
-  const shadowOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 0.65, 0.65, 0]);
+  const shadowOpacity = useTransform(scrollYProgress, [0, 0.05, 0.8, 1], [0, 0.65, 0.65, 0]);
 
-  // First text animation - fades in, stays, then fades out
-  const text1Opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
-  const text1Y = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [30, 0, 0, -20]);
+  const text1Opacity = useTransform(scrollYProgress, [0, 0.05, 0.8, 1], [0, 1, 1, 0]);
+  const text1Y = useTransform(scrollYProgress, [0, 0.05, 0.8, 1], [20, 0, 0, -20]);
 
-  // Second text animation - fades in, stays, then fades out
-  const text2Opacity = useTransform(scrollYProgress, [0.2, 0.5, 0.7, 1], [0, 1, 1, 0]);
-  const text2Y = useTransform(scrollYProgress, [0.2, 0.5, 0.7, 1], [30, 0, 0, -20]);
+  const text2Opacity = useTransform(scrollYProgress, [0, 0.1, 0.8, 1], [0, 1, 1, 0]);
+  const text2Y = useTransform(scrollYProgress, [0, 0.1, 0.8, 1], [20, 0, 0, -20]);
 
   return (
     <section ref={sectionRef} className="pt-40 pb-28 sm:pt-44 sm:pb-32 md:pt-48 md:pb-36 lg:pt-56 lg:pb-40 bg-black">
