@@ -1,219 +1,128 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import React from "react";
+import {
+  BarChart3,
+  DollarSign,
+  Trophy,
+  BookOpen,
+} from "lucide-react";
 
-const features = [
-  { title: 'Dashboard', path: '/features/dashboard' },
-  { title: 'Commission', path: '/features/commission' },
-  { title: 'Leaderboard', path: '/features/leaderboard' },
-  { title: 'Book of Business', path: '/features/book-of-business' }
+type Feature = {
+  title: string;
+  href: string;
+  Icon: React.ComponentType<any>;
+};
+
+const features: Feature[] = [
+  { title: "Dashboard", href: "/features/dashboard", Icon: BarChart3 },
+  { title: "Commission", href: "/features/commission", Icon: DollarSign },
+  { title: "Leaderboard", href: "/features/leaderboard", Icon: Trophy },
+  { title: "Book of Business", href: "/features/book-of-business", Icon: BookOpen },
 ];
 
 export default function IntegratedFeaturesFlow() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
-
   return (
-    <section ref={sectionRef} className="relative py-40 md:py-48 lg:py-56 bg-black overflow-hidden">
-      <div className="absolute inset-0 bg-black" />
+    <section className="relative w-full bg-black py-20">
+      <div className="relative mx-auto w-full max-w-5xl px-6">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_55%)]" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex flex-col items-center justify-center">
+        <div className="relative mx-auto mt-2 flex h-[420px] w-full max-w-3xl items-start justify-center">
+          <div className="pointer-events-none absolute top-[150px] h-28 w-72 opacity-30 [background-image:radial-gradient(rgba(255,255,255,0.12)_1px,transparent_1px)] [background-size:10px_10px]" />
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.8 }}
-            className="relative mb-32 md:mb-40"
-          >
-            <div className="relative w-80 h-48 md:w-[480px] md:h-56 flex items-center justify-center">
-              {[0, 1, 2, 3].map((index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={isInView ? {
-                    opacity: 1 - (index * 0.15),
-                    scale: 1
-                  } : {
-                    opacity: 0,
-                    scale: 0.9
-                  }}
-                  transition={{
-                    duration: 0.8,
-                    delay: 0.2 + (index * 0.1),
-                    ease: [0.4, 0, 0.2, 1]
-                  }}
-                  className="absolute rounded-[40px] border border-white/20"
-                  style={{
-                    width: `${100 - index * 8}%`,
-                    height: `${100 - index * 12}%`,
-                    background: `linear-gradient(135deg, rgba(255,255,255,${0.08 - index * 0.015}) 0%, rgba(255,255,255,${0.03 - index * 0.008}) 100%)`,
-                    backdropFilter: 'blur(20px)',
-                    WebkitBackdropFilter: 'blur(20px)',
-                    boxShadow: `
-                      inset 0 1px 0 0 rgba(255,255,255,${0.15 - index * 0.03}),
-                      0 ${20 + index * 10}px ${40 + index * 10}px -10px rgba(0,0,0,${0.3 + index * 0.1})
-                    `,
-                    zIndex: 10 - index
-                  }}
-                >
-                  <div
-                    className="absolute inset-0 rounded-[40px]"
-                    style={{
-                      background: `radial-gradient(ellipse at 50% 0%, rgba(255,255,255,${0.12 - index * 0.03}), transparent 60%)`
-                    }}
-                  />
-                </motion.div>
-              ))}
+          <div className="relative mt-2">
+            <div className="absolute left-1/2 top-0 h-44 w-60 -translate-x-1/2 rotate-45 rounded-[28px] border border-white/15 bg-white/[0.02] shadow-[0_0_60px_rgba(255,255,255,0.08)]" />
+            <div className="absolute left-1/2 top-9 h-44 w-60 -translate-x-1/2 rotate-45 rounded-[28px] border border-white/12 bg-white/[0.03] backdrop-blur-md" />
+            <div className="absolute left-1/2 top-16 h-44 w-60 -translate-x-1/2 rotate-45 rounded-[28px] border border-white/18 bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.03))] shadow-[0_0_90px_rgba(255,255,255,0.10)]" />
 
-              <div
-                className="absolute -inset-8 rounded-full opacity-40"
-                style={{
-                  background: 'radial-gradient(circle, rgba(106, 212, 242, 0.15) 0%, transparent 70%)',
-                  filter: 'blur(40px)',
-                  zIndex: 0
-                }}
-              />
-            </div>
-          </motion.div>
+            <div className="pointer-events-none absolute left-1/2 top-[150px] h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/10 blur-2xl" />
+          </div>
 
           <svg
-            className="absolute top-0 left-0 w-full h-full pointer-events-none"
-            style={{ zIndex: 5 }}
-            preserveAspectRatio="none"
+            className="pointer-events-none absolute inset-0"
+            viewBox="0 0 900 420"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <motion.line
-              x1="50%"
-              y1="22%"
-              x2="50%"
-              y2="45%"
-              stroke="url(#lineGradient)"
-              strokeWidth="2"
-              strokeLinecap="round"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 0.6 } : { pathLength: 0, opacity: 0 }}
-              transition={{ delay: 0.8, duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-            />
+            <g opacity="0.9">
+              <path
+                d="M450 235 C450 260, 450 280, 450 305"
+                stroke="rgba(255,255,255,0.25)"
+                strokeWidth="2"
+              />
+              <path
+                d="M450 305 C450 330, 330 340, 245 360"
+                stroke="rgba(255,255,255,0.22)"
+                strokeWidth="2"
+              />
+              <path
+                d="M450 305 C450 332, 400 340, 365 360"
+                stroke="rgba(255,255,255,0.22)"
+                strokeWidth="2"
+              />
+              <path
+                d="M450 305 C450 332, 500 340, 535 360"
+                stroke="rgba(255,255,255,0.22)"
+                strokeWidth="2"
+              />
+              <path
+                d="M450 305 C450 330, 570 340, 655 360"
+                stroke="rgba(255,255,255,0.22)"
+                strokeWidth="2"
+              />
+            </g>
 
-            <motion.path
-              d="M 50% 45% Q 32% 55%, 22% 75%"
-              stroke="url(#lineGradient)"
-              strokeWidth="2"
-              fill="none"
-              strokeLinecap="round"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 0.6 } : { pathLength: 0, opacity: 0 }}
-              transition={{ delay: 1.1, duration: 1, ease: [0.4, 0, 0.2, 1] }}
-            />
-
-            <motion.path
-              d="M 50% 45% Q 44% 55%, 39% 75%"
-              stroke="url(#lineGradient)"
-              strokeWidth="2"
-              fill="none"
-              strokeLinecap="round"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 0.6 } : { pathLength: 0, opacity: 0 }}
-              transition={{ delay: 1.2, duration: 1, ease: [0.4, 0, 0.2, 1] }}
-            />
-
-            <motion.path
-              d="M 50% 45% Q 56% 55%, 61% 75%"
-              stroke="url(#lineGradient)"
-              strokeWidth="2"
-              fill="none"
-              strokeLinecap="round"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 0.6 } : { pathLength: 0, opacity: 0 }}
-              transition={{ delay: 1.3, duration: 1, ease: [0.4, 0, 0.2, 1] }}
-            />
-
-            <motion.path
-              d="M 50% 45% Q 68% 55%, 78% 75%"
-              stroke="url(#lineGradient)"
-              strokeWidth="2"
-              fill="none"
-              strokeLinecap="round"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 0.6 } : { pathLength: 0, opacity: 0 }}
-              transition={{ delay: 1.4, duration: 1, ease: [0.4, 0, 0.2, 1] }}
-            />
+            <g opacity="0.55" filter="url(#blurGlow)">
+              <path
+                d="M450 235 C450 260, 450 280, 450 305"
+                stroke="rgba(255,255,255,0.22)"
+                strokeWidth="6"
+              />
+              <path
+                d="M450 305 C450 330, 330 340, 245 360"
+                stroke="rgba(255,255,255,0.18)"
+                strokeWidth="6"
+              />
+              <path
+                d="M450 305 C450 332, 400 340, 365 360"
+                stroke="rgba(255,255,255,0.18)"
+                strokeWidth="6"
+              />
+              <path
+                d="M450 305 C450 332, 500 340, 535 360"
+                stroke="rgba(255,255,255,0.18)"
+                strokeWidth="6"
+              />
+              <path
+                d="M450 305 C450 330, 570 340, 655 360"
+                stroke="rgba(255,255,255,0.18)"
+                strokeWidth="6"
+              />
+            </g>
 
             <defs>
-              <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="rgba(106, 212, 242, 0.8)" />
-                <stop offset="100%" stopColor="rgba(106, 212, 242, 0.3)" />
-              </linearGradient>
+              <filter id="blurGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="4" />
+              </filter>
             </defs>
           </svg>
 
-          <div className="relative grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 lg:gap-16 mt-auto pt-32 max-w-5xl mx-auto">
-            {features.map((feature, index) => {
-              return (
-                <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                  animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 20 }}
-                  transition={{
-                    delay: 1.5 + (index * 0.1),
-                    duration: 0.6,
-                    ease: [0.4, 0, 0.2, 1]
-                  }}
-                  className="flex flex-col items-center gap-4"
-                >
-                  <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 flex items-center justify-center group hover:border-white/40 transition-all duration-300 hover:scale-105">
-                    <div
-                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      style={{
-                        background: 'radial-gradient(circle at center, rgba(106, 212, 242, 0.2), transparent 70%)',
-                        filter: 'blur(20px)'
-                      }}
-                    />
+          <div className="absolute bottom-0 left-1/2 flex w-full max-w-4xl -translate-x-1/2 justify-between gap-3 px-2">
+            {features.map(({ title, href, Icon }) => (
+              <a
+                key={title}
+                href={href}
+                className="group relative flex w-full max-w-[220px] flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-4 backdrop-blur-md transition hover:border-white/20 hover:bg-white/[0.05]"
+              >
+                <div className="relative grid h-14 w-14 place-items-center rounded-xl border border-white/10 bg-black/40 shadow-[0_0_30px_rgba(255,255,255,0.06)]">
+                  <Icon className="h-6 w-6 text-white/80 transition group-hover:text-white" />
+                  <div className="pointer-events-none absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.14),transparent_60%)] opacity-0 transition group-hover:opacity-100" />
+                </div>
 
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      className="w-10 h-10 md:w-12 md:h-12 relative z-10"
-                      style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))' }}
-                    >
-                      <circle
-                        cx="12"
-                        cy="12"
-                        r="9"
-                        stroke="rgba(106, 212, 242, 0.6)"
-                        strokeWidth="1.5"
-                        fill="none"
-                      />
-                      <circle
-                        cx="12"
-                        cy="12"
-                        r="6"
-                        stroke="rgba(106, 212, 242, 0.4)"
-                        strokeWidth="1.5"
-                        fill="none"
-                      />
-                      <circle
-                        cx="12"
-                        cy="12"
-                        r="3"
-                        fill="rgba(106, 212, 242, 0.8)"
-                      />
-                      <circle
-                        cx="12"
-                        cy="12"
-                        r="1.5"
-                        fill="white"
-                      />
-                    </svg>
-                  </div>
-
-                  <span className="text-white/70 text-sm md:text-base font-medium text-center hover:text-white/90 transition-colors">
-                    {feature.title}
-                  </span>
-                </motion.div>
-              );
-            })}
+                <div className="text-center">
+                  <div className="text-sm font-medium text-white/85">{title}</div>
+                </div>
+              </a>
+            ))}
           </div>
-
         </div>
       </div>
     </section>
