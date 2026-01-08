@@ -152,6 +152,9 @@ export default function IntegratedFeaturesFlow() {
               <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/[0.25] to-transparent" />
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.35] to-transparent" />
               <div className="absolute inset-0 rounded-[32px] ring-1 ring-inset ring-white/[0.15]" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-lg font-medium text-white/90 whitespace-nowrap">Core Dashboard</span>
+              </div>
             </motion.div>
 
             <motion.div
