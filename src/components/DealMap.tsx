@@ -247,7 +247,7 @@ export default function DealMap() {
             />
           </svg>
 
-          <div className="hidden lg:flex flex-col gap-8 absolute left-0 top-1/2 -translate-y-1/2 z-20" style={{ width: '220px' }}>
+          <div className="hidden lg:flex flex-col gap-8 absolute left-0 top-1/2 -translate-y-1/2 z-20" style={{ width: '240px' }}>
             {leftFacts.map((fact, index) => {
               const titleDelay = 800 + index * 400;
               const descDelay = 1200 + index * 400;
@@ -258,20 +258,36 @@ export default function DealMap() {
                   initial={{ opacity: 0, x: -80 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -80 }}
                   transition={{ delay: 0.6 + index * 0.3, duration: 0.6, ease: 'easeOut' }}
-                  className="relative"
+                  className="relative overflow-hidden"
                 >
                   <div
-                    className="p-5 rounded-xl border border-gray-800/50"
+                    className="absolute top-0 right-0 w-32 h-32 pointer-events-none"
                     style={{
-                      background: '#000000',
-                      boxShadow: '0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3)',
+                      maskImage: 'radial-gradient(ellipse at 100% 0%, black 0%, transparent 70%)',
+                      WebkitMaskImage: 'radial-gradient(ellipse at 100% 0%, black 0%, transparent 70%)',
                     }}
                   >
-                    <span className="text-[#6ad4f2] text-xs font-medium tracking-wider mb-2 block">{fact.number}</span>
-                    <h4 className="font-semibold text-white text-base mb-1.5">
+                    <svg width="128" height="128" className="opacity-20">
+                      <defs>
+                        <pattern id={`grid-left-${index}`} width="16" height="16" patternUnits="userSpaceOnUse">
+                          <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#6ad4f2" strokeWidth="1" />
+                        </pattern>
+                      </defs>
+                      <rect width="128" height="128" fill={`url(#grid-left-${index})`} />
+                    </svg>
+                  </div>
+                  <div
+                    className="relative p-6 rounded-xl border border-[#c5d4e0]"
+                    style={{
+                      background: '#dfe8f0',
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)',
+                    }}
+                  >
+                    <span className="text-[#0891b2] text-xs font-medium tracking-wider mb-2 block">{fact.number}</span>
+                    <h4 className="font-semibold text-[#0f1419] text-base mb-1.5">
                       <TypewriterText text={fact.title} delay={titleDelay} isVisible={isInView} />
                     </h4>
-                    <p className="text-sm text-gray-400 leading-relaxed min-h-[36px]">
+                    <p className="text-sm text-gray-600 leading-relaxed min-h-[36px]">
                       <TypewriterText text={fact.description} delay={descDelay} isVisible={isInView} />
                     </p>
                   </div>
@@ -296,7 +312,7 @@ export default function DealMap() {
             </DesktopMonitor>
           </motion.div>
 
-          <div className="hidden lg:flex flex-col gap-8 absolute right-0 top-1/2 -translate-y-1/2 z-20" style={{ width: '220px' }}>
+          <div className="hidden lg:flex flex-col gap-8 absolute right-0 top-1/2 -translate-y-1/2 z-20" style={{ width: '240px' }}>
             {rightFacts.map((fact, index) => {
               const titleDelay = 1000 + index * 400;
               const descDelay = 1400 + index * 400;
@@ -307,20 +323,36 @@ export default function DealMap() {
                   initial={{ opacity: 0, x: 80 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
                   transition={{ delay: 0.8 + index * 0.3, duration: 0.6, ease: 'easeOut' }}
-                  className="relative"
+                  className="relative overflow-hidden"
                 >
                   <div
-                    className="p-5 rounded-xl border border-gray-800/50"
+                    className="absolute top-0 left-0 w-32 h-32 pointer-events-none"
                     style={{
-                      background: '#000000',
-                      boxShadow: '0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3)',
+                      maskImage: 'radial-gradient(ellipse at 0% 0%, black 0%, transparent 70%)',
+                      WebkitMaskImage: 'radial-gradient(ellipse at 0% 0%, black 0%, transparent 70%)',
                     }}
                   >
-                    <span className="text-[#6ad4f2] text-xs font-medium tracking-wider mb-2 block">{fact.number}</span>
-                    <h4 className="font-semibold text-white text-base mb-1.5">
+                    <svg width="128" height="128" className="opacity-20">
+                      <defs>
+                        <pattern id={`grid-right-${index}`} width="16" height="16" patternUnits="userSpaceOnUse">
+                          <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#6ad4f2" strokeWidth="1" />
+                        </pattern>
+                      </defs>
+                      <rect width="128" height="128" fill={`url(#grid-right-${index})`} />
+                    </svg>
+                  </div>
+                  <div
+                    className="relative p-6 rounded-xl border border-[#c5d4e0]"
+                    style={{
+                      background: '#dfe8f0',
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)',
+                    }}
+                  >
+                    <span className="text-[#0891b2] text-xs font-medium tracking-wider mb-2 block">{fact.number}</span>
+                    <h4 className="font-semibold text-[#0f1419] text-base mb-1.5">
                       <TypewriterText text={fact.title} delay={titleDelay} isVisible={isInView} />
                     </h4>
-                    <p className="text-sm text-gray-400 leading-relaxed min-h-[36px]">
+                    <p className="text-sm text-gray-600 leading-relaxed min-h-[36px]">
                       <TypewriterText text={fact.description} delay={descDelay} isVisible={isInView} />
                     </p>
                   </div>
@@ -338,15 +370,35 @@ export default function DealMap() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 + index * 0.1 }}
-              className="p-4 rounded-xl border border-gray-800/50"
-              style={{
-                background: '#000000',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.3)',
-              }}
+              className="relative overflow-hidden"
             >
-              <span className="text-[#6ad4f2] text-xs font-medium tracking-wider mb-1.5 block">{benefit.number}</span>
-              <h4 className="font-semibold text-white text-base mb-1">{benefit.title}</h4>
-              <p className="text-sm text-gray-400">{benefit.description}</p>
+              <div
+                className="absolute top-0 right-0 w-24 h-24 pointer-events-none"
+                style={{
+                  maskImage: 'radial-gradient(ellipse at 100% 0%, black 0%, transparent 70%)',
+                  WebkitMaskImage: 'radial-gradient(ellipse at 100% 0%, black 0%, transparent 70%)',
+                }}
+              >
+                <svg width="96" height="96" className="opacity-20">
+                  <defs>
+                    <pattern id={`grid-mobile-${index}`} width="12" height="12" patternUnits="userSpaceOnUse">
+                      <path d="M 12 0 L 0 0 0 12" fill="none" stroke="#6ad4f2" strokeWidth="1" />
+                    </pattern>
+                  </defs>
+                  <rect width="96" height="96" fill={`url(#grid-mobile-${index})`} />
+                </svg>
+              </div>
+              <div
+                className="relative p-5 rounded-xl border border-[#c5d4e0]"
+                style={{
+                  background: '#dfe8f0',
+                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.08)',
+                }}
+              >
+                <span className="text-[#0891b2] text-xs font-medium tracking-wider mb-1.5 block">{benefit.number}</span>
+                <h4 className="font-semibold text-[#0f1419] text-base mb-1">{benefit.title}</h4>
+                <p className="text-sm text-gray-600">{benefit.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>
