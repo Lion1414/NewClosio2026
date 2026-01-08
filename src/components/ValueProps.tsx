@@ -22,9 +22,9 @@ const VerticalLine: React.FC = () => {
         }}
       />
       <motion.div
-        className="absolute top-[42%] left-0 h-[20px] bg-gray-600/30 origin-right"
+        className="absolute top-[42%] left-0 h-[20px] bg-gray-600/30 origin-left"
         style={{
-          width: '50%',
+          width: '100%',
           scaleX: horizontalScale,
         }}
       />
