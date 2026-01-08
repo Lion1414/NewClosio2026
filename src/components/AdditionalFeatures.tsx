@@ -20,7 +20,7 @@ const AdditionalFeatures: React.FC = () => {
   const text2Y = useTransform(scrollYProgress, [0.2, 0.5, 0.7, 1], [30, 0, 0, -20]);
 
   return (
-    <section ref={sectionRef} className="py-40 sm:py-44 md:py-48 lg:py-56 bg-black">
+    <section ref={sectionRef} className="pt-40 pb-28 sm:pt-44 sm:pb-32 md:pt-48 md:pb-36 lg:pt-56 lg:pb-40 bg-black">
       <div className="flex justify-center px-6">
         <motion.div
           className="glow-shell"
