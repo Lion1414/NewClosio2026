@@ -63,7 +63,7 @@ const AdditionalFeatures: React.FC = () => {
                   )
                 }}
               >
-                .....The platform starts here.
+                ... The platform starts here
               </motion.h2>
               <motion.p
                 className="text-xl sm:text-2xl md:text-3xl font-light tracking-wide"
