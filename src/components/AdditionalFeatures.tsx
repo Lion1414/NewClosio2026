@@ -15,79 +15,87 @@ const AdditionalFeatures: React.FC = () => {
 
   return (
     <section ref={sectionRef} className="py-40 sm:py-44 md:py-48 lg:py-56 bg-black">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="flex justify-center px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center relative flex flex-col items-center"
+          className="glow-shell"
+          style={{
+            position: 'relative',
+            width: 'min(1100px, 92vw)',
+            padding: '110px 28px 90px',
+            borderRadius: '80px',
+            textAlign: 'center',
+            overflow: 'visible'
+          }}
         >
-          <div className="relative inline-block">
-            <svg
-              className="absolute pointer-events-none"
+          <style>{`
+            .glow-shell::before {
+              content: "";
+              position: absolute;
+              inset: -2px;
+              border-radius: inherit;
+              background: linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0.22),
+                rgba(255, 255, 255, 0.06) 35%,
+                rgba(255, 255, 255, 0.02) 60%,
+                rgba(255, 255, 255, 0.00)
+              );
+              filter: blur(10px);
+              opacity: 0.65;
+              z-index: 0;
+              pointer-events: none;
+            }
+
+            .glow-shell::after {
+              content: "";
+              position: absolute;
+              left: 6%;
+              right: 6%;
+              top: 36px;
+              height: 2px;
+              border-radius: 999px;
+              background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.55),
+                transparent
+              );
+              filter: blur(2px);
+              opacity: 0.8;
+              z-index: 1;
+              pointer-events: none;
+            }
+          `}</style>
+
+          <div className="relative z-10 flex flex-col items-center gap-3">
+            <motion.h2
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide text-center m-0"
               style={{
-                left: '50%',
-                top: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: 'calc(100% + 180px)',
-                height: 'calc(100% + 120px)'
+                color: useTransform(
+                  [colorR, colorG, colorB],
+                  ([r, g, b]) => `rgb(${r}, ${g}, ${b})`
+                ),
+                lineHeight: 1.25
               }}
-              viewBox="0 0 1000 300"
-              preserveAspectRatio="none"
             >
-              <defs>
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                  <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-              </defs>
-              <path
-                d="M 150 20
-                   C 80 20, 40 30, 20 80
-                   L 20 220
-                   C 40 270, 80 280, 150 280
-                   L 850 280
-                   C 920 280, 960 270, 980 220
-                   L 980 80
-                   C 960 30, 920 20, 850 20
-                   Z"
-                stroke="rgba(255, 255, 255, 0.3)"
-                strokeWidth="1.5"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                filter="url(#glow)"
-              />
-            </svg>
-            <motion.div className="relative z-10 px-12 py-8 flex flex-col items-center gap-3">
-              <motion.h2
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide text-center"
-                style={{
-                  color: useTransform(
-                    [colorR, colorG, colorB],
-                    ([r, g, b]) => `rgb(${r}, ${g}, ${b})`
-                  )
-                }}
-              >
-                The platform starts here
-              </motion.h2>
-              <motion.p
-                className="text-xl sm:text-2xl md:text-3xl font-light tracking-wide text-center"
-                style={{
-                  color: useTransform(
-                    [colorR, colorG, colorB],
-                    ([r, g, b]) => `rgb(${r}, ${g}, ${b})`
-                  )
-                }}
-              >
-                more advanced capabilities continue below
-              </motion.p>
-            </motion.div>
+              The platform starts here
+            </motion.h2>
+            <motion.p
+              className="text-xl sm:text-2xl md:text-3xl font-light tracking-wide text-center m-0"
+              style={{
+                color: useTransform(
+                  [colorR, colorG, colorB],
+                  ([r, g, b]) => `rgb(${r}, ${g}, ${b})`
+                ),
+                lineHeight: 1.25
+              }}
+            >
+              more advanced capabilities continue below
+            </motion.p>
           </div>
         </motion.div>
       </div>
