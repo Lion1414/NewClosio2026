@@ -346,7 +346,7 @@ const ContactSplit = React.memo(() => {
 
       <section className="relative bg-black z-10">
         <div className="absolute inset-x-0 -bottom-32 h-64 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,_rgba(106,212,242,0.35)_0%,_transparent_70%)] pointer-events-none" />
-        <div className="relative h-[300px] sm:h-[400px] md:h-[500px] w-full pointer-events-none select-none flex items-center justify-center -mb-[100px] sm:-mb-[150px] md:-mb-[200px]" style={{ transform: 'translateY(-40px)' }}>
+        <div className="relative h-[400px] sm:h-[500px] md:h-[600px] w-full pointer-events-none select-none flex items-center justify-center -mb-[150px] sm:-mb-[200px] md:-mb-[250px]" style={{ transform: 'translateY(-40px)' }}>
           <div className="absolute inset-0 flex items-center justify-center" style={{ top: '20%' }}>
             <div
               className="w-[300px] sm:w-[500px] md:w-[700px] h-[250px] sm:h-[350px] md:h-[480px] rounded-full blur-[60px] sm:blur-[75px] md:blur-[90px]"
@@ -363,7 +363,7 @@ const ContactSplit = React.memo(() => {
               }}
             />
           </div>
-          <div className="absolute inset-0 scale-[0.6] sm:scale-[0.75] md:scale-[0.85]">
+          <div className="absolute inset-0">
             <StaticIO3D />
           </div>
         </div>

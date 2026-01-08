@@ -25,7 +25,7 @@ const StaticIO3D: React.FC = () => {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 90);
-    camera.position.set(0.0, -0.2, 5.5);
+    camera.position.set(0.0, 0.2, 7.5);
 
     const pmrem = new THREE.PMREMGenerator(renderer);
     scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
@@ -66,36 +66,32 @@ const StaticIO3D: React.FC = () => {
     scene.add(glowLight);
 
     const TEAL = new THREE.Color("#6ad4f2");
-    const WHITE = new THREE.Color("#E8E8E8");
+    const WHITE = new THREE.Color("#F5F5F5");
 
-    function solidMaterial(baseColor: THREE.Color, emissiveIntensity = 0.15, rough = 0.45, matte = false) {
+    function solidMaterial(baseColor: THREE.Color, emissiveIntensity = 0.2, rough = 0.35) {
       return new THREE.MeshPhysicalMaterial({
         color: baseColor,
-        metalness: matte ? 0.02 : 0.08,
-        roughness: matte ? 0.7 : rough,
+        metalness: 0.05,
+        roughness: rough,
         transmission: 0,
         transparent: false,
-        clearcoat: matte ? 0.05 : 0.4,
-        clearcoatRoughness: matte ? 0.6 : 0.15,
-        envMapIntensity: matte ? 0.3 : 0.9,
-        specularIntensity: matte ? 0.1 : 0.5,
+        clearcoat: 0.3,
+        clearcoatRoughness: 0.2,
+        envMapIntensity: 0.8,
+        specularIntensity: 0.5,
         emissive: baseColor,
-        emissiveIntensity: matte ? emissiveIntensity * 0.5 : emissiveIntensity,
-        reflectivity: matte ? 0.1 : 0.5,
-        sheen: matte ? 0 : 0.1,
-        sheenRoughness: 0.3,
-        sheenColor: baseColor
+        emissiveIntensity
       });
     }
 
     const io3D = new THREE.Group();
     scene.add(io3D);
-    io3D.position.set(0, -1.2, 0.0);
+    io3D.position.set(0, 0.0, 0.0);
 
-    function createHollowI({
+    function createItalicHollowI({
       width = 0.38,
       height = 0.98,
-      stroke = 0.06,
+      stroke = 0.10,
       slant = 0.26,
       depth = 0.10
     } = {}) {
@@ -122,9 +118,9 @@ const StaticIO3D: React.FC = () => {
       const g = new THREE.ExtrudeGeometry(outer, {
         depth,
         bevelEnabled: true,
-        bevelThickness: 0.05,
-        bevelSize: 0.05,
-        bevelSegments: 5
+        bevelThickness: 0.06,
+        bevelSize: 0.06,
+        bevelSegments: 4
       });
       g.center();
       return g;
@@ -144,9 +140,9 @@ const StaticIO3D: React.FC = () => {
       const g = new THREE.ExtrudeGeometry(outer, {
         depth,
         bevelEnabled: true,
-        bevelThickness: 0.05,
-        bevelSize: 0.05,
-        bevelSegments: 5,
+        bevelThickness: 0.06,
+        bevelSize: 0.06,
+        bevelSegments: 4,
         curveSegments: segments
       });
       g.center();
@@ -158,21 +154,20 @@ const StaticIO3D: React.FC = () => {
     io3D.add(io);
 
     const iMesh = new THREE.Mesh(
-      createHollowI({ width: 0.35, height: 1.0, stroke: 0.10, slant: 0.18, depth: 0.15 }),
-      solidMaterial(TEAL, 0.2, 0.6, true)
+      createItalicHollowI({ width: 0.6, height: 1.5, stroke: 0.16, depth: 0.25 }),
+      solidMaterial(TEAL, 0.35, 0.3)
     );
     const oMesh = new THREE.Mesh(
-      createHollowO({ outerRadius: 0.50, ringThickness: 0.18, depth: 0.15, segments: 256 }),
-      solidMaterial(WHITE, 0.12, 0.4)
+      createHollowO({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }),
+      solidMaterial(WHITE, 0.15, 0.35)
     );
 
-    iMesh.position.set(-0.42, 0.0, 0.0);
-    oMesh.position.set(0.45, 0.0, 0.0);
+    iMesh.position.set(-0.60, 0.0, 0.0);
+    oMesh.position.set(0.62, 0.0, 0.0);
 
     io.add(iMesh, oMesh);
 
     io.rotation.x = 0.15;
-    io.rotation.y = 0.25;
 
     io.scale.set(0, 0, 0);
     gsap.to(io.scale, {
@@ -185,10 +180,10 @@ const StaticIO3D: React.FC = () => {
     });
 
     gsap.fromTo(io.rotation,
-      { y: -Math.PI * 0.3 },
+      { y: Math.PI * 0.5 },
       {
-        y: 0.25,
-        duration: 1.5,
+        y: 0,
+        duration: 2,
         ease: "power3.out",
         delay: 0.2
       }
@@ -222,7 +217,7 @@ const StaticIO3D: React.FC = () => {
       camera.updateProjectionMatrix();
 
       const mobile = w < 900;
-      io3D.scale.setScalar(mobile ? 2.2 : 3.2);
+      io3D.scale.setScalar(mobile ? 0.9 : 1.65);
     }
 
     const resizeObserver = new ResizeObserver(fit);
@@ -239,9 +234,6 @@ const StaticIO3D: React.FC = () => {
       const floatX = Math.cos(t * 0.3) * 0.015;
       io.position.y = floatY;
       io.position.x = floatX;
-
-      io.rotation.y = 0.25 + Math.sin(t * 0.25) * 0.06;
-      io.rotation.x = 0.15 + Math.sin(t * 0.35) * 0.03;
 
       renderer.render(scene, camera);
       animationId = requestAnimationFrame(animate);
