@@ -1,11 +1,27 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const features = [
-  "User Management",
-  "Quick Links",
-  "Estimated Payout",
-  "Reminders",
+  {
+    title: "User Management",
+    headline: "Full visibility across your team.",
+    description: "Monitor performance, activity, and key metrics—all in one place."
+  },
+  {
+    title: "Quick Links",
+    headline: "Everything you use, instantly accessible.",
+    description: "Save and launch your most-used tools without breaking flow."
+  },
+  {
+    title: "Estimated Payout",
+    headline: "Know what you'll earn before it hits your account.",
+    description: "Clear, real-time earnings estimates based on your production."
+  },
+  {
+    title: "Reminders",
+    headline: "Never miss what matters.",
+    description: "Schedule, track, and stay ahead of follow-ups, deadlines, and priorities."
+  },
 ];
 
 export default function IntegratedFeaturesFlow() {
@@ -13,7 +29,7 @@ export default function IntegratedFeaturesFlow() {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section ref={sectionRef} className="relative w-full bg-black py-20">
+    <section ref={sectionRef} className="relative w-full bg-black py-20 pb-32">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
           className="absolute inset-0"
@@ -28,9 +44,9 @@ export default function IntegratedFeaturesFlow() {
       <div className="relative mx-auto w-full max-w-5xl px-6">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_55%)]" />
 
-        <div className="relative mx-auto mt-2 flex h-[620px] w-full max-w-[900px] items-center justify-center">
+        <div className="relative mx-auto mt-2 flex h-[720px] w-full max-w-[900px] items-center justify-center">
 
-          <div className="absolute left-[calc(50%-210px)] top-[30px] -translate-x-1/2" style={{ perspective: '1200px' }}>
+          <div className="absolute left-1/2 top-[30px] -translate-x-1/2" style={{ perspective: '1200px' }}>
             {/* Panel 1 - Bottom */}
             <motion.div
               initial={{ opacity: 0, y: 20, scale: 0.9, rotateX: 2 }}
@@ -180,13 +196,13 @@ export default function IntegratedFeaturesFlow() {
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="pointer-events-none absolute inset-0"
-            viewBox="0 0 900 620"
+            viewBox="0 0 900 720"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <g opacity="0.9">
               <motion.path
-                d="M450 244 L450 420"
+                d="M450 268 L450 420"
                 stroke="rgba(255,255,255,0.25)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -194,7 +210,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.8, delay: 0.7, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 420 C450 455, 280 465, 108 515"
+                d="M450 420 C450 450, 280 460, 108 500"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -202,7 +218,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 420 C450 455, 390 465, 336 515"
+                d="M450 420 C450 450, 390 460, 336 500"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -210,7 +226,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 0.9, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 420 C450 455, 510 465, 564 515"
+                d="M450 420 C450 450, 510 460, 564 500"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -218,7 +234,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.0, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 420 C450 455, 620 465, 792 515"
+                d="M450 420 C450 450, 620 460, 792 500"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -229,7 +245,7 @@ export default function IntegratedFeaturesFlow() {
 
             <g opacity="0.55" filter="url(#blurGlow)">
               <motion.path
-                d="M450 244 L450 420"
+                d="M450 268 L450 420"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
@@ -237,7 +253,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.8, delay: 0.7, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 420 C450 455, 280 465, 108 515"
+                d="M450 420 C450 450, 280 460, 108 500"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
@@ -245,7 +261,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 420 C450 455, 390 465, 336 515"
+                d="M450 420 C450 450, 390 460, 336 500"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
@@ -253,7 +269,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 0.9, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 420 C450 455, 510 465, 564 515"
+                d="M450 420 C450 450, 510 460, 564 500"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
@@ -261,7 +277,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.0, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 420 C450 455, 620 465, 792 515"
+                d="M450 420 C450 450, 620 460, 792 500"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
@@ -277,10 +293,10 @@ export default function IntegratedFeaturesFlow() {
             </defs>
           </motion.svg>
 
-          <div className="absolute bottom-0 left-1/2 flex w-full max-w-[900px] -translate-x-1/2 justify-between gap-3 px-2" style={{ perspective: '1000px' }}>
-            {features.map((title, index) => (
+          <div className="absolute bottom-[120px] left-1/2 flex w-full max-w-[900px] -translate-x-1/2 justify-between gap-3 px-2" style={{ perspective: '1000px' }}>
+            {features.map((feature, index) => (
               <motion.div
-                key={title}
+                key={feature.title}
                 initial={{ opacity: 0, y: 30, rotateX: -5 }}
                 animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : { opacity: 0, y: 30, rotateX: -5 }}
                 transition={{ duration: 0.5, delay: 0.9 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
@@ -294,8 +310,31 @@ export default function IntegratedFeaturesFlow() {
                 <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-white/5 to-transparent rounded-t-2xl pointer-events-none" />
 
                 <div className="text-center">
-                  <div className="text-sm font-medium text-white/85">{title}</div>
+                  <div className="text-sm font-medium text-white/85">{feature.title}</div>
                 </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="absolute bottom-0 left-1/2 flex w-full max-w-[900px] -translate-x-1/2 justify-between gap-3 px-2">
+            {features.map((feature, index) => (
+              <motion.div
+                key={`desc-${feature.title}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, delay: 1.2 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="flex w-full max-w-[200px] flex-col items-center text-center"
+              >
+                <div className="relative mb-2 h-8 w-px">
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent" />
+                  <motion.div
+                    className="absolute top-0 left-1/2 -translate-x-1/2 h-1.5 w-1.5 rounded-full bg-white/50"
+                    animate={{ opacity: [0.3, 0.8, 0.3] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
+                  />
+                </div>
+                <p className="text-xs font-medium text-white/70 leading-relaxed mb-1">{feature.headline}</p>
+                <p className="text-[11px] text-white/40 leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}
           </div>
