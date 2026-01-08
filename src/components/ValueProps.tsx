@@ -134,10 +134,10 @@ const ValueProps: React.FC = () => {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.15] mb-3 sm:mb-4">
-                WHY CLOS<span
+                <span className="text-gray-400">/ Why</span>{' '}<span className="text-white">CLOS<span
                   className="italic mx-0.5 sm:mx-1"
                   style={{ WebkitTextStroke: '1.5px currentColor', WebkitTextFillColor: 'transparent' }}
-                >I</span>O
+                >I</span>O</span>
               </h2>
               <p className="text-xs sm:text-sm md:text-base text-gray-400 leading-[1.6]">
                 Built by agents who know what it&apos;s like to juggle 100 policies, chase commissions, and wonder if that big deal actually closed. We solved the chaos—so you can focus on selling.
