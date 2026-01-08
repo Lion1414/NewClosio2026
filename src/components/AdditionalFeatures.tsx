@@ -55,7 +55,7 @@ const AdditionalFeatures: React.FC = () => {
             </svg>
             <motion.div className="relative z-10 px-8 flex flex-col items-center gap-3">
               <motion.h2
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide text-center"
                 style={{
                   color: useTransform(
                     [colorR, colorG, colorB],
@@ -63,10 +63,10 @@ const AdditionalFeatures: React.FC = () => {
                   )
                 }}
               >
-                ... The platform starts here
+                The platform starts here
               </motion.h2>
               <motion.p
-                className="text-xl sm:text-2xl md:text-3xl font-light tracking-wide"
+                className="text-xl sm:text-2xl md:text-3xl font-light tracking-wide text-center"
                 style={{
                   color: useTransform(
                     [colorR, colorG, colorB],
