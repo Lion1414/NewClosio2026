@@ -164,14 +164,6 @@ export default function DealMap() {
   return (
     <section ref={sectionRef} className="py-32 md:py-28 relative overflow-hidden">
       <div className="absolute inset-0 bg-black" />
-      <div
-        className="absolute top-0 right-0 w-1/2 h-3/4 blur-[120px]"
-        style={{ background: 'radial-gradient(ellipse at top right, rgba(255,255,255,0.12), rgba(255,255,255,0.06) 40%, transparent 70%)' }}
-      />
-      <div
-        className="absolute bottom-0 left-0 w-1/2 h-3/4 blur-[120px]"
-        style={{ background: 'radial-gradient(ellipse at bottom left, rgba(255,255,255,0.12), rgba(255,255,255,0.06) 40%, transparent 70%)' }}
-      />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-20 md:mb-16">
