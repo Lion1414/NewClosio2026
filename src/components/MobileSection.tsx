@@ -1,10 +1,43 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import { useInView } from 'framer-motion';
 import Robot3D from './Robot3D';
 
 const Robot3DContainer: React.FC = () => {
   return (
     <div className="absolute left-0 sm:left-[2%] lg:left-[4%] top-[58%] sm:top-[62%] -translate-y-1/2 w-[200px] sm:w-[280px] md:w-[340px] lg:w-[400px] xl:w-[450px] h-[280px] sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px] pointer-events-none overflow-hidden z-10">
       <Robot3D />
+    </div>
+  );
+};
+
+const TypewriterText: React.FC = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [displayedText, setDisplayedText] = useState('');
+  const fullText = '/ Experience the power,\nMobile friendly';
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let currentIndex = 0;
+    const interval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setDisplayedText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [isInView]);
+
+  return (
+    <div ref={ref} className="absolute right-8 sm:right-12 md:right-16 lg:right-24 top-[12%] text-right z-20">
+      <p className="text-gray-400 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed whitespace-pre-line">
+        {displayedText}
+        <span className="inline-block w-[2px] h-[0.9em] bg-gray-400 ml-1 animate-pulse" style={{ verticalAlign: 'middle' }} />
+      </p>
     </div>
   );
 };
@@ -49,12 +82,7 @@ const MobileSection: React.FC = () => {
       <Robot3DContainer />
       <div className="absolute inset-0 flex items-end justify-end overflow-hidden">
         <div className="relative w-full h-full flex items-end justify-end pr-0 pb-0">
-          <div className="absolute right-8 sm:right-12 md:right-16 lg:right-24 top-[12%] text-right z-20">
-            <p className="text-gray-400 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed">
-              / Experience the power,<br />
-              Mobile friendly
-            </p>
-          </div>
+          <TypewriterText />
           <img
             src="/new_one,_hopefully_this_works.png"
             alt="Mobile app showcase"
