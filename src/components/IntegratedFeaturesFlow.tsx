@@ -202,7 +202,7 @@ export default function IntegratedFeaturesFlow() {
           >
             <g opacity="0.9">
               <motion.path
-                d="M450 238 L450 420"
+                d="M660 238 L660 420"
                 stroke="rgba(255,255,255,0.25)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -210,7 +210,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.8, delay: 0.7, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 420 C450 460, 280 480, 108 520"
+                d="M660 420 C660 460, 280 480, 108 520"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -218,7 +218,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 420 C450 455, 390 475, 336 520"
+                d="M660 420 C660 455, 390 475, 336 520"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -226,7 +226,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 0.9, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 420 C450 455, 510 475, 564 520"
+                d="M660 420 C660 455, 510 475, 564 520"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -234,7 +234,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.0, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 420 C450 460, 620 480, 792 520"
+                d="M660 420 C660 460, 620 480, 792 520"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -245,7 +245,7 @@ export default function IntegratedFeaturesFlow() {
 
             <g opacity="0.55" filter="url(#blurGlow)">
               <motion.path
-                d="M450 238 L450 420"
+                d="M660 238 L660 420"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
@@ -253,7 +253,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.8, delay: 0.7, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 420 C450 460, 280 480, 108 520"
+                d="M660 420 C660 460, 280 480, 108 520"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
@@ -261,7 +261,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 420 C450 455, 390 475, 336 520"
+                d="M660 420 C660 455, 390 475, 336 520"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
@@ -269,7 +269,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 0.9, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 420 C450 455, 510 475, 564 520"
+                d="M660 420 C660 455, 510 475, 564 520"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
@@ -277,7 +277,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.0, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 420 C450 460, 620 480, 792 520"
+                d="M660 420 C660 460, 620 480, 792 520"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
