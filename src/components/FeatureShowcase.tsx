@@ -194,11 +194,12 @@ const FeatureShowcase: React.FC = () => {
       const sectionBottom = rect.bottom;
       const viewportHeight = window.innerHeight;
 
-      // Check if section is in viewport - more aggressive engagement
+      // Check if section is in viewport
       const isInViewport = sectionTop < viewportHeight && sectionBottom > 0;
 
-      // Determine if we should engage the scroll hijacking
-      const shouldEngage = sectionTop <= viewportHeight * 0.2 && sectionBottom > viewportHeight * 0.3;
+      // Engage scroll hijacking when section is positioned to show header and cards
+      // Locks in when section top reaches ~10% from top (header + cards visible)
+      const shouldEngage = sectionTop <= 100 && sectionBottom > viewportHeight * 0.4;
 
       if (!isInViewport || !shouldEngage) {
         return;
@@ -213,12 +214,12 @@ const FeatureShowcase: React.FC = () => {
 
       // Scrolling down
       if (e.deltaY > 0) {
-        // Only allow vertical scroll past this section if at last card AND bottom is visible
-        if (isAtEnd && sectionBottom <= viewportHeight) {
+        // Allow vertical scroll to continue down when at last card
+        if (isAtEnd) {
           return;
         }
 
-        // ALWAYS block vertical scroll when not at end
+        // Block vertical scroll and navigate horizontally
         e.preventDefault();
         e.stopPropagation();
 
@@ -242,12 +243,12 @@ const FeatureShowcase: React.FC = () => {
       }
       // Scrolling up
       else if (e.deltaY < 0) {
-        // Only allow vertical scroll up if at first card AND section top is above/at viewport top
-        if (isAtStart && sectionTop >= -100) {
+        // Allow vertical scroll up when at first card and near top of section
+        if (isAtStart && sectionTop >= -50) {
           return;
         }
 
-        // ALWAYS block vertical scroll when in middle of section or not at start
+        // Block vertical scroll and navigate horizontally
         e.preventDefault();
         e.stopPropagation();
 
