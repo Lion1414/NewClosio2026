@@ -173,7 +173,7 @@ export default function IntegratedFeaturesFlow() {
           >
             <g opacity="0.9">
               <motion.path
-                d="M450 218 L450 410"
+                d="M450 224 L450 410"
                 stroke="rgba(255,255,255,0.25)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -216,7 +216,7 @@ export default function IntegratedFeaturesFlow() {
 
             <g opacity="0.55" filter="url(#blurGlow)">
               <motion.path
-                d="M450 218 L450 410"
+                d="M450 224 L450 410"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
