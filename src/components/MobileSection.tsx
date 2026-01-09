@@ -99,7 +99,7 @@ const MobileSection: React.FC = () => {
               }}
             />
             <img
-              src="/new_one,_hopefully_this_works.png"
+              src="/image copy copy copy.png"
               alt="Mobile app showcase"
               className="h-full w-auto object-contain drop-shadow-2xl"
             />
