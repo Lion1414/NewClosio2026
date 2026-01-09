@@ -164,7 +164,7 @@ export default function DealBotAutomation() {
         <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             <div
               ref={formCardRef}
-              className="relative rounded-3xl border border-white/[0.04] overflow-visible"
+              className="relative rounded-3xl border border-white/[0.04]"
               style={{
                 willChange: 'transform',
                 backfaceVisibility: 'hidden',
@@ -172,15 +172,15 @@ export default function DealBotAutomation() {
               }}
             >
               <div
-                className="absolute left-0 top-[50%] -translate-y-1/2 w-[200px] h-[420px] pointer-events-none overflow-hidden"
+                className="absolute left-0 top-[50%] w-[200px] h-[420px] pointer-events-none"
                 style={{
-                  zIndex: -1,
+                  zIndex: 0,
                   transform: 'translate(-50%, -50%)',
                 }}
               >
                 <DealBotRobot3D />
               </div>
-              <div className="px-6 py-5 border-b border-white/[0.04]">
+              <div className="relative z-10 px-6 py-5 border-b border-white/[0.04]" style={{ background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%)', borderTopLeftRadius: '1.5rem', borderTopRightRadius: '1.5rem' }}>
                 <div className="flex items-start justify-between">
                   <div>
                     <div className="text-white font-semibold text-lg">Post A Deal</div>
@@ -190,7 +190,7 @@ export default function DealBotAutomation() {
                 </div>
               </div>
 
-              <div className="p-6">
+              <div className="relative z-10 p-6" style={{ background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%)', borderBottomLeftRadius: '1.5rem', borderBottomRightRadius: '1.5rem' }}>
                 <div className="text-white/85 font-semibold text-sm mb-3">Insurance Details</div>
 
                 <div className="grid grid-cols-12 gap-4">

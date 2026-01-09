@@ -103,8 +103,8 @@ const DealBotRobot3D = () => {
     const robot = new THREE.Group();
     scene.add(robot);
     robot.position.set(5, 0.0, 0);
-    robot.rotation.y = -0.4;
-    robot.rotation.z = 0.15;
+    robot.rotation.y = 0.5;
+    robot.rotation.z = -0.25;
 
     const bodyGeo = new THREE.BoxGeometry(2.2, 2.6, 1.25);
     const body = new THREE.Mesh(bodyGeo, whiteMetalBright);
