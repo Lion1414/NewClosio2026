@@ -247,7 +247,7 @@ export default function DealBotAutomation() {
                   <Field label="Draft Date" placeholder="MM-DD-YYYY" value={draftDate} typed={phase === "typing"} />
                   <Field label="Select State" placeholder="Select State" value={state} typed={phase === "typing"} />
 
-                  <div className="col-span-6">
+                  <div className="col-span-6 flex flex-col justify-end">
                     <div className="mb-2 text-[12px] text-white/75 font-medium">
                       Monthly Premium <span className="text-white/35">*</span>
                     </div>
@@ -265,7 +265,7 @@ export default function DealBotAutomation() {
                       <div className="ml-auto text-white/30">▾</div>
                     </div>
                   </div>
-                  <div className="col-span-6">
+                  <div className="col-span-6 flex flex-col justify-end">
                     <div className="mb-2 text-[12px] text-white/75 font-medium">
                       Annual Premium <span className="text-white/35">(Auto Calculate)</span>
                     </div>
