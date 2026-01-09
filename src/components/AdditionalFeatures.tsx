@@ -107,7 +107,7 @@ const AdditionalFeatures: React.FC = () => {
                 letterSpacing: '-0.02em',
               }}
             >
-              The platform starts here but doesnt stop
+              The platform starts here but doesn't stop
             </h2>
             <p
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center m-0"
