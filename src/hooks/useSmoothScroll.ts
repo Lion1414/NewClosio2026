@@ -12,6 +12,20 @@ export const useSmoothScroll = () => {
     let isScrollingProgrammatically = false;
     let lastUserInteraction = 0;
 
+    const handleResetScroll = () => {
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+      targetScrollY = 0;
+      currentScrollY = 0;
+      isScrollingProgrammatically = true;
+      window.scrollTo(0, 0);
+      isScrollingProgrammatically = false;
+    };
+
+    window.addEventListener('resetSmoothScroll', handleResetScroll);
+
     const lerp = (start: number, end: number, factor: number) => {
       return start + (end - start) * factor;
     };
@@ -112,6 +126,7 @@ export const useSmoothScroll = () => {
       window.removeEventListener('wheel', handleWheel);
       window.removeEventListener('keydown', handleKeydown);
       window.removeEventListener('scroll', syncScrollPosition);
+      window.removeEventListener('resetSmoothScroll', handleResetScroll);
       if (rafId) {
         cancelAnimationFrame(rafId);
       }
