@@ -98,6 +98,12 @@ const MobileSection: React.FC = () => {
                 boxShadow: 'inset 0 0 80px 50px black, inset 0 0 120px 80px rgba(0,0,0,0.9)'
               }}
             />
+            <div
+              className="absolute inset-0 pointer-events-none z-10"
+              style={{
+                background: 'linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 15%, transparent 35%)'
+              }}
+            />
             <img
               src="/new_one,_hopefully_this_works.png"
               alt="Mobile app showcase"
