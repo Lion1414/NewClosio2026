@@ -134,6 +134,47 @@ const HeroBackground3D: React.FC = () => {
       return g;
     }
 
+    function createInnerShadowRing({ outerRadius = 0.65, ringThickness = 0.06, depth = 0.10, segments = 128 } = {}) {
+      const innerRadius = outerRadius - ringThickness;
+      const shadowThickness = ringThickness * 0.35;
+
+      const outer = new THREE.Shape();
+      outer.absellipse(0, 0, innerRadius + shadowThickness, innerRadius + shadowThickness, 0, Math.PI * 2, false, 0);
+
+      const inner = new THREE.Path();
+      inner.absellipse(0, 0, innerRadius, innerRadius, 0, Math.PI * 2, true, 0);
+
+      outer.holes.push(inner);
+
+      const g = new THREE.ExtrudeGeometry(outer, {
+        depth: depth * 0.6,
+        bevelEnabled: false,
+        curveSegments: segments
+      });
+      g.center();
+      return g;
+    }
+
+    function createOuterShadowRing({ outerRadius = 0.65, ringThickness = 0.06, depth = 0.10, segments = 128 } = {}) {
+      const shadowThickness = ringThickness * 0.25;
+
+      const outer = new THREE.Shape();
+      outer.absellipse(0, 0, outerRadius, outerRadius, 0, Math.PI * 2, false, 0);
+
+      const inner = new THREE.Path();
+      inner.absellipse(0, 0, outerRadius - shadowThickness, outerRadius - shadowThickness, 0, Math.PI * 2, true, 0);
+
+      outer.holes.push(inner);
+
+      const g = new THREE.ExtrudeGeometry(outer, {
+        depth: depth * 0.5,
+        bevelEnabled: false,
+        curveSegments: segments
+      });
+      g.center();
+      return g;
+    }
+
     const io = new THREE.Group();
     io.position.set(0, 0.0, 0.0);
     hero3D.add(io);
@@ -141,10 +182,40 @@ const HeroBackground3D: React.FC = () => {
     const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.6, height: 1.5, stroke: 0.16, depth: 0.25 }), solidMaterial(TEAL, 0.35, 0.3));
     const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }), solidMaterial(WHITE, 0.15, 0.35));
 
+    const shadowMaterial = new THREE.MeshPhysicalMaterial({
+      color: new THREE.Color("#0a0a0a"),
+      metalness: 0.1,
+      roughness: 0.9,
+      transparent: true,
+      opacity: 0.85,
+      envMapIntensity: 0.1,
+    });
+
+    const innerShadowMesh = new THREE.Mesh(
+      createInnerShadowRing({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }),
+      shadowMaterial
+    );
+
+    const outerShadowMaterial = new THREE.MeshPhysicalMaterial({
+      color: new THREE.Color("#050505"),
+      metalness: 0.05,
+      roughness: 0.95,
+      transparent: true,
+      opacity: 0.6,
+      envMapIntensity: 0.05,
+    });
+
+    const outerShadowMesh = new THREE.Mesh(
+      createOuterShadowRing({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }),
+      outerShadowMaterial
+    );
+
     iMesh.position.set(-0.60, 0.0, 0.0);
     oMesh.position.set(0.62, 0.0, 0.0);
+    innerShadowMesh.position.set(0.62, 0.0, 0.06);
+    outerShadowMesh.position.set(0.62, 0.0, -0.04);
 
-    io.add(iMesh, oMesh);
+    io.add(iMesh, oMesh, innerShadowMesh, outerShadowMesh);
 
     io.rotation.x = 0.15;
 
