@@ -172,8 +172,8 @@ export default function DealBotAutomation() {
               }}
             >
               <motion.div
-                initial={{ x: -250, opacity: 0 }}
-                animate={isInView ? { x: -180, opacity: 1 } : { x: -250, opacity: 0 }}
+                initial={{ x: 100, opacity: 0, scale: 0.8 }}
+                animate={isInView ? { x: -180, opacity: 1, scale: 1 } : { x: 100, opacity: 0, scale: 0.8 }}
                 transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 className="absolute left-0 top-1/2 -translate-y-1/2 w-[320px] h-[400px] pointer-events-none z-20"
                 style={{ transformOrigin: 'center right' }}
