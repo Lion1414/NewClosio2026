@@ -197,7 +197,7 @@ export default function DealBotAutomation() {
   } as React.CSSProperties;
 
   return (
-    <section ref={wrapRef} className="relative w-full py-20 sm:py-28 bg-black overflow-hidden">
+    <section ref={wrapRef} className="relative w-full py-32 sm:py-40 bg-black overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.5]"
         style={{
