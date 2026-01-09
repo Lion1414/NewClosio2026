@@ -8,43 +8,24 @@ const Footer: React.FC = () => {
 
   const footerSections = [
     {
-      title: 'Product',
+      title: 'Navigation',
       links: [
-        { label: 'Features', href: '#product' },
-        { label: 'Automations', href: '#automations' },
-        { label: 'Analytics', href: '#analytics' },
-        { label: 'Security', href: '#security' },
-        { label: 'Pricing', href: '#pricing' }
-      ]
-    },
-    {
-      title: 'Company',
-      links: [
-        { label: 'About Us', href: '#' },
-        { label: 'Careers', href: '#' },
-        { label: 'Blog', href: '#' },
-        { label: 'Press Kit', href: '#' },
-        { label: 'Partners', href: '#agencies' }
+        { label: 'Home', href: '/', isRoute: true }
       ]
     },
     {
       title: 'Resources',
       links: [
         { label: 'Contact Us', href: '/contact', isRoute: true },
-        { label: 'Schedule a Demo', href: '/schedule', isRoute: true },
-        { label: 'Help Center', href: '#faq' },
-        { label: 'Tutorials', href: '#' },
-        { label: 'Roadmap', href: '#roadmap' }
+        { label: 'Schedule a Demo', href: '/schedule', isRoute: true }
       ]
     },
     {
-      title: 'Legal',
+      title: 'Docs & More',
       links: [
         { label: 'Privacy Policy', href: '/privacy-policy', isRoute: true },
         { label: 'Terms & Conditions', href: '/terms-conditions', isRoute: true },
-        { label: 'FAQs', href: '/faqs', isRoute: true },
-        { label: 'Cookie Policy', href: '#' },
-        { label: 'Compliance', href: '#security' }
+        { label: 'FAQs', href: '/faqs', isRoute: true }
       ]
     }
   ];
@@ -70,9 +51,22 @@ const Footer: React.FC = () => {
       <div className="absolute top-[-15px] left-0 right-0 h-[35px] bg-gradient-to-r from-transparent via-white/30 to-transparent blur-xl" />
       <div className="absolute top-[-30px] left-1/2 -translate-x-1/2 w-[50%] h-[60px] bg-gradient-to-r from-transparent via-white/20 to-transparent blur-2xl" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-40 md:pt-52 lg:pt-[220px] pb-12 sm:pb-16 relative z-10">
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 mb-12">
-          <div className="col-span-2 sm:col-span-2 md:col-span-3 lg:col-span-2">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 md:pt-40 lg:pt-[160px] pb-12 sm:pb-16 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 mb-12">
+          <div className="col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2">
+            <Link
+              to="/"
+              className="flex items-center mb-6"
+              onClick={scrollToTop}
+            >
+              <img
+                src="/closio_main_logo.png"
+                alt="Closio"
+                className="h-16 sm:h-20 md:h-24 w-auto select-none"
+                draggable={false}
+              />
+            </Link>
+
             <p className="text-[#A8B3C7] mb-6 leading-[1.6]">
               The proprietary CRM built exclusively for life insurance professionals.
               Close more deals, track commissions clearly, and grow your agency with confidence.
