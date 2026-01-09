@@ -125,7 +125,7 @@ const FAQsPage = () => {
       {/* Hero Photo Section */}
       <section className="bg-black py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="relative w-full h-[500px] rounded-3xl overflow-hidden bg-gradient-to-br from-white/5 to-white/10 border border-white/10">
+          <div className="relative w-full h-[500px] rounded-3xl overflow-hidden">
             <img
               src="/faq_photo_for_top_hero_.png"
               alt="Closio FAQ Hero"
