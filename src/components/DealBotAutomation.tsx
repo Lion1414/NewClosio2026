@@ -172,11 +172,17 @@ export default function DealBotAutomation() {
               }}
             >
               <motion.div
-                initial={{ x: 100, opacity: 0, scale: 0.8 }}
-                animate={isInView ? { x: -180, opacity: 1, scale: 1 } : { x: 100, opacity: 0, scale: 0.8 }}
-                transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute left-0 top-1/2 -translate-y-1/2 w-[320px] h-[400px] pointer-events-none z-20"
-                style={{ transformOrigin: 'center right' }}
+                initial={{ x: 0, y: 0, opacity: 0, scale: 0.7, rotateZ: 0 }}
+                animate={isInView
+                  ? { x: -220, y: -20, opacity: 1, scale: 1.1, rotateZ: -12 }
+                  : { x: 0, y: 0, opacity: 0, scale: 0.7, rotateZ: 0 }
+                }
+                transition={{ duration: 1.3, delay: 0.7, ease: [0.34, 1.56, 0.64, 1] }}
+                className="absolute left-[50%] top-[45%] -translate-x-1/2 -translate-y-1/2 w-[340px] h-[420px] pointer-events-none"
+                style={{
+                  transformOrigin: 'center center',
+                  zIndex: -1,
+                }}
               >
                 <Robot3D />
               </motion.div>
