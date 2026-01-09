@@ -9,7 +9,7 @@ interface CountUpProps {
   delay?: number;
 }
 
-const CountUp: React.FC<CountUpProps> = ({ end, duration = 2000, delay = 0 }) => {
+const CountUp: React.FC<CountUpProps> = ({ end, duration = 4000, delay = 0 }) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay, className 
           clearInterval(typeInterval);
           setShowCursor(false);
         }
-      }, 80);
+      }, 150);
     }, delay);
 
     return () => {
@@ -75,7 +75,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay, className 
       <motion.span
         className={isGradient ? 'text-[#6ad4f2]' : 'text-white'}
         animate={{ opacity: showCursor ? [1, 0, 1] : 0 }}
-        transition={{ duration: 0.8, repeat: showCursor ? Infinity : 0 }}
+        transition={{ duration: 1.6, repeat: showCursor ? Infinity : 0 }}
       >
         |
       </motion.span>
@@ -98,7 +98,7 @@ const FlipButton: React.FC = () => {
       className="demo-btn relative px-6 sm:px-8 py-3 sm:py-4 bg-white text-black font-semibold text-sm sm:text-base rounded-xl overflow-hidden z-30 group min-h-[44px]"
       initial={{ opacity: 0, y: 20, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.6, delay: 5.8, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 1.2, delay: 5.8, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 255, 255, 0.3)" }}
       whileTap={{ scale: 0.98 }}
       onHoverStart={() => setIsHovered(true)}
@@ -108,13 +108,13 @@ const FlipButton: React.FC = () => {
         className="absolute inset-0 bg-gradient-to-r from-neutral-50 to-neutral-100"
         initial={{ opacity: 0 }}
         animate={{ opacity: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.6 }}
       />
       <motion.div
         className="absolute inset-0 bg-gradient-to-r from-transparent via-black/20 to-transparent"
         initial={{ x: "-200%" }}
         animate={isHovered ? { x: "200%" } : { x: "-200%" }}
-        transition={{ duration: 1.2, ease: "easeInOut" }}
+        transition={{ duration: 2.4, ease: "easeInOut" }}
       />
       <span className="flex items-center justify-center overflow-visible h-6 relative z-10">
         Get in touch
@@ -193,14 +193,14 @@ const Hero: React.FC = () => {
             className="text-xs sm:text-sm uppercase tracking-[0.25em] text-neutral-500 font-medium mb-8 relative"
             initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 1, delay: 3.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 2, delay: 3.2, ease: [0.16, 1, 0.3, 1] }}
           >
             CLOS
             <motion.span
               className="inline-block text-[0.85em] italic text-[#6ad4f2]"
               initial={{ opacity: 0, y: 15, scale: 0.5 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 1.2, delay: 3.8, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 2.4, delay: 3.8, ease: [0.16, 1, 0.3, 1] }}
             >
               I
             </motion.span>
@@ -208,7 +208,7 @@ const Hero: React.FC = () => {
               className="inline-block text-[0.85em]"
               initial={{ opacity: 0, y: 15, scale: 0.5 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 1.2, delay: 4.1, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 2.4, delay: 4.1, ease: [0.16, 1, 0.3, 1] }}
             >
               O
             </motion.span>
@@ -236,9 +236,9 @@ const Hero: React.FC = () => {
             className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-md leading-[1.6] mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 5.3 }}
+            transition={{ duration: 1.6, delay: 5.3 }}
           >
-            / Trusted & Used by <CountUp end={1000} duration={2000} delay={5500} />+ agents
+            / Trusted & Used by <CountUp end={1000} duration={4000} delay={5500} />+ agents
           </motion.p>
 
           <FlipButton />

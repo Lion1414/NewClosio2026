@@ -204,7 +204,7 @@ export default function DealMap() {
               strokeLinecap="round"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={isInView ? { pathLength: 1, opacity: 0.6 } : { pathLength: 0, opacity: 0 }}
-              transition={{ delay: 2.8, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ delay: 2.8, duration: 1.8, ease: [0.4, 0, 0.2, 1] }}
             />
 
             <motion.line
@@ -217,7 +217,7 @@ export default function DealMap() {
               strokeLinecap="round"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={isInView ? { pathLength: 1, opacity: 0.6 } : { pathLength: 0, opacity: 0 }}
-              transition={{ delay: 3.2, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ delay: 3.2, duration: 1.8, ease: [0.4, 0, 0.2, 1] }}
             />
 
             <motion.line
@@ -230,7 +230,7 @@ export default function DealMap() {
               strokeLinecap="round"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={isInView ? { pathLength: 1, opacity: 0.6 } : { pathLength: 0, opacity: 0 }}
-              transition={{ delay: 3.0, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ delay: 3.0, duration: 1.8, ease: [0.4, 0, 0.2, 1] }}
             />
 
             <motion.line
@@ -243,7 +243,7 @@ export default function DealMap() {
               strokeLinecap="round"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={isInView ? { pathLength: 1, opacity: 0.6 } : { pathLength: 0, opacity: 0 }}
-              transition={{ delay: 3.4, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ delay: 3.4, duration: 1.8, ease: [0.4, 0, 0.2, 1] }}
             />
           </svg>
 
@@ -258,7 +258,7 @@ export default function DealMap() {
                   <motion.div
                     initial={{ opacity: 0, x: -100, scale: 0.92, rotateY: -8 }}
                     animate={isInView ? { opacity: 0.35, x: -14, scale: 0.94, rotateY: -4 } : { opacity: 0, x: -100, scale: 0.92, rotateY: -8 }}
-                    transition={{ delay: 0.4 + index * 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ delay: 0.4 + index * 0.3, duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
                     className="absolute inset-0 rounded-2xl border border-white/5 backdrop-blur-sm"
                     style={{
                       background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
@@ -272,7 +272,7 @@ export default function DealMap() {
                   <motion.div
                     initial={{ opacity: 0, x: -90, scale: 0.95, rotateY: -5 }}
                     animate={isInView ? { opacity: 0.55, x: -7, scale: 0.97, rotateY: -2 } : { opacity: 0, x: -90, scale: 0.95, rotateY: -5 }}
-                    transition={{ delay: 0.5 + index * 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ delay: 0.5 + index * 0.3, duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
                     className="absolute inset-0 rounded-2xl border border-white/10 backdrop-blur-md"
                     style={{
                       background: 'linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
@@ -286,7 +286,7 @@ export default function DealMap() {
                   <motion.div
                     initial={{ opacity: 0, x: -80 }}
                     animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -80 }}
-                    transition={{ delay: 0.6 + index * 0.3, duration: 0.6, ease: 'easeOut' }}
+                    transition={{ delay: 0.6 + index * 0.3, duration: 1.8, ease: 'easeOut' }}
                     className="relative overflow-hidden rounded-2xl border border-white/15"
                     style={{
                       background: 'linear-gradient(135deg, #000000, #0a0a0a)',
@@ -353,7 +353,7 @@ export default function DealMap() {
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.8 }}
+            transition={{ delay: 0.3, duration: 1.6 }}
             className="relative w-full max-w-[580px] mx-auto"
           >
             <DesktopMonitor>
@@ -376,7 +376,7 @@ export default function DealMap() {
                   <motion.div
                     initial={{ opacity: 0, x: 100, scale: 0.92, rotateY: 8 }}
                     animate={isInView ? { opacity: 0.35, x: 14, scale: 0.94, rotateY: 4 } : { opacity: 0, x: 100, scale: 0.92, rotateY: 8 }}
-                    transition={{ delay: 0.6 + index * 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ delay: 0.6 + index * 0.3, duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
                     className="absolute inset-0 rounded-2xl border border-white/5 backdrop-blur-sm"
                     style={{
                       background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
@@ -390,7 +390,7 @@ export default function DealMap() {
                   <motion.div
                     initial={{ opacity: 0, x: 90, scale: 0.95, rotateY: 5 }}
                     animate={isInView ? { opacity: 0.55, x: 7, scale: 0.97, rotateY: 2 } : { opacity: 0, x: 90, scale: 0.95, rotateY: 5 }}
-                    transition={{ delay: 0.7 + index * 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ delay: 0.7 + index * 0.3, duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
                     className="absolute inset-0 rounded-2xl border border-white/10 backdrop-blur-md"
                     style={{
                       background: 'linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
@@ -404,7 +404,7 @@ export default function DealMap() {
                   <motion.div
                     initial={{ opacity: 0, x: 80 }}
                     animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
-                    transition={{ delay: 0.8 + index * 0.3, duration: 0.6, ease: 'easeOut' }}
+                    transition={{ delay: 0.8 + index * 0.3, duration: 1.8, ease: 'easeOut' }}
                     className="relative overflow-hidden rounded-2xl border border-white/15"
                     style={{
                       background: 'linear-gradient(135deg, #000000, #0a0a0a)',
@@ -476,7 +476,7 @@ export default function DealMap() {
                 initial={{ opacity: 0, y: 30, scale: 0.92, rotateX: -5 }}
                 whileInView={{ opacity: 0.35, y: 10, scale: 0.94, rotateX: -2 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.3 + index * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: 0.3 + index * 0.1, duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
                 className="absolute inset-0 rounded-2xl border border-white/5 backdrop-blur-sm"
                 style={{
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
@@ -491,7 +491,7 @@ export default function DealMap() {
                 initial={{ opacity: 0, y: 25, scale: 0.95, rotateX: -3 }}
                 whileInView={{ opacity: 0.55, y: 5, scale: 0.97, rotateX: -1 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.4 + index * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: 0.4 + index * 0.1, duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
                 className="absolute inset-0 rounded-2xl border border-white/10 backdrop-blur-md"
                 style={{
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',

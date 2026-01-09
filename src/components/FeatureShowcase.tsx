@@ -299,7 +299,7 @@ const FeatureShowcase: React.FC = () => {
         initial={{ opacity: 0, y: 40 }}
         animate={headerVisible ? { opacity: 1, y: 0 } : {}}
         transition={{
-          duration: 0.8,
+          duration: 1.6,
           ease: [0.22, 0.61, 0.36, 1]
         }}
         className="pt-6 sm:pt-8 md:pt-12 pb-8 sm:pb-12 md:pb-16 px-4 sm:px-6"

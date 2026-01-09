@@ -58,11 +58,11 @@ export default function IntegratedFeaturesFlow() {
                 rotateZ: [0, -2.5, 2.5, -1, 1, 0]
               } : { opacity: 0, y: 20, scale: 0.9, rotateX: 2 }}
               transition={{
-                opacity: { duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] },
-                y: { duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] },
-                scale: { duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] },
-                rotateX: { duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] },
-                rotateZ: { duration: 4, delay: 1.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.3 }
+                opacity: { duration: 1.2, delay: 0.1, ease: [0.22, 1, 0.36, 1] },
+                y: { duration: 1.2, delay: 0.1, ease: [0.22, 1, 0.36, 1] },
+                scale: { duration: 1.2, delay: 0.1, ease: [0.22, 1, 0.36, 1] },
+                rotateX: { duration: 1.2, delay: 0.1, ease: [0.22, 1, 0.36, 1] },
+                rotateZ: { duration: 8, delay: 1.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.3 }
               }}
               className="absolute left-1/2 top-[-90px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border border-white/[0.04] bg-gradient-to-b from-white/[0.02] via-white/[0.01] to-transparent backdrop-blur-[2px]"
               style={{
@@ -82,11 +82,11 @@ export default function IntegratedFeaturesFlow() {
                 rotateZ: [0, 2.5, -2.5, 1, -1, 0]
               } : { opacity: 0, y: 20, scale: 0.9, rotateX: 2 }}
               transition={{
-                opacity: { duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
-                y: { duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
-                scale: { duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
-                rotateX: { duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
-                rotateZ: { duration: 4.2, delay: 1.6, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.3 }
+                opacity: { duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
+                y: { duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
+                scale: { duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
+                rotateX: { duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
+                rotateZ: { duration: 8.4, delay: 1.6, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.3 }
               }}
               className="absolute left-1/2 top-[-68px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border border-white/[0.06] bg-gradient-to-b from-white/[0.03] via-white/[0.02] to-white/[0.01] backdrop-blur-[3px]"
               style={{
@@ -106,11 +106,11 @@ export default function IntegratedFeaturesFlow() {
                 rotateZ: [0, -2.5, 2.5, -1, 1, 0]
               } : { opacity: 0, y: 20, scale: 0.9, rotateX: 1.5 }}
               transition={{
-                opacity: { duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
-                y: { duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
-                scale: { duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
-                rotateX: { duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
-                rotateZ: { duration: 4.4, delay: 1.7, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.3 }
+                opacity: { duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
+                y: { duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
+                scale: { duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
+                rotateX: { duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
+                rotateZ: { duration: 8.8, delay: 1.7, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.3 }
               }}
               className="absolute left-1/2 top-[-45px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border border-white/[0.08] bg-gradient-to-b from-white/[0.05] via-white/[0.03] to-white/[0.01] backdrop-blur-[4px]"
               style={{
@@ -133,11 +133,11 @@ export default function IntegratedFeaturesFlow() {
                 rotateZ: [0, 2.5, -2.5, 1, -1, 0]
               } : { opacity: 0, y: 20, scale: 0.9, rotateX: 1 }}
               transition={{
-                opacity: { duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] },
-                y: { duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] },
-                scale: { duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] },
-                rotateX: { duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] },
-                rotateZ: { duration: 4.6, delay: 1.8, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.3 }
+                opacity: { duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] },
+                y: { duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] },
+                scale: { duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] },
+                rotateX: { duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] },
+                rotateZ: { duration: 9.2, delay: 1.8, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.3 }
               }}
               className="absolute left-1/2 top-[-23px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border border-white/[0.12] bg-gradient-to-b from-white/[0.07] via-white/[0.04] to-white/[0.02] backdrop-blur-[6px]"
               style={{
@@ -161,11 +161,11 @@ export default function IntegratedFeaturesFlow() {
                 rotateZ: [0, -2.5, 2.5, -1, 1, 0]
               } : { opacity: 0, y: 20, scale: 0.9, rotateX: 0.5 }}
               transition={{
-                opacity: { duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
-                y: { duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
-                scale: { duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
-                rotateX: { duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
-                rotateZ: { duration: 4.8, delay: 1.9, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.3 }
+                opacity: { duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
+                y: { duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
+                scale: { duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
+                rotateX: { duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
+                rotateZ: { duration: 9.6, delay: 1.9, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.3 }
               }}
               className="absolute left-1/2 top-[0px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border border-white/[0.18] bg-gradient-to-b from-white/[0.1] via-white/[0.06] to-white/[0.03] backdrop-blur-[8px] overflow-hidden"
               style={{
@@ -186,7 +186,7 @@ export default function IntegratedFeaturesFlow() {
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+              transition={{ duration: 1.6, delay: 0.3, ease: "easeOut" }}
               className="pointer-events-none absolute left-1/2 top-[90px] h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/[0.08] blur-3xl"
             />
           </div>
@@ -194,7 +194,7 @@ export default function IntegratedFeaturesFlow() {
           <motion.svg
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 1.6, delay: 0.6 }}
             className="pointer-events-none absolute inset-0"
             viewBox="0 0 900 720"
             fill="none"
@@ -207,7 +207,7 @@ export default function IntegratedFeaturesFlow() {
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
-                transition={{ duration: 0.8, delay: 0.7, ease: "easeInOut" }}
+                transition={{ duration: 1.6, delay: 0.7, ease: "easeInOut" }}
               />
               <motion.path
                 d="M435 420 C435 460, 280 480, 108 520"
@@ -215,7 +215,7 @@ export default function IntegratedFeaturesFlow() {
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
-                transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
+                transition={{ duration: 1.2, delay: 1.1, ease: "easeInOut" }}
               />
               <motion.path
                 d="M435 420 C435 455, 390 475, 336 520"
@@ -223,7 +223,7 @@ export default function IntegratedFeaturesFlow() {
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
-                transition={{ duration: 0.6, delay: 0.9, ease: "easeInOut" }}
+                transition={{ duration: 1.2, delay: 0.9, ease: "easeInOut" }}
               />
               <motion.path
                 d="M435 420 C435 455, 510 475, 564 520"
@@ -231,7 +231,7 @@ export default function IntegratedFeaturesFlow() {
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
-                transition={{ duration: 0.6, delay: 1.0, ease: "easeInOut" }}
+                transition={{ duration: 1.2, delay: 1.0, ease: "easeInOut" }}
               />
               <motion.path
                 d="M435 420 C435 460, 620 480, 792 520"
@@ -239,7 +239,7 @@ export default function IntegratedFeaturesFlow() {
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
-                transition={{ duration: 0.6, delay: 1.2, ease: "easeInOut" }}
+                transition={{ duration: 1.2, delay: 1.2, ease: "easeInOut" }}
               />
             </g>
 
@@ -250,7 +250,7 @@ export default function IntegratedFeaturesFlow() {
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
-                transition={{ duration: 0.8, delay: 0.7, ease: "easeInOut" }}
+                transition={{ duration: 1.6, delay: 0.7, ease: "easeInOut" }}
               />
               <motion.path
                 d="M435 420 C435 460, 280 480, 108 520"
@@ -258,7 +258,7 @@ export default function IntegratedFeaturesFlow() {
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
-                transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
+                transition={{ duration: 1.2, delay: 1.1, ease: "easeInOut" }}
               />
               <motion.path
                 d="M435 420 C435 455, 390 475, 336 520"
@@ -266,7 +266,7 @@ export default function IntegratedFeaturesFlow() {
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
-                transition={{ duration: 0.6, delay: 0.9, ease: "easeInOut" }}
+                transition={{ duration: 1.2, delay: 0.9, ease: "easeInOut" }}
               />
               <motion.path
                 d="M435 420 C435 455, 510 475, 564 520"
@@ -274,7 +274,7 @@ export default function IntegratedFeaturesFlow() {
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
-                transition={{ duration: 0.6, delay: 1.0, ease: "easeInOut" }}
+                transition={{ duration: 1.2, delay: 1.0, ease: "easeInOut" }}
               />
               <motion.path
                 d="M435 420 C435 460, 620 480, 792 520"
@@ -282,7 +282,7 @@ export default function IntegratedFeaturesFlow() {
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
-                transition={{ duration: 0.6, delay: 1.2, ease: "easeInOut" }}
+                transition={{ duration: 1.2, delay: 1.2, ease: "easeInOut" }}
               />
             </g>
 
@@ -299,7 +299,7 @@ export default function IntegratedFeaturesFlow() {
                 key={feature.title}
                 initial={{ opacity: 0, y: 30, rotateX: -5 }}
                 animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : { opacity: 0, y: 30, rotateX: -5 }}
-                transition={{ duration: 0.5, delay: 0.9 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 1.0, delay: 0.9 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 className="relative flex w-full max-w-[200px] flex-col items-center justify-center gap-2 rounded-2xl border border-white/[0.1] bg-gradient-to-b from-white/[0.06] via-white/[0.03] to-white/[0.01] px-4 py-6 backdrop-blur-md"
                 style={{
                   boxShadow: '0 8px 32px rgba(0,0,0,0.4), 0 2px 12px rgba(0,0,0,0.5), 0 0 30px rgba(255,255,255,0.03), inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(0,0,0,0.2)',
@@ -322,7 +322,7 @@ export default function IntegratedFeaturesFlow() {
                 key={`desc-${feature.title}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, delay: 1.2 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 1.2, delay: 1.2 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 className="flex w-full max-w-[200px] flex-col items-center text-center"
               >
                 <div className="relative mb-2 h-8 w-px">

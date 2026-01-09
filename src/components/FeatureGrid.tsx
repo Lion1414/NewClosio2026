@@ -85,7 +85,7 @@ const SparkleEffect: React.FC<{ isHovered: boolean; isDashboard: boolean }> = ({
               }}
               exit={{ opacity: 0, scale: 0 }}
               transition={{
-                duration: 1.5,
+                duration: 3.0,
                 delay: particle.delay,
                 ease: 'easeOut',
               }}
@@ -635,7 +635,7 @@ const HorizontalLine: React.FC = () => {
           }}
           initial={{ pathLength: 0 }}
           transition={{
-            duration: 0.4,
+            duration: 1.2,
             ease: [0.25, 0.1, 0.25, 1]
           }}
         />
@@ -724,7 +724,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{
-        duration: 0.8,
+        duration: 1.6,
         delay: staggerDelay,
         ease: [0.25, 0.1, 0.25, 1],
       }}
@@ -801,7 +801,7 @@ const FeatureGrid: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 1.4 }}
           className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-16"
         >
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed md:max-w-md whitespace-nowrap">

@@ -169,7 +169,7 @@ const ContactSplit = React.memo(() => {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1.6 }}
             className="relative rounded-2xl overflow-hidden"
             style={{
               background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%)',
@@ -285,7 +285,7 @@ const ContactSplit = React.memo(() => {
                     initial={{ opacity: 0, x: 60 }}
                     whileInView={{ opacity: card.opacity, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.7, delay: card.delay }}
+                    transition={{ duration: 1.4, delay: card.delay }}
                     className="absolute"
                     style={{
                       left: card.x,
@@ -315,7 +315,7 @@ const ContactSplit = React.memo(() => {
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: card.opacity, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: card.delay }}
+                    transition={{ duration: 1.2, delay: card.delay }}
                     className="absolute"
                     style={{
                       left: card.x,

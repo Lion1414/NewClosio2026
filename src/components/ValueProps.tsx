@@ -40,7 +40,7 @@ const VerticalLine: React.FC = () => {
           }}
           initial={{ pathLength: 0 }}
           transition={{
-            duration: 0.6,
+            duration: 1.8,
             ease: [0.25, 0.1, 0.25, 1]
           }}
         />
@@ -131,7 +131,7 @@ const ValueProps: React.FC = () => {
               initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
             >
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.15] mb-3 sm:mb-4">
                 <span className="text-gray-400">/ Why</span>{' '}<span className="text-white">CLOS<span
