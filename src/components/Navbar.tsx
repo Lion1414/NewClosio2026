@@ -161,7 +161,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           <div className="flex items-center justify-between h-14">
             <Link
               to="/"
-              className="flex items-center gap-2 flex-shrink-0"
+              className="flex items-center gap-2 flex-shrink-0 relative"
               onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
               aria-label="Closio - Back to top"
             >
@@ -171,7 +171,20 @@ const Navbar: React.FC<NavbarProps> = () => {
                 className="w-auto select-none"
                 style={{
                   height: isScrolled ? '48px' : '80px',
-                  transition: 'height 700ms cubic-bezier(0.4, 0, 0.2, 1)'
+                  opacity: isScrolled ? 0 : 1,
+                  transition: 'height 700ms cubic-bezier(0.4, 0, 0.2, 1), opacity 700ms cubic-bezier(0.4, 0, 0.2, 1)'
+                }}
+                draggable={false}
+              />
+              <img
+                src="/favicon_and_logo_for_closio.png"
+                alt="Closio"
+                className="w-auto select-none absolute left-0 top-1/2 -translate-y-1/2"
+                style={{
+                  height: isScrolled ? '48px' : '80px',
+                  opacity: isScrolled ? 1 : 0,
+                  transition: 'height 700ms cubic-bezier(0.4, 0, 0.2, 1), opacity 700ms cubic-bezier(0.4, 0, 0.2, 1)',
+                  pointerEvents: isScrolled ? 'auto' : 'none'
                 }}
                 draggable={false}
               />
