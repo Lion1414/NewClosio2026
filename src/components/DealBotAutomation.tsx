@@ -364,13 +364,13 @@ export default function DealBotAutomation() {
               >
                 <div className="flex items-center gap-3">
                   <div
-                    className="h-11 w-11 rounded-2xl border border-white/[0.04] bg-black flex items-center justify-center"
+                    className="h-11 w-11 rounded-2xl border border-white/[0.04] bg-black flex items-center justify-center overflow-hidden"
                     style={{
                       boxShadow:
                         "0 0 0 1px rgba(255,255,255,0.05), 0 0 26px rgba(125,211,252,0.16)",
                     }}
                   >
-                    <span className="text-white font-semibold">IO</span>
+                    <img src="/favicon_and_logo_for_closio.png" alt="Closio Logo" className="h-7 w-7 object-contain" />
                   </div>
                   <div className="flex-1">
                     <div className="text-white/90 font-semibold">Closio Deal Bot</div>
