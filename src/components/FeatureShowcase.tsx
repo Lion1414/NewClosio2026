@@ -89,7 +89,7 @@ interface FeatureCardProps {
 const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
   return (
     <div
-      className="min-h-screen snap-start snap-always flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 py-12"
+      className="min-w-full snap-start snap-always flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12"
       style={{ scrollSnapAlign: 'start' }}
     >
       <div className="w-full max-w-[95%] sm:max-w-[90%] lg:max-w-[85%] mx-auto">
@@ -162,28 +162,82 @@ const FeatureShowcase: React.FC = () => {
     triggerOnce: true
   });
 
-  return (
-    <section className="relative bg-black">
-      <div className="min-h-screen snap-start snap-always flex items-center justify-center">
-        <motion.div
-          ref={headerRef}
-          initial={{ opacity: 0, y: 40 }}
-          animate={headerVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{
-            duration: 1.6,
-            ease: [0.22, 0.61, 0.36, 1]
-          }}
-          className="px-4 sm:px-6"
-        >
-          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white text-center leading-tight">
-            <TypewriterText text="/No Limits on what you can do" />
-          </h2>
-        </motion.div>
-      </div>
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-      {features.map((feature, index) => (
-        <FeatureCard key={index} feature={feature} index={index} />
-      ))}
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const scrollLeft = container.scrollLeft;
+      const cardWidth = container.offsetWidth;
+      const index = Math.round(scrollLeft / cardWidth);
+      setCurrentIndex(index);
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <section className="relative bg-black overflow-hidden py-12 sm:py-16 md:py-24">
+      <motion.div
+        ref={headerRef}
+        initial={{ opacity: 0, y: 40 }}
+        animate={headerVisible ? { opacity: 1, y: 0 } : {}}
+        transition={{
+          duration: 1.6,
+          ease: [0.22, 0.61, 0.36, 1]
+        }}
+        className="pt-6 sm:pt-8 md:pt-12 pb-8 sm:pb-12 md:pb-16 px-4 sm:px-6"
+      >
+        <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white text-center leading-tight">
+          <TypewriterText text="/No Limits on what you can do" />
+        </h2>
+      </motion.div>
+
+      {/* Horizontal scroll container */}
+      <div className="relative">
+        <div
+          ref={scrollContainerRef}
+          className="flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide"
+          style={{
+            scrollBehavior: 'smooth',
+            WebkitOverflowScrolling: 'touch',
+            scrollSnapType: 'x mandatory',
+            scrollPaddingLeft: '0px',
+          }}
+        >
+          {features.map((feature, index) => (
+            <FeatureCard key={index} feature={feature} index={index} />
+          ))}
+        </div>
+
+        {/* Navigation dots */}
+        <div className="flex justify-center gap-2 mt-8">
+          {features.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                const container = scrollContainerRef.current;
+                if (container) {
+                  container.scrollTo({
+                    left: index * container.offsetWidth,
+                    behavior: 'smooth'
+                  });
+                }
+              }}
+              className={`h-2 rounded-full transition-all ${
+                currentIndex === index
+                  ? 'w-8 bg-white'
+                  : 'w-2 bg-white/30 hover:bg-white/50'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
     </section>
   );
 };
