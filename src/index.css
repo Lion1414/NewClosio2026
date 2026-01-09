@@ -1302,3 +1302,15 @@ html, body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ================= CALENDLY IFRAME FIX ================= */
+.calendly-inline-widget {
+  position: relative;
+  overflow: hidden;
+}
+
+.calendly-inline-widget iframe {
+  border: 0;
+  width: 100%;
+  height: 100%;
+}
