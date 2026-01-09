@@ -155,7 +155,7 @@ const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
 
 export default function DealMap() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+  const isInView = useInView(sectionRef, { once: false, margin: '-100px' });
   const navigate = useNavigate();
 
   const leftFacts = [benefits[0], benefits[1]];
