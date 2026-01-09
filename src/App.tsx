@@ -6,6 +6,7 @@ import Hero from './components/Hero';
 import ValueProps from './components/ValueProps';
 import FeatureGrid from './components/FeatureGrid';
 import MobileSection from './components/MobileSection';
+import DealBotAutomation from './components/DealBotAutomation';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import DealMap from './components/DealMap';
 import FullWidthVideo from './components/FullWidthVideo';
@@ -47,6 +48,10 @@ function HomePage() {
 
         <SectionWrapper className="!bg-black !bg-none !from-black !via-black !to-black">
           <MobileSection />
+        </SectionWrapper>
+
+        <SectionWrapper className="!bg-black !bg-none">
+          <DealBotAutomation />
         </SectionWrapper>
 
         <AdditionalFeatures />
