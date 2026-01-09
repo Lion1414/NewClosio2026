@@ -257,8 +257,8 @@ const StaticIO3D: React.FC = () => {
     };
 
     const intersectionObserver = new IntersectionObserver(observerCallback, {
-      threshold: 0.5,
-      rootMargin: '0px'
+      threshold: 0.7,
+      rootMargin: '-20% 0px -20% 0px'
     });
 
     intersectionObserver.observe(canvas);
