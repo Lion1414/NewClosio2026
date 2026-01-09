@@ -6,30 +6,6 @@ type Phase = "typing" | "posting" | "routing" | "done";
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-function SlackIcon({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M7.2 13.2a2.2 2.2 0 1 1-4.4 0 2.2 2.2 0 0 1 4.4 0Zm0 0V7.2a2.2 2.2 0 1 1 4.4 0v6h-4.4Zm3.6 7.2a2.2 2.2 0 1 1 0-4.4 2.2 2.2 0 0 1 0 4.4Zm0 0h6a2.2 2.2 0 1 1 0 4.4h-6v-4.4Zm7.2-3.6a2.2 2.2 0 1 1 4.4 0 2.2 2.2 0 0 1-4.4 0Zm0 0V10.8a2.2 2.2 0 1 1-4.4 0v6h4.4ZM13.2 7.2a2.2 2.2 0 1 1 0-4.4 2.2 2.2 0 0 1 0 4.4Zm0 0h-6a2.2 2.2 0 1 1 0-4.4h6v4.4Z"
-        opacity="0.9"
-      />
-    </svg>
-  );
-}
-
-function DiscordIcon({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M19.5 5.1a16.7 16.7 0 0 0-4.2-1.3l-.5 1a15.3 15.3 0 0 0-5.6 0l-.5-1a16.7 16.7 0 0 0-4.2 1.3C2.3 8.4 1.8 11.7 2 15c1.8 1.3 3.6 2.1 5.5 2.6l.7-1.2c-.7-.3-1.4-.7-2-1.1l.5-.4c3.8 1.8 7.9 1.8 11.6 0l.5.4c-.6.4-1.3.8-2 1.1l.7 1.2c1.9-.5 3.7-1.3 5.5-2.6.3-3.3-.3-6.6-2.5-9.9ZM8.8 13.8c-.7 0-1.3-.6-1.3-1.4s.6-1.4 1.3-1.4c.7 0 1.3.6 1.3 1.4s-.6 1.4-1.3 1.4Zm6.4 0c-.7 0-1.3-.6-1.3-1.4s.6-1.4 1.3-1.4c.7 0 1.3.6 1.3 1.4s-.6 1.4-1.3 1.4Z"
-        opacity="0.9"
-      />
-    </svg>
-  );
-}
-
 function Field({
   label,
   value,
@@ -75,13 +51,6 @@ export default function DealBotAutomation() {
   const slackCardRef = useRef<HTMLDivElement | null>(null);
   const discordCardRef = useRef<HTMLDivElement | null>(null);
 
-  const routeFormToBotBase = useRef<SVGPathElement | null>(null);
-  const routeFormToBotGlow = useRef<SVGPathElement | null>(null);
-  const routeBotToSlackBase = useRef<SVGPathElement | null>(null);
-  const routeBotToSlackGlow = useRef<SVGPathElement | null>(null);
-  const routeBotToDiscordBase = useRef<SVGPathElement | null>(null);
-  const routeBotToDiscordGlow = useRef<SVGPathElement | null>(null);
-
   const [phase, setPhase] = useState<Phase>("typing");
 
   const [carrier, setCarrier] = useState("");
@@ -116,20 +85,6 @@ export default function DealBotAutomation() {
     if (!wrapRef.current || !isInView) return;
 
     const ctx = gsap.context(() => {
-      const allPaths = [
-        routeFormToBotBase.current,
-        routeFormToBotGlow.current,
-        routeBotToSlackBase.current,
-        routeBotToSlackGlow.current,
-        routeBotToDiscordBase.current,
-        routeBotToDiscordGlow.current,
-      ].filter(Boolean) as SVGPathElement[];
-
-      allPaths.forEach((p) => {
-        const len = p.getTotalLength();
-        gsap.set(p, { strokeDasharray: len, strokeDashoffset: len, opacity: 0 });
-      });
-
       gsap.set([slackCardRef.current, discordCardRef.current], { opacity: 0, y: 12, scale: 0.97 });
       gsap.set(botCardRef.current, { scale: 1, opacity: 1 });
       gsap.set(postBtnRef.current, { scale: 1 });
@@ -146,10 +101,6 @@ export default function DealBotAutomation() {
         setAnnual("");
         setPolicy("");
 
-        allPaths.forEach((p) => {
-          const len = p.getTotalLength();
-          gsap.set(p, { strokeDasharray: len, strokeDashoffset: len, opacity: 0 });
-        });
         gsap.set([slackCardRef.current, discordCardRef.current], { opacity: 0, y: 12, scale: 0.97 });
 
         await sleep(300);
@@ -173,7 +124,6 @@ export default function DealBotAutomation() {
       tl.to(postBtnRef.current, { scale: 1, duration: 0.3, ease: "elastic.out(1, 0.5)" }, ">");
 
       tl.add(() => setPhase("routing"), "+=0.2");
-      tl.to([routeFormToBotBase.current, routeFormToBotGlow.current], { opacity: 1, duration: 0.3, ease: "power1.in" }, ">");
 
       tl.to(botCardRef.current, { scale: 1.03, duration: 0.25, ease: "power2.out" }, "+=0.5");
       tl.to(botCardRef.current, { scale: 1, duration: 0.35, ease: "elastic.out(1, 0.6)" }, ">");
@@ -183,15 +133,10 @@ export default function DealBotAutomation() {
 
       tl.add(() => setPhase("done"), "+=0.15");
       tl.to({}, { duration: 2.0 });
-      tl.to([routeFormToBotBase.current, routeFormToBotGlow.current], { opacity: 0, duration: 0.4, ease: "power1.out" }, "<");
     }, wrapRef);
 
     return () => ctx.revert();
   }, [fake, isInView]);
-
-  const glowStyle = {
-    filter: "none",
-  } as React.CSSProperties;
 
   return (
     <section ref={wrapRef} className="relative w-full py-32 sm:py-40 bg-black overflow-hidden">
