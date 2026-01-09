@@ -743,11 +743,12 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
       }}
     >
       <div
-        className="absolute inset-0 -z-10 backdrop-blur-xl rounded-2xl"
+        className="absolute inset-0 -z-10 rounded-2xl"
         style={{
           background: isDashboard
-            ? 'rgba(255, 255, 255, 0.15)'
+            ? '#ffffff'
             : 'rgba(0, 0, 0, 0.4)',
+          backdropFilter: isDashboard ? 'none' : 'blur(48px)',
         }}
       />
       <GridPattern isDashboard={isDashboard} index={index} />
