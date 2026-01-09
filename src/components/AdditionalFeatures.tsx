@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 const AdditionalFeatures: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+
   return (
-    <section className="pt-40 pb-28 sm:pt-44 sm:pb-32 md:pt-48 md:pb-36 lg:pt-56 lg:pb-40 bg-black relative overflow-visible">
+    <section ref={sectionRef} className="pt-40 pb-28 sm:pt-44 sm:pb-32 md:pt-48 md:pb-36 lg:pt-56 lg:pb-40 bg-black relative overflow-visible">
       <div className="flex justify-center px-6">
         <div
           className="glow-shell"
@@ -16,7 +20,10 @@ const AdditionalFeatures: React.FC = () => {
           }}
         >
           {/* Left Decorative Rectangle */}
-          <div
+          <motion.div
+            initial={{ x: 0, opacity: 0.8 }}
+            animate={isInView ? { x: -180, opacity: 1 } : { x: 0, opacity: 0.8 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="absolute hidden md:block"
             style={{
               left: '-48px',
@@ -30,7 +37,10 @@ const AdditionalFeatures: React.FC = () => {
               zIndex: 10,
             }}
           />
-          <div
+          <motion.div
+            initial={{ x: 0, opacity: 0.7 }}
+            animate={isInView ? { x: -220, opacity: 1 } : { x: 0, opacity: 0.7 }}
+            transition={{ duration: 1.3, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="absolute hidden md:block"
             style={{
               left: '-48px',
@@ -46,7 +56,10 @@ const AdditionalFeatures: React.FC = () => {
           />
 
           {/* Right Decorative Rectangle */}
-          <div
+          <motion.div
+            initial={{ x: 0, opacity: 0.8 }}
+            animate={isInView ? { x: 180, opacity: 1 } : { x: 0, opacity: 0.8 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="absolute hidden md:block"
             style={{
               right: '-48px',
@@ -60,7 +73,10 @@ const AdditionalFeatures: React.FC = () => {
               zIndex: 10,
             }}
           />
-          <div
+          <motion.div
+            initial={{ x: 0, opacity: 0.7 }}
+            animate={isInView ? { x: 220, opacity: 1 } : { x: 0, opacity: 0.7 }}
+            transition={{ duration: 1.3, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="absolute hidden md:block"
             style={{
               right: '-48px',
