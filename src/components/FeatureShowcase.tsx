@@ -193,21 +193,28 @@ const FeatureShowcase: React.FC = () => {
       const rect = section.getBoundingClientRect();
       const sectionTop = rect.top;
 
-      // Check if section top is in the upper portion of viewport
-      const isInLockZone = sectionTop <= 100 && sectionTop >= -50;
+      // Lock position below navbar (approximately 80px from top)
+      const LOCK_POSITION = 80;
+      const LOCK_ZONE_TOLERANCE = 50;
+      const isInLockZone = sectionTop <= LOCK_POSITION + LOCK_ZONE_TOLERANCE && sectionTop >= LOCK_POSITION - LOCK_ZONE_TOLERANCE;
 
       // If scrolling down and entering the lock zone, snap to lock position
       if (e.deltaY > 0 && isInLockZone && !isLockedRef.current) {
         isLockedRef.current = true;
-        const scrollTarget = window.scrollY + sectionTop;
+        const scrollTarget = window.scrollY + (sectionTop - LOCK_POSITION);
         window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
         e.preventDefault();
         return;
       }
 
-      // Only hijack when section is locked at top
-      if (!isLockedRef.current || sectionTop > 50) {
-        isLockedRef.current = false;
+      // Check if section is at the lock position
+      const isAtLockPosition = Math.abs(sectionTop - LOCK_POSITION) < LOCK_ZONE_TOLERANCE;
+
+      // Only hijack when section is locked at position
+      if (!isLockedRef.current || !isAtLockPosition) {
+        if (Math.abs(sectionTop - LOCK_POSITION) > LOCK_ZONE_TOLERANCE * 2) {
+          isLockedRef.current = false;
+        }
         return;
       }
 
@@ -218,7 +225,7 @@ const FeatureShowcase: React.FC = () => {
 
       // Scrolling down
       if (e.deltaY > 0) {
-        // Release lock when finished all cards
+        // Only release lock when at last card (card 2) AND scrolling down
         if (currentCard >= 2) {
           isLockedRef.current = false;
           return;
@@ -248,8 +255,8 @@ const FeatureShowcase: React.FC = () => {
       }
       // Scrolling up
       else if (e.deltaY < 0) {
-        // Release lock when at first card
-        if (currentCard === 0) {
+        // Only release lock when at first card (card 0) AND scrolling up
+        if (currentCard <= 0) {
           isLockedRef.current = false;
           return;
         }
