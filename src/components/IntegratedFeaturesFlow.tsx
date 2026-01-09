@@ -51,7 +51,7 @@ export default function IntegratedFeaturesFlow() {
             initial={{ opacity: 0, x: -30, rotateZ: -35 }}
             animate={isInView ? { opacity: 1, x: 0, rotateZ: -35 } : { opacity: 0, x: -30, rotateZ: -35 }}
             transition={{ duration: 1.4, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute left-[-120px] top-[120px] w-[380px] h-[200px] rounded-[28px] overflow-hidden border border-white/[0.08]"
+            className="absolute left-[-180px] top-[120px] w-[380px] h-[200px] rounded-[28px] overflow-hidden border border-white/[0.08]"
             style={{
               transformStyle: 'preserve-3d',
               boxShadow: '0 12px 48px rgba(0,0,0,0.6), 0 4px 16px rgba(0,0,0,0.8)'
@@ -60,7 +60,7 @@ export default function IntegratedFeaturesFlow() {
             <img
               src="/image.png"
               alt="Dashboard Preview"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-left"
             />
             <div
               className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/70 to-black/80"
@@ -74,7 +74,7 @@ export default function IntegratedFeaturesFlow() {
             initial={{ opacity: 0, x: 30, rotateZ: 35 }}
             animate={isInView ? { opacity: 1, x: 0, rotateZ: 35 } : { opacity: 0, x: 30, rotateZ: 35 }}
             transition={{ duration: 1.4, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute right-[-120px] top-[120px] w-[380px] h-[200px] rounded-[28px] overflow-hidden border border-white/[0.08]"
+            className="absolute right-[-180px] top-[120px] w-[380px] h-[200px] rounded-[28px] overflow-hidden border border-white/[0.08]"
             style={{
               transformStyle: 'preserve-3d',
               boxShadow: '0 12px 48px rgba(0,0,0,0.6), 0 4px 16px rgba(0,0,0,0.8)'
