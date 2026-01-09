@@ -1,17 +1,21 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 const TypewriterHeading: React.FC<{ text: string }> = ({ text }) => {
   const [displayText, setDisplayText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
-  const hasStartedRef = useRef(false);
+  const [hasTyped, setHasTyped] = useState(false);
+  const ref = useRef<HTMLHeadingElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '0px' });
 
   useEffect(() => {
-    if (hasStartedRef.current) return;
-    hasStartedRef.current = true;
+    if (!isInView || hasTyped) return;
 
+    setHasTyped(true);
     let currentIndex = 0;
+
     const interval = setInterval(() => {
       if (currentIndex <= text.length) {
         setDisplayText(text.slice(0, currentIndex));
@@ -23,10 +27,10 @@ const TypewriterHeading: React.FC<{ text: string }> = ({ text }) => {
     }, 60);
 
     return () => clearInterval(interval);
-  }, [text]);
+  }, [text, isInView, hasTyped]);
 
   return (
-    <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-white/40 tracking-tight">
+    <h1 ref={ref} className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-white/40 tracking-tight">
       {displayText}
       {showCursor && <span className="animate-pulse">|</span>}
     </h1>
@@ -118,6 +122,16 @@ const FAQsPage = () => {
 
   return (
     <div className="min-h-screen bg-black text-[#E8EEF5]">
+      {/* Hero Photo Section */}
+      <section className="bg-black py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="relative w-full h-[400px] rounded-3xl overflow-hidden bg-gradient-to-br from-white/5 to-white/10 border border-white/10 flex items-center justify-center">
+            <p className="text-white/40 text-lg">Insert your photo here</p>
+            {/* Photo will be inserted here */}
+          </div>
+        </div>
+      </section>
+
       <div className="max-w-4xl mx-auto px-6 py-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
