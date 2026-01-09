@@ -69,15 +69,9 @@ const Schedule = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 grid md:grid-cols-3 gap-6"
+          className="mt-6 grid md:grid-cols-3 gap-6"
         >
           <div className="p-6 rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.04] to-transparent">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 flex items-center justify-center mb-4">
-              <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white/70">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5"/>
-                <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-              </svg>
-            </div>
             <h3 className="text-white font-semibold mb-2">30-Minute Demo</h3>
             <p className="text-white/40 text-sm">
               Get a comprehensive overview of all features tailored to your needs.
@@ -85,13 +79,6 @@ const Schedule = () => {
           </div>
 
           <div className="p-6 rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.04] to-transparent">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 flex items-center justify-center mb-4">
-              <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white/70">
-                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="1.5"/>
-                <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-              </svg>
-            </div>
             <h3 className="text-white font-semibold mb-2">Expert Guidance</h3>
             <p className="text-white/40 text-sm">
               Our team will answer all your questions and address specific use cases.
@@ -99,12 +86,6 @@ const Schedule = () => {
           </div>
 
           <div className="p-6 rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.04] to-transparent">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 flex items-center justify-center mb-4">
-              <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white/70">
-                <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                <path d="M22 4L12 14.01l-3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
             <h3 className="text-white font-semibold mb-2">No Commitment</h3>
             <p className="text-white/40 text-sm">
               Explore the platform with zero pressure. See if CLOSIO is right for you.
