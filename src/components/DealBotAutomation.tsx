@@ -199,10 +199,10 @@ export default function DealBotAutomation() {
   return (
     <section ref={wrapRef} className="relative w-full py-20 sm:py-28 bg-black overflow-hidden">
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.25]"
+        className="pointer-events-none absolute inset-0 opacity-[0.5]"
         style={{
           backgroundImage:
-            "linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)",
+            "linear-gradient(to right, rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.12) 1px, transparent 1px)",
           backgroundSize: "64px 64px",
           maskImage: "radial-gradient(ellipse at 50% 40%, black 20%, transparent 70%)",
           WebkitMaskImage: "radial-gradient(ellipse at 50% 40%, black 20%, transparent 70%)",
@@ -347,13 +347,6 @@ export default function DealBotAutomation() {
                   strokeWidth="0"
                 />
               </svg>
-
-              <div className="absolute top-[458px] left-1 px-2 py-1 bg-black/80 rounded text-[10px] text-white/60 font-medium backdrop-blur-sm border border-white/[0.04]">
-                Deal
-              </div>
-              <div className="absolute top-[68px] right-1 px-2 py-1 bg-black/80 rounded text-[10px] text-white/60 font-medium backdrop-blur-sm border border-white/[0.04]">
-                Bot
-              </div>
             </div>
 
             <div className="flex flex-col justify-between h-full space-y-7">
