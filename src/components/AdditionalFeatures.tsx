@@ -1,18 +1,25 @@
 import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const AdditionalFeatures: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.5, 0.7, 1],
+    [0, 1, 1, 1, 0]
+  );
 
   return (
     <section ref={sectionRef} className="pt-40 pb-28 sm:pt-44 sm:pb-32 md:pt-48 md:pb-36 lg:pt-56 lg:pb-40 bg-black">
       <div className="flex justify-center px-6">
-        <motion.div
+        <div
           className="glow-shell"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
           style={{
             position: 'relative',
             width: 'min(1100px, 92vw)',
@@ -45,12 +52,12 @@ const AdditionalFeatures: React.FC = () => {
             }
           `}</style>
 
-          <div className="relative z-10 flex flex-col items-center gap-3">
-            <motion.h2
+          <motion.div
+            className="relative z-10 flex flex-col items-center gap-3"
+            style={{ opacity }}
+          >
+            <h2
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center m-0"
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
               style={{
                 color: '#9CA3AF',
                 lineHeight: 1.25,
@@ -59,12 +66,9 @@ const AdditionalFeatures: React.FC = () => {
               }}
             >
               The platform starts here but doesnt stop
-            </motion.h2>
-            <motion.p
+            </h2>
+            <p
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center m-0"
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               style={{
                 color: '#9CA3AF',
                 lineHeight: 1.25,
@@ -73,9 +77,9 @@ const AdditionalFeatures: React.FC = () => {
               }}
             >
               More advanced features below
-            </motion.p>
-          </div>
-        </motion.div>
+            </p>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
