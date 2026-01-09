@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -29,20 +30,20 @@ const Footer: React.FC = () => {
     {
       title: 'Resources',
       links: [
-        { label: 'Documentation', href: '#' },
+        { label: 'Contact Us', href: '/contact', isRoute: true },
+        { label: 'Schedule a Demo', href: '/schedule', isRoute: true },
         { label: 'Help Center', href: '#faq' },
         { label: 'Tutorials', href: '#' },
-        { label: 'API Reference', href: '#' },
         { label: 'Roadmap', href: '#roadmap' }
       ]
     },
     {
       title: 'Legal',
       links: [
-        { label: 'Privacy Policy', href: '#' },
-        { label: 'Terms of Service', href: '#' },
+        { label: 'Privacy Policy', href: '/privacy-policy', isRoute: true },
+        { label: 'Terms & Conditions', href: '/terms-conditions', isRoute: true },
+        { label: 'FAQs', href: '/faqs', isRoute: true },
         { label: 'Cookie Policy', href: '#' },
-        { label: 'GDPR', href: '#' },
         { label: 'Compliance', href: '#security' }
       ]
     }
@@ -112,12 +113,22 @@ const Footer: React.FC = () => {
               <ul className="space-y-2">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <a
-                      href={link.href}
-                      className="text-[#A8B3C7] hover:text-white transition-colors text-sm"
-                    >
-                      {link.label}
-                    </a>
+                    {link.isRoute ? (
+                      <Link
+                        to={link.href}
+                        onClick={() => window.scrollTo(0, 0)}
+                        className="text-[#A8B3C7] hover:text-white transition-colors text-sm"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="text-[#A8B3C7] hover:text-white transition-colors text-sm"
+                      >
+                        {link.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

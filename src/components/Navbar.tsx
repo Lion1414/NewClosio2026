@@ -10,21 +10,26 @@ const NAV_ITEMS = [
   { id: 'home', label: 'Home' }
 ];
 
-const DOCS_ITEMS = [
-  { path: '/privacy-policy', label: 'Privacy Policy' },
-  { path: '/terms-conditions', label: 'Terms & Conditions' },
-  { path: '/faqs', label: 'FAQs' },
+const RESOURCES_ITEMS = [
   { path: '/contact', label: 'Contact Us' },
   { path: '/schedule', label: 'Schedule a Demo' }
+];
+
+const LEGAL_ITEMS = [
+  { path: '/privacy-policy', label: 'Privacy Policy' },
+  { path: '/terms-conditions', label: 'Terms & Conditions' },
+  { path: '/faqs', label: 'FAQs' }
 ];
 
 const Navbar: React.FC<NavbarProps> = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('');
-  const [docsDropdownOpen, setDocsDropdownOpen] = useState(false);
+  const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false);
+  const [legalDropdownOpen, setLegalDropdownOpen] = useState(false);
   const [isScrollingDown, setIsScrollingDown] = useState(false);
-  const docsDropdownRef = useRef<HTMLDivElement>(null);
+  const resourcesDropdownRef = useRef<HTMLDivElement>(null);
+  const legalDropdownRef = useRef<HTMLDivElement>(null);
   const lastScrollY = useRef(0);
   const location = useLocation();
   const navigate = useNavigate();
@@ -89,8 +94,11 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (docsDropdownRef.current && !docsDropdownRef.current.contains(event.target as Node)) {
-        setDocsDropdownOpen(false);
+      if (resourcesDropdownRef.current && !resourcesDropdownRef.current.contains(event.target as Node)) {
+        setResourcesDropdownOpen(false);
+      }
+      if (legalDropdownRef.current && !legalDropdownRef.current.contains(event.target as Node)) {
+        setLegalDropdownOpen(false);
       }
     };
 
@@ -199,14 +207,14 @@ const Navbar: React.FC<NavbarProps> = () => {
 
               <div
                 className="relative flex items-center h-8"
-                ref={docsDropdownRef}
-                onMouseEnter={() => setDocsDropdownOpen(true)}
-                onMouseLeave={() => setDocsDropdownOpen(false)}
+                ref={resourcesDropdownRef}
+                onMouseEnter={() => setResourcesDropdownOpen(true)}
+                onMouseLeave={() => setResourcesDropdownOpen(false)}
               >
                 <button
-                  onClick={() => setDocsDropdownOpen(!docsDropdownOpen)}
+                  onClick={() => setResourcesDropdownOpen(!resourcesDropdownOpen)}
                   className={`nav-underline-glow font-medium inline-flex items-center gap-1 h-8 ${
-                    DOCS_ITEMS.some(item => item.path === location.pathname)
+                    RESOURCES_ITEMS.some(item => item.path === location.pathname)
                       ? 'text-[#6ad4f2] is-active'
                       : 'text-white/80 hover:text-white'
                   }`}
@@ -225,20 +233,76 @@ const Navbar: React.FC<NavbarProps> = () => {
                     strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className={`transition-transform duration-300 ${docsDropdownOpen ? 'rotate-180' : ''}`}
+                    className={`transition-transform duration-300 ${resourcesDropdownOpen ? 'rotate-180' : ''}`}
                   >
                     <path d="M6 9l6 6 6-6"/>
                   </svg>
                 </button>
 
-                {docsDropdownOpen && (
+                {resourcesDropdownOpen && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3">
                     <div className="w-48 py-2 bg-black/90 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl">
-                      {DOCS_ITEMS.map((item) => (
+                      {RESOURCES_ITEMS.map((item) => (
                         <Link
                           key={item.path}
                           to={item.path}
-                          onClick={() => { setDocsDropdownOpen(false); window.scrollTo(0, 0); }}
+                          onClick={() => { setResourcesDropdownOpen(false); window.scrollTo(0, 0); }}
+                          className={`block px-4 py-2.5 text-sm transition-colors ${
+                            location.pathname === item.path
+                              ? 'text-[#6ad4f2] bg-[#6ad4f2]/10'
+                              : 'text-white/70 hover:text-white hover:bg-white/5'
+                          }`}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div
+                className="relative flex items-center h-8"
+                ref={legalDropdownRef}
+                onMouseEnter={() => setLegalDropdownOpen(true)}
+                onMouseLeave={() => setLegalDropdownOpen(false)}
+              >
+                <button
+                  onClick={() => setLegalDropdownOpen(!legalDropdownOpen)}
+                  className={`nav-underline-glow font-medium inline-flex items-center gap-1 h-8 ${
+                    LEGAL_ITEMS.some(item => item.path === location.pathname)
+                      ? 'text-[#6ad4f2] is-active'
+                      : 'text-white/80 hover:text-white'
+                  }`}
+                  style={{
+                    fontSize: isScrolled ? '14px' : '15px',
+                    transition: 'font-size 700ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms ease'
+                  }}
+                >
+                  Legal
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={`transition-transform duration-300 ${legalDropdownOpen ? 'rotate-180' : ''}`}
+                  >
+                    <path d="M6 9l6 6 6-6"/>
+                  </svg>
+                </button>
+
+                {legalDropdownOpen && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3">
+                    <div className="w-48 py-2 bg-black/90 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl">
+                      {LEGAL_ITEMS.map((item) => (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          onClick={() => { setLegalDropdownOpen(false); window.scrollTo(0, 0); }}
                           className={`block px-4 py-2.5 text-sm transition-colors ${
                             location.pathname === item.path
                               ? 'text-[#6ad4f2] bg-[#6ad4f2]/10'
@@ -327,7 +391,27 @@ const Navbar: React.FC<NavbarProps> = () => {
                 <div className="px-4 py-2 text-xs font-semibold text-white/40 uppercase tracking-wider">
                   Resources
                 </div>
-                {DOCS_ITEMS.map((item) => (
+                {RESOURCES_ITEMS.map((item) => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => { setMobileMenuOpen(false); window.scrollTo(0, 0); }}
+                    className={`w-full block text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
+                      location.pathname === item.path
+                        ? 'bg-[#6ad4f2]/20 text-[#6ad4f2]'
+                        : 'text-gray-300 hover:bg-white/5 hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+
+              <div className="pt-3 mt-3 border-t border-white/10">
+                <div className="px-4 py-2 text-xs font-semibold text-white/40 uppercase tracking-wider">
+                  Legal
+                </div>
+                {LEGAL_ITEMS.map((item) => (
                   <Link
                     key={item.path}
                     to={item.path}
