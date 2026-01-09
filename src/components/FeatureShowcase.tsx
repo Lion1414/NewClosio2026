@@ -88,12 +88,16 @@ interface FeatureCardProps {
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
   return (
-    <div className="min-w-full snap-center snap-always flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12">
+    <div
+      className="min-w-full snap-start snap-always flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12"
+      style={{ scrollSnapAlign: 'start' }}
+    >
       <div className="w-full max-w-[95%] sm:max-w-[90%] lg:max-w-[85%] mx-auto">
         <div
-          className="bg-[#dfe8f0] backdrop-blur-xl rounded-2xl sm:rounded-3xl overflow-hidden border border-[#c5d4e0]"
+          className="backdrop-blur-xl rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10"
           style={{
-            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.03)'
+            background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%)',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 80px rgba(255, 255, 255, 0.05)'
           }}
         >
           <div className={`relative flex flex-col ${
@@ -101,22 +105,22 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
           }`}>
             <div className="w-full lg:w-[45%] p-5 sm:p-6 md:p-10 lg:p-14 flex items-center">
               <div className="space-y-4 sm:space-y-6">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#0f1419] leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
                   {feature.title}
                 </h2>
-                <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed">
                   {feature.description}
                 </p>
 
-                <div className="pt-3 sm:pt-4 border-t border-[#c5d4e0]">
-                  <h3 className="text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 sm:mb-3">
+                <div className="pt-3 sm:pt-4 border-t border-white/10">
+                  <h3 className="text-[10px] sm:text-xs font-semibold text-white/60 uppercase tracking-wider mb-2 sm:mb-3">
                     Replaces
                   </h3>
                   <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {feature.replaces.map((item, idx) => (
                       <span
                         key={idx}
-                        className="inline-flex items-center px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium bg-white/80 text-gray-600 border border-[#c5d4e0]"
+                        className="inline-flex items-center px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium bg-white/10 text-white/70 border border-white/20"
                       >
                         {item}
                       </span>
@@ -158,10 +162,8 @@ const FeatureShowcase: React.FC = () => {
     triggerOnce: true
   });
 
-  const sectionRef = useRef<HTMLElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const isLockedRef = useRef(false);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -178,122 +180,8 @@ const FeatureShowcase: React.FC = () => {
     return () => container.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Scroll hijacking effect with complete scroll lock
-  useEffect(() => {
-    const section = sectionRef.current;
-    const container = scrollContainerRef.current;
-    if (!section || !container) return;
-
-    let isAnimating = false;
-    let scrollTimeout: NodeJS.Timeout;
-    let lastScrollTime = 0;
-
-    const handleWheel = (e: WheelEvent) => {
-      const now = Date.now();
-      const rect = section.getBoundingClientRect();
-      const sectionTop = rect.top;
-
-      // Lock position below navbar (approximately 80px from top)
-      const LOCK_POSITION = 80;
-      const LOCK_ZONE_TOLERANCE = 50;
-      const isInLockZone = sectionTop <= LOCK_POSITION + LOCK_ZONE_TOLERANCE && sectionTop >= LOCK_POSITION - LOCK_ZONE_TOLERANCE;
-
-      // If scrolling down and entering the lock zone, snap to lock position
-      if (e.deltaY > 0 && isInLockZone && !isLockedRef.current) {
-        isLockedRef.current = true;
-        const scrollTarget = window.scrollY + (sectionTop - LOCK_POSITION);
-        window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
-        e.preventDefault();
-        return;
-      }
-
-      // Check if section is at the lock position
-      const isAtLockPosition = Math.abs(sectionTop - LOCK_POSITION) < LOCK_ZONE_TOLERANCE;
-
-      // Only hijack when section is locked at position
-      if (!isLockedRef.current || !isAtLockPosition) {
-        if (Math.abs(sectionTop - LOCK_POSITION) > LOCK_ZONE_TOLERANCE * 2) {
-          isLockedRef.current = false;
-        }
-        return;
-      }
-
-      // Section is locked, check horizontal scroll position
-      const scrollLeft = container.scrollLeft;
-      const cardWidth = container.clientWidth;
-      const currentCard = Math.round(scrollLeft / cardWidth);
-
-      // Scrolling down
-      if (e.deltaY > 0) {
-        // Only release lock when at last card (card 2) AND scrolling down
-        if (currentCard >= 2) {
-          isLockedRef.current = false;
-          return;
-        }
-
-        // Block vertical scroll and navigate horizontally
-        e.preventDefault();
-        e.stopPropagation();
-
-        // Navigate to next card if not animating
-        if (!isAnimating && now - lastScrollTime > 100) {
-          isAnimating = true;
-          lastScrollTime = now;
-
-          const nextCard = Math.min(currentCard + 1, features.length - 1);
-          container.scrollTo({
-            left: nextCard * cardWidth,
-            behavior: 'smooth'
-          });
-          setCurrentIndex(nextCard);
-
-          clearTimeout(scrollTimeout);
-          scrollTimeout = setTimeout(() => {
-            isAnimating = false;
-          }, 600);
-        }
-      }
-      // Scrolling up
-      else if (e.deltaY < 0) {
-        // Only release lock when at first card (card 0) AND scrolling up
-        if (currentCard <= 0) {
-          isLockedRef.current = false;
-          return;
-        }
-
-        // Block vertical scroll and navigate horizontally
-        e.preventDefault();
-        e.stopPropagation();
-
-        // Navigate to previous card if not animating
-        if (!isAnimating && now - lastScrollTime > 100) {
-          isAnimating = true;
-          lastScrollTime = now;
-
-          const prevCard = Math.max(currentCard - 1, 0);
-          container.scrollTo({
-            left: prevCard * cardWidth,
-            behavior: 'smooth'
-          });
-          setCurrentIndex(prevCard);
-
-          clearTimeout(scrollTimeout);
-          scrollTimeout = setTimeout(() => {
-            isAnimating = false;
-          }, 600);
-        }
-      }
-    };
-
-    document.addEventListener('wheel', handleWheel, { passive: false });
-    return () => {
-      document.removeEventListener('wheel', handleWheel);
-      clearTimeout(scrollTimeout);
-    };
-  }, []);
-
   return (
-    <section ref={sectionRef} className="relative bg-black overflow-hidden py-12 sm:py-16 md:py-24">
+    <section className="relative bg-black overflow-hidden py-12 sm:py-16 md:py-24">
       <motion.div
         ref={headerRef}
         initial={{ opacity: 0, y: 40 }}
@@ -317,10 +205,36 @@ const FeatureShowcase: React.FC = () => {
           style={{
             scrollBehavior: 'smooth',
             WebkitOverflowScrolling: 'touch',
+            scrollSnapType: 'x mandatory',
+            scrollPaddingLeft: '0px',
           }}
         >
           {features.map((feature, index) => (
             <FeatureCard key={index} feature={feature} index={index} />
+          ))}
+        </div>
+
+        {/* Navigation dots */}
+        <div className="flex justify-center gap-2 mt-8">
+          {features.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                const container = scrollContainerRef.current;
+                if (container) {
+                  container.scrollTo({
+                    left: index * container.offsetWidth,
+                    behavior: 'smooth'
+                  });
+                }
+              }}
+              className={`h-2 rounded-full transition-all ${
+                currentIndex === index
+                  ? 'w-8 bg-white'
+                  : 'w-2 bg-white/30 hover:bg-white/50'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
           ))}
         </div>
       </div>
