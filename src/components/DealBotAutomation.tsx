@@ -204,8 +204,8 @@ export default function DealBotAutomation() {
           backgroundImage:
             "linear-gradient(to right, rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.12) 1px, transparent 1px)",
           backgroundSize: "64px 64px",
-          maskImage: "radial-gradient(ellipse at 50% 40%, black 20%, transparent 70%)",
-          WebkitMaskImage: "radial-gradient(ellipse at 50% 40%, black 20%, transparent 70%)",
+          maskImage: "radial-gradient(ellipse at 50% 65%, black 25%, transparent 60%)",
+          WebkitMaskImage: "radial-gradient(ellipse at 50% 65%, black 25%, transparent 60%)",
         }}
       />
 
