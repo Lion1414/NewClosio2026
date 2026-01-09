@@ -47,62 +47,97 @@ const faqs: FAQItem[] = [
   {
     category: 'General',
     question: 'What is Closio?',
-    answer: 'Closio is a comprehensive agency management platform designed specifically for insurance agencies. It helps you track deals, manage commissions, visualize team hierarchies, and streamline your entire sales process from first contact to policy issue.'
+    answer: 'Closio is an insurance agency management platform that combines deal tracking, commission automation, and team hierarchy visualization in one system. Built specifically for life and health insurance agencies, it eliminates spreadsheet chaos and provides real-time visibility into your book of business, pipeline, and earnings.'
   },
   {
     category: 'General',
     question: 'Who is Closio designed for?',
-    answer: 'Closio is built for insurance agencies of all sizes - from individual agents to large multi-level organizations. Whether you\'re a solo agent, agency owner, or part of a larger IMO/FMO, Closio scales to meet your needs.'
+    answer: 'Independent insurance agents, agency owners, IMOs, FMOs, and multi-level insurance organizations. Whether you\'re managing a solo operation or overseeing hundreds of downline agents, Closio adapts to your structure with unlimited hierarchy levels and customizable commission splits.'
   },
   {
     category: 'General',
     question: 'Is there a free trial available?',
-    answer: 'Yes! We offer a 14-day free trial with full access to all features. No credit card required to start. You can explore the platform and see how it fits your workflow before committing.'
+    answer: 'Yes. We provide a 14-day trial with complete platform access. No credit card required to start, no features locked. Test every tool, import your data, and invite your team to experience how Closio transforms your workflow before making any commitment.'
+  },
+  {
+    category: 'General',
+    question: 'How quickly can I get started?',
+    answer: 'Most agencies are operational within 24 hours. After signing up, you can immediately add team members, import existing deals via CSV, configure commission structures, and connect carrier integrations. Our guided onboarding walks you through each step with pre-built templates for common agency setups.'
   },
   {
     category: 'Features',
     question: 'How does commission tracking work?',
-    answer: 'Closio automatically calculates commissions based on your configured split structures. You can set up complex multi-level hierarchies, track overrides, and see real-time payouts. The system handles split calculations across unlimited levels.'
+    answer: 'Set your base commission rates and split percentages once. Closio automatically calculates multi-level splits when deals advance through your pipeline. View pending commissions, override amounts, and estimated payouts in real-time. The system handles complex scenarios like chargebacks, advances, and anniversary commission calculations.'
+  },
+  {
+    category: 'Features',
+    question: 'Can I track different product lines separately?',
+    answer: 'Absolutely. Configure distinct pipelines for Medicare, ACA, final expense, annuities, life insurance, and any other product line. Each pipeline can have unique stages, commission structures, and carrier assignments. Filter your dashboard by product to analyze performance across your portfolio.'
+  },
+  {
+    category: 'Features',
+    question: 'How does the deal pipeline work?',
+    answer: 'Create custom stages that match your sales process—from lead to application submitted, underwriting, issued, and paid. Drag deals between stages, set reminders for follow-ups, attach documents, and log client interactions. Automatic notifications keep your team aligned without manual status updates.'
   },
   {
     category: 'Features',
     question: 'Can I import my existing data?',
-    answer: 'Absolutely. Closio supports importing data from spreadsheets (CSV, Excel) and can integrate with many popular CRM systems. Our onboarding team can assist with data migration to ensure a smooth transition.'
+    answer: 'Yes. Upload spreadsheets with your current clients, deals, and team members via CSV or Excel. Our import wizard maps your columns to Closio fields, validates the data, and flags any issues before finalizing. We also offer white-glove migration assistance for complex datasets or CRM transitions.'
   },
   {
     category: 'Features',
     question: 'Does Closio integrate with carrier systems?',
-    answer: 'Yes, Closio integrates with major insurance carriers to pull policy data, application status, and commission statements automatically. We\'re continuously adding new carrier integrations.'
+    answer: 'Yes. Connect with major carriers to automatically sync application status, policy numbers, effective dates, and commission statements. Supported integrations include Sunfire, iPipeline, LEAN, and major carrier portals. We add new integrations monthly based on user requests.'
+  },
+  {
+    category: 'Features',
+    question: 'What reports and analytics are available?',
+    answer: 'Production reports, commission forecasts, agent leaderboards, conversion rates by stage, average deal size, and time-to-close metrics. Export any report to PDF or Excel. Custom date ranges let you analyze weekly, monthly, quarterly, or year-over-year performance across your entire organization.'
   },
   {
     category: 'Security',
     question: 'How secure is my data?',
-    answer: 'Security is our top priority. Closio uses bank-level encryption (AES-256), is SOC 2 Type II compliant, and all data is stored in secure, redundant data centers. We perform regular security audits and penetration testing.'
+    answer: 'Your data is encrypted at rest using AES-256 and in transit via TLS 1.3. Closio is SOC 2 Type II certified, undergoes annual third-party security audits, and stores all data in geo-redundant cloud infrastructure with automated backups every 6 hours. We maintain 99.9% uptime SLA for enterprise accounts.'
   },
   {
     category: 'Security',
     question: 'Who can access my agency\'s data?',
-    answer: 'Only users you authorize can access your data. Closio uses role-based access controls, allowing you to define exactly what each team member can see and do. You maintain complete control over your data.'
+    answer: 'Only users you explicitly invite. Role-based permissions control what each team member can view and edit—agents see their own deals, managers see their team\'s performance, admins control all settings. Enable two-factor authentication for added security. You can audit all user activity and revoke access instantly.'
+  },
+  {
+    category: 'Security',
+    question: 'Is Closio HIPAA compliant?',
+    answer: 'Yes. Closio meets HIPAA requirements for handling protected health information. We sign Business Associate Agreements (BAAs) with enterprise customers, maintain comprehensive audit logs, and implement administrative, physical, and technical safeguards required by healthcare data protection regulations.'
   },
   {
     category: 'Billing',
     question: 'What payment methods do you accept?',
-    answer: 'We accept all major credit cards (Visa, MasterCard, American Express, Discover), ACH bank transfers, and wire transfers for annual plans. All payments are processed securely through Stripe.'
+    answer: 'All major credit cards (Visa, Mastercard, Amex, Discover), ACH direct debit, and wire transfer for annual contracts. International customers can pay via bank transfer with multi-currency support. All transactions are processed through Stripe with PCI-DSS Level 1 compliance.'
+  },
+  {
+    category: 'Billing',
+    question: 'What are the pricing plans?',
+    answer: 'Pricing scales with your team size. Solo agents start at $49/month. Team plans begin at $149/month for up to 10 users. Enterprise pricing for organizations with 50+ users includes custom integrations, dedicated support, and white-label options. Annual plans receive 20% discount. No hidden fees or per-deal charges.'
   },
   {
     category: 'Billing',
     question: 'Can I cancel my subscription anytime?',
-    answer: 'Yes, you can cancel your subscription at any time. If you cancel, you\'ll retain access until the end of your current billing period. We also offer a 30-day money-back guarantee for new subscribers.'
+    answer: 'Yes. Cancel anytime with no penalties or cancellation fees. Your access continues until the end of your current billing period. Export all your data before leaving. We also offer a 30-day money-back guarantee—if Closio doesn\'t meet your needs within the first month, we\'ll refund your payment in full.'
   },
   {
     category: 'Support',
     question: 'What kind of support do you offer?',
-    answer: 'We offer multiple support channels including live chat, email support, and phone support for premium plans. Our help center includes extensive documentation, video tutorials, and best practice guides.'
+    answer: 'In-app live chat during business hours (9 AM - 6 PM ET), email support with 4-hour response time, and phone support for premium plans. Access our knowledge base with 200+ articles, video tutorials, and weekly webinars. Enterprise customers receive a dedicated account manager and priority support with 1-hour response SLA.'
   },
   {
     category: 'Support',
     question: 'Do you provide training for my team?',
-    answer: 'Yes! All plans include access to our self-paced training academy. Premium plans include live onboarding sessions, dedicated account managers, and custom training tailored to your agency\'s workflows.'
+    answer: 'All plans include unlimited access to Closio Academy—our library of training videos, certification courses, and best practice guides. Premium and enterprise plans receive live onboarding sessions, screen-share training for your entire team, and custom workflow consulting to optimize your agency\'s specific processes.'
+  },
+  {
+    category: 'Support',
+    question: 'How often do you release updates?',
+    answer: 'We ship product improvements every two weeks. Major features launch quarterly. All updates are automatic—no manual installations or downtime. We announce new features via in-app notifications and monthly changelog emails. Our public roadmap shows what we\'re building next, and users can vote on feature priorities.'
   }
 ];
 
@@ -123,7 +158,7 @@ const FAQsPage = () => {
   return (
     <div className="min-h-screen bg-black text-[#E8EEF5]">
       {/* Hero Photo Section */}
-      <section className="bg-black py-20 px-6">
+      <section className="bg-black pt-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="relative w-full h-[500px] rounded-3xl overflow-hidden">
             <img
@@ -135,27 +170,28 @@ const FAQsPage = () => {
         </div>
       </section>
 
-      <div className="max-w-4xl mx-auto px-6 py-32">
+      <div className="max-w-6xl mx-auto px-6 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <TypewriterHeading text="Frequently Asked Questions" />
+          <div className="text-center mb-16">
+            <TypewriterHeading text="Frequently Asked Questions" />
+            <p className="text-white/50 text-lg mt-4 max-w-2xl mx-auto">
+              Find answers to common questions about Closio
+            </p>
+          </div>
 
-          <p className="text-white/60 text-lg mb-12">
-            Find answers to common questions about Closio
-          </p>
-
-          <div className="flex flex-wrap gap-3 mb-12">
+          <div className="flex flex-wrap justify-center gap-3 mb-16">
             {categories.map(category => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
+                className={`px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                   activeCategory === category
-                    ? 'bg-[#6ad4f2] text-black'
-                    : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-white/10'
+                    ? 'bg-[#6ad4f2] text-black shadow-lg shadow-[#6ad4f2]/20'
+                    : 'bg-gradient-to-br from-white/[0.07] to-white/[0.03] text-white/70 hover:text-white border border-white/[0.08] hover:border-white/20 hover:from-white/[0.12] hover:to-white/[0.05] backdrop-blur-sm'
                 }`}
               >
                 {category}
@@ -163,64 +199,81 @@ const FAQsPage = () => {
             ))}
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             {filteredFaqs.map((faq, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden"
+                transition={{ duration: 0.3, delay: index * 0.03 }}
+                className="group relative"
               >
-                <button
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
-                >
-                  <span className="font-medium text-lg pr-4">{faq.question}</span>
-                  <motion.span
-                    animate={{ rotate: openIndex === index ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex-shrink-0"
+                <div className="absolute inset-0 bg-gradient-to-r from-[#6ad4f2]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 rounded-2xl blur-xl transition-opacity duration-500" />
+                <div className="relative bg-gradient-to-br from-white/[0.06] to-white/[0.02] backdrop-blur-md rounded-2xl border border-white/[0.08] overflow-hidden hover:border-white/20 transition-all duration-300">
+                  <button
+                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                    className="w-full px-8 py-7 flex items-center justify-between text-left hover:bg-white/[0.03] transition-colors"
                   >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#6ad4f2]">
-                      <path d="M6 9l6 6 6-6"/>
-                    </svg>
-                  </motion.span>
-                </button>
-                <AnimatePresence>
-                  {openIndex === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                    <span className="font-semibold text-lg pr-6 text-white/90 group-hover:text-white transition-colors">{faq.question}</span>
+                    <motion.span
+                      animate={{ rotate: openIndex === index ? 180 : 0 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      className="flex-shrink-0"
                     >
-                      <div className="px-8 pb-6 text-white/70 leading-relaxed border-t border-white/10 pt-4">
-                        {faq.answer}
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#6ad4f2]/20 to-[#6ad4f2]/5 flex items-center justify-center border border-[#6ad4f2]/20">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#6ad4f2]">
+                          <path d="M6 9l6 6 6-6"/>
+                        </svg>
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                    </motion.span>
+                  </button>
+                  <AnimatePresence>
+                    {openIndex === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      >
+                        <div className="px-8 pb-7 text-white/60 leading-relaxed border-t border-white/[0.06] pt-6 text-[15px]">
+                          {faq.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </motion.div>
             ))}
           </div>
 
-          <div className="mt-16 bg-gradient-to-r from-[#6ad4f2]/20 to-transparent rounded-2xl p-8 border border-[#6ad4f2]/30">
-            <h3 className="text-2xl font-semibold mb-3">Still have questions?</h3>
-            <p className="text-white/70 mb-6">
-              Can't find the answer you're looking for? Our team is here to help.
-            </p>
-            <Link
-              to="/contact-us"
-              onClick={() => window.scrollTo(0, 0)}
-              className="inline-flex items-center gap-2 bg-[#6ad4f2] text-black font-medium px-6 py-3 rounded-xl hover:bg-[#6ad4f2]/90 transition-colors"
-            >
-              Contact Support
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </Link>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-20 relative group"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-[#6ad4f2]/20 via-[#6ad4f2]/10 to-transparent rounded-3xl blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+            <div className="relative bg-gradient-to-br from-white/[0.08] to-white/[0.03] backdrop-blur-xl rounded-3xl p-10 border border-[#6ad4f2]/20 overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#6ad4f2]/10 rounded-full blur-3xl" />
+              <div className="relative z-10">
+                <h3 className="text-3xl font-bold mb-4 text-white">Still have questions?</h3>
+                <p className="text-white/60 text-lg mb-8 max-w-2xl">
+                  Can't find the answer you're looking for? Our team is here to help.
+                </p>
+                <Link
+                  to="/contact-us"
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="inline-flex items-center gap-3 bg-[#6ad4f2] text-black font-semibold px-8 py-4 rounded-xl hover:bg-[#6ad4f2]/90 transition-all duration-300 shadow-lg shadow-[#6ad4f2]/20 hover:shadow-xl hover:shadow-[#6ad4f2]/30 hover:scale-105"
+                >
+                  Contact Support
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </div>
