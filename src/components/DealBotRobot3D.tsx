@@ -25,7 +25,7 @@ const DealBotRobot3D = () => {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 60);
-    camera.position.set(0.0, 0.65, 8.5);
+    camera.position.set(0.0, 2.8, 8.5);
 
     const pmrem = new THREE.PMREMGenerator(renderer);
     scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.06).texture;
@@ -103,8 +103,8 @@ const DealBotRobot3D = () => {
     const robot = new THREE.Group();
     scene.add(robot);
     robot.position.set(5, 0.0, 0);
-    robot.rotation.y = 0.5;
-    robot.rotation.z = -0.25;
+    robot.rotation.y = -0.4;
+    robot.rotation.z = 0.15;
 
     const bodyGeo = new THREE.BoxGeometry(2.2, 2.6, 1.25);
     const body = new THREE.Mesh(bodyGeo, whiteMetalBright);
