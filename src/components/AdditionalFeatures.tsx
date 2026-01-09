@@ -2,7 +2,7 @@ import React from 'react';
 
 const AdditionalFeatures: React.FC = () => {
   return (
-    <section className="pt-40 pb-28 sm:pt-44 sm:pb-32 md:pt-48 md:pb-36 lg:pt-56 lg:pb-40 bg-black">
+    <section className="pt-40 pb-28 sm:pt-44 sm:pb-32 md:pt-48 md:pb-36 lg:pt-56 lg:pb-40 bg-black relative overflow-visible">
       <div className="flex justify-center px-6">
         <div
           className="glow-shell"
@@ -15,6 +15,65 @@ const AdditionalFeatures: React.FC = () => {
             overflow: 'visible',
           }}
         >
+          {/* Left Decorative Rectangle */}
+          <div
+            className="absolute hidden md:block"
+            style={{
+              left: '-48px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: '16px',
+              height: '180px',
+              background: 'linear-gradient(180deg, #6ad4f2 0%, rgba(106, 212, 242, 0.4) 100%)',
+              borderRadius: '8px',
+              boxShadow: '0 0 20px rgba(106, 212, 242, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.3)',
+              zIndex: 10,
+            }}
+          />
+          <div
+            className="absolute hidden md:block"
+            style={{
+              left: '-48px',
+              top: '50%',
+              transform: 'translateY(calc(-50% - 200px))',
+              width: '12px',
+              height: '120px',
+              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.4) 100%)',
+              borderRadius: '6px',
+              boxShadow: '0 0 15px rgba(255, 255, 255, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.6)',
+              zIndex: 10,
+            }}
+          />
+
+          {/* Right Decorative Rectangle */}
+          <div
+            className="absolute hidden md:block"
+            style={{
+              right: '-48px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: '16px',
+              height: '180px',
+              background: 'linear-gradient(180deg, #6ad4f2 0%, rgba(106, 212, 242, 0.4) 100%)',
+              borderRadius: '8px',
+              boxShadow: '0 0 20px rgba(106, 212, 242, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.3)',
+              zIndex: 10,
+            }}
+          />
+          <div
+            className="absolute hidden md:block"
+            style={{
+              right: '-48px',
+              top: '50%',
+              transform: 'translateY(calc(-50% + 200px))',
+              width: '12px',
+              height: '120px',
+              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.4) 100%)',
+              borderRadius: '6px',
+              boxShadow: '0 0 15px rgba(255, 255, 255, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.6)',
+              zIndex: 10,
+            }}
+          />
           <style>{`
             .glow-shell::before {
               content: "";
