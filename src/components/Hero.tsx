@@ -43,12 +43,14 @@ interface TypewriterTextProps {
 const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay, className = '', isGradient = false }) => {
   const [displayedText, setDisplayedText] = useState('');
   const [showCursor, setShowCursor] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
 
   useEffect(() => {
     let startTimeout: NodeJS.Timeout;
     let typeInterval: NodeJS.Timeout;
 
     startTimeout = setTimeout(() => {
+      setHasStarted(true);
       setShowCursor(true);
       let currentIndex = 0;
 
@@ -70,7 +72,12 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay, className 
   }, [text, delay]);
 
   return (
-    <span className={`inline-block whitespace-nowrap ${className}`}>
+    <motion.span
+      className={`inline-block whitespace-nowrap ${className}`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: hasStarted ? 1 : 0 }}
+      transition={{ duration: 0.3 }}
+    >
       {displayedText}
       <motion.span
         className={isGradient ? 'text-[#6ad4f2]' : 'text-white'}
@@ -79,7 +86,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay, className 
       >
         |
       </motion.span>
-    </span>
+    </motion.span>
   );
 };
 
