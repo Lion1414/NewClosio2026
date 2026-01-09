@@ -732,24 +732,14 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
       onMouseLeave={() => setIsHovered(false)}
       className={`group relative overflow-hidden rounded-2xl cursor-pointer ${
         isTopRow ? 'col-span-1 lg:col-span-3' : 'col-span-1 lg:col-span-2'
-      } ${isDashboard ? 'border border-black/20' : 'border border-white/20'}`}
+      } ${isDashboard ? 'border-0' : 'border border-white/10'}`}
       style={{
-        transform: 'translate3d(0, 0, 0)',
-        willChange: 'transform',
-        isolation: 'isolate',
-        boxShadow: isDashboard
-          ? 'inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 8px 32px rgba(0, 0, 0, 0.1)'
-          : 'inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 8px 32px rgba(0, 0, 0, 0.3)',
+        background: isDashboard
+          ? '#ffffff'
+          : '#000000',
+        willChange: 'transform, opacity',
       }}
     >
-      <div
-        className="absolute inset-0 -z-10 rounded-2xl"
-        style={{
-          background: isDashboard
-            ? '#ffffff'
-            : 'linear-gradient(135deg, #0A0F1A 0%, #1A2428 100%)',
-        }}
-      />
       <GridPattern isDashboard={isDashboard} index={index} />
       <BottomGlow isDashboard={isDashboard} />
       <SparkleEffect isHovered={isHovered} isDashboard={isDashboard} />
