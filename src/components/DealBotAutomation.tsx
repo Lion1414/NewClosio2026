@@ -308,7 +308,7 @@ export default function DealBotAutomation() {
                   d="M5 465 Q 120 300, 235 80"
                   stroke="rgba(125,211,252,0.35)"
                   strokeWidth="2.5"
-                  strokeLinecap="round"
+                  strokeLinecap="butt"
                   fill="none"
                 />
                 <path
@@ -316,7 +316,7 @@ export default function DealBotAutomation() {
                   d="M5 465 Q 120 300, 235 80"
                   stroke="rgba(125,211,252,0.85)"
                   strokeWidth="3.5"
-                  strokeLinecap="round"
+                  strokeLinecap="butt"
                   fill="none"
                   style={glowStyle}
                 />
