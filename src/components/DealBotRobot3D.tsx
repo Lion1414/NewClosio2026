@@ -102,8 +102,9 @@ const DealBotRobot3D = () => {
 
     const robot = new THREE.Group();
     scene.add(robot);
-    robot.position.set(-6, 0.0, 0);
-    robot.rotation.y = 0.3;
+    robot.position.set(5, 0.0, 0);
+    robot.rotation.y = -0.4;
+    robot.rotation.z = 0.15;
 
     const bodyGeo = new THREE.BoxGeometry(2.2, 2.6, 1.25);
     const body = new THREE.Mesh(bodyGeo, whiteMetalBright);
@@ -326,9 +327,9 @@ const DealBotRobot3D = () => {
     updateScrollProgress();
 
     const animate = () => {
-      scrollProgress += (targetScrollProgress - scrollProgress) * 0.06;
+      scrollProgress += (targetScrollProgress - scrollProgress) * 0.05;
 
-      const slideInX = -6 + scrollProgress * 6;
+      const slideInX = 5 - scrollProgress * 5;
       robot.position.x = slideInX;
 
       renderer.render(scene, camera);
