@@ -401,14 +401,13 @@ export default function DealBotAutomation() {
                 className="rounded-3xl border border-white/10 bg-white/[0.05] backdrop-blur-2xl p-5"
               >
                 <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-2xl border border-white/12 bg-black/35 flex items-center justify-center">
-                    <SlackIcon className="h-5 w-5 text-white/80" />
+                  <div className="h-10 w-10 rounded-2xl overflow-hidden flex items-center justify-center">
+                    <img src="/new_slack_icon.png" alt="Slack" className="h-full w-full object-cover" />
                   </div>
                   <div className="flex-1">
                     <div className="text-white/85 font-semibold">#deals</div>
                     <div className="text-white/50 text-sm">Slack</div>
                   </div>
-                  <div className="text-xs text-white/45">🙌 🔥 💰</div>
                 </div>
                 <div className="mt-3 rounded-2xl border border-white/10 bg-black/35 p-4 text-xs text-white/75 font-mono whitespace-pre-wrap">
                   🏆 NEW DEAL CLOSED
@@ -423,14 +422,13 @@ export default function DealBotAutomation() {
                 className="rounded-3xl border border-white/10 bg-white/[0.05] backdrop-blur-2xl p-5"
               >
                 <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-2xl border border-white/12 bg-black/35 flex items-center justify-center">
-                    <DiscordIcon className="h-5 w-5 text-white/80" />
+                  <div className="h-10 w-10 rounded-2xl overflow-hidden flex items-center justify-center">
+                    <img src="/disocrd_icon.png" alt="Discord" className="h-full w-full object-cover" />
                   </div>
                   <div className="flex-1">
                     <div className="text-white/85 font-semibold">#wins</div>
                     <div className="text-white/50 text-sm">Discord</div>
                   </div>
-                  <div className="text-xs text-white/45">✅ 🏆 🎯</div>
                 </div>
                 <div className="mt-3 rounded-2xl border border-white/10 bg-black/35 p-4 text-xs text-white/75 font-mono whitespace-pre-wrap">
                   🚨 DEAL POSTED
