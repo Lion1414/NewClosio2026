@@ -17,7 +17,7 @@ const MissionStatement = () => {
           className="w-full max-w-3xl"
         >
           <img
-            src="/image copy copy.png"
+            src="/image copy copy copy.png"
             alt="Closio - Building the future of insurance"
             className="w-full h-auto object-contain"
           />
