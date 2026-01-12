@@ -794,7 +794,7 @@ const FeatureGrid: React.FC = () => {
   ];
 
   return (
-    <section className="relative py-20 bg-black overflow-hidden">
+    <section className="relative py-20 bg-[#0D0D0D] overflow-hidden">
       <HorizontalLine />
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
