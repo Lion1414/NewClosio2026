@@ -167,9 +167,26 @@ const ValueProps: React.FC = () => {
             <div className="mt-8 sm:mt-10 lg:mt-12">
               <button
                 onClick={() => { window.scrollTo(0, 0); navigate('/schedule'); }}
-                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-black font-semibold rounded-xl hover:bg-white/90 transition-all duration-300 text-sm sm:text-base min-h-[44px]"
+                className="w-full sm:w-auto pl-3 pr-6 sm:pr-8 py-3 bg-white/95 hover:bg-white text-black font-semibold rounded-full transition-all duration-300 text-sm sm:text-base min-h-[52px] sm:min-h-[56px] backdrop-blur-sm"
               >
-                Book a Demo
+                <span className="flex items-center gap-3 sm:gap-4">
+                  <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-black rounded-full flex-shrink-0">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="translate-x-[1px]"
+                    >
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </div>
+                  <span className="font-medium">Book a Demo</span>
+                </span>
               </button>
             </div>
           </div>
