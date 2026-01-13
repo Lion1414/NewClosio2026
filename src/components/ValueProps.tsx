@@ -126,9 +126,9 @@ const ValueProps: React.FC = () => {
             </div>
           </div>
 
-          <div className="order-1 lg:order-2 lg:pl-8 xl:pl-16 lg:max-w-md">
+          <div className="order-1 lg:order-2 lg:pl-8 xl:pl-16 flex flex-col justify-center h-full">
             <motion.div
-              className="mb-6 sm:mb-8"
+              className="mb-8 sm:mb-12"
               initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-100px' }}
@@ -145,27 +145,31 @@ const ValueProps: React.FC = () => {
               </p>
             </motion.div>
 
-            <div className="space-y-0">
-              {valueItems.map((item) => (
-                <div
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12">
+              {valueItems.map((item, index) => (
+                <motion.div
                   key={item.number}
-                  className="group py-4 sm:py-5 border-b-[1.5px] border-white/20 last:border-b-0"
+                  className="group relative p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 hover:border-white/20 transition-all duration-300 hover:bg-white/[0.05]"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  <div className="flex items-start gap-3 sm:gap-4 md:gap-5">
-                    <span className="text-[#6ad4f2] group-hover:text-[#d593c0] text-[10px] sm:text-xs font-semibold tracking-wider pt-1 transition-colors duration-300">
+                  <div className="flex flex-col gap-3">
+                    <span className="text-[#6ad4f2] group-hover:text-[#d593c0] text-xs font-semibold tracking-wider transition-colors duration-300">
                       {item.number}
                     </span>
                     <h3
-                      className="text-base sm:text-lg md:text-xl font-medium text-white leading-[1.4] transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-[#d593c0] group-hover:to-[#6ad4f2] group-hover:bg-clip-text group-hover:text-transparent"
+                      className="text-sm sm:text-base font-medium text-white leading-[1.4] transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-[#d593c0] group-hover:to-[#6ad4f2] group-hover:bg-clip-text group-hover:text-transparent"
                     >
                       {item.title}
                     </h3>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
 
-            <div className="mt-8 sm:mt-10 lg:mt-12">
+            <div className="">
               <motion.button
                 onClick={() => { window.scrollTo(0, 0); navigate('/schedule'); }}
                 className="relative pl-3 pr-6 sm:pr-8 py-3 bg-white/95 hover:bg-white text-black font-semibold text-sm sm:text-base rounded-full overflow-visible z-30 group min-h-[52px] sm:min-h-[56px] backdrop-blur-sm"
