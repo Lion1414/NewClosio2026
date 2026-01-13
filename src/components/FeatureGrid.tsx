@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView, useScroll, useTransform } from 'framer-motion';
+import PoweredBySection from './PoweredBySection';
 
 interface TypewriterTextProps {
   text: string;
@@ -815,6 +816,8 @@ const FeatureGrid: React.FC = () => {
             Purpose-built tools designed specifically for life insurance agents and agencies to streamline workflows and maximize productivity.
           </p>
         </motion.div>
+
+        <PoweredBySection />
 
         <div className="grid grid-cols-2 lg:grid-cols-6 gap-6">
           {features.map((feature, index) => (
