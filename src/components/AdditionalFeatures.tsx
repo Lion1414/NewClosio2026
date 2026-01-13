@@ -80,7 +80,7 @@ const AdditionalFeatures: React.FC = () => {
               content: "";
               position: absolute;
               top: -1px;
-              bottom: -1px;
+              bottom: -60px;
               left: -20px;
               right: -20px;
               border-radius: 80px 80px 0 0;
@@ -89,7 +89,8 @@ const AdditionalFeatures: React.FC = () => {
                 rgba(255, 255, 255, 0.2) 0%,
                 rgba(255, 255, 255, 0.08) 20%,
                 rgba(255, 255, 255, 0.02) 40%,
-                rgba(255, 255, 255, 0.00) 60%
+                rgba(255, 255, 255, 0.01) 60%,
+                rgba(255, 255, 255, 0.00) 80%
               );
               filter: blur(4px);
               opacity: 0.65;
