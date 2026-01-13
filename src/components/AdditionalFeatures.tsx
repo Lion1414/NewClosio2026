@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const AdditionalFeatures: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const textColor = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.7, 1],
+    ["#FFFFFF", "#E5E7EB", "#9CA3AF", "#6B7280"]
+  );
+
   return (
-    <section className="pt-40 pb-28 sm:pt-44 sm:pb-32 md:pt-48 md:pb-36 lg:pt-56 lg:pb-40 bg-[#0D0D0D] relative overflow-visible rounded-3xl">
+    <section ref={sectionRef} className="pt-40 pb-28 sm:pt-44 sm:pb-32 md:pt-48 md:pb-36 lg:pt-56 lg:pb-40 bg-[#0D0D0D] relative overflow-visible rounded-3xl">
       <div className="flex justify-center px-6">
         <div
           className="glow-shell"
@@ -98,28 +112,28 @@ const AdditionalFeatures: React.FC = () => {
           `}</style>
 
           <div className="relative z-10 flex flex-col items-center gap-3">
-            <h2
+            <motion.h2
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center m-0"
               style={{
-                color: '#9CA3AF',
+                color: textColor,
                 lineHeight: 1.25,
                 fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                 letterSpacing: '-0.02em',
               }}
             >
               The platform starts here but doesn't stop
-            </h2>
-            <p
+            </motion.h2>
+            <motion.p
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center m-0"
               style={{
-                color: '#9CA3AF',
+                color: textColor,
                 lineHeight: 1.25,
                 fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                 letterSpacing: '-0.02em',
               }}
             >
               More advanced features below
-            </p>
+            </motion.p>
           </div>
         </div>
       </div>
