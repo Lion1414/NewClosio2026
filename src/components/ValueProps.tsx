@@ -165,12 +165,35 @@ const ValueProps: React.FC = () => {
             </div>
 
             <div className="mt-8 sm:mt-10 lg:mt-12">
-              <button
+              <motion.button
                 onClick={() => { window.scrollTo(0, 0); navigate('/schedule'); }}
-                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-black font-semibold rounded-xl hover:bg-white/90 transition-all duration-300 text-sm sm:text-base min-h-[44px]"
+                className="relative pl-3 pr-6 sm:pr-8 py-3 bg-white/95 hover:bg-white text-black font-semibold text-sm sm:text-base rounded-full overflow-visible z-30 group min-h-[52px] sm:min-h-[56px] backdrop-blur-sm"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                Book a Demo
-              </button>
+                <span className="flex items-center gap-3 sm:gap-4 relative z-10">
+                  <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-black rounded-full flex-shrink-0">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="translate-x-[1px]"
+                    >
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </div>
+                  <span className="font-medium">Book a Demo</span>
+                </span>
+              </motion.button>
             </div>
           </div>
 
