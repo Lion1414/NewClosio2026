@@ -687,24 +687,24 @@ const BottomGlow: React.FC<{ isDashboard: boolean }> = ({ isDashboard }) => (
       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-40 blur-3xl"
       style={{
         background: isDashboard
-          ? 'radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.4), transparent 70%)'
-          : 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.5), transparent 70%)',
+          ? 'radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.2), transparent 70%)'
+          : 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.15), transparent 70%)',
       }}
     />
     <div
       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-28 blur-2xl"
       style={{
         background: isDashboard
-          ? 'radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.3), transparent 70%)'
-          : 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.4), transparent 70%)',
+          ? 'radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.15), transparent 70%)'
+          : 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.12), transparent 70%)',
       }}
     />
     <div
       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-16 blur-xl"
       style={{
         background: isDashboard
-          ? 'radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.5), transparent 70%)'
-          : 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.3), transparent 70%)',
+          ? 'radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.25), transparent 70%)'
+          : 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.08), transparent 70%)',
       }}
     />
   </div>
