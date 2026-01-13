@@ -9,7 +9,6 @@ import MobileSection from './components/MobileSection';
 import DealBotAutomation from './components/DealBotAutomation';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import DealMap from './components/DealMap';
-import FullWidthVideo from './components/FullWidthVideo';
 import FeatureShowcase from './components/FeatureShowcase';
 import ContactSplit from './components/ContactSplit';
 import HoverFooter from './components/ui/hover-footer-demo';
@@ -74,8 +73,6 @@ function HomePage() {
         </SectionWrapper>
 
         <FeatureShowcase />
-
-        <FullWidthVideo />
 
         <SectionWrapper className="!overflow-visible !bg-black !bg-none">
           <ContactSplit />
