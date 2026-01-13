@@ -143,7 +143,7 @@ const PoweredBySection: React.FC = () => {
           </defs>
 
           <motion.path
-            d="M 360 0 L 180 0 L 180 180"
+            d="M 356 60 L 180 60 L 180 180"
             stroke="url(#beam-gradient-left)"
             strokeWidth="2"
             strokeLinecap="round"
@@ -171,7 +171,7 @@ const PoweredBySection: React.FC = () => {
           />
 
           <motion.path
-            d="M 640 0 L 820 0 L 820 180"
+            d="M 644 60 L 820 60 L 820 180"
             stroke="url(#beam-gradient-right)"
             strokeWidth="2"
             strokeLinecap="round"
@@ -259,7 +259,7 @@ const PoweredBySection: React.FC = () => {
               ease: 'easeInOut',
             }}
             style={{
-              offsetPath: 'path("M 360 0 L 180 0 L 180 180")',
+              offsetPath: 'path("M 356 60 L 180 60 L 180 180")',
             }}
           />
 
@@ -298,7 +298,7 @@ const PoweredBySection: React.FC = () => {
               ease: 'easeInOut',
             }}
             style={{
-              offsetPath: 'path("M 640 0 L 820 0 L 820 180")',
+              offsetPath: 'path("M 644 60 L 820 60 L 820 180")',
             }}
           />
         </svg>
