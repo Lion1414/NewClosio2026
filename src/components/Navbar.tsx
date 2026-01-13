@@ -339,7 +339,6 @@ const Navbar: React.FC<NavbarProps> = () => {
             >
               <Link
                 to="/schedule"
-                onClick={() => window.scrollTo(0, 0)}
                 className="demo-btn bg-white text-black font-medium whitespace-nowrap rounded-xl hover:bg-white/90"
                 style={{
                   padding: isScrolled ? '8px 20px' : '10px 24px',
@@ -441,7 +440,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               <div className="pt-4 px-4 space-y-3 border-t border-white/10 mt-4">
                 <Link
                   to="/schedule"
-                  onClick={() => { setMobileMenuOpen(false); window.scrollTo(0, 0); }}
+                  onClick={() => setMobileMenuOpen(false)}
                   className="demo-btn bg-white text-black font-medium w-full px-5 py-3 text-base rounded-xl hover:bg-white/90 transition-colors block text-center"
                   style={{ perspective: '600px' }}
                 >
