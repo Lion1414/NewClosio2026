@@ -167,7 +167,7 @@ const PrivacyPolicy = () => {
               <div className="text-white/70 leading-relaxed space-y-1">
                 <p className="font-semibold text-white">Closio</p>
                 <p>New York, New York</p>
-                <p>📧 support@closio.com</p>
+                <p>support@closio.com</p>
               </div>
             </section>
           </div>
