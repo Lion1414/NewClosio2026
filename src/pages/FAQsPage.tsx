@@ -157,20 +157,7 @@ const FAQsPage = () => {
 
   return (
     <div className="min-h-screen bg-black text-[#E8EEF5]">
-      {/* Hero Photo Section */}
-      <section className="bg-black pt-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative w-full h-[500px] rounded-3xl overflow-hidden">
-            <img
-              src="/faq_photo_for_top_hero_.png"
-              alt="Closio FAQ Hero"
-              className="w-full h-full object-contain"
-            />
-          </div>
-        </div>
-      </section>
-
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      <div className="max-w-6xl mx-auto px-6 py-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
