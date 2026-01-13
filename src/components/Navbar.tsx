@@ -205,7 +205,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     href={item.id === 'home' ? '/' : `#${item.id}`}
                     onClick={handleNavClick(item.id)}
                     className={`nav-underline-glow font-medium inline-flex items-center h-8 ${
-                      !isActive ? 'text-white/80 hover:text-white' : 'text-[#6ad4f2]'
+                      !isActive ? 'text-white/80 hover:text-white' : 'text-white'
                     } ${isActive ? 'is-active' : ''}`}
                     style={{
                       fontSize: isScrolled ? '14px' : '15px',
@@ -227,7 +227,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   onClick={() => setResourcesDropdownOpen(!resourcesDropdownOpen)}
                   className={`nav-underline-glow font-medium inline-flex items-center gap-1 h-8 ${
                     RESOURCES_ITEMS.some(item => item.path === location.pathname)
-                      ? 'text-[#6ad4f2] is-active'
+                      ? 'text-white is-active'
                       : 'text-white/80 hover:text-white'
                   }`}
                   style={{
@@ -261,7 +261,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                           onClick={() => { setResourcesDropdownOpen(false); window.scrollTo(0, 0); }}
                           className={`block px-4 py-2.5 text-sm transition-colors ${
                             location.pathname === item.path
-                              ? 'text-[#6ad4f2] bg-[#6ad4f2]/10'
+                              ? 'text-white bg-white/10'
                               : 'text-white/70 hover:text-white hover:bg-white/5'
                           }`}
                         >
@@ -283,7 +283,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   onClick={() => setLegalDropdownOpen(!legalDropdownOpen)}
                   className={`nav-underline-glow font-medium inline-flex items-center gap-1 h-8 ${
                     LEGAL_ITEMS.some(item => item.path === location.pathname)
-                      ? 'text-[#6ad4f2] is-active'
+                      ? 'text-white is-active'
                       : 'text-white/80 hover:text-white'
                   }`}
                   style={{
@@ -317,7 +317,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                           onClick={() => { setLegalDropdownOpen(false); window.scrollTo(0, 0); }}
                           className={`block px-4 py-2.5 text-sm transition-colors ${
                             location.pathname === item.path
-                              ? 'text-[#6ad4f2] bg-[#6ad4f2]/10'
+                              ? 'text-white bg-white/10'
                               : 'text-white/70 hover:text-white hover:bg-white/5'
                           }`}
                         >
@@ -389,7 +389,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   onClick={handleNavClick(item.id)}
                   className={`w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
                     activeSection === item.id
-                      ? 'bg-[#6ad4f2]/20 text-[#6ad4f2]'
+                      ? 'bg-white/20 text-white'
                       : 'text-gray-300 hover:bg-white/5 hover:text-white'
                   }`}
                 >
@@ -408,7 +408,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     onClick={() => { setMobileMenuOpen(false); window.scrollTo(0, 0); }}
                     className={`w-full block text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
                       location.pathname === item.path
-                        ? 'bg-[#6ad4f2]/20 text-[#6ad4f2]'
+                        ? 'bg-white/20 text-white'
                         : 'text-gray-300 hover:bg-white/5 hover:text-white'
                     }`}
                   >
@@ -428,7 +428,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     onClick={() => { setMobileMenuOpen(false); window.scrollTo(0, 0); }}
                     className={`w-full block text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
                       location.pathname === item.path
-                        ? 'bg-[#6ad4f2]/20 text-[#6ad4f2]'
+                        ? 'bg-white/20 text-white'
                         : 'text-gray-300 hover:bg-white/5 hover:text-white'
                     }`}
                   >

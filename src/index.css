@@ -1135,7 +1135,7 @@ html, body {
 
 .nav-underline-glow.is-active::before {
   background: rgba(45, 55, 75, 0.35);
-  border: 1px solid rgba(120, 130, 155, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   opacity: 1;
   box-shadow:
     0 0 1px rgba(255, 255, 255, 0.1) inset,
