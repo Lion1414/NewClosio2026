@@ -161,7 +161,7 @@ export default function ClosioAccountTypesSection() {
   const c = CONTENT[active];
 
   return (
-    <section className="relative w-full bg-black py-20 sm:py-24">
+    <section className="relative w-full bg-black pt-12 pb-20 sm:pt-14 sm:pb-24">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black to-transparent" />
 
       <div className="pointer-events-none absolute inset-0 opacity-[0.35]">

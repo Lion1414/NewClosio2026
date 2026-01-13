@@ -74,11 +74,11 @@ function HomePage() {
           <TestimonialSection />
         </SectionWrapper>
 
+        <FeatureShowcase />
+
         <MissionStatement />
 
         <FullWidthVideo />
-
-        <FeatureShowcase />
 
         <SectionWrapper className="!overflow-visible !bg-black !bg-none">
           <ContactSplit />
