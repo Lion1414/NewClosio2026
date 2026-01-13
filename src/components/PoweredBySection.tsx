@@ -1,10 +1,47 @@
 import { motion } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
 
 const PoweredBySection: React.FC = () => {
+  const chipRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [lines, setLines] = useState<Array<{ x1: number; y1: number; x2: number; y2: number }>>([]);
+
+  useEffect(() => {
+    const calculateLines = () => {
+      if (!chipRef.current || !containerRef.current) return;
+
+      const chipRect = chipRef.current.getBoundingClientRect();
+      const containerRect = containerRef.current.getBoundingClientRect();
+
+      const chipCenterX = chipRect.width / 2;
+      const chipBottom = chipRect.height;
+
+      const lineDistance = 160;
+
+      const newLines = [
+        { x1: chipCenterX - 80, y1: chipBottom, x2: chipCenterX - 80, y2: chipBottom + lineDistance },
+        { x1: chipCenterX, y1: chipBottom, x2: chipCenterX, y2: chipBottom + lineDistance },
+        { x1: chipCenterX + 80, y1: chipBottom, x2: chipCenterX + 80, y2: chipBottom + lineDistance },
+      ];
+
+      setLines(newLines);
+    };
+
+    calculateLines();
+    window.addEventListener('resize', calculateLines);
+    const timeout = setTimeout(calculateLines, 100);
+
+    return () => {
+      window.removeEventListener('resize', calculateLines);
+      clearTimeout(timeout);
+    };
+  }, []);
+
   return (
-    <div className="relative w-full py-20 flex flex-col items-center justify-center overflow-visible">
+    <div ref={containerRef} className="relative w-full py-20 flex flex-col items-center justify-center overflow-visible">
       <div className="relative">
         <motion.div
+          ref={chipRef}
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -86,6 +123,47 @@ const PoweredBySection: React.FC = () => {
             }}
           />
         </motion.div>
+
+        <svg
+          className="absolute pointer-events-none"
+          style={{
+            left: 0,
+            top: 0,
+            width: '280px',
+            height: '280px',
+            overflow: 'visible',
+          }}
+        >
+          <defs>
+            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="rgba(128, 128, 128, 0.5)" />
+              <stop offset="100%" stopColor="rgba(128, 128, 128, 0.1)" />
+            </linearGradient>
+            <filter id="lineGlow">
+              <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          {lines.map((line, index) => (
+            <motion.line
+              key={index}
+              x1={line.x1}
+              y1={line.y1}
+              x2={line.x2}
+              y2={line.y2}
+              stroke="url(#lineGradient)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              filter="url(#lineGlow)"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 1.2, delay: 0.8 + index * 0.15, ease: "easeOut" }}
+            />
+          ))}
+        </svg>
       </div>
     </div>
   );
