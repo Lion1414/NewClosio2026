@@ -10,17 +10,16 @@ const AdditionalFeatures: React.FC = () => {
             position: 'relative',
             width: 'min(1100px, 92vw)',
             padding: '110px 28px 90px',
-            borderRadius: '80px 80px 0 0',
+            borderRadius: '80px',
             textAlign: 'center',
             overflow: 'visible',
-            background: 'rgba(20, 20, 20, 0.6)',
           }}
         >
           {/* Left Decorative Rectangle */}
           <div
             className="absolute hidden md:block"
             style={{
-              left: '-24px',
+              left: '-48px',
               top: '50%',
               transform: 'translateY(-50%)',
               width: '16px',
@@ -34,7 +33,7 @@ const AdditionalFeatures: React.FC = () => {
           <div
             className="absolute hidden md:block"
             style={{
-              left: '-24px',
+              left: '-48px',
               top: '50%',
               transform: 'translateY(calc(-50% - 200px))',
               width: '12px',
@@ -50,7 +49,7 @@ const AdditionalFeatures: React.FC = () => {
           <div
             className="absolute hidden md:block"
             style={{
-              right: '-24px',
+              right: '-48px',
               top: '50%',
               transform: 'translateY(-50%)',
               width: '16px',
@@ -64,7 +63,7 @@ const AdditionalFeatures: React.FC = () => {
           <div
             className="absolute hidden md:block"
             style={{
-              right: '-24px',
+              right: '-48px',
               top: '50%',
               transform: 'translateY(calc(-50% + 200px))',
               width: '12px',
@@ -80,17 +79,16 @@ const AdditionalFeatures: React.FC = () => {
               content: "";
               position: absolute;
               top: -1px;
-              bottom: -80px;
+              bottom: -1px;
               left: -20px;
               right: -20px;
-              border-radius: 80px;
+              border-radius: inherit;
               background: linear-gradient(
                 180deg,
                 rgba(255, 255, 255, 0.2) 0%,
-                rgba(255, 255, 255, 0.08) 15%,
-                rgba(255, 255, 255, 0.03) 30%,
-                rgba(255, 255, 255, 0.01) 50%,
-                rgba(255, 255, 255, 0.00) 70%
+                rgba(255, 255, 255, 0.08) 20%,
+                rgba(255, 255, 255, 0.02) 40%,
+                rgba(255, 255, 255, 0.00) 60%
               );
               filter: blur(4px);
               opacity: 0.65;
