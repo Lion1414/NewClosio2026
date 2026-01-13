@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import TypewriterHeading from '../components/TypewriterHeading';
 
 const PrivacyPolicy = () => {
   useEffect(() => {
@@ -14,7 +15,7 @@ const PrivacyPolicy = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-8">Privacy Policy</h1>
+          <TypewriterHeading text="Privacy Policy" />
 
           <div className="text-white/60 mb-4">
             Last Updated: January 5, 2026

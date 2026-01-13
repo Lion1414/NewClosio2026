@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import TypewriterHeading from '../components/TypewriterHeading';
 
 const Schedule = () => {
   useLayoutEffect(() => {
@@ -37,9 +38,7 @@ const Schedule = () => {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            See CLOSIO in Action
-          </h1>
+          <TypewriterHeading text="See CLOSIO in Action" className="text-center lg:text-6xl" />
           <p className="text-white/60 max-w-2xl mx-auto text-lg leading-relaxed">
             Book a personalized demo with our team. We'll walk you through the platform
             and show you how CLOSIO can transform your insurance agency operations.

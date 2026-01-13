@@ -1,46 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useRef } from 'react';
-
-const TypewriterHeading: React.FC<{ text: string }> = ({ text }) => {
-  const [displayText, setDisplayText] = useState('');
-  const [showCursor, setShowCursor] = useState(true);
-  const ref = useRef<HTMLHeadingElement>(null);
-  const isInView = useInView(ref, { once: false, margin: '0px' });
-
-  useEffect(() => {
-    setDisplayText('');
-    setShowCursor(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    setDisplayText('');
-    setShowCursor(true);
-    let currentIndex = 0;
-
-    const interval = setInterval(() => {
-      if (currentIndex <= text.length) {
-        setDisplayText(text.slice(0, currentIndex));
-        currentIndex++;
-      } else {
-        clearInterval(interval);
-        setTimeout(() => setShowCursor(false), 500);
-      }
-    }, 60);
-
-    return () => clearInterval(interval);
-  }, [text, isInView]);
-
-  return (
-    <h1 ref={ref} className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-white/40 tracking-tight">
-      {displayText}
-      {showCursor && <span className="animate-pulse">|</span>}
-    </h1>
-  );
-};
+import TypewriterHeading from '../components/TypewriterHeading';
 
 interface FAQItem {
   question: string;
@@ -169,7 +131,7 @@ const FAQsPage = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="text-center mb-16">
-            <TypewriterHeading text="Frequently Asked Questions" />
+            <TypewriterHeading text="Frequently Asked Questions" className="lg:text-7xl" />
             <p className="text-white/50 text-lg mt-4 max-w-2xl mx-auto">
               Find answers to common questions about Closio
             </p>

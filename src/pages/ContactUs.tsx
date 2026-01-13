@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
+import TypewriterHeading from '../components/TypewriterHeading';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -61,7 +62,7 @@ const ContactUs = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-8 text-center">Contact Us</h1>
+          <TypewriterHeading text="Contact Us" className="text-center" />
           <p className="text-white/70 text-center mb-16 max-w-2xl mx-auto text-lg">
             Have a question or need support? We're here to help. Send us a message and we'll get back to you as soon as possible.
           </p>
