@@ -10,7 +10,7 @@ const AdditionalFeatures: React.FC = () => {
             position: 'relative',
             width: 'min(1100px, 92vw)',
             padding: '110px 28px 90px',
-            borderRadius: '80px',
+            borderRadius: '80px 80px 0 0',
             textAlign: 'center',
             overflow: 'visible',
             background: 'rgba(20, 20, 20, 0.6)',
@@ -20,7 +20,7 @@ const AdditionalFeatures: React.FC = () => {
           <div
             className="absolute hidden md:block"
             style={{
-              left: '-48px',
+              left: '-24px',
               top: '50%',
               transform: 'translateY(-50%)',
               width: '16px',
@@ -34,7 +34,7 @@ const AdditionalFeatures: React.FC = () => {
           <div
             className="absolute hidden md:block"
             style={{
-              left: '-48px',
+              left: '-24px',
               top: '50%',
               transform: 'translateY(calc(-50% - 200px))',
               width: '12px',
@@ -50,7 +50,7 @@ const AdditionalFeatures: React.FC = () => {
           <div
             className="absolute hidden md:block"
             style={{
-              right: '-48px',
+              right: '-24px',
               top: '50%',
               transform: 'translateY(-50%)',
               width: '16px',
@@ -64,7 +64,7 @@ const AdditionalFeatures: React.FC = () => {
           <div
             className="absolute hidden md:block"
             style={{
-              right: '-48px',
+              right: '-24px',
               top: '50%',
               transform: 'translateY(calc(-50% + 200px))',
               width: '12px',
@@ -83,7 +83,7 @@ const AdditionalFeatures: React.FC = () => {
               bottom: -1px;
               left: -20px;
               right: -20px;
-              border-radius: inherit;
+              border-radius: 80px 80px 0 0;
               background: linear-gradient(
                 180deg,
                 rgba(255, 255, 255, 0.2) 0%,
