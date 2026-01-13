@@ -13,15 +13,22 @@ const PoweredBySection: React.FC = () => {
       const chipRect = chipRef.current.getBoundingClientRect();
       const containerRect = containerRef.current.getBoundingClientRect();
 
-      const chipCenterX = chipRect.width / 2;
+      const svgOffsetX = 120;
+      const chipCenterX = chipRect.width / 2 + svgOffsetX;
+      const chipCenterY = chipRect.height / 2;
       const chipBottom = chipRect.height;
+      const chipLeft = svgOffsetX;
+      const chipRight = chipRect.width + svgOffsetX;
 
-      const lineDistance = 160;
+      const horizontalExtension = 120;
+      const verticalDistance = 180;
 
       const newLines = [
-        { x1: chipCenterX - 80, y1: chipBottom, x2: chipCenterX - 80, y2: chipBottom + lineDistance },
-        { x1: chipCenterX, y1: chipBottom, x2: chipCenterX, y2: chipBottom + lineDistance },
-        { x1: chipCenterX + 80, y1: chipBottom, x2: chipCenterX + 80, y2: chipBottom + lineDistance },
+        { x1: chipLeft, y1: chipCenterY, x2: chipLeft - horizontalExtension, y2: chipCenterY },
+        { x1: chipLeft - horizontalExtension, y1: chipCenterY, x2: chipLeft - horizontalExtension, y2: chipCenterY + verticalDistance },
+        { x1: chipRight, y1: chipCenterY, x2: chipRight + horizontalExtension, y2: chipCenterY },
+        { x1: chipRight + horizontalExtension, y1: chipCenterY, x2: chipRight + horizontalExtension, y2: chipCenterY + verticalDistance },
+        { x1: chipCenterX, y1: chipBottom, x2: chipCenterX, y2: chipBottom + verticalDistance },
       ];
 
       setLines(newLines);
@@ -127,10 +134,10 @@ const PoweredBySection: React.FC = () => {
         <svg
           className="absolute pointer-events-none"
           style={{
-            left: 0,
+            left: '-120px',
             top: 0,
-            width: '280px',
-            height: '280px',
+            width: '520px',
+            height: '350px',
             overflow: 'visible',
           }}
         >
@@ -148,20 +155,31 @@ const PoweredBySection: React.FC = () => {
             </filter>
           </defs>
           {lines.map((line, index) => (
-            <motion.line
-              key={index}
-              x1={line.x1}
-              y1={line.y1}
-              x2={line.x2}
-              y2={line.y2}
-              stroke="url(#lineGradient)"
-              strokeWidth="2"
-              strokeLinecap="round"
-              filter="url(#lineGlow)"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 1.2, delay: 0.8 + index * 0.15, ease: "easeOut" }}
-            />
+            <g key={index}>
+              <motion.line
+                x1={line.x1}
+                y1={line.y1}
+                x2={line.x2}
+                y2={line.y2}
+                stroke="url(#lineGradient)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                filter="url(#lineGlow)"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 1.2, delay: 0.8 + index * 0.15, ease: "easeOut" }}
+              />
+              <motion.circle
+                cx={line.x2}
+                cy={line.y2}
+                r="4"
+                fill="rgba(128, 128, 128, 0.6)"
+                filter="url(#lineGlow)"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.4, delay: 2 + index * 0.15, ease: "easeOut" }}
+              />
+            </g>
           ))}
         </svg>
       </div>
