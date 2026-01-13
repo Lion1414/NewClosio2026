@@ -110,13 +110,7 @@ const OverlappingBanner: React.FC = () => {
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
           >
-            From <span className="text-[#6ad4f2] font-medium">application</span> to{' '}
-            <span className="text-[#6ad4f2] font-medium">commission check</span>,{' '}
-            <span className="relative inline-block">
-              <span className="font-semibold text-white">Closio</span>
-              <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#6ad4f2]"></span>
-            </span>{' '}
-            gives you complete visibility over every deal. No more spreadsheets. No more guessing.
+            From application to commission check, Closio gives you complete visibility over every deal. No more spreadsheets. No more guessing.
           </motion.p>
         </div>
       </motion.div>
