@@ -23,8 +23,8 @@ const faqs: FAQItem[] = [
   },
   {
     category: 'General',
-    question: 'Is there a free trial available?',
-    answer: 'Yes. We provide a 14-day trial with complete platform access. No credit card required to start, no features locked. Test every tool, import your data, and invite your team to experience how Closio transforms your workflow before making any commitment.'
+    question: 'Is Closio free to use?',
+    answer: 'Yes. Closio is currently free to use with complete platform access. No credit card required, no features locked. Import your data, invite your team, and experience how Closio transforms your workflow.'
   },
   {
     category: 'General',
@@ -64,7 +64,7 @@ const faqs: FAQItem[] = [
   {
     category: 'Security',
     question: 'How secure is my data?',
-    answer: 'Your data is encrypted at rest using AES-256 and in transit via TLS 1.3. Closio is SOC 2 Type II certified, undergoes annual third-party security audits, and stores all data in geo-redundant cloud infrastructure with automated backups every 6 hours. We maintain 99.9% uptime SLA for enterprise accounts.'
+    answer: 'Your data is encrypted at rest using AES-256 and in transit via TLS 1.3. Closio is SOC 2 Type II certified, undergoes annual third-party security audits, and stores all data in geo-redundant cloud infrastructure with automated backups every 6 hours. We maintain 99.9% uptime SLA.'
   },
   {
     category: 'Security',
@@ -74,32 +74,17 @@ const faqs: FAQItem[] = [
   {
     category: 'Security',
     question: 'Is Closio HIPAA compliant?',
-    answer: 'Yes. Closio meets HIPAA requirements for handling protected health information. We sign Business Associate Agreements (BAAs) with enterprise customers, maintain comprehensive audit logs, and implement administrative, physical, and technical safeguards required by healthcare data protection regulations.'
-  },
-  {
-    category: 'Billing',
-    question: 'What payment methods do you accept?',
-    answer: 'All major credit cards (Visa, Mastercard, Amex, Discover), ACH direct debit, and wire transfer for annual contracts. International customers can pay via bank transfer with multi-currency support. All transactions are processed through Stripe with PCI-DSS Level 1 compliance.'
-  },
-  {
-    category: 'Billing',
-    question: 'What are the pricing plans?',
-    answer: 'Pricing scales with your team size. Solo agents start at $49/month. Team plans begin at $149/month for up to 10 users. Enterprise pricing for organizations with 50+ users includes custom integrations, dedicated support, and white-label options. Annual plans receive 20% discount. No hidden fees or per-deal charges.'
-  },
-  {
-    category: 'Billing',
-    question: 'Can I cancel my subscription anytime?',
-    answer: 'Yes. Cancel anytime with no penalties or cancellation fees. Your access continues until the end of your current billing period. Export all your data before leaving. We also offer a 30-day money-back guarantee—if Closio doesn\'t meet your needs within the first month, we\'ll refund your payment in full.'
+    answer: 'Yes. Closio meets HIPAA requirements for handling protected health information. We sign Business Associate Agreements (BAAs) with customers as needed, maintain comprehensive audit logs, and implement administrative, physical, and technical safeguards required by healthcare data protection regulations.'
   },
   {
     category: 'Support',
     question: 'What kind of support do you offer?',
-    answer: 'In-app live chat during business hours (9 AM - 6 PM ET), email support with 4-hour response time, and phone support for premium plans. Access our knowledge base with 200+ articles, video tutorials, and weekly webinars. Enterprise customers receive a dedicated account manager and priority support with 1-hour response SLA.'
+    answer: 'In-app live chat during business hours (9 AM - 6 PM ET), email support with 4-hour response time, and phone support. Access our knowledge base with 200+ articles, video tutorials, and weekly webinars.'
   },
   {
     category: 'Support',
     question: 'Do you provide training for my team?',
-    answer: 'All plans include unlimited access to Closio Academy—our library of training videos, certification courses, and best practice guides. Premium and enterprise plans receive live onboarding sessions, screen-share training for your entire team, and custom workflow consulting to optimize your agency\'s specific processes.'
+    answer: 'All users have unlimited access to Closio Academy—our library of training videos, certification courses, and best practice guides. We also provide live onboarding sessions, screen-share training for your entire team, and custom workflow consulting to optimize your agency\'s specific processes.'
   },
   {
     category: 'Support',
