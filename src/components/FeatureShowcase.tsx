@@ -258,15 +258,6 @@ export default function ClosioAccountTypesSection() {
             >
               <div className="flex items-center justify-between">
                 <div className="text-white/70">{card.icon}</div>
-
-                <div
-                  className={cn(
-                    "h-2 w-2 rounded-full transition",
-                    active === card.key
-                      ? "bg-white/90"
-                      : "bg-white/20 group-hover:bg-white/40"
-                  )}
-                />
               </div>
 
               <p className="mt-8 text-xs font-medium uppercase tracking-wider text-white/40">
