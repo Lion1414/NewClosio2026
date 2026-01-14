@@ -100,8 +100,12 @@ const PoweredBySection: React.FC = () => {
               <div className="text-sm font-medium tracking-[0.2em] text-gray-400 mb-1">
                 POWERED BY
               </div>
-              <div className="text-2xl font-bold tracking-tight text-gray-300">
-                CLOSIO
+              <div className="flex justify-center items-center">
+                <img
+                  src="/closio_main_logo.png"
+                  alt="Closio"
+                  className="h-8 w-auto"
+                />
               </div>
             </motion.div>
           </div>
