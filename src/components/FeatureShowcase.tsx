@@ -339,26 +339,6 @@ export default function ClosioAccountTypesSection() {
                   </motion.li>
                 ))}
               </ul>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 1.5 }}
-                className="mt-6 flex flex-wrap items-center gap-3"
-              >
-                <a
-                  href="#"
-                  className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black transition hover:opacity-90"
-                >
-                  Explore account types
-                </a>
-                <a
-                  href="#"
-                  className="inline-flex items-center justify-center rounded-full border border-white/15 bg-transparent px-5 py-2.5 text-sm font-medium text-white/80 transition hover:bg-white/[0.04] hover:text-white"
-                >
-                  See how it scales →
-                </a>
-              </motion.div>
             </div>
           </motion.div>
         </motion.div>
