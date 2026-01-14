@@ -26,6 +26,30 @@ html, body {
   }
 }
 
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6b7280;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #6b7280 #000000;
+}
+
 /* Performance optimizations */
 * {
   -webkit-font-smoothing: antialiased;
