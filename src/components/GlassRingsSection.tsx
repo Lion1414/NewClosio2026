@@ -95,7 +95,15 @@ const GlassRingsSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-12 items-start">
 
-          <div className="relative z-10 space-y-6 text-center lg:text-left">
+          {/* Shield IO - First on mobile, center on desktop */}
+          <div className="relative flex items-center justify-center lg:px-8 order-1 lg:order-2">
+            <div className="w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] lg:w-[350px] lg:h-[350px] flex items-center justify-center relative overflow-hidden">
+              <ShieldIO />
+            </div>
+          </div>
+
+          {/* Text content - Second on mobile, first on desktop */}
+          <div className="relative z-10 space-y-6 text-center lg:text-left order-2 lg:order-1">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -109,7 +117,7 @@ const GlassRingsSection = () => {
             </motion.div>
 
             <div className="space-y-2">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-[1.1] tracking-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight">
                 <span className="block text-white min-h-[1.2em]">
                   <TypewriterText
                     text="Built by Experts"
@@ -133,20 +141,15 @@ const GlassRingsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2, delay: 0.3 }}
-              className="text-sm sm:text-base text-white/50 leading-relaxed"
+              className="text-sm sm:text-base text-white/50 leading-relaxed max-w-md mx-auto lg:mx-0"
             >
               CLOSIO is powered by a dedicated team of industry professionals committed to delivering
               enterprise-grade security and continuous innovation. Your data and success are our top priorities.
             </motion.p>
           </div>
 
-          <div className="relative flex items-center justify-center lg:px-8">
-            <div className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] lg:w-[350px] lg:h-[350px] flex items-center justify-center relative overflow-hidden">
-              <ShieldIO />
-            </div>
-          </div>
-
-          <div className="space-y-3 sm:space-y-4">
+          {/* Feature items - Third on mobile, third on desktop */}
+          <div className="space-y-3 sm:space-y-4 order-3">
             {featureItems.map((item, index) => (
               <motion.div
                 key={item.title}

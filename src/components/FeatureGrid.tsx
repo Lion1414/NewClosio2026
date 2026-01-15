@@ -381,96 +381,116 @@ const CommissionIcon: React.FC = () => (
 );
 
 const DashboardIcon: React.FC = () => (
-  <svg viewBox="0 0 200 200" className="w-full h-full">
+  <svg viewBox="0 0 240 180" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
     <defs>
       <linearGradient id="dashPanel1" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#1f2937" stopOpacity="0.08" />
-        <stop offset="100%" stopColor="#111827" stopOpacity="0.04" />
+        <stop offset="0%" stopColor="#374151" stopOpacity="0.18" />
+        <stop offset="100%" stopColor="#1f2937" stopOpacity="0.08" />
       </linearGradient>
       <linearGradient id="dashPanel2" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#374151" stopOpacity="0.1" />
-        <stop offset="100%" stopColor="#1f2937" stopOpacity="0.05" />
+        <stop offset="0%" stopColor="#4b5563" stopOpacity="0.2" />
+        <stop offset="100%" stopColor="#374151" stopOpacity="0.1" />
       </linearGradient>
       <linearGradient id="dashAccent" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#7c3aed" stopOpacity="0.15" />
-        <stop offset="100%" stopColor="#6366f1" stopOpacity="0.08" />
+        <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.25" />
+        <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.15" />
+      </linearGradient>
+      <linearGradient id="chartGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.4" />
+        <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.1" />
       </linearGradient>
       <filter id="dashShadow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="4" />
-        <feOffset dx="0" dy="2" />
+        <feGaussianBlur stdDeviation="5" />
+        <feOffset dx="0" dy="3" />
         <feComponentTransfer>
-          <feFuncA type="linear" slope="0.15" />
+          <feFuncA type="linear" slope="0.25" />
         </feComponentTransfer>
         <feMerge>
           <feMergeNode />
           <feMergeNode in="SourceGraphic" />
         </feMerge>
       </filter>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
     </defs>
 
-    <g opacity="0.25">
-      <line x1="30" y1="165" x2="175" y2="165" stroke="#1f2937" strokeWidth="1" strokeOpacity="0.2" />
-      <line x1="30" y1="135" x2="175" y2="135" stroke="#1f2937" strokeWidth="0.8" strokeOpacity="0.15" strokeDasharray="3,3" />
-      <line x1="30" y1="105" x2="175" y2="105" stroke="#1f2937" strokeWidth="0.8" strokeOpacity="0.15" strokeDasharray="3,3" />
-      <line x1="30" y1="75" x2="175" y2="75" stroke="#1f2937" strokeWidth="0.8" strokeOpacity="0.15" strokeDasharray="3,3" />
+    {/* Grid lines background */}
+    <g opacity="0.3">
+      <line x1="25" y1="150" x2="215" y2="150" stroke="#4b5563" strokeWidth="1.2" strokeOpacity="0.25" />
+      <line x1="25" y1="120" x2="215" y2="120" stroke="#4b5563" strokeWidth="1" strokeOpacity="0.18" strokeDasharray="4,4" />
+      <line x1="25" y1="90" x2="215" y2="90" stroke="#4b5563" strokeWidth="1" strokeOpacity="0.18" strokeDasharray="4,4" />
+      <line x1="25" y1="60" x2="215" y2="60" stroke="#4b5563" strokeWidth="1" strokeOpacity="0.18" strokeDasharray="4,4" />
+    </g>
+
+    {/* Top stat cards */}
+    <g filter="url(#dashShadow)">
+      <rect x="10" y="15" width="85" height="55" rx="16" fill="url(#dashPanel1)" stroke="#4b5563" strokeWidth="1.2" strokeOpacity="0.15" />
+      <rect x="18" y="26" width="35" height="5" rx="2.5" fill="#6b7280" opacity="0.3" />
+      <rect x="18" y="35" width="50" height="4" rx="2" fill="#9ca3af" opacity="0.25" />
+      <rect x="18" y="43" width="30" height="3.5" rx="1.75" fill="#9ca3af" opacity="0.2" />
+      <circle cx="78" cy="45" r="12" fill="#8b5cf6" opacity="0.2" filter="url(#glow)" />
+      <text x="78" y="50" fontSize="10" fill="#a78bfa" opacity="0.7" textAnchor="middle" fontWeight="700">A</text>
     </g>
 
     <g filter="url(#dashShadow)">
-      <rect x="15" y="25" width="70" height="50" rx="14" fill="url(#dashPanel1)" stroke="#1f2937" strokeWidth="0.8" strokeOpacity="0.1" />
-      <rect x="22" y="35" width="30" height="4" rx="2" fill="#374151" opacity="0.2" />
-      <rect x="22" y="43" width="42" height="3" rx="1.5" fill="#4b5563" opacity="0.15" />
-      <rect x="22" y="50" width="25" height="3" rx="1.5" fill="#4b5563" opacity="0.12" />
-      <circle cx="70" cy="52" r="10" fill="#7c3aed" opacity="0.1" />
-      <text x="70" y="56" fontSize="8" fill="#6b7280" opacity="0.6" textAnchor="middle" fontWeight="600">A</text>
+      <rect x="105" y="15" width="125" height="55" rx="16" fill="url(#dashPanel2)" stroke="#4b5563" strokeWidth="1.2" strokeOpacity="0.18" />
+      <rect x="115" y="26" width="42" height="6" rx="3" fill="#9ca3af" opacity="0.32" />
+      <rect x="115" y="37" width="65" height="5" rx="2.5" fill="#9ca3af" opacity="0.28" />
+      <rect x="115" y="46" width="38" height="4" rx="2" fill="#9ca3af" opacity="0.22" />
+      <circle cx="208" cy="45" r="14" fill="#7c3aed" opacity="0.25" filter="url(#glow)" />
+      <text x="208" y="51" fontSize="11" fill="#a78bfa" opacity="0.75" textAnchor="middle" fontWeight="700">B</text>
     </g>
 
+    {/* Main chart panel */}
     <g filter="url(#dashShadow)">
-      <rect x="95" y="25" width="90" height="50" rx="14" fill="url(#dashPanel2)" stroke="#1f2937" strokeWidth="0.9" strokeOpacity="0.12" />
-      <rect x="105" y="35" width="35" height="5" rx="2.5" fill="#4b5563" opacity="0.22" />
-      <rect x="105" y="45" width="52" height="4" rx="2" fill="#6b7280" opacity="0.18" />
-      <rect x="105" y="53" width="30" height="3.5" rx="1.75" fill="#6b7280" opacity="0.15" />
-      <circle cx="168" cy="52" r="12" fill="#6366f1" opacity="0.12" />
-      <text x="168" y="57" fontSize="9" fill="#6b7280" opacity="0.65" textAnchor="middle" fontWeight="600">B</text>
-    </g>
+      <rect x="10" y="80" width="220" height="95" rx="20" fill="url(#dashAccent)" stroke="#8b5cf6" strokeWidth="1.5" strokeOpacity="0.25" />
 
-    <g filter="url(#dashShadow)">
-      <rect x="15" y="90" width="170" height="90" rx="18" fill="url(#dashAccent)" stroke="#7c3aed" strokeWidth="1" strokeOpacity="0.15" />
-
-      <g opacity="0.3">
-        <rect x="35" y="145" width="12" height="25" rx="4" fill="#374151" opacity="0.4" />
-        <rect x="55" y="130" width="12" height="40" rx="4" fill="#374151" opacity="0.45" />
-        <rect x="75" y="118" width="12" height="52" rx="4" fill="#374151" opacity="0.5" />
-        <rect x="95" y="135" width="12" height="35" rx="4" fill="#374151" opacity="0.45" />
-        <rect x="115" y="125" width="12" height="45" rx="4" fill="#374151" opacity="0.48" />
-        <rect x="135" y="140" width="12" height="30" rx="4" fill="#374151" opacity="0.42" />
-        <rect x="155" y="120" width="12" height="50" rx="4" fill="#374151" opacity="0.5" />
+      {/* Chart bars with gradient */}
+      <g opacity="0.45">
+        <rect x="32" y="135" width="15" height="28" rx="5" fill="url(#chartGlow)" filter="url(#glow)" />
+        <rect x="57" y="118" width="15" height="45" rx="5" fill="url(#chartGlow)" filter="url(#glow)" />
+        <rect x="82" y="105" width="15" height="58" rx="5" fill="url(#chartGlow)" filter="url(#glow)" />
+        <rect x="107" y="120" width="15" height="43" rx="5" fill="url(#chartGlow)" filter="url(#glow)" />
+        <rect x="132" y="110" width="15" height="53" rx="5" fill="url(#chartGlow)" filter="url(#glow)" />
+        <rect x="157" y="125" width="15" height="38" rx="5" fill="url(#chartGlow)" filter="url(#glow)" />
+        <rect x="182" y="112" width="15" height="51" rx="5" fill="url(#chartGlow)" filter="url(#glow)" />
       </g>
 
+      {/* Trend line with glow */}
       <polyline
-        points="41,140 61,125 81,112 101,130 121,120 141,135 161,115"
+        points="39,132 64,115 89,102 114,117 139,107 164,122 189,109"
         fill="none"
-        stroke="#6366f1"
-        strokeWidth="2.5"
-        opacity="0.4"
+        stroke="#a78bfa"
+        strokeWidth="3"
+        opacity="0.6"
         strokeLinecap="round"
         strokeLinejoin="round"
+        filter="url(#glow)"
       />
 
-      <g opacity="0.4">
-        <circle cx="41" cy="140" r="3.5" fill="#7c3aed" />
-        <circle cx="61" cy="125" r="3.5" fill="#7c3aed" />
-        <circle cx="81" cy="112" r="3.5" fill="#7c3aed" />
-        <circle cx="101" cy="130" r="3.5" fill="#7c3aed" />
-        <circle cx="121" cy="120" r="3.5" fill="#7c3aed" />
-        <circle cx="141" cy="135" r="3.5" fill="#7c3aed" />
-        <circle cx="161" cy="115" r="3.5" fill="#7c3aed" />
+      {/* Data points */}
+      <g opacity="0.6" filter="url(#glow)">
+        <circle cx="39" cy="132" r="4.5" fill="#c4b5fd" />
+        <circle cx="64" cy="115" r="4.5" fill="#c4b5fd" />
+        <circle cx="89" cy="102" r="4.5" fill="#c4b5fd" />
+        <circle cx="114" cy="117" r="4.5" fill="#c4b5fd" />
+        <circle cx="139" cy="107" r="4.5" fill="#c4b5fd" />
+        <circle cx="164" cy="122" r="4.5" fill="#c4b5fd" />
+        <circle cx="189" cy="109" r="4.5" fill="#c4b5fd" />
       </g>
 
-      <text x="25" y="105" fontSize="7" fill="#6b7280" opacity="0.6" fontWeight="500">Analytics View</text>
+      {/* Chart label */}
+      <text x="20" y="95" fontSize="8" fill="#a78bfa" opacity="0.7" fontWeight="600">Performance Analytics</text>
 
-      <g opacity="0.25">
-        <rect x="145" y="100" width="28" height="3" rx="1.5" fill="#6b7280" />
-        <rect x="145" y="107" width="20" height="2.5" rx="1.25" fill="#6b7280" />
+      {/* Legend items */}
+      <g opacity="0.35">
+        <rect x="170" y="88" width="35" height="3.5" rx="1.75" fill="#9ca3af" />
+        <rect x="170" y="95" width="25" height="3" rx="1.5" fill="#9ca3af" />
       </g>
     </g>
   </svg>
@@ -688,86 +708,50 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, gridArea }) =
   const Icon = feature.icon;
   const staggerDelay = index * 0.15;
   const isDashboard = feature.title === '/ Dashboard Analytics';
-
-  const layoutTemplates = {
-    0: {
-      artPosition: 'absolute left-0 top-0 bottom-0 w-[40%]',
-      artOpacity: 'opacity-[0.25]',
-      contentPosition: 'absolute right-0 top-0 bottom-0 w-[60%] flex items-center justify-end pr-10',
-      contentMaxWidth: 'max-w-full',
-      contentAlign: 'items-end text-right',
-      artGradient: '',
-    },
-    1: {
-      artPosition: 'absolute right-0 top-0 bottom-0 w-[40%]',
-      artOpacity: 'opacity-[0.25]',
-      contentPosition: 'absolute left-0 top-0 bottom-0 w-[60%] flex items-center justify-start pl-10',
-      contentMaxWidth: 'max-w-full',
-      contentAlign: 'items-start text-left',
-      artGradient: '',
-    },
-    2: {
-      artPosition: 'absolute bottom-0 left-0 right-0 h-[45%]',
-      artOpacity: 'opacity-[0.28]',
-      contentPosition: 'absolute top-0 left-0 right-0 h-[55%] flex items-start justify-start pt-10 px-10',
-      contentMaxWidth: 'max-w-[85%]',
-      contentAlign: 'items-start text-left',
-      artGradient: '',
-    },
-    3: {
-      artPosition: 'absolute top-0 left-0 right-0 h-[40%]',
-      artOpacity: 'opacity-[0.30]',
-      contentPosition: 'absolute bottom-0 left-0 right-0 h-[60%] flex items-end justify-start pb-10 px-10',
-      contentMaxWidth: 'max-w-[85%]',
-      contentAlign: 'items-start text-left',
-      artGradient: '',
-    },
-    4: {
-      artPosition: 'absolute bottom-0 right-0 w-[45%] h-[50%]',
-      artOpacity: 'opacity-[0.25]',
-      contentPosition: 'absolute top-0 left-0 right-[45%] bottom-[50%] flex items-start justify-start pt-10 pl-10',
-      contentMaxWidth: 'max-w-full',
-      contentAlign: 'items-start text-left',
-      artGradient: '',
-    },
-  };
-
-  const template = layoutTemplates[index as keyof typeof layoutTemplates];
+  
+  // Cards 1, 3, 4 have icon on top, text below
+  const iconFirst = index === 1 || index === 3 || index === 4;
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, scale: 0.92, y: 18 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{
-        duration: 1.2,
+        duration: 1.15,
         delay: staggerDelay,
         ease: [0.25, 0.1, 0.25, 1],
       }}
-      className="group relative overflow-hidden"
+      className="group relative overflow-hidden h-full w-full rounded-2xl"
       style={{
         gridArea,
         background: isDashboard
           ? '#ffffff'
           : 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.2) 100%)',
+        border: isDashboard ? '2px solid rgb(229, 231, 235)' : '1px solid rgba(255, 255, 255, 0.12)',
         willChange: 'transform, opacity',
       }}
     >
       <GridPattern isDashboard={isDashboard} index={index} />
       <BottomGlow isDashboard={isDashboard} />
 
-      <div className={`${template.artPosition} ${template.artOpacity} z-[1] pointer-events-none flex items-center justify-center`}>
-        <Icon className="w-full h-full object-contain" />
-      </div>
-
-      <div className={`${template.contentPosition} z-[2]`}>
-        <div className={`flex flex-col ${template.contentMaxWidth} ${template.contentAlign}`}>
-          <h3 className={`text-2xl lg:text-3xl font-bold leading-[1.3] mb-4 ${isDashboard ? 'text-gray-900' : 'text-white'}`}>
+      {/* Column layout with conditional ordering */}
+      <div className={`relative z-[2] flex ${iconFirst ? 'flex-col-reverse' : 'flex-col'} h-full w-full p-4 sm:p-5 lg:p-6`}>
+        {/* Text section */}
+        <div className="flex flex-col gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+          <h3 className={`text-sm sm:text-base lg:text-lg font-semibold leading-tight ${isDashboard ? 'text-gray-900' : 'text-white'}`}>
             {feature.title}
           </h3>
-          <p className={`text-base lg:text-lg leading-[1.7] ${isDashboard ? 'text-gray-800' : 'text-white/65'}`}>
+          <p className={`text-xs sm:text-sm lg:text-base leading-relaxed ${isDashboard ? 'text-gray-800' : 'text-white/70'}`}>
             {feature.description}
           </p>
+        </div>
+
+        {/* Large centered icon */}
+        <div className="flex-grow flex items-center justify-center">
+          <div className="w-full h-full max-w-[200px] sm:max-w-[280px] lg:max-w-[320px] max-h-[200px] sm:max-h-[280px] lg:max-h-[320px] min-h-[120px] sm:min-h-[160px] lg:min-h-[180px] flex items-center justify-center">
+            <Icon className="w-full h-full object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.3)]" />
+          </div>
         </div>
       </div>
     </motion.div>
@@ -778,27 +762,27 @@ const FeatureGrid: React.FC = () => {
   const features = [
     {
       title: '/ Book of Business',
-      description: 'No more digging through spreadsheets or losing track of clients. Your entire portfolio lives in one place, so you always know exactly where every deal stands.',
+      description: 'Keep every client and deal visible in one place—no spreadsheets.',
       icon: BookIcon,
     },
     {
       title: '/ Team Hierarchy',
-      description: 'See who reports to who and how your team is actually performing. No more confusion about splits or wondering how your downline is doing.',
+      description: 'See reporting lines and performance clearly without digging for data.',
       icon: HierarchyIcon,
     },
     {
       title: '/ Commission Tracking',
-      description: 'Stop chasing down commission statements and second-guessing your payouts. Know exactly what you earned, when you earned it, and where it came from.',
+      description: 'Track payouts and splits automatically so every dollar is accounted for.',
       icon: CommissionIcon,
     },
     {
       title: '/ Dashboard Analytics',
-      description: 'Get the full picture of your business at a glance. See what is working, what needs attention, and make smarter decisions without crunching numbers yourself.',
+      description: 'Spot trends fast and act with clean, real-time dashboards.',
       icon: DashboardIcon,
     },
     {
       title: '/ Leaderboard',
-      description: 'Healthy competition drives results. See where you stack up against your peers and celebrate the wins that keep your team hungry for more.',
+      description: 'Motivate the team with transparent rankings and easy win callouts.',
       icon: MedalsIcon,
     },
   ];
@@ -834,30 +818,27 @@ const FeatureGrid: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
-            className="relative rounded-3xl overflow-hidden"
+            className="relative overflow-visible"
             style={{
-              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.3) 100%)',
-              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.6), 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.06)',
+              background: 'transparent',
+              boxShadow: 'none',
             }}
           >
             <div
-              className="hidden lg:grid gap-[12px] p-[12px] min-h-[1100px] relative"
+              className="hidden lg:grid gap-4 relative"
               style={{
                 gridTemplateColumns: 'repeat(12, 1fr)',
-                gridTemplateRows: 'repeat(12, 1fr)',
+                gridTemplateRows: 'repeat(8, 1fr)',
+                minHeight: '900px',
                 gridTemplateAreas: `
-                  "a a a a a a a b b b b b"
-                  "a a a a a a a b b b b b"
-                  "a a a a a a a b b b b b"
-                  "a a a a a a a b b b b b"
-                  "a a a a a a a b b b b b"
-                  "a a a a a a a c c c c c"
-                  "a a a a a a a c c c c c"
-                  "a a a a a a a c c c c c"
-                  "d d d d d e e e e e e e"
-                  "d d d d d e e e e e e e"
-                  "d d d d d e e e e e e e"
-                  "d d d d d e e e e e e e"
+                  "a a a a b b b b c c c c"
+                  "a a a a b b b b c c c c"
+                  "a a a a b b b b c c c c"
+                  "a a a a b b b b c c c c"
+                  "d d d d d d e e e e e e"
+                  "d d d d d d e e e e e e"
+                  "d d d d d d e e e e e e"
+                  "d d d d d d e e e e e e"
                 `
               }}
             >
@@ -868,18 +849,18 @@ const FeatureGrid: React.FC = () => {
               <FeatureCard feature={features[4]} index={4} gridArea="e" />
             </div>
 
-            <div className="lg:hidden flex flex-col gap-6 p-4">
+            <div className="lg:hidden flex flex-col gap-4 sm:gap-6 px-4 sm:px-6">
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="relative overflow-hidden rounded-2xl"
+                  className="relative overflow-hidden rounded-xl sm:rounded-2xl w-full"
                   style={{
                     background: feature.title === '/ Dashboard Analytics'
                       ? '#ffffff'
                       : 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.2) 100%)',
                     border: feature.title === '/ Dashboard Analytics'
-                      ? '3px solid rgb(229, 231, 235)'
-                      : '3px solid rgba(255, 255, 255, 0.1)',
+                      ? '2px solid rgb(229, 231, 235)'
+                      : '2px solid rgba(255, 255, 255, 0.1)',
                     boxShadow: feature.title === '/ Dashboard Analytics'
                       ? '0 8px 24px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1)'
                       : '0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 12px rgba(0, 0, 0, 0.3)',
