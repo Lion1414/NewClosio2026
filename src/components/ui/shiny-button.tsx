@@ -42,8 +42,8 @@ export function ShinyButton({ children, onClick, className = "" }: ShinyButtonPr
           --shiny-cta-bg: #000000;
           --shiny-cta-bg-subtle: #1a1818;
           --shiny-cta-fg: #ffffff;
-          --shiny-cta-highlight: blue;
-          --shiny-cta-highlight-subtle: #8484ff;
+          --shiny-cta-highlight: white;
+          --shiny-cta-highlight-subtle: #ffffff;
           --animation: gradient-angle linear infinite;
           --duration: 3s;
           --shadow-size: 2px;
@@ -60,7 +60,7 @@ export function ShinyButton({ children, onClick, className = "" }: ShinyButtonPr
           line-height: 1.2;
           font-weight: 500;
           border: 1px solid transparent;
-          border-radius: 360px;
+          border-radius: 0.75rem;
           color: var(--shiny-cta-fg);
           background: linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg)) padding-box,
             conic-gradient(
