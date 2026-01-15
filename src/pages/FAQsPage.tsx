@@ -201,7 +201,7 @@ const FAQsPage = () => {
                   Can't find the answer you're looking for? Our team is here to help.
                 </p>
                 <Link
-                  to="/contact-us"
+                  to="/contact"
                   onClick={() => window.scrollTo(0, 0)}
                   className="inline-flex items-center gap-3 bg-[#6ad4f2] text-black font-semibold px-8 py-4 rounded-xl hover:bg-[#6ad4f2]/90 transition-all duration-300 shadow-lg shadow-[#6ad4f2]/20 hover:shadow-xl hover:shadow-[#6ad4f2]/30 hover:scale-105"
                 >

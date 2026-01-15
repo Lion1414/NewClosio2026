@@ -66,6 +66,7 @@ const ValueProps: React.FC = () => {
                 src="/image copy copy copy copy.png"
                 alt="Closio Dashboard"
                 className="w-full h-auto rounded-2xl"
+                style={{ textAlign: 'left', backgroundColor: 'rgba(255, 255, 255, 1)' }}
               />
 
               {/* Light glow effect on top half */}
@@ -103,29 +104,36 @@ const ValueProps: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Stat Cards Below - 4 in a row */}
-        <div className="relative mb-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        {/* Stat Line - inline stats with dividers */}
+        <div className="relative mb-8 sm:mb-12">
+          <div 
+            className="flex flex-wrap sm:flex-nowrap items-start gap-4 sm:gap-6 md:gap-8 opacity-[0.92] text-transparent bg-clip-text text-left w-full"
+            style={{
+              backgroundImage: 'linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 100%)',
+              WebkitBackgroundClip: 'text'
+            }}
+          >
             {valueItems.map((item, index) => (
-              <motion.div
-                key={item.number}
-                className="group relative p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 hover:border-white/20 transition-all duration-300 hover:bg-white/[0.05]"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <div className="flex flex-col gap-3">
-                  <span className="text-[#6ad4f2] group-hover:text-[#d593c0] text-xs font-semibold tracking-wider transition-colors duration-300">
+              <React.Fragment key={item.number}>
+                <motion.div
+                  className="flex flex-1 min-w-0 items-start gap-2 sm:gap-3"
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.07 }}
+                >
+                  <span className="text-[#6ad4f2] text-[10px] sm:text-xs font-semibold tracking-[0.12em] uppercase shrink-0">
                     {item.number}
                   </span>
-                  <h3
-                    className="text-sm sm:text-base font-medium text-white leading-[1.4] transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-[#d593c0] group-hover:to-[#6ad4f2] group-hover:bg-clip-text group-hover:text-transparent"
-                  >
+                  <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-medium text-white leading-[1.4] break-words">
                     {item.title}
                   </h3>
-                </div>
-              </motion.div>
+                </motion.div>
+
+                {index < valueItems.length - 1 && (
+                  <div className="hidden sm:block h-8 sm:h-10 w-px bg-gradient-to-b from-transparent via-white/60 to-transparent rotate-12" />
+                )}
+              </React.Fragment>
             ))}
           </div>
         </div>
