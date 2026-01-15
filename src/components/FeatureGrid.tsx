@@ -306,81 +306,101 @@ const HierarchyIcon: React.FC = () => (
 const CommissionIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
     <defs>
-      <radialGradient id="coinTop" cx="40%" cy="35%">
-        <stop offset="0%" stopColor="#ffffff" />
-        <stop offset="30%" stopColor="#f9fafb" />
-        <stop offset="60%" stopColor="#e5e7eb" />
-        <stop offset="100%" stopColor="#d1d5db" />
-      </radialGradient>
-      <linearGradient id="coinEdge" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#9ca3af" />
-        <stop offset="50%" stopColor="#6b7280" />
-        <stop offset="100%" stopColor="#4b5563" />
+      <linearGradient id="commBg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#000000" />
+        <stop offset="100%" stopColor="#0D0D0D" />
       </linearGradient>
-      <linearGradient id="coinRim" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#d1d5db" />
-        <stop offset="50%" stopColor="#f3f4f6" />
-        <stop offset="100%" stopColor="#d1d5db" />
+      <linearGradient id="commPanel1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.12" />
+        <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.06" />
       </linearGradient>
-      <filter id="coinShadow" x="-30%" y="-30%" width="160%" height="160%">
-        <feDropShadow dx="4" dy="7" stdDeviation="8" floodColor="#000" floodOpacity="0.5" />
-      </filter>
-      <filter id="coinSheen" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="2" result="blur" />
+      <linearGradient id="commPanel2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#6b7280" stopOpacity="0.15" />
+        <stop offset="100%" stopColor="#4b5563" stopOpacity="0.08" />
+      </linearGradient>
+      <linearGradient id="commPanel3" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.1" />
+        <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.05" />
+      </linearGradient>
+      <filter id="commGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" result="blur" />
+        <feFlood floodColor="#8b5cf6" floodOpacity="0.2" />
+        <feComposite in2="blur" operator="in" />
         <feMerge>
-          <feMergeNode in="blur" />
+          <feMergeNode />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+      <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="5" />
+        <feOffset dx="0" dy="3" />
+        <feComponentTransfer>
+          <feFuncA type="linear" slope="0.3" />
+        </feComponentTransfer>
+        <feMerge>
+          <feMergeNode />
           <feMergeNode in="SourceGraphic" />
         </feMerge>
       </filter>
     </defs>
 
-    <g filter="url(#coinShadow)" opacity="0.7">
-      <ellipse cx="60" cy="155" rx="32" ry="14" fill="#4b5563" />
-      <ellipse cx="60" cy="149" rx="32" ry="14" fill="#6b7280" />
-      <ellipse cx="60" cy="143" rx="32" ry="14" fill="#9ca3af" />
-      <ellipse cx="60" cy="137" rx="32" ry="14" fill="url(#coinEdge)" />
-      <ellipse cx="60" cy="134" rx="32" ry="14" fill="url(#coinTop)" filter="url(#coinSheen)" />
-      <ellipse cx="60" cy="134" rx="29" ry="12" fill="none" stroke="url(#coinRim)" strokeWidth="1.5" opacity="0.6" />
-      <ellipse cx="48" cy="130" rx="6" ry="4" fill="#ffffff" opacity="0.4" />
-      <text x="60" y="140" fontSize="18" fontWeight="bold" fill="#6b7280" textAnchor="middle" opacity="0.7">$</text>
+    <rect width="200" height="200" fill="url(#commBg)" />
+
+    <g opacity="0.3">
+      <path d="M20 100 Q 60 80, 100 100 T 180 100" stroke="#8b5cf6" strokeWidth="1.5" strokeDasharray="4,4" fill="none" opacity="0.4" />
+      <path d="M20 120 Q 60 140, 100 120 T 180 120" stroke="#6b7280" strokeWidth="1" strokeDasharray="3,3" fill="none" opacity="0.3" />
     </g>
 
-    <g filter="url(#coinShadow)" opacity="0.85">
-      <ellipse cx="140" cy="160" rx="32" ry="14" fill="#374151" />
-      <ellipse cx="140" cy="153" rx="32" ry="14" fill="#4b5563" />
-      <ellipse cx="140" cy="146" rx="32" ry="14" fill="#6b7280" />
-      <ellipse cx="140" cy="139" rx="32" ry="14" fill="#9ca3af" />
-      <ellipse cx="140" cy="132" rx="32" ry="14" fill="#d1d5db" />
-      <ellipse cx="140" cy="128" rx="32" ry="14" fill="url(#coinEdge)" />
-      <ellipse cx="140" cy="125" rx="32" ry="14" fill="url(#coinTop)" filter="url(#coinSheen)" />
-      <ellipse cx="140" cy="125" rx="29" ry="12" fill="none" stroke="url(#coinRim)" strokeWidth="1.5" opacity="0.6" />
-      <ellipse cx="128" cy="121" rx="6" ry="4" fill="#ffffff" opacity="0.4" />
-      <text x="140" y="131" fontSize="18" fontWeight="bold" fill="#6b7280" textAnchor="middle" opacity="0.7">$</text>
+    <g filter="url(#softShadow)">
+      <rect x="10" y="135" width="80" height="55" rx="16" fill="url(#commPanel2)" stroke="#6b7280" strokeWidth="1" strokeOpacity="0.2" />
+      <rect x="15" y="145" width="35" height="4" rx="2" fill="#9ca3af" opacity="0.25" />
+      <rect x="15" y="153" width="50" height="3" rx="1.5" fill="#6b7280" opacity="0.2" />
+      <rect x="15" y="159" width="28" height="3" rx="1.5" fill="#6b7280" opacity="0.18" />
+      <circle cx="75" cy="165" r="12" fill="#6b7280" opacity="0.15" />
+      <text x="75" y="170" fontSize="10" fill="#9ca3af" opacity="0.5" textAnchor="middle" fontWeight="600">$</text>
+      <text x="22" y="180" fontSize="6" fill="#6b7280" opacity="0.6">Metric A</text>
     </g>
 
-    <g filter="url(#coinShadow)">
-      <ellipse cx="100" cy="128" rx="40" ry="18" fill="#374151" />
-      <ellipse cx="100" cy="120" rx="40" ry="18" fill="#4b5563" />
-      <ellipse cx="100" cy="112" rx="40" ry="18" fill="#6b7280" />
-      <ellipse cx="100" cy="104" rx="40" ry="18" fill="#9ca3af" />
-      <ellipse cx="100" cy="96" rx="40" ry="18" fill="#d1d5db" />
-      <ellipse cx="100" cy="88" rx="40" ry="18" fill="#e5e7eb" />
-      <ellipse cx="100" cy="82" rx="40" ry="18" fill="url(#coinEdge)" />
-      <ellipse cx="100" cy="78" rx="40" ry="18" fill="url(#coinTop)" filter="url(#coinSheen)" />
-      <ellipse cx="100" cy="78" rx="36" ry="15" fill="none" stroke="url(#coinRim)" strokeWidth="2" opacity="0.7" />
-      <ellipse cx="85" cy="73" rx="8" ry="5" fill="#ffffff" opacity="0.5" />
-      <text x="100" y="85" fontSize="24" fontWeight="bold" fill="#6b7280" textAnchor="middle" opacity="0.8">$</text>
+    <g filter="url(#softShadow)">
+      <rect x="110" y="125" width="85" height="60" rx="18" fill="url(#commPanel3)" stroke="#8b5cf6" strokeWidth="1.2" strokeOpacity="0.25" />
+      <rect x="118" y="138" width="40" height="5" rx="2.5" fill="#a78bfa" opacity="0.3" />
+      <rect x="118" y="148" width="55" height="4" rx="2" fill="#8b5cf6" opacity="0.25" />
+      <rect x="118" y="156" width="32" height="3.5" rx="1.75" fill="#8b5cf6" opacity="0.2" />
+      <circle cx="175" cy="157" r="14" fill="#8b5cf6" opacity="0.2" filter="url(#commGlow)" />
+      <text x="175" y="162" fontSize="11" fill="#c4b5fd" opacity="0.65" textAnchor="middle" fontWeight="600">$</text>
+      <text x="125" y="176" fontSize="6.5" fill="#a78bfa" opacity="0.65">Data Set</text>
     </g>
 
-    <g opacity="0.8" filter="url(#coinSheen)">
-      <path d="M160 70 L160 38 L152 46 M160 38 L168 46" stroke="#e5e7eb" strokeWidth="4.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M172 82 L172 50 L164 58 M172 50 L180 58" stroke="#9ca3af" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.7" />
+    <g filter="url(#softShadow)">
+      <rect x="35" y="30" width="130" height="75" rx="20" fill="url(#commPanel1)" stroke="#8b5cf6" strokeWidth="1.5" strokeOpacity="0.3" />
+
+      <rect x="48" y="48" width="45" height="6" rx="3" fill="#8b5cf6" opacity="0.3" />
+      <rect x="48" y="60" width="68" height="5" rx="2.5" fill="#7c3aed" opacity="0.25" />
+      <rect x="48" y="70" width="40" height="4" rx="2" fill="#7c3aed" opacity="0.2" />
+
+      <g opacity="0.35">
+        <rect x="48" y="82" width="32" height="12" rx="6" fill="#8b5cf6" opacity="0.25" />
+        <text x="64" y="90" fontSize="6" fill="#c4b5fd" opacity="0.7" textAnchor="middle">Value</text>
+      </g>
+
+      <circle cx="140" cy="67" r="20" fill="#7c3aed" opacity="0.15" filter="url(#commGlow)" />
+      <circle cx="140" cy="67" r="15" fill="none" stroke="#8b5cf6" strokeWidth="2" strokeOpacity="0.3" />
+      <text x="140" y="73" fontSize="16" fill="#c4b5fd" opacity="0.7" textAnchor="middle" fontWeight="700">$</text>
+
+      <text x="48" y="42" fontSize="7" fill="#8b5cf6" opacity="0.6" fontWeight="500">Payment Flow</text>
     </g>
 
-    <g opacity="0.6">
-      <text x="35" y="50" fontSize="20" fontWeight="bold" fill="#e5e7eb">$</text>
-      <text x="52" y="38" fontSize="16" fontWeight="bold" fill="#9ca3af">$</text>
-      <text x="22" y="68" fontSize="14" fontWeight="bold" fill="#6b7280">$</text>
+    <g opacity="0.4">
+      <circle cx="95" cy="110" r="3" fill="#8b5cf6" />
+      <circle cx="105" cy="115" r="2.5" fill="#a78bfa" />
+      <circle cx="115" cy="108" r="2" fill="#6b7280" />
+      <line x1="30" y1="135" x2="35" y2="105" stroke="#8b5cf6" strokeWidth="1.5" strokeOpacity="0.2" strokeDasharray="2,2" />
+      <line x1="165" y1="125" x2="145" y2="105" stroke="#8b5cf6" strokeWidth="1.5" strokeOpacity="0.2" strokeDasharray="2,2" />
+    </g>
+
+    <g opacity="0.5">
+      <rect x="125" y="48" width="25" height="3" rx="1.5" fill="#a78bfa" opacity="0.4" />
+      <rect x="125" y="55" width="18" height="2.5" rx="1.25" fill="#8b5cf6" opacity="0.35" />
     </g>
   </svg>
 );
@@ -388,218 +408,203 @@ const CommissionIcon: React.FC = () => (
 const DashboardIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
     <defs>
-      <linearGradient id="barFrontCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <linearGradient id="dashBg" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#ffffff" />
-        <stop offset="30%" stopColor="#f9fafb" />
-        <stop offset="70%" stopColor="#e5e7eb" />
-        <stop offset="100%" stopColor="#d1d5db" />
+        <stop offset="100%" stopColor="#f9fafb" />
       </linearGradient>
-      <linearGradient id="barSideCyan" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#d1d5db" />
-        <stop offset="50%" stopColor="#9ca3af" />
-        <stop offset="100%" stopColor="#6b7280" />
+      <linearGradient id="dashPanel1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#1f2937" stopOpacity="0.08" />
+        <stop offset="100%" stopColor="#111827" stopOpacity="0.04" />
       </linearGradient>
-      <linearGradient id="barTopCyan" x1="0%" y1="100%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#f3f4f6" />
-        <stop offset="50%" stopColor="#ffffff" />
-        <stop offset="100%" stopColor="#ffffff" />
+      <linearGradient id="dashPanel2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#374151" stopOpacity="0.1" />
+        <stop offset="100%" stopColor="#1f2937" stopOpacity="0.05" />
       </linearGradient>
-      <linearGradient id="barHighlightCyan" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
-        <stop offset="50%" stopColor="#ffffff" stopOpacity="0.35" />
-        <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+      <linearGradient id="dashAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#7c3aed" stopOpacity="0.15" />
+        <stop offset="100%" stopColor="#6366f1" stopOpacity="0.08" />
       </linearGradient>
-      <filter id="barShadowCyan" x="-30%" y="-30%" width="160%" height="160%">
-        <feDropShadow dx="3" dy="5" stdDeviation="6" floodColor="#000000" floodOpacity="0.3" />
-      </filter>
-      <filter id="barGlowCyan" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="2" result="blur" />
+      <filter id="dashShadow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" />
+        <feOffset dx="0" dy="2" />
+        <feComponentTransfer>
+          <feFuncA type="linear" slope="0.15" />
+        </feComponentTransfer>
         <feMerge>
-          <feMergeNode in="blur" />
+          <feMergeNode />
           <feMergeNode in="SourceGraphic" />
         </feMerge>
       </filter>
     </defs>
 
-    <line x1="25" y1="45" x2="25" y2="160" stroke="#ffffff" strokeWidth="2.5" opacity="0.5" strokeLinecap="round" />
-    <line x1="25" y1="160" x2="180" y2="160" stroke="#ffffff" strokeWidth="2.5" opacity="0.5" strokeLinecap="round" />
+    <rect width="200" height="200" fill="url(#dashBg)" />
 
-    <line x1="25" y1="70" x2="180" y2="70" stroke="#ffffff" strokeWidth="1" opacity="0.15" strokeDasharray="4 4" />
-    <line x1="25" y1="100" x2="180" y2="100" stroke="#ffffff" strokeWidth="1" opacity="0.15" strokeDasharray="4 4" />
-    <line x1="25" y1="130" x2="180" y2="130" stroke="#ffffff" strokeWidth="1" opacity="0.15" strokeDasharray="4 4" />
-
-    <g filter="url(#barShadowCyan)">
-      <rect x="38" y="118" width="20" height="42" rx="2" fill="url(#barFrontCyan)" />
-      <path d="M38 118 L58 118 L66 110 L46 110 Z" fill="url(#barTopCyan)" />
-      <path d="M58 118 L58 160 L66 152 L66 110 Z" fill="url(#barSideCyan)" />
-      <rect x="38" y="118" width="3" height="42" fill="#ffffff" opacity="0.25" />
-      <rect x="43" y="118" width="10" height="42" fill="url(#barHighlightCyan)" />
+    <g opacity="0.25">
+      <line x1="30" y1="165" x2="175" y2="165" stroke="#1f2937" strokeWidth="1" strokeOpacity="0.2" />
+      <line x1="30" y1="135" x2="175" y2="135" stroke="#1f2937" strokeWidth="0.8" strokeOpacity="0.15" strokeDasharray="3,3" />
+      <line x1="30" y1="105" x2="175" y2="105" stroke="#1f2937" strokeWidth="0.8" strokeOpacity="0.15" strokeDasharray="3,3" />
+      <line x1="30" y1="75" x2="175" y2="75" stroke="#1f2937" strokeWidth="0.8" strokeOpacity="0.15" strokeDasharray="3,3" />
     </g>
 
-    <g filter="url(#barShadowCyan)">
-      <rect x="66" y="88" width="20" height="72" rx="2" fill="url(#barFrontCyan)" />
-      <path d="M66 88 L86 88 L94 80 L74 80 Z" fill="url(#barTopCyan)" />
-      <path d="M86 88 L86 160 L94 152 L94 80 Z" fill="url(#barSideCyan)" />
-      <rect x="66" y="88" width="3" height="72" fill="#ffffff" opacity="0.25" />
-      <rect x="71" y="88" width="10" height="72" fill="url(#barHighlightCyan)" />
+    <g filter="url(#dashShadow)">
+      <rect x="15" y="25" width="70" height="50" rx="14" fill="url(#dashPanel1)" stroke="#1f2937" strokeWidth="0.8" strokeOpacity="0.1" />
+      <rect x="22" y="35" width="30" height="4" rx="2" fill="#374151" opacity="0.2" />
+      <rect x="22" y="43" width="42" height="3" rx="1.5" fill="#4b5563" opacity="0.15" />
+      <rect x="22" y="50" width="25" height="3" rx="1.5" fill="#4b5563" opacity="0.12" />
+      <circle cx="70" cy="52" r="10" fill="#7c3aed" opacity="0.1" />
+      <text x="70" y="56" fontSize="8" fill="#6b7280" opacity="0.6" textAnchor="middle" fontWeight="600">A</text>
     </g>
 
-    <g filter="url(#barShadowCyan)">
-      <rect x="94" y="55" width="20" height="105" rx="2" fill="url(#barFrontCyan)" />
-      <path d="M94 55 L114 55 L122 47 L102 47 Z" fill="url(#barTopCyan)" />
-      <path d="M114 55 L114 160 L122 152 L122 47 Z" fill="url(#barSideCyan)" />
-      <rect x="94" y="55" width="3" height="105" fill="#ffffff" opacity="0.25" />
-      <rect x="99" y="55" width="10" height="105" fill="url(#barHighlightCyan)" />
+    <g filter="url(#dashShadow)">
+      <rect x="95" y="25" width="90" height="50" rx="14" fill="url(#dashPanel2)" stroke="#1f2937" strokeWidth="0.9" strokeOpacity="0.12" />
+      <rect x="105" y="35" width="35" height="5" rx="2.5" fill="#4b5563" opacity="0.22" />
+      <rect x="105" y="45" width="52" height="4" rx="2" fill="#6b7280" opacity="0.18" />
+      <rect x="105" y="53" width="30" height="3.5" rx="1.75" fill="#6b7280" opacity="0.15" />
+      <circle cx="168" cy="52" r="12" fill="#6366f1" opacity="0.12" />
+      <text x="168" y="57" fontSize="9" fill="#6b7280" opacity="0.65" textAnchor="middle" fontWeight="600">B</text>
     </g>
 
-    <g filter="url(#barShadowCyan)">
-      <rect x="122" y="98" width="20" height="62" rx="2" fill="url(#barFrontCyan)" />
-      <path d="M122 98 L142 98 L150 90 L130 90 Z" fill="url(#barTopCyan)" />
-      <path d="M142 98 L142 160 L150 152 L150 90 Z" fill="url(#barSideCyan)" />
-      <rect x="122" y="98" width="3" height="62" fill="#ffffff" opacity="0.25" />
-      <rect x="127" y="98" width="10" height="62" fill="url(#barHighlightCyan)" />
-    </g>
+    <g filter="url(#dashShadow)">
+      <rect x="15" y="90" width="170" height="90" rx="18" fill="url(#dashAccent)" stroke="#7c3aed" strokeWidth="1" strokeOpacity="0.15" />
 
-    <g filter="url(#barShadowCyan)">
-      <rect x="150" y="72" width="20" height="88" rx="2" fill="url(#barFrontCyan)" />
-      <path d="M150 72 L170 72 L178 64 L158 64 Z" fill="url(#barTopCyan)" />
-      <path d="M170 72 L170 160 L178 152 L178 64 Z" fill="url(#barSideCyan)" />
-      <rect x="150" y="72" width="3" height="88" fill="#ffffff" opacity="0.25" />
-      <rect x="155" y="72" width="10" height="88" fill="url(#barHighlightCyan)" />
-    </g>
+      <g opacity="0.3">
+        <rect x="35" y="145" width="12" height="25" rx="4" fill="#374151" opacity="0.4" />
+        <rect x="55" y="130" width="12" height="40" rx="4" fill="#374151" opacity="0.45" />
+        <rect x="75" y="118" width="12" height="52" rx="4" fill="#374151" opacity="0.5" />
+        <rect x="95" y="135" width="12" height="35" rx="4" fill="#374151" opacity="0.45" />
+        <rect x="115" y="125" width="12" height="45" rx="4" fill="#374151" opacity="0.48" />
+        <rect x="135" y="140" width="12" height="30" rx="4" fill="#374151" opacity="0.42" />
+        <rect x="155" y="120" width="12" height="50" rx="4" fill="#374151" opacity="0.5" />
+      </g>
 
-    <polyline
-      points="48,113 76,83 104,50 132,93 160,67"
-      fill="none"
-      stroke="#ffffff"
-      strokeWidth="3.5"
-      opacity="0.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      filter="url(#barGlowCyan)"
-    />
-    <circle cx="48" cy="113" r="5" fill="#cffafe" stroke="#ffffff" strokeWidth="2.5" filter="url(#barGlowCyan)" />
-    <circle cx="76" cy="83" r="5" fill="#cffafe" stroke="#ffffff" strokeWidth="2.5" filter="url(#barGlowCyan)" />
-    <circle cx="104" cy="50" r="5" fill="#cffafe" stroke="#ffffff" strokeWidth="2.5" filter="url(#barGlowCyan)" />
-    <circle cx="132" cy="93" r="5" fill="#cffafe" stroke="#ffffff" strokeWidth="2.5" filter="url(#barGlowCyan)" />
-    <circle cx="160" cy="67" r="5" fill="#cffafe" stroke="#ffffff" strokeWidth="2.5" filter="url(#barGlowCyan)" />
-    <circle cx="48" cy="113" r="2" fill="#ffffff" opacity="0.8" />
-    <circle cx="76" cy="83" r="2" fill="#ffffff" opacity="0.8" />
-    <circle cx="104" cy="50" r="2" fill="#ffffff" opacity="0.8" />
-    <circle cx="132" cy="93" r="2" fill="#ffffff" opacity="0.8" />
-    <circle cx="160" cy="67" r="2" fill="#ffffff" opacity="0.8" />
+      <polyline
+        points="41,140 61,125 81,112 101,130 121,120 141,135 161,115"
+        fill="none"
+        stroke="#6366f1"
+        strokeWidth="2.5"
+        opacity="0.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+
+      <g opacity="0.4">
+        <circle cx="41" cy="140" r="3.5" fill="#7c3aed" />
+        <circle cx="61" cy="125" r="3.5" fill="#7c3aed" />
+        <circle cx="81" cy="112" r="3.5" fill="#7c3aed" />
+        <circle cx="101" cy="130" r="3.5" fill="#7c3aed" />
+        <circle cx="121" cy="120" r="3.5" fill="#7c3aed" />
+        <circle cx="141" cy="135" r="3.5" fill="#7c3aed" />
+        <circle cx="161" cy="115" r="3.5" fill="#7c3aed" />
+      </g>
+
+      <text x="25" y="105" fontSize="7" fill="#6b7280" opacity="0.6" fontWeight="500">Analytics View</text>
+
+      <g opacity="0.25">
+        <rect x="145" y="100" width="28" height="3" rx="1.5" fill="#6b7280" />
+        <rect x="145" y="107" width="20" height="2.5" rx="1.25" fill="#6b7280" />
+      </g>
+    </g>
   </svg>
 );
 
 const MedalsIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
     <defs>
-      <radialGradient id="goldGrad" cx="35%" cy="35%">
-        <stop offset="0%" stopColor="#fef3c7" />
-        <stop offset="20%" stopColor="#fcd34d" />
-        <stop offset="50%" stopColor="#fbbf24" />
-        <stop offset="80%" stopColor="#d4af37" />
-        <stop offset="100%" stopColor="#b8860b" />
-      </radialGradient>
-      <radialGradient id="goldInner" cx="40%" cy="40%">
-        <stop offset="0%" stopColor="#fffbeb" />
-        <stop offset="30%" stopColor="#fef3c7" />
-        <stop offset="70%" stopColor="#fde68a" />
-        <stop offset="100%" stopColor="#fbbf24" />
-      </radialGradient>
-      <radialGradient id="silverGrad" cx="35%" cy="35%">
-        <stop offset="0%" stopColor="#f9fafb" />
-        <stop offset="20%" stopColor="#e5e7eb" />
-        <stop offset="60%" stopColor="#d1d5db" />
-        <stop offset="90%" stopColor="#9ca3af" />
-        <stop offset="100%" stopColor="#6b7280" />
-      </radialGradient>
-      <radialGradient id="silverInner" cx="40%" cy="40%">
-        <stop offset="0%" stopColor="#ffffff" />
-        <stop offset="40%" stopColor="#f9fafb" />
-        <stop offset="80%" stopColor="#e5e7eb" />
-        <stop offset="100%" stopColor="#d1d5db" />
-      </radialGradient>
-      <radialGradient id="bronzeGrad" cx="35%" cy="35%">
-        <stop offset="0%" stopColor="#fb923c" />
-        <stop offset="30%" stopColor="#d97706" />
-        <stop offset="70%" stopColor="#b45309" />
-        <stop offset="90%" stopColor="#92400e" />
-        <stop offset="100%" stopColor="#78350f" />
-      </radialGradient>
-      <radialGradient id="bronzeInner" cx="40%" cy="40%">
-        <stop offset="0%" stopColor="#fef3c7" />
-        <stop offset="30%" stopColor="#fcd34d" />
-        <stop offset="70%" stopColor="#d97706" />
-        <stop offset="100%" stopColor="#b45309" />
-      </radialGradient>
-      <linearGradient id="ribbonGold" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#fcd34d" />
-        <stop offset="50%" stopColor="#fbbf24" />
-        <stop offset="100%" stopColor="#b8860b" />
+      <linearGradient id="leaderBg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#000000" />
+        <stop offset="100%" stopColor="#0D0D0D" />
       </linearGradient>
-      <linearGradient id="ribbonGoldFold" x1="100%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#92400e" />
-        <stop offset="100%" stopColor="#fbbf24" />
+      <linearGradient id="rank1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.25" />
+        <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.15" />
       </linearGradient>
-      <linearGradient id="ribbonSilver" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#f3f4f6" />
-        <stop offset="50%" stopColor="#d1d5db" />
-        <stop offset="100%" stopColor="#6b7280" />
+      <linearGradient id="rank2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.18" />
+        <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.1" />
       </linearGradient>
-      <linearGradient id="ribbonBronze" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#fb923c" />
-        <stop offset="50%" stopColor="#d97706" />
-        <stop offset="100%" stopColor="#78350f" />
+      <linearGradient id="rank3" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#6b7280" stopOpacity="0.15" />
+        <stop offset="100%" stopColor="#4b5563" stopOpacity="0.08" />
       </linearGradient>
-      <filter id="medalShadow" x="-30%" y="-30%" width="160%" height="160%">
-        <feDropShadow dx="4" dy="7" stdDeviation="8" floodColor="#000" floodOpacity="0.55" />
-      </filter>
-      <filter id="medalGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <linearGradient id="rankOther" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#4b5563" stopOpacity="0.12" />
+        <stop offset="100%" stopColor="#374151" stopOpacity="0.06" />
+      </linearGradient>
+      <filter id="leaderGlow" x="-50%" y="-50%" width="200%" height="200%">
         <feGaussianBlur stdDeviation="3" result="blur" />
+        <feFlood floodColor="#8b5cf6" floodOpacity="0.25" />
+        <feComposite in2="blur" operator="in" />
         <feMerge>
-          <feMergeNode in="blur" />
+          <feMergeNode />
           <feMergeNode in="SourceGraphic" />
         </feMerge>
       </filter>
-      <filter id="goldShine" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="4" result="blur" />
+      <filter id="rankShadow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" />
+        <feOffset dx="0" dy="2" />
+        <feComponentTransfer>
+          <feFuncA type="linear" slope="0.3" />
+        </feComponentTransfer>
         <feMerge>
-          <feMergeNode in="blur" />
+          <feMergeNode />
           <feMergeNode in="SourceGraphic" />
         </feMerge>
       </filter>
     </defs>
 
-    <g filter="url(#medalShadow)">
-      <path d="M48 30 L48 80 L55 85 L62 80 L62 30 Z" fill="url(#ribbonSilver)" />
-      <path d="M48 30 L55 35 L55 85 L48 80 Z" fill="#9ca3af" opacity="0.5" />
-      <circle cx="55" cy="110" r="35" fill="url(#silverGrad)" filter="url(#medalGlow)" />
-      <circle cx="55" cy="110" r="28" fill="url(#silverInner)" />
-      <circle cx="55" cy="110" r="20" fill="url(#silverGrad)" opacity="0.8" />
-      <ellipse cx="45" cy="100" rx="8" ry="10" fill="#ffffff" opacity="0.4" />
-      <text x="55" y="117" fontSize="20" fontWeight="bold" fill="#4b5563" textAnchor="middle">3</text>
+    <rect width="200" height="200" fill="url(#leaderBg)" />
+
+    <g filter="url(#rankShadow)">
+      <rect x="15" y="25" width="170" height="35" rx="14" fill="url(#rank1)" stroke="#8b5cf6" strokeWidth="1.5" strokeOpacity="0.35" />
+      <circle cx="35" cy="42" r="8" fill="#7c3aed" opacity="0.25" filter="url(#leaderGlow)" />
+      <text x="35" y="46" fontSize="9" fill="#c4b5fd" opacity="0.8" textAnchor="middle" fontWeight="700">1</text>
+
+      <rect x="50" y="33" width="42" height="5" rx="2.5" fill="#a78bfa" opacity="0.35" />
+      <rect x="50" y="43" width="58" height="4" rx="2" fill="#8b5cf6" opacity="0.3" />
+
+      <rect x="140" y="35" width="35" height="16" rx="8" fill="#7c3aed" opacity="0.2" />
+      <text x="157" y="45" fontSize="8" fill="#c4b5fd" opacity="0.7" textAnchor="middle" fontWeight="600">Score</text>
     </g>
 
-    <g filter="url(#medalShadow)">
-      <path d="M138 30 L138 80 L145 85 L152 80 L152 30 Z" fill="url(#ribbonBronze)" />
-      <path d="M138 30 L145 35 L145 85 L138 80 Z" fill="#92400e" opacity="0.4" />
-      <circle cx="145" cy="110" r="35" fill="url(#bronzeGrad)" filter="url(#medalGlow)" />
-      <circle cx="145" cy="110" r="28" fill="url(#bronzeInner)" />
-      <circle cx="145" cy="110" r="20" fill="url(#bronzeGrad)" opacity="0.8" />
-      <ellipse cx="135" cy="100" rx="8" ry="10" fill="#fcd34d" opacity="0.4" />
-      <text x="145" y="117" fontSize="20" fontWeight="bold" fill="#78350f" textAnchor="middle">2</text>
+    <g filter="url(#rankShadow)">
+      <rect x="15" y="70" width="170" height="32" rx="12" fill="url(#rank2)" stroke="#8b5cf6" strokeWidth="1.2" strokeOpacity="0.28" />
+      <circle cx="33" cy="86" r="7" fill="#8b5cf6" opacity="0.2" />
+      <text x="33" y="89" fontSize="8" fill="#a78bfa" opacity="0.75" textAnchor="middle" fontWeight="600">2</text>
+
+      <rect x="46" y="78" width="38" height="4.5" rx="2.25" fill="#a78bfa" opacity="0.3" />
+      <rect x="46" y="86" width="50" height="3.5" rx="1.75" fill="#8b5cf6" opacity="0.25" />
+
+      <rect x="145" y="79" width="30" height="14" rx="7" fill="#8b5cf6" opacity="0.18" />
+      <text x="160" y="88" fontSize="7" fill="#c4b5fd" opacity="0.65" textAnchor="middle" fontWeight="500">Data</text>
     </g>
 
-    <g filter="url(#medalShadow)">
-      <path d="M92 20 L92 55 L100 62 L108 55 L108 20 Z" fill="url(#ribbonGold)" />
-      <path d="M92 20 L100 26 L100 62 L92 55 Z" fill="url(#ribbonGoldFold)" opacity="0.6" />
-      <circle cx="100" cy="90" r="42" fill="url(#goldGrad)" filter="url(#goldShine)" />
-      <circle cx="100" cy="90" r="34" fill="url(#goldInner)" />
-      <circle cx="100" cy="90" r="24" fill="url(#goldGrad)" opacity="0.85" />
-      <ellipse cx="88" cy="78" rx="10" ry="12" fill="#fffbeb" opacity="0.6" />
-      <circle cx="100" cy="90" r="42" fill="none" stroke="#fef3c7" strokeWidth="2" opacity="0.3" />
-      <text x="100" y="98" fontSize="24" fontWeight="bold" fill="#92400e" textAnchor="middle">1</text>
+    <g filter="url(#rankShadow)">
+      <rect x="15" y="110" width="170" height="30" rx="12" fill="url(#rank3)" stroke="#6b7280" strokeWidth="1" strokeOpacity="0.25" />
+      <circle cx="32" cy="125" r="6.5" fill="#6b7280" opacity="0.2" />
+      <text x="32" y="128" fontSize="7.5" fill="#9ca3af" opacity="0.7" textAnchor="middle" fontWeight="600">3</text>
+
+      <rect x="44" y="118" width="35" height="4" rx="2" fill="#9ca3af" opacity="0.28" />
+      <rect x="44" y="125" width="46" height="3.5" rx="1.75" fill="#6b7280" opacity="0.23" />
+
+      <rect x="148" y="118" width="28" height="13" rx="6.5" fill="#6b7280" opacity="0.15" />
+      <text x="162" y="126" fontSize="6.5" fill="#9ca3af" opacity="0.6" textAnchor="middle" fontWeight="500">Value</text>
+    </g>
+
+    <g filter="url(#rankShadow)" opacity="0.7">
+      <rect x="15" y="148" width="170" height="28" rx="11" fill="url(#rankOther)" stroke="#4b5563" strokeWidth="0.8" strokeOpacity="0.2" />
+      <circle cx="31" cy="162" r="6" fill="#4b5563" opacity="0.2" />
+      <text x="31" y="165" fontSize="7" fill="#6b7280" opacity="0.65" textAnchor="middle" fontWeight="500">4</text>
+
+      <rect x="42" y="155" width="32" height="3.5" rx="1.75" fill="#6b7280" opacity="0.25" />
+      <rect x="42" y="162" width="42" height="3" rx="1.5" fill="#6b7280" opacity="0.2" />
+
+      <rect x="150" y="156" width="26" height="12" rx="6" fill="#4b5563" opacity="0.15" />
+      <text x="163" y="163" fontSize="6" fill="#6b7280" opacity="0.55" textAnchor="middle" fontWeight="500">Item</text>
+    </g>
+
+    <g opacity="0.4">
+      <rect x="15" y="184" width="170" height="3" rx="1.5" fill="#4b5563" opacity="0.2" />
+      <rect x="15" y="191" width="140" height="2.5" rx="1.25" fill="#4b5563" opacity="0.15" />
     </g>
   </svg>
 );
