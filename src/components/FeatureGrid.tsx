@@ -328,11 +328,6 @@ const CommissionIcon: React.FC = () => (
       </filter>
     </defs>
 
-    <g opacity="0.3">
-      <path d="M20 100 Q 60 80, 100 100 T 180 100" stroke="#8b5cf6" strokeWidth="1.5" strokeDasharray="4,4" fill="none" opacity="0.4" />
-      <path d="M20 120 Q 60 140, 100 120 T 180 120" stroke="#6b7280" strokeWidth="1" strokeDasharray="3,3" fill="none" opacity="0.3" />
-    </g>
-
     <g filter="url(#softShadow)">
       <rect x="10" y="135" width="80" height="55" rx="16" fill="url(#commPanel2)" stroke="#6b7280" strokeWidth="1" strokeOpacity="0.2" />
       <rect x="15" y="145" width="35" height="4" rx="2" fill="#9ca3af" opacity="0.25" />
@@ -376,8 +371,6 @@ const CommissionIcon: React.FC = () => (
       <circle cx="95" cy="110" r="3" fill="#8b5cf6" />
       <circle cx="105" cy="115" r="2.5" fill="#a78bfa" />
       <circle cx="115" cy="108" r="2" fill="#6b7280" />
-      <line x1="30" y1="135" x2="35" y2="105" stroke="#8b5cf6" strokeWidth="1.5" strokeOpacity="0.2" strokeDasharray="2,2" />
-      <line x1="165" y1="125" x2="145" y2="105" stroke="#8b5cf6" strokeWidth="1.5" strokeOpacity="0.2" strokeDasharray="2,2" />
     </g>
 
     <g opacity="0.5">
@@ -754,11 +747,11 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, gridArea }) =
       <BottomGlow isDashboard={isDashboard} />
       <SparkleEffect isHovered={isHovered} isDashboard={isDashboard} />
 
-      <div className={`${iconPositions[index]} ${iconSizes[index]} flex-shrink-0 opacity-60`}>
+      <div className={`${iconPositions[index]} ${iconSizes[index]} flex-shrink-0 opacity-40 z-0 pointer-events-none`}>
         <Icon />
       </div>
 
-      <div className={`relative flex flex-col h-full z-10 ${contentAlignments[index]}`}>
+      <div className={`relative flex flex-col h-full z-20 ${contentAlignments[index]}`}>
         <div className="flex flex-col max-w-md">
           <h3 className={`text-2xl lg:text-3xl font-bold leading-[1.3] mb-4 ${isDashboard ? 'text-gray-900' : 'text-white'}`}>
             {feature.title}
