@@ -194,136 +194,112 @@ const BookIcon: React.FC = () => (
 const HierarchyIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
     <defs>
-      <linearGradient id="hierBoxFront" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#f9fafb" />
-        <stop offset="30%" stopColor="#e5e7eb" />
-        <stop offset="100%" stopColor="#9ca3af" />
+      <linearGradient id="hierBg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#000000" />
+        <stop offset="100%" stopColor="#0D0D0D" />
       </linearGradient>
-      <linearGradient id="hierBoxTop" x1="0%" y1="100%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#d1d5db" />
-        <stop offset="40%" stopColor="#e5e7eb" />
-        <stop offset="80%" stopColor="#f3f4f6" />
-        <stop offset="100%" stopColor="#ffffff" />
+      <linearGradient id="hierNode1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.3" />
+        <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.2" />
       </linearGradient>
-      <linearGradient id="hierBoxSide" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#9ca3af" />
-        <stop offset="50%" stopColor="#6b7280" />
-        <stop offset="100%" stopColor="#4b5563" />
+      <linearGradient id="hierNode2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.25" />
+        <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.18" />
       </linearGradient>
-      <linearGradient id="hierMonitorFrame" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#374151" />
-        <stop offset="50%" stopColor="#1f2937" />
-        <stop offset="100%" stopColor="#111827" />
+      <linearGradient id="hierNode3" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#9ca3af" stopOpacity="0.2" />
+        <stop offset="100%" stopColor="#6b7280" stopOpacity="0.15" />
       </linearGradient>
-      <linearGradient id="hierMonitorBezel" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#4b5563" />
-        <stop offset="50%" stopColor="#374151" />
-        <stop offset="100%" stopColor="#1f2937" />
-      </linearGradient>
-      <linearGradient id="hierStandNeck" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#374151" />
-        <stop offset="50%" stopColor="#4b5563" />
-        <stop offset="100%" stopColor="#374151" />
-      </linearGradient>
-      <linearGradient id="hierStandBase" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#4b5563" />
-        <stop offset="30%" stopColor="#374151" />
-        <stop offset="100%" stopColor="#1f2937" />
-      </linearGradient>
-      <linearGradient id="hierScreenGlow" x1="50%" y1="0%" x2="50%" y2="100%">
-        <stop offset="0%" stopColor="#0e7490" />
-        <stop offset="100%" stopColor="#164e63" />
-      </linearGradient>
-      <filter id="hierShadow" x="-30%" y="-30%" width="160%" height="160%">
-        <feDropShadow dx="1" dy="2" stdDeviation="2" floodColor="#000" floodOpacity="0.4" />
+      <filter id="hierGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" result="blur" />
+        <feFlood floodColor="#8b5cf6" floodOpacity="0.3" />
+        <feComposite in2="blur" operator="in" />
+        <feMerge>
+          <feMergeNode />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
       </filter>
-      <filter id="hierMonitorShadow" x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow dx="4" dy="6" stdDeviation="8" floodColor="#000" floodOpacity="0.5" />
+      <filter id="nodeShadow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3" />
+        <feOffset dx="0" dy="2" />
+        <feComponentTransfer>
+          <feFuncA type="linear" slope="0.4" />
+        </feComponentTransfer>
+        <feMerge>
+          <feMergeNode />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
       </filter>
-      <clipPath id="hierScreenClip">
-        <rect x="10" y="5" width="180" height="120" rx="2" />
-      </clipPath>
     </defs>
 
-    <g filter="url(#hierMonitorShadow)">
-      <rect x="2" y="-2" width="196" height="130" rx="8" fill="url(#hierMonitorFrame)" />
-      <rect x="4" y="0" width="192" height="126" rx="6" fill="url(#hierMonitorBezel)" />
-      <rect x="8" y="4" width="184" height="118" rx="3" fill="url(#hierScreenGlow)" />
-      <rect x="4" y="0" width="192" height="2" fill="#6b7280" opacity="0.3" />
+    <rect width="200" height="200" fill="url(#hierBg)" />
+
+    <g opacity="0.25">
+      <line x1="100" y1="55" x2="60" y2="95" stroke="#8b5cf6" strokeWidth="1.5" strokeOpacity="0.3" />
+      <line x1="100" y1="55" x2="140" y2="95" stroke="#8b5cf6" strokeWidth="1.5" strokeOpacity="0.3" />
+      <line x1="60" y1="125" x2="40" y2="160" stroke="#a78bfa" strokeWidth="1.5" strokeOpacity="0.25" />
+      <line x1="60" y1="125" x2="80" y2="160" stroke="#a78bfa" strokeWidth="1.5" strokeOpacity="0.25" />
+      <line x1="140" y1="125" x2="120" y2="160" stroke="#a78bfa" strokeWidth="1.5" strokeOpacity="0.25" />
+      <line x1="140" y1="125" x2="160" y2="160" stroke="#a78bfa" strokeWidth="1.5" strokeOpacity="0.25" />
     </g>
 
-    <rect x="92" y="128" width="16" height="24" fill="url(#hierStandNeck)" />
-    <rect x="93" y="128" width="2" height="24" fill="#6b7280" opacity="0.2" />
-
-    <ellipse cx="100" cy="158" rx="36" ry="9" fill="url(#hierStandBase)" />
-    <ellipse cx="100" cy="156" rx="32" ry="7" fill="#4b5563" />
-    <ellipse cx="100" cy="155" rx="28" ry="5" fill="#374151" />
-
-    <g clipPath="url(#hierScreenClip)">
-      <g transform="translate(22, 12) scale(0.76)">
-        <g filter="url(#hierShadow)">
-          <rect x="80" y="8" width="40" height="28" rx="4" fill="url(#hierBoxFront)" />
-          <path d="M80 8 L120 8 L127 2 L87 2 Z" fill="url(#hierBoxTop)" />
-          <path d="M120 8 L120 36 L127 30 L127 2 Z" fill="url(#hierBoxSide)" />
-          <rect x="80" y="8" width="2" height="28" fill="#ffffff" opacity="0.3" />
-          <ellipse cx="102" cy="22" rx="8" ry="12" fill="#ffffff" opacity="0.08" />
-        </g>
-
-        <line x1="100" y1="40" x2="100" y2="52" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
-        <line x1="55" y1="52" x2="145" y2="52" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
-        <line x1="55" y1="52" x2="55" y2="62" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
-        <line x1="145" y1="52" x2="145" y2="62" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
-
-        <g filter="url(#hierShadow)">
-          <rect x="35" y="62" width="40" height="28" rx="4" fill="url(#hierBoxFront)" />
-          <path d="M35 62 L75 62 L82 56 L42 56 Z" fill="url(#hierBoxTop)" />
-          <path d="M75 62 L75 90 L82 84 L82 56 Z" fill="url(#hierBoxSide)" />
-          <rect x="35" y="62" width="2" height="28" fill="#ffffff" opacity="0.3" />
-          <ellipse cx="57" cy="76" rx="8" ry="12" fill="#ffffff" opacity="0.08" />
-        </g>
-
-        <g filter="url(#hierShadow)">
-          <rect x="125" y="62" width="40" height="28" rx="4" fill="url(#hierBoxFront)" />
-          <path d="M125 62 L165 62 L172 56 L132 56 Z" fill="url(#hierBoxTop)" />
-          <path d="M165 62 L165 90 L172 84 L172 56 Z" fill="url(#hierBoxSide)" />
-          <rect x="125" y="62" width="2" height="28" fill="#ffffff" opacity="0.3" />
-          <ellipse cx="147" cy="76" rx="8" ry="12" fill="#ffffff" opacity="0.08" />
-        </g>
-
-        <line x1="55" y1="94" x2="55" y2="104" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
-        <line x1="145" y1="94" x2="145" y2="104" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
-        <line x1="25" y1="104" x2="175" y2="104" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
-        <line x1="25" y1="104" x2="25" y2="114" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
-        <line x1="100" y1="104" x2="100" y2="114" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
-        <line x1="175" y1="104" x2="175" y2="114" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
-
-        <g filter="url(#hierShadow)">
-          <rect x="5" y="114" width="40" height="24" rx="3" fill="url(#hierBoxFront)" />
-          <path d="M5 114 L45 114 L52 108 L12 108 Z" fill="url(#hierBoxTop)" />
-          <path d="M45 114 L45 138 L52 132 L52 108 Z" fill="url(#hierBoxSide)" />
-          <rect x="5" y="114" width="2" height="24" fill="#ffffff" opacity="0.3" />
-          <ellipse cx="27" cy="126" rx="7" ry="10" fill="#ffffff" opacity="0.08" />
-        </g>
-
-        <g filter="url(#hierShadow)">
-          <rect x="80" y="114" width="40" height="24" rx="3" fill="url(#hierBoxFront)" />
-          <path d="M80 114 L120 114 L127 108 L87 108 Z" fill="url(#hierBoxTop)" />
-          <path d="M120 114 L120 138 L127 132 L127 108 Z" fill="url(#hierBoxSide)" />
-          <rect x="80" y="114" width="2" height="24" fill="#ffffff" opacity="0.3" />
-          <ellipse cx="102" cy="126" rx="7" ry="10" fill="#ffffff" opacity="0.08" />
-        </g>
-
-        <g filter="url(#hierShadow)">
-          <rect x="155" y="114" width="40" height="24" rx="3" fill="url(#hierBoxFront)" />
-          <path d="M155 114 L195 114 L202 108 L162 108 Z" fill="url(#hierBoxTop)" />
-          <path d="M195 114 L195 138 L202 132 L202 108 Z" fill="url(#hierBoxSide)" />
-          <rect x="155" y="114" width="2" height="24" fill="#ffffff" opacity="0.3" />
-          <ellipse cx="177" cy="126" rx="7" ry="10" fill="#ffffff" opacity="0.08" />
-        </g>
-      </g>
+    <g opacity="0.6">
+      <line x1="100" y1="55" x2="60" y2="95" stroke="#9ca3af" strokeWidth="2" strokeOpacity="0.4" strokeDasharray="3,3" />
+      <line x1="100" y1="55" x2="140" y2="95" stroke="#9ca3af" strokeWidth="2" strokeOpacity="0.4" strokeDasharray="3,3" />
+      <line x1="60" y1="125" x2="40" y2="160" stroke="#6b7280" strokeWidth="1.8" strokeOpacity="0.35" strokeDasharray="2,2" />
+      <line x1="60" y1="125" x2="80" y2="160" stroke="#6b7280" strokeWidth="1.8" strokeOpacity="0.35" strokeDasharray="2,2" />
+      <line x1="140" y1="125" x2="120" y2="160" stroke="#6b7280" strokeWidth="1.8" strokeOpacity="0.35" strokeDasharray="2,2" />
+      <line x1="140" y1="125" x2="160" y2="160" stroke="#6b7280" strokeWidth="1.8" strokeOpacity="0.35" strokeDasharray="2,2" />
     </g>
 
-    <rect x="8" y="4" width="184" height="118" rx="3" fill="transparent" stroke="#ffffff" strokeWidth="0.5" opacity="0.1" />
+    <g filter="url(#nodeShadow)">
+      <rect x="75" y="25" width="50" height="40" rx="12" fill="url(#hierNode1)" stroke="#a78bfa" strokeWidth="2" strokeOpacity="0.4" />
+      <circle cx="100" cy="35" r="5" fill="#c4b5fd" opacity="0.6" filter="url(#hierGlow)" />
+      <text x="100" y="52" fontSize="7" fill="#e9d5ff" opacity="0.8" textAnchor="middle" fontWeight="600">Director</text>
+      <text x="100" y="60" fontSize="6" fill="#d8b4fe" opacity="0.6" textAnchor="middle">$280K</text>
+    </g>
+
+    <g filter="url(#nodeShadow)">
+      <rect x="35" y="95" width="50" height="40" rx="10" fill="url(#hierNode2)" stroke="#8b5cf6" strokeWidth="1.8" strokeOpacity="0.35" />
+      <circle cx="60" cy="105" r="4" fill="#a78bfa" opacity="0.55" />
+      <text x="60" y="120" fontSize="6.5" fill="#c4b5fd" opacity="0.75" textAnchor="middle" fontWeight="500">Manager</text>
+      <text x="60" y="128" fontSize="5.5" fill="#a78bfa" opacity="0.55" textAnchor="middle">$145K</text>
+    </g>
+
+    <g filter="url(#nodeShadow)">
+      <rect x="115" y="95" width="50" height="40" rx="10" fill="url(#hierNode2)" stroke="#8b5cf6" strokeWidth="1.8" strokeOpacity="0.35" />
+      <circle cx="140" cy="105" r="4" fill="#a78bfa" opacity="0.55" />
+      <text x="140" y="120" fontSize="6.5" fill="#c4b5fd" opacity="0.75" textAnchor="middle" fontWeight="500">Manager</text>
+      <text x="140" y="128" fontSize="5.5" fill="#a78bfa" opacity="0.55" textAnchor="middle">$152K</text>
+    </g>
+
+    <g filter="url(#nodeShadow)">
+      <rect x="15" y="160" width="50" height="35" rx="8" fill="url(#hierNode3)" stroke="#6b7280" strokeWidth="1.5" strokeOpacity="0.3" />
+      <circle cx="40" cy="168" r="3" fill="#9ca3af" opacity="0.5" />
+      <text x="40" y="181" fontSize="6" fill="#d1d5db" opacity="0.65" textAnchor="middle">Agent</text>
+      <text x="40" y="188" fontSize="5" fill="#9ca3af" opacity="0.5" textAnchor="middle">$42K</text>
+    </g>
+
+    <g filter="url(#nodeShadow)">
+      <rect x="55" y="160" width="50" height="35" rx="8" fill="url(#hierNode3)" stroke="#6b7280" strokeWidth="1.5" strokeOpacity="0.3" />
+      <circle cx="80" cy="168" r="3" fill="#9ca3af" opacity="0.5" />
+      <text x="80" y="181" fontSize="6" fill="#d1d5db" opacity="0.65" textAnchor="middle">Agent</text>
+      <text x="80" y="188" fontSize="5" fill="#9ca3af" opacity="0.5" textAnchor="middle">$38K</text>
+    </g>
+
+    <g filter="url(#nodeShadow)">
+      <rect x="95" y="160" width="50" height="35" rx="8" fill="url(#hierNode3)" stroke="#6b7280" strokeWidth="1.5" strokeOpacity="0.3" />
+      <circle cx="120" cy="168" r="3" fill="#9ca3af" opacity="0.5" />
+      <text x="120" y="181" fontSize="6" fill="#d1d5db" opacity="0.65" textAnchor="middle">Agent</text>
+      <text x="120" y="188" fontSize="5" fill="#9ca3af" opacity="0.5" textAnchor="middle">$51K</text>
+    </g>
+
+    <g filter="url(#nodeShadow)">
+      <rect x="135" y="160" width="50" height="35" rx="8" fill="url(#hierNode3)" stroke="#6b7280" strokeWidth="1.5" strokeOpacity="0.3" />
+      <circle cx="160" cy="168" r="3" fill="#9ca3af" opacity="0.5" />
+      <text x="160" y="181" fontSize="6" fill="#d1d5db" opacity="0.65" textAnchor="middle">Agent</text>
+      <text x="160" y="188" fontSize="5" fill="#9ca3af" opacity="0.5" textAnchor="middle">$47K</text>
+    </g>
   </svg>
 );
 
@@ -774,7 +750,16 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
       <GridPattern isDashboard={isDashboard} index={index} />
       <BottomGlow isDashboard={isDashboard} />
       <SparkleEffect isHovered={isHovered} isDashboard={isDashboard} />
-      <div className="relative p-10 flex flex-col h-full min-h-[400px] z-10">
+      <div
+        className={`relative p-10 flex flex-col h-full z-10`}
+        style={{
+          minHeight: index === 0 ? '480px' :
+                     index === 1 ? '420px' :
+                     index === 2 ? '460px' :
+                     index === 3 ? '440px' :
+                     '400px'
+        }}
+      >
         <div className="w-56 h-56 mb-8 mx-auto lg:mx-0">
           <Icon />
         </div>
