@@ -94,6 +94,15 @@ const ValueProps: React.FC = () => {
                 background: 'linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(0,0,0,0.6) 75%, rgba(0,0,0,0.95) 92%, black 100%)'
               }}
             />
+
+            {/* Bottom mask to hide white border */}
+            <div
+              className="absolute bottom-0 left-0 right-0 pointer-events-none"
+              style={{
+                height: '15%',
+                background: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.8) 30%, black 70%)'
+              }}
+            />
           </div>
         </motion.div>
 
