@@ -690,27 +690,27 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, gridArea }) =
   const isDashboard = feature.title === '/ Dashboard Analytics';
 
   const iconSizes: Record<number, string> = {
-    0: 'w-[260px] h-[260px]',
-    1: 'w-[260px] h-[260px]',
-    2: 'w-[260px] h-[260px]',
-    3: 'w-[220px] h-[220px]',
-    4: 'w-[260px] h-[260px]',
+    0: 'w-[240px] h-[240px]',
+    1: 'w-[200px] h-[200px]',
+    2: 'w-[200px] h-[200px]',
+    3: 'w-[180px] h-[180px]',
+    4: 'w-[200px] h-[200px]',
   };
 
   const iconPositions: Record<number, string> = {
-    0: 'absolute -top-8 -left-8',
-    1: 'absolute -top-8 -right-8',
-    2: 'absolute -bottom-8 -right-8',
-    3: 'absolute top-1/2 -left-8 -translate-y-1/2',
-    4: 'absolute top-1/2 -right-8 -translate-y-1/2',
+    0: 'absolute top-6 left-6',
+    1: 'absolute top-6 right-6',
+    2: 'absolute bottom-6 right-6',
+    3: 'absolute top-1/2 left-6 -translate-y-1/2',
+    4: 'absolute top-1/2 right-6 -translate-y-1/2',
   };
 
   const paddingSizes: Record<number, string> = {
-    0: 'p-10',
-    1: 'p-10',
-    2: 'p-10',
-    3: 'p-10',
-    4: 'p-10',
+    0: 'p-8',
+    1: 'p-8',
+    2: 'p-8',
+    3: 'p-8',
+    4: 'p-8',
   };
 
   const contentAlignments: Record<number, string> = {
@@ -748,7 +748,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, gridArea }) =
       </div>
 
       <div className={`relative flex flex-col h-full z-20 ${contentAlignments[index]}`}>
-        <div className={`flex flex-col ${index === 3 || index === 4 ? 'max-w-xs' : 'max-w-sm'}`}>
+        <div className={`flex flex-col ${index === 0 ? 'max-w-[420px]' : index === 1 ? 'max-w-[380px]' : index === 2 ? 'max-w-[400px]' : index === 3 ? 'max-w-[320px]' : 'max-w-[360px]'}`}>
           <h3 className={`text-2xl lg:text-3xl font-bold leading-[1.3] mb-4 ${isDashboard ? 'text-gray-900' : 'text-white'}`}>
             {feature.title}
           </h3>
@@ -824,12 +824,11 @@ const FeatureGrid: React.FC = () => {
             className="relative rounded-3xl overflow-hidden"
             style={{
               background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.3) 100%)',
-              border: '2px solid rgba(255, 255, 255, 0.08)',
               boxShadow: '0 20px 60px rgba(0, 0, 0, 0.6), 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.06)',
             }}
           >
             <div
-              className="hidden lg:grid gap-[10px] p-[10px] min-h-[900px] relative"
+              className="hidden lg:grid gap-[10px] p-[10px] min-h-[1100px] relative"
               style={{
                 gridTemplateColumns: 'repeat(12, 1fr)',
                 gridTemplateRows: 'repeat(12, 1fr)',
@@ -849,23 +848,10 @@ const FeatureGrid: React.FC = () => {
                 `
               }}
             >
-              <div style={{ gridArea: 'a', position: 'relative' }}>
-                <div className="absolute inset-y-0 right-0 w-[1px] bg-gradient-to-b from-transparent via-white/8 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-white/8 to-transparent" />
-                <FeatureCard feature={features[0]} index={0} gridArea="a" />
-              </div>
-              <div style={{ gridArea: 'b', position: 'relative' }}>
-                <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-white/8 to-transparent" />
-                <FeatureCard feature={features[1]} index={1} gridArea="b" />
-              </div>
-              <div style={{ gridArea: 'c', position: 'relative' }}>
-                <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-white/8 to-transparent" />
-                <FeatureCard feature={features[2]} index={2} gridArea="c" />
-              </div>
-              <div style={{ gridArea: 'd', position: 'relative' }}>
-                <div className="absolute inset-y-0 right-0 w-[1px] bg-gradient-to-b from-transparent via-white/8 to-transparent" />
-                <FeatureCard feature={features[3]} index={3} gridArea="d" />
-              </div>
+              <FeatureCard feature={features[0]} index={0} gridArea="a" />
+              <FeatureCard feature={features[1]} index={1} gridArea="b" />
+              <FeatureCard feature={features[2]} index={2} gridArea="c" />
+              <FeatureCard feature={features[3]} index={3} gridArea="d" />
               <FeatureCard feature={features[4]} index={4} gridArea="e" />
             </div>
 
