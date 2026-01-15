@@ -688,7 +688,7 @@ const BottomGlow: React.FC<{ isDashboard: boolean }> = ({ isDashboard }) => (
       style={{
         background: isDashboard
           ? 'radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.2), transparent 70%)'
-          : 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.15), transparent 70%)',
+          : 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.15), transparent 70%)',
       }}
     />
     <div
@@ -696,7 +696,7 @@ const BottomGlow: React.FC<{ isDashboard: boolean }> = ({ isDashboard }) => (
       style={{
         background: isDashboard
           ? 'radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.15), transparent 70%)'
-          : 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.12), transparent 70%)',
+          : 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.12), transparent 70%)',
       }}
     />
     <div
