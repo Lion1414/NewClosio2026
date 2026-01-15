@@ -1,54 +1,7 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { ShinyButton } from './ui/shiny-button';
-
-const VerticalLine: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start 0.8", "end -0.2"]
-  });
-
-  const pathLength = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
-
-  // Move down into monitor, then left out of screen
-  const translateY = useTransform(scrollYProgress, [0.5, 0.75], ['0%', '50%']);
-  const translateX = useTransform(scrollYProgress, [0.75, 1], ['0%', '-200%']);
-  const opacity = useTransform(scrollYProgress, [0.5, 1], [1, 0]);
-
-  return (
-    <div ref={sectionRef} className="absolute inset-0 pointer-events-none overflow-visible">
-      <motion.svg
-        className="absolute top-0 left-0 w-full h-full"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-        style={{
-          overflow: 'visible',
-          translateY,
-          translateX,
-          opacity
-        }}
-      >
-        <motion.path
-          d="M 53 -5 L 53 28 Q 53 35, 46 35 L -5 35"
-          stroke="rgba(255, 255, 255, 0.2)"
-          strokeWidth="0.45"
-          fill="none"
-          strokeLinecap="round"
-          style={{
-            pathLength,
-          }}
-          initial={{ pathLength: 0 }}
-          transition={{
-            duration: 1.8,
-            ease: [0.25, 0.1, 0.25, 1]
-          }}
-        />
-      </motion.svg>
-    </div>
-  );
-};
 
 const valueItems = [
   {
@@ -74,9 +27,6 @@ const ValueProps: React.FC = () => {
 
   return (
     <section id="why-closio" className="py-16 sm:py-20 md:py-24 lg:py-32 xl:py-40 bg-black relative overflow-hidden">
-      <div className="hidden lg:block">
-        <VerticalLine />
-      </div>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header - Title Left, Context Right */}
