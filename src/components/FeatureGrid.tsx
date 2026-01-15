@@ -691,41 +691,41 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, gridArea }) =
 
   const layoutTemplates = {
     0: {
-      artPosition: 'absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[35%]',
-      artOpacity: 'opacity-[0.30]',
-      contentPosition: 'absolute bottom-0 left-0 right-0 h-[65%] flex items-end justify-center pb-8 px-8',
-      contentMaxWidth: 'max-w-[90%]',
-      contentAlign: 'items-center text-center',
+      artPosition: 'absolute left-0 top-0 bottom-0 w-[40%]',
+      artOpacity: 'opacity-[0.25]',
+      contentPosition: 'absolute right-0 top-0 bottom-0 w-[60%] flex items-center justify-end pr-10',
+      contentMaxWidth: 'max-w-full',
+      contentAlign: 'items-end text-right',
       artGradient: '',
     },
     1: {
-      artPosition: 'absolute right-0 top-0 bottom-0 w-[38%]',
-      artOpacity: 'opacity-[0.28]',
-      contentPosition: 'absolute left-0 top-0 bottom-0 w-[62%] flex items-center justify-start pl-10',
+      artPosition: 'absolute right-0 top-0 bottom-0 w-[40%]',
+      artOpacity: 'opacity-[0.25]',
+      contentPosition: 'absolute left-0 top-0 bottom-0 w-[60%] flex items-center justify-start pl-10',
       contentMaxWidth: 'max-w-full',
       contentAlign: 'items-start text-left',
       artGradient: '',
     },
     2: {
-      artPosition: 'absolute bottom-0 left-0 right-0 h-[42%]',
-      artOpacity: 'opacity-[0.30]',
-      contentPosition: 'absolute top-0 left-0 right-0 h-[58%] flex items-start justify-start pt-10 px-10',
-      contentMaxWidth: 'max-w-[90%]',
+      artPosition: 'absolute bottom-0 left-0 right-0 h-[45%]',
+      artOpacity: 'opacity-[0.28]',
+      contentPosition: 'absolute top-0 left-0 right-0 h-[55%] flex items-start justify-start pt-10 px-10',
+      contentMaxWidth: 'max-w-[85%]',
       contentAlign: 'items-start text-left',
       artGradient: '',
     },
     3: {
-      artPosition: 'absolute top-0 left-0 right-0 h-[38%]',
-      artOpacity: 'opacity-[0.32]',
-      contentPosition: 'absolute bottom-0 left-0 right-0 h-[62%] flex items-end justify-start pb-10 px-10',
-      contentMaxWidth: 'max-w-[90%]',
+      artPosition: 'absolute top-0 left-0 right-0 h-[40%]',
+      artOpacity: 'opacity-[0.30]',
+      contentPosition: 'absolute bottom-0 left-0 right-0 h-[60%] flex items-end justify-start pb-10 px-10',
+      contentMaxWidth: 'max-w-[85%]',
       contentAlign: 'items-start text-left',
       artGradient: '',
     },
     4: {
-      artPosition: 'absolute bottom-0 right-0 w-[42%] h-[48%]',
-      artOpacity: 'opacity-[0.28]',
-      contentPosition: 'absolute top-0 left-0 right-[42%] bottom-[48%] flex items-start justify-start pt-10 pl-10',
+      artPosition: 'absolute bottom-0 right-0 w-[45%] h-[50%]',
+      artOpacity: 'opacity-[0.25]',
+      contentPosition: 'absolute top-0 left-0 right-[45%] bottom-[50%] flex items-start justify-start pt-10 pl-10',
       contentMaxWidth: 'max-w-full',
       contentAlign: 'items-start text-left',
       artGradient: '',
@@ -846,18 +846,18 @@ const FeatureGrid: React.FC = () => {
                 gridTemplateColumns: 'repeat(12, 1fr)',
                 gridTemplateRows: 'repeat(12, 1fr)',
                 gridTemplateAreas: `
-                  "a a a a a b b b b b b b"
-                  "a a a a a b b b b b b b"
-                  "a a a a a b b b b b b b"
-                  "a a a a a b b b b b b b"
-                  "a a a a a b b b b b b b"
-                  "a a a a a c c c c c c c"
-                  "c c c c c c c c c c c c"
-                  "c c c c c c c c c c c c"
-                  "d d d d d d e e e e e e"
-                  "d d d d d d e e e e e e"
-                  "d d d d d d e e e e e e"
-                  "d d d d d d e e e e e e"
+                  "a a a a a a a b b b b b"
+                  "a a a a a a a b b b b b"
+                  "a a a a a a a b b b b b"
+                  "a a a a a a a b b b b b"
+                  "a a a a a a a b b b b b"
+                  "a a a a a a a c c c c c"
+                  "a a a a a a a c c c c c"
+                  "a a a a a a a c c c c c"
+                  "d d d d d e e e e e e e"
+                  "d d d d d e e e e e e e"
+                  "d d d d d e e e e e e e"
+                  "d d d d d e e e e e e e"
                 `
               }}
             >
