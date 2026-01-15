@@ -81,7 +81,7 @@ const ValueProps: React.FC = () => {
                 <div
                   className="absolute inset-0 rounded-2xl pointer-events-none"
                   style={{
-                    background: 'linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(0,0,0,0.8) 85%, black 100%)'
+                    background: 'linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(0,0,0,0.7) 75%, rgba(0,0,0,0.95) 90%, black 100%)'
                   }}
                 />
               </div>
@@ -91,7 +91,7 @@ const ValueProps: React.FC = () => {
             <div
               className="absolute inset-0 rounded-3xl pointer-events-none"
               style={{
-                background: 'linear-gradient(to bottom, transparent 0%, transparent 60%, rgba(0,0,0,0.5) 85%, black 100%)'
+                background: 'linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(0,0,0,0.6) 75%, rgba(0,0,0,0.95) 92%, black 100%)'
               }}
             />
           </div>
