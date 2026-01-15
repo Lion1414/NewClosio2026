@@ -111,35 +111,33 @@ const SparkleEffect: React.FC<{ isHovered: boolean; isDashboard: boolean }> = ({
 const BookIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
     <defs>
-      <linearGradient id="bookFront" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#f9fafb" />
-        <stop offset="20%" stopColor="#e5e7eb" />
-        <stop offset="60%" stopColor="#d1d5db" />
-        <stop offset="100%" stopColor="#9ca3af" />
+      <linearGradient id="bookBg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#0a0a0a" />
+        <stop offset="50%" stopColor="#0d0d0d" />
+        <stop offset="100%" stopColor="#1a1625" />
       </linearGradient>
-      <linearGradient id="bookTop" x1="0%" y1="100%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#d1d5db" />
-        <stop offset="30%" stopColor="#e5e7eb" />
-        <stop offset="70%" stopColor="#f3f4f6" />
-        <stop offset="100%" stopColor="#ffffff" />
+      <linearGradient id="glassPanel1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.06" />
+        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.02" />
       </linearGradient>
-      <linearGradient id="bookSide" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#9ca3af" />
-        <stop offset="50%" stopColor="#6b7280" />
-        <stop offset="100%" stopColor="#4b5563" />
+      <linearGradient id="glassPanel2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.08" />
+        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.03" />
       </linearGradient>
-      <linearGradient id="bookEdgeHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.6" />
-        <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
-      </linearGradient>
-      <filter id="bookShadow" x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow dx="5" dy="8" stdDeviation="10" floodColor="#000" floodOpacity="0.5" />
+      <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3" result="blur" />
+        <feFlood floodColor="#8b5cf6" floodOpacity="0.15" />
+        <feComposite in2="blur" operator="in" />
+        <feMerge>
+          <feMergeNode />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
       </filter>
-      <filter id="bookInnerShadow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
-        <feOffset dx="1" dy="2" result="offsetblur" />
+      <filter id="cardShadow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" />
+        <feOffset dx="0" dy="2" />
         <feComponentTransfer>
-          <feFuncA type="linear" slope="0.3" />
+          <feFuncA type="linear" slope="0.2" />
         </feComponentTransfer>
         <feMerge>
           <feMergeNode />
@@ -147,18 +145,42 @@ const BookIcon: React.FC = () => (
         </feMerge>
       </filter>
     </defs>
-    <g filter="url(#bookShadow)">
-      <path d="M50 45 L50 155 L145 155 L145 45 Z" fill="url(#bookFront)" filter="url(#bookInnerShadow)" />
-      <path d="M50 45 L145 45 L160 30 L65 30 Z" fill="url(#bookTop)" />
-      <path d="M145 45 L145 155 L160 140 L160 30 Z" fill="url(#bookSide)" />
-      <rect x="145" y="45" width="2" height="110" fill="url(#bookEdgeHighlight)" />
-      <path d="M50 45 L65 30 L65 140 L50 155 Z" fill="#1f2937" opacity="0.15" />
+
+    <rect width="200" height="200" fill="url(#bookBg)" />
+
+    <g filter="url(#cardShadow)">
+      <rect x="20" y="30" width="160" height="140" rx="18" fill="url(#glassPanel1)" stroke="#ffffff" strokeWidth="0.5" strokeOpacity="0.1" />
+
+      <rect x="35" y="50" width="50" height="8" rx="4" fill="#6b7280" opacity="0.3" />
+      <rect x="90" y="50" width="35" height="8" rx="4" fill="#6b7280" opacity="0.25" />
+      <rect x="130" y="50" width="35" height="8" rx="4" fill="#8b5cf6" opacity="0.35" filter="url(#softGlow)" />
+
+      <line x1="35" y1="70" x2="165" y2="70" stroke="#ffffff" strokeWidth="0.5" strokeOpacity="0.08" />
+
+      <rect x="35" y="80" width="75" height="6" rx="3" fill="#9ca3af" opacity="0.25" />
+      <rect x="115" y="80" width="30" height="6" rx="3" fill="#7c3aed" opacity="0.3" />
+      <circle cx="157" cy="83" r="4" fill="#8b5cf6" opacity="0.35" />
+
+      <rect x="35" y="98" width="85" height="6" rx="3" fill="#9ca3af" opacity="0.22" />
+      <rect x="125" y="98" width="25" height="6" rx="3" fill="#6366f1" opacity="0.28" />
+      <circle cx="157" cy="101" r="4" fill="#8b5cf6" opacity="0.3" />
+
+      <rect x="35" y="116" width="70" height="6" rx="3" fill="#9ca3af" opacity="0.2" />
+      <rect x="110" y="116" width="35" height="6" rx="3" fill="#8b5cf6" opacity="0.32" />
+      <circle cx="157" cy="119" r="4" fill="#7c3aed" opacity="0.35" />
+
+      <line x1="35" y1="135" x2="165" y2="135" stroke="#ffffff" strokeWidth="0.5" strokeOpacity="0.08" />
     </g>
-    <rect x="62" y="62" width="70" height="5" fill="#6b7280" opacity="0.4" rx="2" />
-    <rect x="62" y="78" width="58" height="5" fill="#6b7280" opacity="0.35" rx="2" />
-    <rect x="62" y="94" width="64" height="5" fill="#6b7280" opacity="0.3" rx="2" />
-    <rect x="62" y="110" width="52" height="5" fill="#6b7280" opacity="0.25" rx="2" />
-    <ellipse cx="147" cy="100" rx="8" ry="35" fill="#ffffff" opacity="0.08" />
+
+    <g filter="url(#cardShadow)">
+      <rect x="35" y="145" width="55" height="18" rx="9" fill="url(#glassPanel2)" stroke="#7c3aed" strokeWidth="0.8" strokeOpacity="0.2" />
+      <text x="62.5" y="157" fontSize="9" fill="#a78bfa" opacity="0.7" textAnchor="middle" fontWeight="500">Metric A</text>
+    </g>
+
+    <g filter="url(#cardShadow)">
+      <rect x="98" y="145" width="67" height="18" rx="9" fill="url(#glassPanel2)" stroke="#6366f1" strokeWidth="0.8" strokeOpacity="0.2" />
+      <text x="131.5" y="157" fontSize="9" fill="#818cf8" opacity="0.7" textAnchor="middle" fontWeight="500">Data Set</text>
+    </g>
   </svg>
 );
 
