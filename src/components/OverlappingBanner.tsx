@@ -71,13 +71,13 @@ const BottomGlow: React.FC = () => (
     <div
       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-40 blur-3xl"
       style={{
-        background: 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.5), transparent 70%)',
+        background: 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.5), transparent 70%)',
       }}
     />
     <div
       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-28 blur-2xl"
       style={{
-        background: 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.4), transparent 70%)',
+        background: 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.4), transparent 70%)',
       }}
     />
     <div
@@ -117,7 +117,6 @@ const OverlappingBanner: React.FC = () => {
           }}
         />
         <GridPattern />
-        <TopGlow />
         <BottomGlow />
         <div className="relative px-8 py-16 md:py-20 flex flex-col items-center justify-center text-center z-10">
           <motion.h2
