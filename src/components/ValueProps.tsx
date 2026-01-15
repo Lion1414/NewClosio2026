@@ -54,14 +54,14 @@ const ValueProps: React.FC = () => {
 
         {/* Large Dashboard Image */}
         <motion.div
-          className="relative mb-8 md:mb-12 px-6 sm:px-8 md:px-12"
+          className="relative mb-8 md:mb-12 px-0 sm:px-2 md:px-4"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="relative">
-            <div className="relative opacity-50">
+            <div className="relative opacity-30">
               <img
                 src="/image copy copy copy copy.png"
                 alt="Closio Dashboard"
@@ -70,7 +70,7 @@ const ValueProps: React.FC = () => {
               <div
                 className="absolute inset-0 rounded-2xl pointer-events-none"
                 style={{
-                  background: 'linear-gradient(to bottom, transparent 0%, transparent 60%, black 100%)'
+                  background: 'linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(0,0,0,0.8) 85%, black 100%)'
                 }}
               />
             </div>
