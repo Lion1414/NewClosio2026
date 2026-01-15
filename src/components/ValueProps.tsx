@@ -83,6 +83,22 @@ const ValueProps: React.FC = () => {
                   background: 'linear-gradient(to bottom, transparent 0%, transparent 30%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.85) 80%, rgba(0,0,0,0.98) 92%, black 100%)'
                 }}
               />
+
+              {/* Bottom left corner blend */}
+              <div
+                className="absolute inset-0 rounded-2xl pointer-events-none"
+                style={{
+                  background: 'radial-gradient(ellipse 50% 40% at 0% 100%, black 0%, rgba(0,0,0,0.8) 30%, transparent 60%)'
+                }}
+              />
+
+              {/* Bottom right corner blend */}
+              <div
+                className="absolute inset-0 rounded-2xl pointer-events-none"
+                style={{
+                  background: 'radial-gradient(ellipse 50% 40% at 100% 100%, black 0%, rgba(0,0,0,0.8) 30%, transparent 60%)'
+                }}
+              />
             </div>
           </div>
         </motion.div>
