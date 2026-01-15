@@ -112,25 +112,24 @@ const BookIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
     <defs>
       <linearGradient id="bookBg" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#0a0a0a" />
-        <stop offset="50%" stopColor="#0d0d0d" />
-        <stop offset="100%" stopColor="#1a1625" />
+        <stop offset="0%" stopColor="#000000" />
+        <stop offset="100%" stopColor="#0D0D0D" />
       </linearGradient>
       <linearGradient id="dealCard1" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.09" />
-        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.03" />
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.1" />
+        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.04" />
       </linearGradient>
       <linearGradient id="dealCard2" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.07" />
-        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.02" />
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.08" />
+        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.03" />
       </linearGradient>
       <linearGradient id="dealCard3" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.05" />
-        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.015" />
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.06" />
+        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.02" />
       </linearGradient>
       <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="2" result="blur" />
-        <feFlood floodColor="#8b5cf6" floodOpacity="0.2" />
+        <feGaussianBlur stdDeviation="3" result="blur" />
+        <feFlood floodColor="#8b5cf6" floodOpacity="0.25" />
         <feComposite in2="blur" operator="in" />
         <feMerge>
           <feMergeNode />
@@ -138,10 +137,10 @@ const BookIcon: React.FC = () => (
         </feMerge>
       </filter>
       <filter id="dealShadow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="5" />
-        <feOffset dx="0" dy="3" />
+        <feGaussianBlur stdDeviation="6" />
+        <feOffset dx="0" dy="4" />
         <feComponentTransfer>
-          <feFuncA type="linear" slope="0.25" />
+          <feFuncA type="linear" slope="0.3" />
         </feComponentTransfer>
         <feMerge>
           <feMergeNode />
@@ -152,42 +151,42 @@ const BookIcon: React.FC = () => (
 
     <rect width="200" height="200" fill="url(#bookBg)" />
 
-    <g filter="url(#dealShadow)" opacity="0.4">
-      <rect x="15" y="120" width="170" height="65" rx="14" fill="url(#dealCard3)" stroke="#ffffff" strokeWidth="0.4" strokeOpacity="0.08" />
-      <text x="25" y="138" fontSize="8" fill="#9ca3af" opacity="0.6" fontWeight="500">S. Anderson</text>
-      <text x="25" y="152" fontSize="7" fill="#6b7280" opacity="0.5">Term Life Policy</text>
-      <text x="175" y="152" fontSize="9" fill="#8b5cf6" opacity="0.6" textAnchor="end" fontWeight="600">$8,200</text>
-      <text x="175" y="162" fontSize="6" fill="#a78bfa" opacity="0.5" textAnchor="end">Annual</text>
-      <rect x="25" y="167" width="30" height="10" rx="5" fill="#6366f1" opacity="0.2" />
-      <text x="40" y="174" fontSize="6" fill="#818cf8" opacity="0.6" textAnchor="middle">Active</text>
+    <g filter="url(#dealShadow)" opacity="0.35">
+      <rect x="8" y="125" width="184" height="70" rx="16" fill="url(#dealCard3)" stroke="#ffffff" strokeWidth="0.3" strokeOpacity="0.06" />
+      <text x="20" y="145" fontSize="10" fill="#9ca3af" opacity="0.55" fontWeight="500">S. Anderson</text>
+      <text x="20" y="161" fontSize="8" fill="#6b7280" opacity="0.5">Term Life Policy</text>
+      <text x="180" y="161" fontSize="11" fill="#8b5cf6" opacity="0.6" textAnchor="end" fontWeight="600">$8,200</text>
+      <text x="180" y="173" fontSize="7" fill="#a78bfa" opacity="0.5" textAnchor="end">Annual</text>
+      <rect x="20" y="178" width="34" height="12" rx="6" fill="#6366f1" opacity="0.18" />
+      <text x="37" y="186" fontSize="7" fill="#818cf8" opacity="0.6" textAnchor="middle">Active</text>
     </g>
 
-    <g filter="url(#dealShadow)" opacity="0.6">
-      <rect x="12" y="75" width="176" height="68" rx="15" fill="url(#dealCard2)" stroke="#ffffff" strokeWidth="0.45" strokeOpacity="0.1" />
-      <text x="24" y="94" fontSize="9" fill="#d1d5db" opacity="0.65" fontWeight="500">M. Rodriguez</text>
-      <text x="24" y="109" fontSize="7.5" fill="#9ca3af" opacity="0.6">Whole Life Policy</text>
-      <text x="176" y="109" fontSize="10" fill="#8b5cf6" opacity="0.7" textAnchor="end" fontWeight="600">$12,450</text>
-      <text x="176" y="120" fontSize="6.5" fill="#a78bfa" opacity="0.6" textAnchor="end">Annual</text>
-      <rect x="24" y="124" width="35" height="11" rx="5.5" fill="#7c3aed" opacity="0.25" />
-      <text x="41.5" y="131.5" fontSize="6.5" fill="#a78bfa" opacity="0.7" textAnchor="middle">Pending</text>
+    <g filter="url(#dealShadow)" opacity="0.55">
+      <rect x="6" y="68" width="188" height="75" rx="17" fill="url(#dealCard2)" stroke="#ffffff" strokeWidth="0.35" strokeOpacity="0.08" />
+      <text x="18" y="89" fontSize="11" fill="#d1d5db" opacity="0.6" fontWeight="500">M. Rodriguez</text>
+      <text x="18" y="106" fontSize="9" fill="#9ca3af" opacity="0.58">Whole Life Policy</text>
+      <text x="186" y="106" fontSize="12" fill="#8b5cf6" opacity="0.7" textAnchor="end" fontWeight="600">$12,450</text>
+      <text x="186" y="119" fontSize="7.5" fill="#a78bfa" opacity="0.6" textAnchor="end">Annual</text>
+      <rect x="18" y="125" width="40" height="13" rx="6.5" fill="#7c3aed" opacity="0.22" />
+      <text x="38" y="133.5" fontSize="7.5" fill="#a78bfa" opacity="0.7" textAnchor="middle">Pending</text>
     </g>
 
-    <g filter="url(#dealShadow)" opacity="0.95">
-      <rect x="10" y="20" width="180" height="72" rx="16" fill="url(#dealCard1)" stroke="#ffffff" strokeWidth="0.5" strokeOpacity="0.12" />
-      <circle cx="25" cy="40" r="8" fill="#8b5cf6" opacity="0.3" filter="url(#softGlow)" />
-      <text x="25" y="43" fontSize="7" fill="#ffffff" opacity="0.8" textAnchor="middle" fontWeight="700">JD</text>
+    <g filter="url(#dealShadow)" opacity="1">
+      <rect x="4" y="4" width="192" height="82" rx="18" fill="url(#dealCard1)" stroke="#ffffff" strokeWidth="0.4" strokeOpacity="0.12" />
+      <circle cx="20" cy="28" r="10" fill="#8b5cf6" opacity="0.32" filter="url(#softGlow)" />
+      <text x="20" y="32" fontSize="8" fill="#ffffff" opacity="0.85" textAnchor="middle" fontWeight="700">JD</text>
 
-      <text x="40" y="38" fontSize="10" fill="#f9fafb" opacity="0.75" fontWeight="600">Jennifer Davis</text>
-      <text x="40" y="50" fontSize="8" fill="#d1d5db" opacity="0.65">Universal Life Policy</text>
+      <text x="36" y="25" fontSize="12" fill="#f9fafb" opacity="0.8" fontWeight="600">Jennifer Davis</text>
+      <text x="36" y="40" fontSize="9.5" fill="#d1d5db" opacity="0.7">Universal Life Policy</text>
 
-      <text x="180" y="42" fontSize="12" fill="#8b5cf6" opacity="0.85" textAnchor="end" fontWeight="700" filter="url(#softGlow)">$18,900</text>
-      <text x="180" y="53" fontSize="7" fill="#a78bfa" opacity="0.7" textAnchor="end">Annual Premium</text>
+      <text x="190" y="30" fontSize="15" fill="#8b5cf6" opacity="0.9" textAnchor="end" fontWeight="700" filter="url(#softGlow)">$18,900</text>
+      <text x="190" y="43" fontSize="8" fill="#a78bfa" opacity="0.75" textAnchor="end">Annual Premium</text>
 
-      <rect x="40" y="60" width="38" height="13" rx="6.5" fill="#7c3aed" opacity="0.3" />
-      <text x="59" y="68.5" fontSize="7" fill="#c4b5fd" opacity="0.85" textAnchor="middle" fontWeight="500">In Review</text>
+      <rect x="36" y="54" width="44" height="15" rx="7.5" fill="#7c3aed" opacity="0.32" />
+      <text x="58" y="63.5" fontSize="8" fill="#c4b5fd" opacity="0.9" textAnchor="middle" fontWeight="500">In Review</text>
 
-      <rect x="85" y="60" width="25" height="13" rx="6.5" fill="#6366f1" opacity="0.25" />
-      <text x="97.5" y="68.5" fontSize="6.5" fill="#818cf8" opacity="0.75" textAnchor="middle">+New</text>
+      <rect x="86" y="54" width="30" height="15" rx="7.5" fill="#6366f1" opacity="0.28" />
+      <text x="101" y="63.5" fontSize="7.5" fill="#818cf8" opacity="0.8" textAnchor="middle">+New</text>
     </g>
   </svg>
 );
@@ -749,17 +748,6 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
   const staggerDelay = index * 0.15;
   const isDashboard = feature.title === '/ Dashboard Analytics';
 
-  const getColumnClasses = () => {
-    if (isTopRow) {
-      return 'col-span-1 lg:col-span-2';
-    } else {
-      if (index === 3) {
-        return 'col-span-1 lg:col-span-2 lg:col-start-2';
-      }
-      return 'col-span-1 lg:col-span-2';
-    }
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0, x: slideDirection }}
@@ -772,30 +760,30 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`group relative overflow-hidden rounded-2xl cursor-pointer ${getColumnClasses()} ${isDashboard ? 'border-[3px] border-gray-200' : 'border-[3px] border-white/20'}`}
+      className={`group relative overflow-hidden rounded-2xl cursor-pointer col-span-1 ${isDashboard ? 'border-[3px] border-gray-200' : 'border-[3px] border-white/10'}`}
       style={{
         background: isDashboard
           ? '#ffffff'
-          : '#000000',
+          : 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.2) 100%)',
         willChange: 'transform, opacity',
         boxShadow: isDashboard
           ? '0 8px 24px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.05)'
-          : '0 8px 24px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(255, 255, 255, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.1)',
+          : '0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 12px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.05)',
       }}
     >
       <GridPattern isDashboard={isDashboard} index={index} />
       <BottomGlow isDashboard={isDashboard} />
       <SparkleEffect isHovered={isHovered} isDashboard={isDashboard} />
-      <div className="relative p-8 flex flex-col h-full min-h-[340px] z-10">
-        <div className="w-44 h-44 mb-6">
+      <div className="relative p-10 flex flex-col h-full min-h-[400px] z-10">
+        <div className="w-56 h-56 mb-8 mx-auto lg:mx-0">
           <Icon />
         </div>
 
         <div className="flex-1 flex flex-col">
-          <h3 className={`text-2xl font-bold leading-[1.3] mb-4 ${isDashboard ? 'text-gray-900' : 'text-white'}`}>
+          <h3 className={`text-3xl font-bold leading-[1.3] mb-5 ${isDashboard ? 'text-gray-900' : 'text-white'}`}>
             {feature.title}
           </h3>
-          <p className={`text-base leading-[1.6] ${isDashboard ? 'text-gray-800' : 'text-white/60'}`}>
+          <p className={`text-lg leading-[1.7] ${isDashboard ? 'text-gray-800' : 'text-white/65'}`}>
             {feature.description}
           </p>
         </div>
@@ -858,14 +846,25 @@ const FeatureGrid: React.FC = () => {
 
         <PoweredBySection />
 
-        <div className="grid grid-cols-2 lg:grid-cols-6 gap-6 px-4 lg:px-8">
-          {features.map((feature, index) => (
-            <FeatureCard
-              key={index}
-              feature={feature}
-              index={index}
-            />
-          ))}
+        <div className="px-2 lg:px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+            {features.slice(0, 3).map((feature, index) => (
+              <FeatureCard
+                key={index}
+                feature={feature}
+                index={index}
+              />
+            ))}
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:max-w-[calc(66.666%-0.5rem)] lg:mx-auto">
+            {features.slice(3, 5).map((feature, index) => (
+              <FeatureCard
+                key={index + 3}
+                feature={feature}
+                index={index + 3}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
