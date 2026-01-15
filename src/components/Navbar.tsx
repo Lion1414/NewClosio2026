@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { GlassShinyButton } from './ui/glass-shiny-button';
 
 interface NavbarProps {
   activeSection?: string;
@@ -351,19 +350,31 @@ const Navbar: React.FC<NavbarProps> = () => {
               >
                 <span className="demo-btn-text">Get in touch</span>
               </Link>
-              <GlassShinyButton
+              <button
                 onClick={() => window.location.href = 'https://closio.com/login'}
-                className="font-medium whitespace-nowrap"
+                className="font-medium whitespace-nowrap rounded-xl"
                 style={{
                   padding: isScrolled ? '8px 20px' : '10px 24px',
                   fontSize: isScrolled ? '14px' : '15px',
                   opacity: isScrollingDown && !isScrolled ? 0 : 1,
                   pointerEvents: isScrollingDown && !isScrolled ? 'none' : 'auto',
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%)',
+                  backdropFilter: 'blur(20px) saturate(180%)',
+                  WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 4px 20px rgba(0, 0, 0, 0.2)',
+                  color: 'white',
                   transition: 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = 'inset 0 0 0 1px rgba(255, 255, 255, 0.15), 0 4px 30px rgba(255, 255, 255, 0.15), 0 2px 10px rgba(0, 0, 0, 0.3)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = 'inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 4px 20px rgba(0, 0, 0, 0.2)';
                 }}
               >
                 Log In
-              </GlassShinyButton>
+              </button>
             </div>
 
             <button
@@ -448,17 +459,23 @@ const Navbar: React.FC<NavbarProps> = () => {
                 >
                   <span className="demo-btn-text">Get in touch</span>
                 </Link>
-                <GlassShinyButton
+                <button
                   onClick={() => window.location.href = 'https://closio.com/login'}
-                  className="font-medium w-full text-base"
+                  className="font-medium w-full text-base rounded-xl"
                   style={{
                     padding: '12px 20px',
                     opacity: isScrollingDown ? 0.5 : 1,
+                    background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%)',
+                    backdropFilter: 'blur(20px) saturate(180%)',
+                    WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 4px 20px rgba(0, 0, 0, 0.2)',
+                    color: 'white',
                     transition: 'all 300ms cubic-bezier(0.4, 0, 0.2, 1)'
                   }}
                 >
                   Log In
-                </GlassShinyButton>
+                </button>
               </div>
             </div>
           </div>
