@@ -32,7 +32,7 @@ function HomePage() {
       <div id="top" />
 
       <div>
-        <SectionWrapper className="!bg-black !bg-none">
+        <SectionWrapper className="!bg-black !bg-none !overflow-visible">
           <Hero />
         </SectionWrapper>
 

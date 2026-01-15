@@ -170,7 +170,8 @@ const Hero: React.FC = () => {
     <section
       ref={heroRef}
       id="hero"
-      className="min-h-screen w-full text-white flex items-center relative overflow-hidden bg-black"
+      className="min-h-screen w-full text-white flex items-center relative bg-black"
+      style={{ overflow: 'visible' }}
     >
       <motion.div style={{ opacity, scale }} className="absolute inset-0">
         <PerspectiveGrid3D />

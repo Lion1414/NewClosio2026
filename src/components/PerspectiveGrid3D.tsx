@@ -21,8 +21,8 @@ const PerspectiveGrid3D: React.FC = () => {
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
-    camera.position.set(0, 3.5, 8);
-    camera.lookAt(0, 0, -10);
+    camera.position.set(0, 4.5, 6);
+    camera.lookAt(0, -1, -10);
 
     const gridGroup = new THREE.Group();
     scene.add(gridGroup);
@@ -42,16 +42,22 @@ const PerspectiveGrid3D: React.FC = () => {
       opacity: number
     ): THREE.Line {
       const points = [];
-      const segments = 20;
+      const segments = 30;
 
       for (let i = 0; i <= segments; i++) {
         const t = i / segments;
         const x = start.x + (end.x - start.x) * t;
-        const y = start.y + (end.y - start.y) * t;
+        let y = start.y + (end.y - start.y) * t;
         const z = start.z + (end.z - start.z) * t;
 
         const depth = Math.abs(z + 5) / gridDepth;
         const curve = Math.sin(t * Math.PI) * 0.15 * depth;
+
+        const normalizedZ = (z - 5) / (-gridDepth);
+        const frontBend = normalizedZ < 0.15 ?
+          Math.pow((0.15 - normalizedZ) / 0.15, 2) * -3.5 : 0;
+
+        y += frontBend;
 
         points.push(new THREE.Vector3(x + curve, y, z));
       }
@@ -186,10 +192,10 @@ const PerspectiveGrid3D: React.FC = () => {
 
       const isMobile = w < 768;
       if (isMobile) {
-        camera.position.set(0, 3.5, 10);
+        camera.position.set(0, 4.5, 8);
         gridGroup.scale.setScalar(0.7);
       } else {
-        camera.position.set(0, 3.5, 8);
+        camera.position.set(0, 4.5, 6);
         gridGroup.scale.setScalar(1);
       }
     }
@@ -222,12 +228,22 @@ const PerspectiveGrid3D: React.FC = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 z-[1]">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-indigo-950/30 to-black" />
+    <div
+      className="absolute left-0 right-0 z-[1] pointer-events-none"
+      style={{
+        top: 0,
+        height: '150vh',
+      }}
+    >
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-indigo-950/30 to-transparent" />
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full block pointer-events-none"
-        style={{ opacity: 1 }}
+        style={{
+          opacity: 1,
+          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0.3) 85%, rgba(0,0,0,0) 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0.3) 85%, rgba(0,0,0,0) 100%)'
+        }}
       />
     </div>
   );
