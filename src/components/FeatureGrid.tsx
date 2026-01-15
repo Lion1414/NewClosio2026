@@ -111,10 +111,6 @@ const SparkleEffect: React.FC<{ isHovered: boolean; isDashboard: boolean }> = ({
 const BookIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
     <defs>
-      <linearGradient id="bookBg" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#000000" />
-        <stop offset="100%" stopColor="#0D0D0D" />
-      </linearGradient>
       <linearGradient id="dealCard1" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#ffffff" stopOpacity="0.1" />
         <stop offset="100%" stopColor="#ffffff" stopOpacity="0.04" />
@@ -148,8 +144,6 @@ const BookIcon: React.FC = () => (
         </feMerge>
       </filter>
     </defs>
-
-    <rect width="200" height="200" fill="url(#bookBg)" />
 
     <g filter="url(#dealShadow)" opacity="0.35">
       <rect x="8" y="125" width="184" height="70" rx="16" fill="url(#dealCard3)" stroke="#ffffff" strokeWidth="0.3" strokeOpacity="0.06" />
@@ -194,10 +188,6 @@ const BookIcon: React.FC = () => (
 const HierarchyIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
     <defs>
-      <linearGradient id="hierBg" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#000000" />
-        <stop offset="100%" stopColor="#0D0D0D" />
-      </linearGradient>
       <linearGradient id="hierNode1" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.3" />
         <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.2" />
@@ -231,8 +221,6 @@ const HierarchyIcon: React.FC = () => (
         </feMerge>
       </filter>
     </defs>
-
-    <rect width="200" height="200" fill="url(#hierBg)" />
 
     <g opacity="0.25">
       <line x1="100" y1="55" x2="60" y2="95" stroke="#8b5cf6" strokeWidth="1.5" strokeOpacity="0.3" />
@@ -306,10 +294,6 @@ const HierarchyIcon: React.FC = () => (
 const CommissionIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
     <defs>
-      <linearGradient id="commBg" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#000000" />
-        <stop offset="100%" stopColor="#0D0D0D" />
-      </linearGradient>
       <linearGradient id="commPanel1" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.12" />
         <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.06" />
@@ -343,8 +327,6 @@ const CommissionIcon: React.FC = () => (
         </feMerge>
       </filter>
     </defs>
-
-    <rect width="200" height="200" fill="url(#commBg)" />
 
     <g opacity="0.3">
       <path d="M20 100 Q 60 80, 100 100 T 180 100" stroke="#8b5cf6" strokeWidth="1.5" strokeDasharray="4,4" fill="none" opacity="0.4" />
@@ -408,10 +390,6 @@ const CommissionIcon: React.FC = () => (
 const DashboardIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
     <defs>
-      <linearGradient id="dashBg" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#ffffff" />
-        <stop offset="100%" stopColor="#f9fafb" />
-      </linearGradient>
       <linearGradient id="dashPanel1" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#1f2937" stopOpacity="0.08" />
         <stop offset="100%" stopColor="#111827" stopOpacity="0.04" />
@@ -436,8 +414,6 @@ const DashboardIcon: React.FC = () => (
         </feMerge>
       </filter>
     </defs>
-
-    <rect width="200" height="200" fill="url(#dashBg)" />
 
     <g opacity="0.25">
       <line x1="30" y1="165" x2="175" y2="165" stroke="#1f2937" strokeWidth="1" strokeOpacity="0.2" />
@@ -510,10 +486,6 @@ const DashboardIcon: React.FC = () => (
 const MedalsIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
     <defs>
-      <linearGradient id="leaderBg" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#000000" />
-        <stop offset="100%" stopColor="#0D0D0D" />
-      </linearGradient>
       <linearGradient id="rank1" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.25" />
         <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.15" />
@@ -551,8 +523,6 @@ const MedalsIcon: React.FC = () => (
         </feMerge>
       </filter>
     </defs>
-
-    <rect width="200" height="200" fill="url(#leaderBg)" />
 
     <g filter="url(#rankShadow)">
       <rect x="15" y="25" width="170" height="35" rx="14" fill="url(#rank1)" stroke="#8b5cf6" strokeWidth="1.5" strokeOpacity="0.35" />
@@ -728,11 +698,19 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, gridArea }) =
   const isDashboard = feature.title === '/ Dashboard Analytics';
 
   const iconSizes: Record<number, string> = {
-    0: 'w-48 h-48',
-    1: 'w-40 h-40',
-    2: 'w-36 h-36',
-    3: 'w-44 h-44',
-    4: 'w-40 h-40',
+    0: 'w-[280px] h-[280px]',
+    1: 'w-[240px] h-[240px]',
+    2: 'w-[220px] h-[220px]',
+    3: 'w-[200px] h-[200px]',
+    4: 'w-[240px] h-[240px]',
+  };
+
+  const iconPositions: Record<number, string> = {
+    0: 'absolute top-4 left-6',
+    1: 'absolute top-4 right-6',
+    2: 'absolute bottom-4 right-6',
+    3: 'absolute top-1/2 left-4 -translate-y-1/2',
+    4: 'absolute top-1/2 right-4 -translate-y-1/2',
   };
 
   const paddingSizes: Record<number, string> = {
@@ -741,6 +719,14 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, gridArea }) =
     2: 'p-6',
     3: 'p-9',
     4: 'p-8',
+  };
+
+  const contentAlignments: Record<number, string> = {
+    0: 'items-start justify-end',
+    1: 'items-start justify-end',
+    2: 'items-start justify-start',
+    3: 'items-end justify-center',
+    4: 'items-start justify-center',
   };
 
   return (
@@ -767,12 +753,13 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, gridArea }) =
       <GridPattern isDashboard={isDashboard} index={index} />
       <BottomGlow isDashboard={isDashboard} />
       <SparkleEffect isHovered={isHovered} isDashboard={isDashboard} />
-      <div className="relative flex flex-col h-full z-10">
-        <div className={`${iconSizes[index]} mb-6 mx-auto lg:mx-0 flex-shrink-0`}>
-          <Icon />
-        </div>
 
-        <div className="flex-1 flex flex-col min-h-0">
+      <div className={`${iconPositions[index]} ${iconSizes[index]} flex-shrink-0 opacity-60`}>
+        <Icon />
+      </div>
+
+      <div className={`relative flex flex-col h-full z-10 ${contentAlignments[index]}`}>
+        <div className="flex flex-col max-w-md">
           <h3 className={`text-2xl lg:text-3xl font-bold leading-[1.3] mb-4 ${isDashboard ? 'text-gray-900' : 'text-white'}`}>
             {feature.title}
           </h3>
