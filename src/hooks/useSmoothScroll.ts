@@ -3,16 +3,16 @@ import Lenis from 'lenis';
 
 export const useSmoothScroll = () => {
   useEffect(() => {
-    // Initialize Lenis smooth scroll with smooth, non-glitchy settings
+    // Initialize Lenis smooth scroll with optimized settings for buttery smooth performance
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.8,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.0,
+      wheelMultiplier: 0.8,
       smoothTouch: false,
-      touchMultiplier: 2.0,
+      touchMultiplier: 1.5,
       infinite: false,
       syncTouch: false,
     });

@@ -24,6 +24,47 @@ html.lenis body {
   pointer-events: none;
 }
 
+/* Performance optimizations for smooth scrolling */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* GPU acceleration for better performance */
+nav {
+  transform: translate3d(0, 0, 0);
+  will-change: padding, max-width;
+  backface-visibility: hidden;
+}
+
+/* Optimize transforms for GPU acceleration */
+[class*="translate"],
+[class*="transform"],
+[class*="scale"],
+[class*="rotate"] {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+/* Reduce repaints on scroll */
+img, 
+video,
+canvas {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Optimize transitions */
+[class*="transition"] {
+  will-change: auto;
+}
+
+/* Prevent layout shifts */
+.fixed {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
 html {
   scroll-padding-top: 80px; /* Account for fixed navbar */
 }
