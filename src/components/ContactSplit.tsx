@@ -247,7 +247,7 @@ const ContactSplit = React.memo(() => {
                       <p className="text-white/90 mt-2 text-base drop-shadow-sm">We'll be in touch soon.</p>
                     </div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="max-w-xl -ml-2">
+                    <form onSubmit={handleSubmit} className="max-w-lg mr-8 -ml-2">
                       <div className="flex items-center bg-white/10 backdrop-blur-md border-2 border-purple-500/40 rounded-xl overflow-hidden shadow-lg focus-within:border-purple-500 focus-within:ring-2 focus-within:ring-purple-500/30 transition-all">
                         <input
                           type="email"
