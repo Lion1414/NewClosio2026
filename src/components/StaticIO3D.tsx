@@ -169,6 +169,7 @@ const StaticIO3D: React.FC = () => {
     io.add(iMesh, oMesh);
 
     io.rotation.x = 0.15;
+    io.rotation.y = 0; // Start at 0, will spin when user scrolls to section
 
     io.scale.set(0, 0, 0);
     gsap.to(io.scale, {
@@ -179,16 +180,6 @@ const StaticIO3D: React.FC = () => {
       ease: "elastic.out(1, 0.6)",
       delay: 0.2
     });
-
-    gsap.fromTo(io.rotation,
-      { y: Math.PI * 0.5 },
-      {
-        y: 0,
-        duration: 2,
-        ease: "power3.out",
-        delay: 0.2
-      }
-    );
 
     gsap.to(accentLight1.position, {
       x: -3,
@@ -245,20 +236,20 @@ const StaticIO3D: React.FC = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && !hasSpun.current) {
           hasSpun.current = true;
-          const currentRotation = io.rotation.y;
+          // Spin 3 full rotations (1080 degrees) to end at 0 naturally
           gsap.to(io.rotation, {
-            y: currentRotation + Math.PI * 2,
-            duration: 1.5,
-            ease: "power2.inOut",
-            delay: 0.3
+            y: Math.PI * 6,
+            duration: 3.2,
+            ease: "power3.out",
+            delay: 0.2
           });
         }
       });
     };
 
     const intersectionObserver = new IntersectionObserver(observerCallback, {
-      threshold: 0.7,
-      rootMargin: '-20% 0px -20% 0px'
+      threshold: 0.4,
+      rootMargin: '0px 0px 0px 0px'
     });
 
     intersectionObserver.observe(canvas);

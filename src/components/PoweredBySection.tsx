@@ -1,73 +1,125 @@
 import { motion } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
+import { useRef } from 'react';
 
 const PoweredBySection: React.FC = () => {
   const chipRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [lines, setLines] = useState<Array<{ x1: number; y1: number; x2: number; y2: number }>>([]);
-
-  useEffect(() => {
-    const calculateLines = () => {
-      if (!chipRef.current || !containerRef.current) return;
-
-      const chipRect = chipRef.current.getBoundingClientRect();
-      const containerRect = containerRef.current.getBoundingClientRect();
-
-      const svgOffsetX = 120;
-      const chipCenterX = chipRect.width / 2 + svgOffsetX;
-      const chipCenterY = chipRect.height / 2;
-      const chipBottom = chipRect.height;
-      const chipLeft = svgOffsetX;
-      const chipRight = chipRect.width + svgOffsetX;
-
-      const horizontalExtension = 120;
-      const verticalDistance = 180;
-
-      const newLines = [
-        { x1: chipLeft, y1: chipCenterY, x2: chipLeft - horizontalExtension, y2: chipCenterY },
-        { x1: chipLeft - horizontalExtension, y1: chipCenterY, x2: chipLeft - horizontalExtension, y2: chipCenterY + verticalDistance },
-        { x1: chipRight, y1: chipCenterY, x2: chipRight + horizontalExtension, y2: chipCenterY },
-        { x1: chipRight + horizontalExtension, y1: chipCenterY, x2: chipRight + horizontalExtension, y2: chipCenterY + verticalDistance },
-        { x1: chipCenterX, y1: chipBottom, x2: chipCenterX, y2: chipBottom + verticalDistance },
-      ];
-
-      setLines(newLines);
-    };
-
-    calculateLines();
-    window.addEventListener('resize', calculateLines);
-    const timeout = setTimeout(calculateLines, 100);
-
-    return () => {
-      window.removeEventListener('resize', calculateLines);
-      clearTimeout(timeout);
-    };
-  }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full py-20 flex flex-col items-center justify-center overflow-visible">
+    <div ref={containerRef} className="relative w-full py-24 flex flex-col items-center justify-center overflow-visible">
       <div className="relative">
+        {/* SVG Lines and Connections */}
+        <svg
+          className="absolute pointer-events-none"
+          style={{
+            left: '50%',
+            top: '-200px',
+            transform: 'translateX(-50%)',
+            width: '1400px',
+            height: '400px',
+            overflow: 'visible',
+          }}
+        >
+          <defs>
+            <linearGradient id="lineGradientVertical" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="rgba(255, 255, 255, 0)" />
+              <stop offset="30%" stopColor="rgba(255, 255, 255, 0.3)" />
+              <stop offset="100%" stopColor="rgba(255, 255, 255, 0.5)" />
+            </linearGradient>
+            <linearGradient id="lineGradientHorizontalLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="rgba(255, 255, 255, 0)" />
+              <stop offset="50%" stopColor="rgba(255, 255, 255, 0.4)" />
+              <stop offset="100%" stopColor="rgba(255, 255, 255, 0.5)" />
+            </linearGradient>
+            <linearGradient id="lineGradientHorizontalRight" x1="100%" y1="0%" x2="0%" y2="0%">
+              <stop offset="0%" stopColor="rgba(255, 255, 255, 0)" />
+              <stop offset="50%" stopColor="rgba(255, 255, 255, 0.4)" />
+              <stop offset="100%" stopColor="rgba(255, 255, 255, 0.5)" />
+            </linearGradient>
+            <filter id="lineGlow">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          {/* Center vertical line going down to chip */}
+          <motion.line
+            x1="700"
+            y1="0"
+            x2="700"
+            y2="200"
+            stroke="url(#lineGradientVertical)"
+            strokeWidth="2"
+            strokeLinecap="round"
+            filter="url(#lineGlow)"
+            initial={{ pathLength: 0, opacity: 0 }}
+            whileInView={{ pathLength: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+          />
+
+          {/* Horizontal line extending left with fade */}
+          <motion.line
+            x1="700"
+            y1="80"
+            x2="100"
+            y2="80"
+            stroke="url(#lineGradientHorizontalLeft)"
+            strokeWidth="2"
+            strokeLinecap="round"
+            filter="url(#lineGlow)"
+            initial={{ pathLength: 0, opacity: 0 }}
+            whileInView={{ pathLength: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.4, delay: 0.5, ease: "easeOut" }}
+          />
+
+          {/* Horizontal line extending right with fade */}
+          <motion.line
+            x1="700"
+            y1="80"
+            x2="1300"
+            y2="80"
+            stroke="url(#lineGradientHorizontalRight)"
+            strokeWidth="2"
+            strokeLinecap="round"
+            filter="url(#lineGlow)"
+            initial={{ pathLength: 0, opacity: 0 }}
+            whileInView={{ pathLength: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.4, delay: 0.5, ease: "easeOut" }}
+          />
+
+        </svg>
+
+        {/* Main Chip Container - 2.5x wider */}
         <motion.div
           ref={chipRef}
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="relative"
           style={{
-            width: '280px',
-            height: '120px',
-            background: '#0D0D0D',
-            borderRadius: '16px',
-            border: '2px solid rgba(128, 128, 128, 0.3)',
+            width: '700px',
+            height: '140px',
+            background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%)',
+            borderRadius: '20px',
+            border: '1px solid rgba(255, 255, 255, 0.15)',
             boxShadow: `
-              0 0 30px rgba(128, 128, 128, 0.15),
-              0 0 60px rgba(128, 128, 128, 0.1),
-              inset 0 2px 4px rgba(255, 255, 255, 0.1)
+              0 0 40px rgba(255, 255, 255, 0.08),
+              0 0 80px rgba(255, 255, 255, 0.04),
+              0 20px 60px rgba(0, 0, 0, 0.5),
+              inset 0 1px 1px rgba(255, 255, 255, 0.15),
+              inset 0 -1px 1px rgba(0, 0, 0, 0.5)
             `,
           }}
         >
-          <div className="absolute inset-0 rounded-[14px] overflow-hidden">
+          {/* Grid Pattern Background */}
+          <div className="absolute inset-0 rounded-[19px] overflow-hidden opacity-20">
             <div
               className="absolute inset-0"
               style={{
@@ -75,107 +127,108 @@ const PoweredBySection: React.FC = () => {
                   repeating-linear-gradient(
                     90deg,
                     transparent,
-                    transparent 19px,
-                    rgba(128, 128, 128, 0.05) 20px
+                    transparent 24px,
+                    rgba(255, 255, 255, 0.03) 25px
                   ),
                   repeating-linear-gradient(
                     0deg,
                     transparent,
-                    transparent 19px,
-                    rgba(128, 128, 128, 0.05) 20px
+                    transparent 24px,
+                    rgba(255, 255, 255, 0.03) 25px
                   )
                 `,
               }}
             />
           </div>
 
-          <div className="relative h-full flex flex-col items-center justify-center px-8 z-10">
+          {/* Top glow line */}
+          <div className="absolute top-0 left-0 right-0 h-px">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+          </div>
+
+          {/* Content */}
+          <div className="relative h-full flex flex-col items-center justify-center px-12 z-10">
             <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-center"
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-center space-y-3"
             >
-              <div className="text-sm font-medium tracking-[0.2em] text-gray-400 mb-1">
-                POWERED BY
+              <div className="text-sm font-semibold tracking-[0.25em] text-gray-300/90 uppercase">
+                Powered By Closio
               </div>
-              <div className="flex justify-center items-center">
-                <img
-                  src="/closio_main_logo.png"
-                  alt="Closio"
-                  className="h-12 w-auto"
-                />
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
+                / Core Features
               </div>
             </motion.div>
           </div>
 
-          <div className="pointer-events-none absolute -left-6 top-1/2 -translate-y-1/2 flex flex-col gap-2">
-            {Array.from({ length: 4 }).map((_, i) => (
-              <span
+          {/* Side connector pins - left */}
+          <div className="pointer-events-none absolute -left-8 top-1/2 -translate-y-1/2 flex flex-col gap-2.5">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <motion.span
                 key={i}
-                className="h-1.5 w-3 rounded-full bg-gray-500/30 shadow-[0_0_8px_rgba(128,128,128,0.2)]"
-              />
-            ))}
-          </div>
-          <div className="pointer-events-none absolute -right-6 top-1/2 -translate-y-1/2 flex flex-col gap-2">
-            {Array.from({ length: 4 }).map((_, i) => (
-              <span
-                key={i}
-                className="h-1.5 w-3 rounded-full bg-gray-500/30 shadow-[0_0_8px_rgba(128,128,128,0.2)]"
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.7 + i * 0.05 }}
+                className="h-1.5 w-4 rounded-full bg-gradient-to-r from-white/20 to-white/40"
+                style={{
+                  boxShadow: '0 0 12px rgba(255, 255, 255, 0.3), inset 0 0 4px rgba(255, 255, 255, 0.2)'
+                }}
               />
             ))}
           </div>
 
-          <div
-            className="pointer-events-none absolute inset-0 rounded-[16px]"
+          {/* Side connector pins - right */}
+          <div className="pointer-events-none absolute -right-8 top-1/2 -translate-y-1/2 flex flex-col gap-2.5">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, x: 10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.7 + i * 0.05 }}
+                className="h-1.5 w-4 rounded-full bg-gradient-to-l from-white/20 to-white/40"
+                style={{
+                  boxShadow: '0 0 12px rgba(255, 255, 255, 0.3), inset 0 0 4px rgba(255, 255, 255, 0.2)'
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Grid pattern on sides only, with smooth blend */}
+          <div 
+            className="absolute inset-0 pointer-events-none overflow-hidden rounded-[20px]"
             style={{
-              boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.1)',
+              maskImage: 'linear-gradient(to right, black 0%, black 12%, transparent 25%, transparent 75%, black 88%, black 100%)',
+              WebkitMaskImage: 'linear-gradient(to right, black 0%, black 12%, transparent 25%, transparent 75%, black 88%, black 100%)',
+            }}
+          >
+            <svg width="100%" height="100%" className="opacity-30">
+              <defs>
+                <pattern id="grid-pattern-sides" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path
+                    d="M 20 0 L 0 0 0 20"
+                    fill="none"
+                    stroke="#ffffff"
+                    strokeWidth="1"
+                  />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#grid-pattern-sides)" />
+            </svg>
+          </div>
+
+          {/* Inner glow */}
+          <div
+            className="pointer-events-none absolute inset-0 rounded-[20px]"
+            style={{
+              background: 'radial-gradient(ellipse at center, rgba(255, 255, 255, 0.03) 0%, transparent 70%)',
             }}
           />
         </motion.div>
-
-        <svg
-          className="absolute pointer-events-none"
-          style={{
-            left: '-120px',
-            top: 0,
-            width: '520px',
-            height: '350px',
-            overflow: 'visible',
-          }}
-        >
-          <defs>
-            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="rgba(128, 128, 128, 0.5)" />
-              <stop offset="100%" stopColor="rgba(128, 128, 128, 0.1)" />
-            </linearGradient>
-            <filter id="lineGlow">
-              <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
-              <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-          </defs>
-          {lines.map((line, index) => (
-            <g key={index}>
-              <motion.line
-                x1={line.x1}
-                y1={line.y1}
-                x2={line.x2}
-                y2={line.y2}
-                stroke="url(#lineGradient)"
-                strokeWidth="2"
-                strokeLinecap="round"
-                filter="url(#lineGlow)"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 1.2, delay: 0.8 + index * 0.15, ease: "easeOut" }}
-              />
-            </g>
-          ))}
-        </svg>
       </div>
     </div>
   );

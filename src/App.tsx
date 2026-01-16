@@ -60,7 +60,7 @@ function HomePage() {
           <DealMap />
         </SectionWrapper>
 
-        <SectionWrapper className="!bg-black !bg-none">
+        <SectionWrapper className="!bg-black !bg-none !overflow-visible">
           <IntegratedFeaturesFlow />
         </SectionWrapper>
 

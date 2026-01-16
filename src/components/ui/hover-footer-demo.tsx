@@ -1,6 +1,5 @@
 "use client";
 import { Link } from "react-router-dom";
-import { FooterBackgroundGradient } from "@/components/ui/hover-footer";
 
 const TwitterIcon = ({ size = 18, className = "" }: { size?: number; className?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -60,17 +59,63 @@ function HoverFooter() {
   ];
 
   return (
-    <footer className="bg-black/40 backdrop-blur-xl relative h-fit border-t border-white/10 pt-[100px] sm:pt-[150px] md:pt-[200px]">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-10 lg:px-14 py-12 sm:py-14 md:py-16 z-40 relative">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-6 lg:gap-8">
+    <footer className="bg-black relative h-fit border-t border-white/5">
+      {/* Blue light black hole effect around logo area - extends upward into section above */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-50">
+        {/* Outer ring - widest glow - extends well above footer */}
+        <div className="absolute top-[-400px] left-[-50px] sm:left-[20px] lg:left-[50px]">
+          <div
+            className="w-[600px] sm:w-[750px] md:w-[900px] h-[500px] sm:h-[600px] md:h-[700px] rounded-full blur-[130px]"
+            style={{
+              background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.18) 0%, rgba(106, 212, 242, 0.25) 10%, rgba(106, 212, 242, 0.2) 22%, rgba(106, 212, 242, 0.12) 40%, rgba(0, 0, 0, 0.1) 60%, transparent 75%)',
+            }}
+          />
+        </div>
+        
+        {/* Middle ring - concentrated glow - extends into section above */}
+        <div className="absolute top-[-300px] left-[0px] sm:left-[50px] lg:left-[80px]">
+          <div
+            className="w-[450px] sm:w-[550px] md:w-[650px] h-[400px] sm:h-[500px] md:h-[600px] rounded-full blur-[100px]"
+            style={{
+              background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.3) 0%, rgba(106, 212, 242, 0.38) 8%, rgba(106, 212, 242, 0.28) 20%, rgba(106, 212, 242, 0.16) 38%, rgba(0, 0, 0, 0.15) 58%, transparent 70%)',
+            }}
+          />
+        </div>
+        
+        {/* Inner bright core - black hole center */}
+        <div className="absolute top-[-200px] left-[30px] sm:left-[80px] lg:left-[110px]">
+          <div
+            className="w-[320px] sm:w-[400px] md:w-[480px] h-[320px] sm:h-[400px] md:h-[480px] rounded-full blur-[80px]"
+            style={{
+              background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.42) 0%, rgba(106, 212, 242, 0.48) 6%, rgba(106, 212, 242, 0.35) 18%, rgba(106, 212, 242, 0.2) 35%, rgba(0, 0, 0, 0.2) 55%, transparent 68%)',
+            }}
+          />
+        </div>
+        
+        {/* Intense center glow - right around "IO" */}
+        <div className="absolute top-[-100px] left-[50px] sm:left-[100px] lg:left-[130px]">
+          <div
+            className="w-[240px] sm:w-[300px] md:w-[360px] h-[250px] sm:h-[300px] md:h-[350px] rounded-full blur-[60px]"
+            style={{
+              background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.5) 0%, rgba(106, 212, 242, 0.55) 4%, rgba(106, 212, 242, 0.4) 16%, rgba(106, 212, 242, 0.22) 32%, rgba(0, 0, 0, 0.25) 52%, transparent 62%)',
+            }}
+          />
+        </div>
+      </div>
+
+      <div 
+        className="max-w-7xl mx-auto px-6 sm:px-8 md:px-10 lg:px-14 py-16 sm:py-20 md:py-24 z-40 relative"
+      >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 md:gap-8 lg:gap-10">
           {/* Company Info */}
-          <div className="lg:col-span-3 flex flex-col space-y-4 lg:items-start">
-            <Link to="/" onClick={() => window.scrollTo(0, 0)} className="flex items-center">
+          <div className="lg:col-span-3 flex flex-col space-y-5 lg:items-start">
+            <Link to="/" onClick={() => window.scrollTo(0, 0)} className="flex items-center -mt-1">
               <img
                 src="/closio_main_logo.png"
                 alt="Closio"
-                className="h-24 w-auto select-none"
+                className="h-20 sm:h-24 w-auto select-none object-contain"
                 draggable={false}
+                style={{ maxWidth: '100%' }}
               />
             </Link>
             <p className="text-sm leading-relaxed text-gray-400">
@@ -80,10 +125,10 @@ function HoverFooter() {
 
           {/* Legal */}
           <div className="lg:col-span-3">
-            <h4 className="text-gray-400 text-base font-semibold mb-5 tracking-tight">
+            <h4 className="text-gray-400 text-base font-semibold mb-6 tracking-tight">
               /Legal
             </h4>
-            <ul className="space-y-2.5 text-sm">
+            <ul className="space-y-3 text-sm">
               {footerLinks[0].links.map((link) => (
                 <li key={link.label}>
                   <Link
@@ -100,10 +145,10 @@ function HoverFooter() {
 
           {/* Resources */}
           <div className="lg:col-span-3">
-            <h4 className="text-gray-400 text-base font-semibold mb-5 tracking-tight">
+            <h4 className="text-gray-400 text-base font-semibold mb-6 tracking-tight">
               /Resources
             </h4>
-            <ul className="space-y-2.5 text-sm">
+            <ul className="space-y-3 text-sm">
               {footerLinks[1].links.map((link) => (
                 <li key={link.label}>
                   <Link
@@ -120,10 +165,10 @@ function HoverFooter() {
 
           {/* Follow Us */}
           <div className="lg:col-span-3">
-            <h4 className="text-gray-400 text-base font-semibold mb-5 tracking-tight">
+            <h4 className="text-gray-400 text-base font-semibold mb-6 tracking-tight">
               /Follow Us
             </h4>
-            <ul className="space-y-3 text-sm">
+            <ul className="space-y-3.5 text-sm">
               {socialLinks.map((item, i) => (
                 <li key={i} className="flex items-center space-x-2.5">
                   {item.icon}
@@ -142,14 +187,12 @@ function HoverFooter() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
-          <p className="text-xs text-gray-500 text-center">
+        <div className="mt-16 pt-10 border-t border-gray-800">
+          <p className="text-sm text-gray-500 text-center">
             &copy; {new Date().getFullYear()} Closio. All rights reserved.
           </p>
         </div>
       </div>
-
-      <FooterBackgroundGradient />
     </footer>
   );
 }

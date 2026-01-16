@@ -49,11 +49,16 @@ const Schedule = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
+          className="rounded-2xl overflow-hidden"
+          style={{ 
+            border: '1px solid rgba(255, 255, 255, 0.08)',
+            background: 'transparent'
+          }}
         >
           <div
             className="calendly-inline-widget w-full"
-            data-url="https://calendly.com/closio/closio-onboarding?hide_gdpr_banner=1&background_color=0a0a0a&text_color=e8eef5&primary_color=6ad4f2"
-            style={{ minWidth: '320px', height: '1000px' }}
+            data-url="https://calendly.com/closio/closio-onboarding?hide_gdpr_banner=1&background_color=000000&text_color=e8eef5&primary_color=6ad4f2"
+            style={{ minWidth: '320px', height: '700px' }}
           />
         </motion.div>
 
@@ -61,7 +66,7 @@ const Schedule = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-6 grid md:grid-cols-3 gap-6"
+          className="-mt-16 grid md:grid-cols-3 gap-6"
         >
           <div className="p-6 rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.04] to-transparent">
             <h3 className="text-white font-semibold mb-2">30-Minute Demo</h3>

@@ -5,24 +5,26 @@ export const useSmoothScroll = () => {
   useEffect(() => {
     // Initialize Lenis smooth scroll
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.8,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
+      wheelMultiplier: 0.7,
       smoothTouch: false,
-      touchMultiplier: 2,
+      touchMultiplier: 1.5,
       infinite: false,
     });
 
-    // Lenis RAF loop
+    // Lenis RAF loop with proper cleanup
+    let rafId: number;
+    
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     // Handle route changes - reset scroll position
     const handleResetScroll = () => {
@@ -31,8 +33,9 @@ export const useSmoothScroll = () => {
 
     window.addEventListener('resetSmoothScroll', handleResetScroll);
 
-    // Cleanup
+    // Cleanup - cancel RAF before destroying Lenis
     return () => {
+      cancelAnimationFrame(rafId);
       window.removeEventListener('resetSmoothScroll', handleResetScroll);
       lenis.destroy();
     };

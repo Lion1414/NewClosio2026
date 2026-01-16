@@ -345,25 +345,9 @@ const ContactSplit = React.memo(() => {
       </section>
 
       <section className="relative bg-black z-10">
-        <div className="absolute inset-x-0 -bottom-32 h-64 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,_rgba(106,212,242,0.35)_0%,_transparent_70%)] pointer-events-none" />
-        <div className="relative h-[400px] sm:h-[500px] md:h-[600px] w-full pointer-events-none select-none flex items-center justify-center -mb-[150px] sm:-mb-[200px] md:-mb-[250px]" style={{ transform: 'translateY(-40px)' }}>
-          <div className="absolute inset-0 flex items-center justify-center" style={{ top: '20%' }}>
-            <div
-              className="w-[300px] sm:w-[500px] md:w-[700px] h-[250px] sm:h-[350px] md:h-[480px] rounded-full blur-[60px] sm:blur-[75px] md:blur-[90px]"
-              style={{
-                background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.7) 0%, rgba(106, 212, 242, 0.4) 30%, rgba(106, 212, 242, 0.15) 60%, transparent 80%)',
-              }}
-            />
-          </div>
-          <div className="absolute inset-0 flex items-center justify-center" style={{ top: '20%' }}>
-            <div
-              className="w-[180px] sm:w-[280px] md:w-[380px] h-[150px] sm:h-[220px] md:h-[300px] rounded-full blur-[30px] sm:blur-[40px] md:blur-[50px]"
-              style={{
-                background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.5) 0%, transparent 70%)',
-              }}
-            />
-          </div>
-          <div className="absolute inset-0">
+        <div className="relative h-[400px] sm:h-[500px] md:h-[600px] w-full pointer-events-none select-none flex items-center justify-center -mb-20 sm:-mb-24 md:-mb-32" style={{ transform: 'translateY(-20px)' }}>
+          {/* IO on top */}
+          <div className="absolute inset-0 z-50">
             <StaticIO3D />
           </div>
         </div>

@@ -48,7 +48,7 @@ export default function IntegratedFeaturesFlow() {
       <div className="relative mx-auto w-full max-w-5xl px-4 sm:px-6">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_55%)]" />
 
-        <div className="relative mx-auto mt-2 flex min-h-[500px] sm:min-h-[600px] lg:h-[720px] w-full max-w-full lg:max-w-[900px] items-center justify-center overflow-hidden">
+        <div className="relative mx-auto mt-2 flex min-h-[500px] sm:min-h-[600px] lg:h-[720px] w-full max-w-full lg:max-w-[900px] items-center justify-center">
 
           {/* Left Dashboard Photo - Hidden on mobile */}
           <motion.div

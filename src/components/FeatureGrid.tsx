@@ -108,82 +108,160 @@ const SparkleEffect: React.FC<{ isHovered: boolean; isDashboard: boolean }> = ({
   );
 };
 
-const BookIcon: React.FC = () => (
-  <svg viewBox="0 0 200 200" className="w-full h-full">
-    <defs>
-      <linearGradient id="dealCard1" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.1" />
-        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.04" />
-      </linearGradient>
-      <linearGradient id="dealCard2" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.08" />
-        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.03" />
-      </linearGradient>
-      <linearGradient id="dealCard3" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.06" />
-        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.02" />
-      </linearGradient>
-      <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="3" result="blur" />
-        <feFlood floodColor="#8b5cf6" floodOpacity="0.25" />
-        <feComposite in2="blur" operator="in" />
-        <feMerge>
-          <feMergeNode />
-          <feMergeNode in="SourceGraphic" />
-        </feMerge>
-      </filter>
-      <filter id="dealShadow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="6" />
-        <feOffset dx="0" dy="4" />
-        <feComponentTransfer>
-          <feFuncA type="linear" slope="0.3" />
-        </feComponentTransfer>
-        <feMerge>
-          <feMergeNode />
-          <feMergeNode in="SourceGraphic" />
-        </feMerge>
-      </filter>
-    </defs>
+const BookIcon: React.FC = () => {
+  const [animated, setAnimated] = useState(false);
+  const [count1, setCount1] = useState(0);
+  const [count2, setCount2] = useState(0);
+  const [count3, setCount3] = useState(0);
+  const svgRef = useRef<SVGSVGElement>(null);
+  const isInView = useInView(svgRef, { once: true, margin: '-100px' });
 
-    <g filter="url(#dealShadow)" opacity="0.35">
-      <rect x="8" y="125" width="184" height="70" rx="16" fill="url(#dealCard3)" stroke="#ffffff" strokeWidth="0.3" strokeOpacity="0.06" />
-      <text x="20" y="145" fontSize="10" fill="#9ca3af" opacity="0.55" fontWeight="500">S. Anderson</text>
-      <text x="20" y="161" fontSize="8" fill="#6b7280" opacity="0.5">Term Life Policy</text>
-      <text x="180" y="161" fontSize="11" fill="#8b5cf6" opacity="0.6" textAnchor="end" fontWeight="600">$8,200</text>
-      <text x="180" y="173" fontSize="7" fill="#a78bfa" opacity="0.5" textAnchor="end">Annual</text>
-      <rect x="20" y="178" width="34" height="12" rx="6" fill="#6366f1" opacity="0.18" />
-      <text x="37" y="186" fontSize="7" fill="#818cf8" opacity="0.6" textAnchor="middle">Active</text>
-    </g>
+  useEffect(() => {
+    if (isInView && !animated) {
+      setAnimated(true);
+      
+      // Small delay before starting
+      setTimeout(() => {
+        // Animate first number to 4,100
+        const duration1 = 2500;
+        const steps1 = 80;
+        const increment1 = 4100 / steps1;
+        let current1 = 0;
+        
+        const interval1 = setInterval(() => {
+          current1 += increment1;
+          if (current1 >= 4100) {
+            setCount1(4100);
+            clearInterval(interval1);
+          } else {
+            setCount1(Math.floor(current1));
+          }
+        }, duration1 / steps1);
 
-    <g filter="url(#dealShadow)" opacity="0.55">
-      <rect x="6" y="68" width="188" height="75" rx="17" fill="url(#dealCard2)" stroke="#ffffff" strokeWidth="0.35" strokeOpacity="0.08" />
-      <text x="18" y="89" fontSize="11" fill="#d1d5db" opacity="0.6" fontWeight="500">M. Rodriguez</text>
-      <text x="18" y="106" fontSize="9" fill="#9ca3af" opacity="0.58">Whole Life Policy</text>
-      <text x="186" y="106" fontSize="12" fill="#8b5cf6" opacity="0.7" textAnchor="end" fontWeight="600">$12,450</text>
-      <text x="186" y="119" fontSize="7.5" fill="#a78bfa" opacity="0.6" textAnchor="end">Annual</text>
-      <rect x="18" y="125" width="40" height="13" rx="6.5" fill="#7c3aed" opacity="0.22" />
-      <text x="38" y="133.5" fontSize="7.5" fill="#a78bfa" opacity="0.7" textAnchor="middle">Pending</text>
-    </g>
+        // Animate second number to 6,225
+        const duration2 = 2500;
+        const steps2 = 80;
+        const increment2 = 6225 / steps2;
+        let current2 = 0;
+        
+        const interval2 = setInterval(() => {
+          current2 += increment2;
+          if (current2 >= 6225) {
+            setCount2(6225);
+            clearInterval(interval2);
+          } else {
+            setCount2(Math.floor(current2));
+          }
+        }, duration2 / steps2);
 
-    <g filter="url(#dealShadow)" opacity="1">
-      <rect x="4" y="4" width="192" height="82" rx="18" fill="url(#dealCard1)" stroke="#ffffff" strokeWidth="0.4" strokeOpacity="0.12" />
-      <circle cx="20" cy="28" r="10" fill="#8b5cf6" opacity="0.32" filter="url(#softGlow)" />
-      <text x="20" y="32" fontSize="8" fill="#ffffff" opacity="0.85" textAnchor="middle" fontWeight="700">JD</text>
+        // Animate third number to 9,450
+        const duration3 = 2500;
+        const steps3 = 80;
+        const increment3 = 9450 / steps3;
+        let current3 = 0;
+        
+        const interval3 = setInterval(() => {
+          current3 += increment3;
+          if (current3 >= 9450) {
+            setCount3(9450);
+            clearInterval(interval3);
+          } else {
+            setCount3(Math.floor(current3));
+          }
+        }, duration3 / steps3);
 
-      <text x="36" y="25" fontSize="12" fill="#f9fafb" opacity="0.8" fontWeight="600">Jennifer Davis</text>
-      <text x="36" y="40" fontSize="9.5" fill="#d1d5db" opacity="0.7">Universal Life Policy</text>
+        return () => {
+          clearInterval(interval1);
+          clearInterval(interval2);
+          clearInterval(interval3);
+        };
+      }, 200);
+    }
+  }, [isInView, animated]);
 
-      <text x="190" y="30" fontSize="15" fill="#8b5cf6" opacity="0.9" textAnchor="end" fontWeight="700" filter="url(#softGlow)">$18,900</text>
-      <text x="190" y="43" fontSize="8" fill="#a78bfa" opacity="0.75" textAnchor="end">Annual Premium</text>
+  return (
+    <svg ref={svgRef} viewBox="0 0 200 200" className="w-full h-full">
+      <defs>
+        <linearGradient id="dealCard1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.1" />
+          <stop offset="100%" stopColor="#ffffff" stopOpacity="0.04" />
+        </linearGradient>
+        <linearGradient id="dealCard2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.08" />
+          <stop offset="100%" stopColor="#ffffff" stopOpacity="0.03" />
+        </linearGradient>
+        <linearGradient id="dealCard3" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.06" />
+          <stop offset="100%" stopColor="#ffffff" stopOpacity="0.02" />
+        </linearGradient>
+        <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3" result="blur" />
+          <feFlood floodColor="#8b5cf6" floodOpacity="0.25" />
+          <feComposite in2="blur" operator="in" />
+          <feMerge>
+            <feMergeNode />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <filter id="dealShadow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="6" />
+          <feOffset dx="0" dy="4" />
+          <feComponentTransfer>
+            <feFuncA type="linear" slope="0.3" />
+          </feComponentTransfer>
+          <feMerge>
+            <feMergeNode />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
 
-      <rect x="36" y="54" width="44" height="15" rx="7.5" fill="#7c3aed" opacity="0.32" />
-      <text x="58" y="63.5" fontSize="8" fill="#c4b5fd" opacity="0.9" textAnchor="middle" fontWeight="500">In Review</text>
+      <g filter="url(#dealShadow)" opacity="0.35">
+        <rect x="8" y="125" width="184" height="70" rx="16" fill="url(#dealCard3)" stroke="#ffffff" strokeWidth="0.3" strokeOpacity="0.06" />
+        <text x="20" y="145" fontSize="8.5" fill="#9ca3af" opacity="0.55" fontWeight="500">S. Anderson</text>
+        <text x="20" y="161" fontSize="6.5" fill="#6b7280" opacity="0.5">Term Life Policy</text>
+        <text x="180" y="161" fontSize="9.5" fill="#8b5cf6" opacity="0.6" textAnchor="end" fontWeight="600">
+          ${count1.toLocaleString()}
+        </text>
+        <text x="180" y="173" fontSize="6" fill="#a78bfa" opacity="0.5" textAnchor="end">Annual</text>
+        <rect x="20" y="178" width="34" height="12" rx="6" fill="#6366f1" opacity="0.18" />
+        <text x="37" y="186" fontSize="6" fill="#818cf8" opacity="0.6" textAnchor="middle">Active</text>
+      </g>
 
-      <rect x="86" y="54" width="30" height="15" rx="7.5" fill="#6366f1" opacity="0.28" />
-      <text x="101" y="63.5" fontSize="7.5" fill="#818cf8" opacity="0.8" textAnchor="middle">+New</text>
-    </g>
-  </svg>
-);
+      <g filter="url(#dealShadow)" opacity="0.55">
+        <rect x="6" y="68" width="188" height="75" rx="17" fill="url(#dealCard2)" stroke="#ffffff" strokeWidth="0.35" strokeOpacity="0.08" />
+        <text x="18" y="89" fontSize="9.5" fill="#d1d5db" opacity="0.6" fontWeight="500">M. Rodriguez</text>
+        <text x="18" y="106" fontSize="7.5" fill="#9ca3af" opacity="0.58">Whole Life Policy</text>
+        <text x="186" y="106" fontSize="10.5" fill="#8b5cf6" opacity="0.7" textAnchor="end" fontWeight="600">
+          ${count2.toLocaleString()}
+        </text>
+        <text x="186" y="119" fontSize="6.5" fill="#a78bfa" opacity="0.6" textAnchor="end">Annual</text>
+        <rect x="18" y="125" width="40" height="13" rx="6.5" fill="#7c3aed" opacity="0.22" />
+        <text x="38" y="133.5" fontSize="6.5" fill="#a78bfa" opacity="0.7" textAnchor="middle">Pending</text>
+      </g>
+
+      <g filter="url(#dealShadow)" opacity="1">
+        <rect x="4" y="4" width="192" height="82" rx="18" fill="url(#dealCard1)" stroke="#ffffff" strokeWidth="0.4" strokeOpacity="0.12" />
+        <circle cx="20" cy="28" r="10" fill="#8b5cf6" opacity="0.32" filter="url(#softGlow)" />
+        <text x="20" y="32" fontSize="7" fill="#ffffff" opacity="0.85" textAnchor="middle" fontWeight="700">JD</text>
+
+        <text x="36" y="25" fontSize="10.5" fill="#f9fafb" opacity="0.8" fontWeight="600">Jennifer Davis</text>
+        <text x="36" y="40" fontSize="8" fill="#d1d5db" opacity="0.7">Universal Life Policy</text>
+
+        <text x="190" y="30" fontSize="13" fill="#8b5cf6" opacity="0.9" textAnchor="end" fontWeight="700" filter="url(#softGlow)">
+          ${count3.toLocaleString()}
+        </text>
+        <text x="190" y="43" fontSize="6.5" fill="#a78bfa" opacity="0.75" textAnchor="end">Annual Premium</text>
+
+        <rect x="36" y="54" width="44" height="15" rx="7.5" fill="#7c3aed" opacity="0.32" />
+        <text x="58" y="63.5" fontSize="7" fill="#c4b5fd" opacity="0.9" textAnchor="middle" fontWeight="500">In Review</text>
+
+        <rect x="86" y="54" width="30" height="15" rx="7.5" fill="#6366f1" opacity="0.28" />
+        <text x="101" y="63.5" fontSize="6.5" fill="#818cf8" opacity="0.8" textAnchor="middle">+New</text>
+      </g>
+    </svg>
+  );
+};
 
 const HierarchyIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
@@ -243,7 +321,7 @@ const HierarchyIcon: React.FC = () => (
     <g filter="url(#nodeShadow)">
       <rect x="75" y="25" width="50" height="40" rx="12" fill="url(#hierNode1)" stroke="#a78bfa" strokeWidth="2" strokeOpacity="0.4" />
       <circle cx="100" cy="35" r="5" fill="#c4b5fd" opacity="0.6" filter="url(#hierGlow)" />
-      <text x="100" y="52" fontSize="7" fill="#e9d5ff" opacity="0.8" textAnchor="middle" fontWeight="600">Director</text>
+      <text x="100" y="52" fontSize="7" fill="#e9d5ff" opacity="0.8" textAnchor="middle" fontWeight="600">Agency Owner</text>
       <text x="100" y="60" fontSize="6" fill="#d8b4fe" opacity="0.6" textAnchor="middle">$280K</text>
     </g>
 
@@ -292,19 +370,19 @@ const HierarchyIcon: React.FC = () => (
 );
 
 const CommissionIcon: React.FC = () => (
-  <svg viewBox="0 0 200 200" className="w-full h-full">
+  <svg viewBox="0 0 240 200" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
     <defs>
-      <linearGradient id="commPanel1" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.12" />
-        <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.06" />
+      <linearGradient id="teamCard" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.2" />
+        <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.1" />
       </linearGradient>
-      <linearGradient id="commPanel2" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#6b7280" stopOpacity="0.15" />
-        <stop offset="100%" stopColor="#4b5563" stopOpacity="0.08" />
+      <linearGradient id="personalCard" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#6ad4f2" stopOpacity="0.18" />
+        <stop offset="100%" stopColor="#35E7E0" stopOpacity="0.08" />
       </linearGradient>
-      <linearGradient id="commPanel3" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.1" />
-        <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.05" />
+      <linearGradient id="commHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#4b5563" stopOpacity="0.15" />
+        <stop offset="100%" stopColor="#374151" stopOpacity="0.08" />
       </linearGradient>
       <filter id="commGlow" x="-50%" y="-50%" width="200%" height="200%">
         <feGaussianBlur stdDeviation="4" result="blur" />
@@ -328,61 +406,86 @@ const CommissionIcon: React.FC = () => (
       </filter>
     </defs>
 
+    {/* Header */}
     <g filter="url(#softShadow)">
-      <rect x="10" y="135" width="80" height="55" rx="16" fill="url(#commPanel2)" stroke="#6b7280" strokeWidth="1" strokeOpacity="0.2" />
-      <rect x="15" y="145" width="35" height="4" rx="2" fill="#9ca3af" opacity="0.25" />
-      <rect x="15" y="153" width="50" height="3" rx="1.5" fill="#6b7280" opacity="0.2" />
-      <rect x="15" y="159" width="28" height="3" rx="1.5" fill="#6b7280" opacity="0.18" />
-      <circle cx="75" cy="165" r="12" fill="#6b7280" opacity="0.15" />
-      <text x="75" y="170" fontSize="10" fill="#9ca3af" opacity="0.5" textAnchor="middle" fontWeight="600">$</text>
-      <text x="22" y="180" fontSize="6" fill="#6b7280" opacity="0.6">Metric A</text>
+      <rect x="8" y="8" width="224" height="22" rx="10" fill="url(#commHeader)" stroke="#4b5563" strokeWidth="0.8" strokeOpacity="0.2" />
+      <text x="18" y="22" fontSize="8" fill="#e5e7eb" opacity="0.75" fontWeight="600">Commission Tracking</text>
+      <text x="218" y="22" fontSize="6" fill="#9ca3af" opacity="0.5" textAnchor="end">This Month</text>
     </g>
 
+    {/* Team Production Container */}
     <g filter="url(#softShadow)">
-      <rect x="110" y="125" width="85" height="60" rx="18" fill="url(#commPanel3)" stroke="#8b5cf6" strokeWidth="1.2" strokeOpacity="0.25" />
-      <rect x="118" y="138" width="40" height="5" rx="2.5" fill="#a78bfa" opacity="0.3" />
-      <rect x="118" y="148" width="55" height="4" rx="2" fill="#8b5cf6" opacity="0.25" />
-      <rect x="118" y="156" width="32" height="3.5" rx="1.75" fill="#8b5cf6" opacity="0.2" />
-      <circle cx="175" cy="157" r="14" fill="#8b5cf6" opacity="0.2" filter="url(#commGlow)" />
-      <text x="175" y="162" fontSize="11" fill="#c4b5fd" opacity="0.65" textAnchor="middle" fontWeight="600">$</text>
-      <text x="125" y="176" fontSize="6.5" fill="#a78bfa" opacity="0.65">Data Set</text>
-    </g>
-
-    <g filter="url(#softShadow)">
-      <rect x="35" y="30" width="130" height="75" rx="20" fill="url(#commPanel1)" stroke="#8b5cf6" strokeWidth="1.5" strokeOpacity="0.3" />
-
-      <rect x="48" y="48" width="45" height="6" rx="3" fill="#8b5cf6" opacity="0.3" />
-      <rect x="48" y="60" width="68" height="5" rx="2.5" fill="#7c3aed" opacity="0.25" />
-      <rect x="48" y="70" width="40" height="4" rx="2" fill="#7c3aed" opacity="0.2" />
-
-      <g opacity="0.35">
-        <rect x="48" y="82" width="32" height="12" rx="6" fill="#8b5cf6" opacity="0.25" />
-        <text x="64" y="90" fontSize="6" fill="#c4b5fd" opacity="0.7" textAnchor="middle">Value</text>
+      <rect x="10" y="42" width="220" height="68" rx="14" fill="url(#teamCard)" stroke="#8b5cf6" strokeWidth="1.2" strokeOpacity="0.3" />
+      
+      {/* Header */}
+      <text x="20" y="57" fontSize="7" fill="#a78bfa" opacity="0.7" fontWeight="600">Team Production</text>
+      
+      {/* Team icon */}
+      <g opacity="0.5">
+        <circle cx="210" cy="53" r="4" fill="none" stroke="#8b5cf6" strokeWidth="0.8" />
+        <circle cx="210" cy="52" r="1.5" fill="#8b5cf6" />
+        <path d="M 207 58 Q 210 56, 213 58" stroke="#8b5cf6" strokeWidth="0.8" fill="none" />
+        <circle cx="203" cy="55" r="2.5" fill="none" stroke="#8b5cf6" strokeWidth="0.6" opacity="0.6" />
+        <circle cx="217" cy="55" r="2.5" fill="none" stroke="#8b5cf6" strokeWidth="0.6" opacity="0.6" />
       </g>
-
-      <circle cx="140" cy="67" r="20" fill="#7c3aed" opacity="0.15" filter="url(#commGlow)" />
-      <circle cx="140" cy="67" r="15" fill="none" stroke="#8b5cf6" strokeWidth="2" strokeOpacity="0.3" />
-      <text x="140" y="73" fontSize="16" fill="#c4b5fd" opacity="0.7" textAnchor="middle" fontWeight="700">$</text>
-
-      <text x="48" y="42" fontSize="7" fill="#8b5cf6" opacity="0.6" fontWeight="500">Payment Flow</text>
+      
+      {/* Total amount */}
+      <text x="20" y="80" fontSize="20" fill="#c4b5fd" opacity="0.9" fontWeight="700" filter="url(#commGlow)">$142,580</text>
+      <text x="20" y="91" fontSize="6" fill="#a78bfa" opacity="0.6">Total Team Commissions</text>
+      
+      {/* Breakdown bars */}
+      <g opacity="0.5">
+        <rect x="20" y="97" width="90" height="6" rx="3" fill="#8b5cf6" opacity="0.3" />
+        <text x="115" y="101" fontSize="5.5" fill="#a78bfa">Paid: $95,200</text>
+        
+        <rect x="20" y="105" width="45" height="4" rx="2" fill="#7c3aed" opacity="0.25" />
+        <text x="70" y="108" fontSize="5" fill="#8b5cf6" opacity="0.7">Pending: $47,380</text>
+      </g>
     </g>
 
-    <g opacity="0.4">
-      <circle cx="95" cy="110" r="3" fill="#8b5cf6" />
-      <circle cx="105" cy="115" r="2.5" fill="#a78bfa" />
-      <circle cx="115" cy="108" r="2" fill="#6b7280" />
+    {/* Personal Production Container */}
+    <g filter="url(#softShadow)">
+      <rect x="10" y="122" width="220" height="68" rx="14" fill="url(#personalCard)" stroke="#6ad4f2" strokeWidth="1.2" strokeOpacity="0.3" />
+      
+      {/* Header */}
+      <text x="20" y="137" fontSize="7" fill="#6ad4f2" opacity="0.7" fontWeight="600">Personal Production</text>
+      
+      {/* User icon */}
+      <g opacity="0.5">
+        <circle cx="210" cy="133" r="4.5" fill="none" stroke="#6ad4f2" strokeWidth="0.9" />
+        <circle cx="210" cy="131.5" r="1.8" fill="#6ad4f2" />
+        <path d="M 206 137 Q 210 135, 214 137" stroke="#6ad4f2" strokeWidth="0.9" fill="none" />
+      </g>
+      
+      {/* Amount */}
+      <text x="20" y="160" fontSize="20" fill="#6ad4f2" opacity="0.9" fontWeight="700">$28,450</text>
+      <text x="20" y="171" fontSize="6" fill="#35E7E0" opacity="0.6">Your Earnings This Month</text>
+      
+      {/* Progress indicators */}
+      <g opacity="0.5">
+        <rect x="20" y="177" width="60" height="5" rx="2.5" fill="#6ad4f2" opacity="0.25" />
+        <rect x="20" y="177" width="42" height="5" rx="2.5" fill="#6ad4f2" opacity="0.4" />
+        <text x="85" y="181" fontSize="5" fill="#6ad4f2" opacity="0.7">70% to goal</text>
+      </g>
     </g>
 
-    <g opacity="0.5">
-      <rect x="125" y="48" width="25" height="3" rx="1.5" fill="#a78bfa" opacity="0.4" />
-      <rect x="125" y="55" width="18" height="2.5" rx="1.25" fill="#8b5cf6" opacity="0.35" />
+    {/* Decorative elements */}
+    <g opacity="0.3">
+      <circle cx="200" cy="68" r="2" fill="#8b5cf6" />
+      <circle cx="208" cy="73" r="1.5" fill="#a78bfa" />
+      <circle cx="195" cy="148" r="2" fill="#6ad4f2" />
+      <circle cx="203" cy="153" r="1.5" fill="#35E7E0" />
     </g>
   </svg>
 );
 
 const DashboardIcon: React.FC = () => (
-  <svg viewBox="0 0 240 180" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
+  <svg viewBox="0 0 275 200" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
     <defs>
+      <linearGradient id="navBar" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#1f2937" stopOpacity="0.4" />
+        <stop offset="100%" stopColor="#111827" stopOpacity="0.5" />
+      </linearGradient>
       <linearGradient id="dashPanel1" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#374151" stopOpacity="0.18" />
         <stop offset="100%" stopColor="#1f2937" stopOpacity="0.08" />
@@ -419,54 +522,122 @@ const DashboardIcon: React.FC = () => (
       </filter>
     </defs>
 
-    {/* Grid lines background */}
-    <g opacity="0.3">
-      <line x1="25" y1="150" x2="215" y2="150" stroke="#4b5563" strokeWidth="1.2" strokeOpacity="0.25" />
-      <line x1="25" y1="120" x2="215" y2="120" stroke="#4b5563" strokeWidth="1" strokeOpacity="0.18" strokeDasharray="4,4" />
-      <line x1="25" y1="90" x2="215" y2="90" stroke="#4b5563" strokeWidth="1" strokeOpacity="0.18" strokeDasharray="4,4" />
-      <line x1="25" y1="60" x2="215" y2="60" stroke="#4b5563" strokeWidth="1" strokeOpacity="0.18" strokeDasharray="4,4" />
+    {/* Left Navigation Sidebar */}
+    <g opacity="0.9">
+      <rect x="5" y="5" width="45" height="190" rx="12" fill="url(#navBar)" stroke="#4b5563" strokeWidth="1" strokeOpacity="0.3" />
+      
+      {/* Logo area at top */}
+      <circle cx="27.5" cy="20" r="8" fill="#8b5cf6" opacity="0.3" filter="url(#glow)" />
+      <text x="27.5" y="24" fontSize="9" fill="#c4b5fd" opacity="0.8" textAnchor="middle" fontWeight="700">IO</text>
+      
+      {/* Nav items */}
+      <g opacity="0.7">
+        {/* Dashboard - active */}
+        <rect x="12" y="42" width="31" height="22" rx="6" fill="#8b5cf6" opacity="0.25" />
+        <rect x="17" y="48" width="8" height="8" rx="2" fill="none" stroke="#a78bfa" strokeWidth="1.2" opacity="0.6" />
+        <rect x="18" y="49.5" width="2.5" height="2.5" fill="#a78bfa" opacity="0.6" />
+        <rect x="22.5" y="49.5" width="2.5" height="2.5" fill="#a78bfa" opacity="0.6" />
+        <rect x="18" y="53" width="2.5" height="2.5" fill="#a78bfa" opacity="0.6" />
+        <rect x="22.5" y="53" width="2.5" height="2.5" fill="#a78bfa" opacity="0.6" />
+        <text x="27.5" y="61" fontSize="5" fill="#e9d5ff" opacity="0.8" textAnchor="middle">Dash</text>
+        
+        {/* Contacts */}
+        <rect x="15" y="72" width="7" height="7" rx="3.5" fill="none" stroke="#6b7280" strokeWidth="1" opacity="0.4" />
+        <circle cx="18.5" cy="75" r="2" fill="#6b7280" opacity="0.4" />
+        <path d="M 14 82 Q 18.5 79, 23 82" stroke="#6b7280" strokeWidth="1" fill="none" opacity="0.4" />
+        <text x="27.5" y="84" fontSize="5" fill="#9ca3af" opacity="0.5" textAnchor="middle">Clients</text>
+        
+        {/* Deals */}
+        <rect x="15" y="95" width="8" height="10" rx="2" fill="none" stroke="#6b7280" strokeWidth="1" opacity="0.4" />
+        <rect x="16.5" y="98" width="5" height="2" rx="1" fill="#6b7280" opacity="0.4" />
+        <rect x="16.5" y="101" width="5" height="1.5" rx="0.75" fill="#6b7280" opacity="0.4" />
+        <text x="27.5" y="107" fontSize="5" fill="#9ca3af" opacity="0.5" textAnchor="middle">Deals</text>
+        
+        {/* Reports */}
+        <rect x="15" y="118" width="8" height="10" rx="1.5" fill="none" stroke="#6b7280" strokeWidth="1" opacity="0.4" />
+        <line x1="17" y1="122" x2="21" y2="122" stroke="#6b7280" strokeWidth="0.8" opacity="0.4" />
+        <line x1="17" y1="125" x2="21" y2="125" stroke="#6b7280" strokeWidth="0.8" opacity="0.4" />
+        <text x="27.5" y="130" fontSize="5" fill="#9ca3af" opacity="0.5" textAnchor="middle">Reports</text>
+        
+        {/* Settings at bottom */}
+        <circle cx="27.5" cy="175" r="6" fill="none" stroke="#6b7280" strokeWidth="1" opacity="0.35" />
+        <circle cx="27.5" cy="175" r="3" fill="none" stroke="#6b7280" strokeWidth="0.8" opacity="0.35" />
+        <line x1="27.5" y1="169" x2="27.5" y2="171" stroke="#6b7280" strokeWidth="0.8" opacity="0.35" />
+        <line x1="27.5" y1="179" x2="27.5" y2="181" stroke="#6b7280" strokeWidth="0.8" opacity="0.35" />
+        <line x1="21.5" y1="175" x2="23.5" y2="175" stroke="#6b7280" strokeWidth="0.8" opacity="0.35" />
+        <line x1="31.5" y1="175" x2="33.5" y2="175" stroke="#6b7280" strokeWidth="0.8" opacity="0.35" />
+        <text x="27.5" y="189" fontSize="4.5" fill="#6b7280" opacity="0.4" textAnchor="middle">Settings</text>
+      </g>
+    </g>
+
+    {/* Main Content Area */}
+    {/* Header Bar */}
+    <g filter="url(#dashShadow)">
+      <rect x="58" y="8" width="214" height="22" rx="8" fill="url(#dashPanel1)" stroke="#4b5563" strokeWidth="0.8" strokeOpacity="0.15" />
+      <text x="68" y="21" fontSize="7" fill="#e5e7eb" opacity="0.8" fontWeight="600">Dashboard Overview</text>
+      
+      {/* Search bar */}
+      <rect x="185" y="13" width="75" height="12" rx="6" fill="#1f2937" opacity="0.4" />
+      <circle cx="193" cy="19" r="3" fill="none" stroke="#9ca3af" strokeWidth="0.8" opacity="0.4" />
+      <line x1="195.5" y1="21.5" x2="197.5" y2="23.5" stroke="#9ca3af" strokeWidth="0.8" opacity="0.4" />
+      <text x="205" y="21" fontSize="5" fill="#9ca3af" opacity="0.4">Search...</text>
     </g>
 
     {/* Top stat cards */}
     <g filter="url(#dashShadow)">
-      <rect x="10" y="15" width="85" height="55" rx="16" fill="url(#dashPanel1)" stroke="#4b5563" strokeWidth="1.2" strokeOpacity="0.15" />
-      <rect x="18" y="26" width="35" height="5" rx="2.5" fill="#6b7280" opacity="0.3" />
-      <rect x="18" y="35" width="50" height="4" rx="2" fill="#9ca3af" opacity="0.25" />
-      <rect x="18" y="43" width="30" height="3.5" rx="1.75" fill="#9ca3af" opacity="0.2" />
-      <circle cx="78" cy="45" r="12" fill="#8b5cf6" opacity="0.2" filter="url(#glow)" />
-      <text x="78" y="50" fontSize="10" fill="#a78bfa" opacity="0.7" textAnchor="middle" fontWeight="700">A</text>
+      <rect x="60" y="38" width="65" height="40" rx="10" fill="url(#dashPanel1)" stroke="#4b5563" strokeWidth="1" strokeOpacity="0.15" />
+      <text x="68" y="50" fontSize="6" fill="#9ca3af" opacity="0.5">Active Deals</text>
+      <text x="68" y="65" fontSize="14" fill="#8b5cf6" opacity="0.8" fontWeight="700">127</text>
+      <text x="68" y="73" fontSize="5" fill="#6b7280" opacity="0.4">+12 this week</text>
     </g>
 
     <g filter="url(#dashShadow)">
-      <rect x="105" y="15" width="125" height="55" rx="16" fill="url(#dashPanel2)" stroke="#4b5563" strokeWidth="1.2" strokeOpacity="0.18" />
-      <rect x="115" y="26" width="42" height="6" rx="3" fill="#9ca3af" opacity="0.32" />
-      <rect x="115" y="37" width="65" height="5" rx="2.5" fill="#9ca3af" opacity="0.28" />
-      <rect x="115" y="46" width="38" height="4" rx="2" fill="#9ca3af" opacity="0.22" />
-      <circle cx="208" cy="45" r="14" fill="#7c3aed" opacity="0.25" filter="url(#glow)" />
-      <text x="208" y="51" fontSize="11" fill="#a78bfa" opacity="0.75" textAnchor="middle" fontWeight="700">B</text>
+      <rect x="133" y="38" width="65" height="40" rx="10" fill="url(#dashPanel2)" stroke="#4b5563" strokeWidth="1" strokeOpacity="0.18" />
+      <text x="141" y="50" fontSize="6" fill="#9ca3af" opacity="0.5">Revenue</text>
+      <text x="141" y="65" fontSize="14" fill="#a78bfa" opacity="0.8" fontWeight="700">$842K</text>
+      <text x="141" y="73" fontSize="5" fill="#6b7280" opacity="0.4">+8.5% growth</text>
+    </g>
+
+    <g filter="url(#dashShadow)">
+      <rect x="206" y="38" width="65" height="40" rx="10" fill="url(#dashPanel1)" stroke="#4b5563" strokeWidth="1" strokeOpacity="0.15" />
+      <text x="214" y="50" fontSize="6" fill="#9ca3af" opacity="0.5">Team Size</text>
+      <text x="214" y="65" fontSize="14" fill="#c4b5fd" opacity="0.8" fontWeight="700">24</text>
+      <text x="214" y="73" fontSize="5" fill="#6b7280" opacity="0.4">agents active</text>
     </g>
 
     {/* Main chart panel */}
     <g filter="url(#dashShadow)">
-      <rect x="10" y="80" width="220" height="95" rx="20" fill="url(#dashAccent)" stroke="#8b5cf6" strokeWidth="1.5" strokeOpacity="0.25" />
+      <rect x="60" y="88" width="211" height="105" rx="14" fill="url(#dashAccent)" stroke="#8b5cf6" strokeWidth="1.5" strokeOpacity="0.25" />
+
+      {/* Chart title */}
+      <text x="70" y="103" fontSize="7" fill="#a78bfa" opacity="0.7" fontWeight="600">Monthly Performance</text>
+
+      {/* Grid lines */}
+      <g opacity="0.15">
+        <line x1="70" y1="125" x2="260" y2="125" stroke="#9ca3af" strokeWidth="0.5" strokeDasharray="2,2" />
+        <line x1="70" y1="145" x2="260" y2="145" stroke="#9ca3af" strokeWidth="0.5" strokeDasharray="2,2" />
+        <line x1="70" y1="165" x2="260" y2="165" stroke="#9ca3af" strokeWidth="0.5" strokeDasharray="2,2" />
+      </g>
 
       {/* Chart bars with gradient */}
       <g opacity="0.45">
-        <rect x="32" y="135" width="15" height="28" rx="5" fill="url(#chartGlow)" filter="url(#glow)" />
-        <rect x="57" y="118" width="15" height="45" rx="5" fill="url(#chartGlow)" filter="url(#glow)" />
-        <rect x="82" y="105" width="15" height="58" rx="5" fill="url(#chartGlow)" filter="url(#glow)" />
-        <rect x="107" y="120" width="15" height="43" rx="5" fill="url(#chartGlow)" filter="url(#glow)" />
-        <rect x="132" y="110" width="15" height="53" rx="5" fill="url(#chartGlow)" filter="url(#glow)" />
-        <rect x="157" y="125" width="15" height="38" rx="5" fill="url(#chartGlow)" filter="url(#glow)" />
-        <rect x="182" y="112" width="15" height="51" rx="5" fill="url(#chartGlow)" filter="url(#glow)" />
+        <rect x="80" y="155" width="12" height="20" rx="4" fill="url(#chartGlow)" filter="url(#glow)" />
+        <rect x="100" y="145" width="12" height="30" rx="4" fill="url(#chartGlow)" filter="url(#glow)" />
+        <rect x="120" y="135" width="12" height="40" rx="4" fill="url(#chartGlow)" filter="url(#glow)" />
+        <rect x="140" y="143" width="12" height="32" rx="4" fill="url(#chartGlow)" filter="url(#glow)" />
+        <rect x="160" y="138" width="12" height="37" rx="4" fill="url(#chartGlow)" filter="url(#glow)" />
+        <rect x="180" y="148" width="12" height="27" rx="4" fill="url(#chartGlow)" filter="url(#glow)" />
+        <rect x="200" y="140" width="12" height="35" rx="4" fill="url(#chartGlow)" filter="url(#glow)" />
+        <rect x="220" y="133" width="12" height="42" rx="4" fill="url(#chartGlow)" filter="url(#glow)" />
+        <rect x="240" y="137" width="12" height="38" rx="4" fill="url(#chartGlow)" filter="url(#glow)" />
       </g>
 
       {/* Trend line with glow */}
       <polyline
-        points="39,132 64,115 89,102 114,117 139,107 164,122 189,109"
+        points="86,155 106,145 126,135 146,143 166,138 186,148 206,140 226,133 246,137"
         fill="none"
         stroke="#a78bfa"
-        strokeWidth="3"
+        strokeWidth="2.5"
         opacity="0.6"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -475,49 +646,76 @@ const DashboardIcon: React.FC = () => (
 
       {/* Data points */}
       <g opacity="0.6" filter="url(#glow)">
-        <circle cx="39" cy="132" r="4.5" fill="#c4b5fd" />
-        <circle cx="64" cy="115" r="4.5" fill="#c4b5fd" />
-        <circle cx="89" cy="102" r="4.5" fill="#c4b5fd" />
-        <circle cx="114" cy="117" r="4.5" fill="#c4b5fd" />
-        <circle cx="139" cy="107" r="4.5" fill="#c4b5fd" />
-        <circle cx="164" cy="122" r="4.5" fill="#c4b5fd" />
-        <circle cx="189" cy="109" r="4.5" fill="#c4b5fd" />
+        <circle cx="86" cy="155" r="3.5" fill="#c4b5fd" />
+        <circle cx="106" cy="145" r="3.5" fill="#c4b5fd" />
+        <circle cx="126" cy="135" r="3.5" fill="#c4b5fd" />
+        <circle cx="146" cy="143" r="3.5" fill="#c4b5fd" />
+        <circle cx="166" cy="138" r="3.5" fill="#c4b5fd" />
+        <circle cx="186" cy="148" r="3.5" fill="#c4b5fd" />
+        <circle cx="206" cy="140" r="3.5" fill="#c4b5fd" />
+        <circle cx="226" cy="133" r="3.5" fill="#c4b5fd" />
+        <circle cx="246" cy="137" r="3.5" fill="#c4b5fd" />
       </g>
 
-      {/* Chart label */}
-      <text x="20" y="95" fontSize="8" fill="#a78bfa" opacity="0.7" fontWeight="600">Performance Analytics</text>
+      {/* Y-axis labels */}
+      <g opacity="0.3">
+        <text x="65" y="127" fontSize="5" fill="#9ca3af" textAnchor="end">100K</text>
+        <text x="65" y="147" fontSize="5" fill="#9ca3af" textAnchor="end">50K</text>
+        <text x="65" y="167" fontSize="5" fill="#9ca3af" textAnchor="end">0</text>
+      </g>
 
-      {/* Legend items */}
-      <g opacity="0.35">
-        <rect x="170" y="88" width="35" height="3.5" rx="1.75" fill="#9ca3af" />
-        <rect x="170" y="95" width="25" height="3" rx="1.5" fill="#9ca3af" />
+      {/* X-axis labels */}
+      <g opacity="0.3">
+        <text x="86" y="182" fontSize="4.5" fill="#6b7280" textAnchor="middle">Jan</text>
+        <text x="126" y="182" fontSize="4.5" fill="#6b7280" textAnchor="middle">Mar</text>
+        <text x="166" y="182" fontSize="4.5" fill="#6b7280" textAnchor="middle">May</text>
+        <text x="206" y="182" fontSize="4.5" fill="#6b7280" textAnchor="middle">Jul</text>
+        <text x="246" y="182" fontSize="4.5" fill="#6b7280" textAnchor="middle">Sep</text>
+      </g>
+
+      {/* Legend */}
+      <g opacity="0.4">
+        <rect x="220" y="112" width="3" height="3" rx="1" fill="#a78bfa" />
+        <text x="226" y="115" fontSize="5" fill="#9ca3af">Revenue</text>
       </g>
     </g>
   </svg>
 );
 
 const MedalsIcon: React.FC = () => (
-  <svg viewBox="0 0 200 200" className="w-full h-full">
+  <svg viewBox="0 0 220 200" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
     <defs>
       <linearGradient id="rank1" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.25" />
-        <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.15" />
+        <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.3" />
+        <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.2" />
       </linearGradient>
       <linearGradient id="rank2" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.18" />
-        <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.1" />
+        <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.22" />
+        <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.12" />
       </linearGradient>
       <linearGradient id="rank3" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#6b7280" stopOpacity="0.15" />
-        <stop offset="100%" stopColor="#4b5563" stopOpacity="0.08" />
+        <stop offset="0%" stopColor="#6b7280" stopOpacity="0.18" />
+        <stop offset="100%" stopColor="#4b5563" stopOpacity="0.1" />
       </linearGradient>
       <linearGradient id="rankOther" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#4b5563" stopOpacity="0.12" />
-        <stop offset="100%" stopColor="#374151" stopOpacity="0.06" />
+        <stop offset="0%" stopColor="#4b5563" stopOpacity="0.14" />
+        <stop offset="100%" stopColor="#374151" stopOpacity="0.08" />
+      </linearGradient>
+      <linearGradient id="goldBadge" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#fbbf24" stopOpacity="0.4" />
+        <stop offset="100%" stopColor="#f59e0b" stopOpacity="0.25" />
+      </linearGradient>
+      <linearGradient id="silverBadge" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#e5e7eb" stopOpacity="0.35" />
+        <stop offset="100%" stopColor="#9ca3af" stopOpacity="0.2" />
+      </linearGradient>
+      <linearGradient id="bronzeBadge" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#f97316" stopOpacity="0.3" />
+        <stop offset="100%" stopColor="#ea580c" stopOpacity="0.18" />
       </linearGradient>
       <filter id="leaderGlow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="3" result="blur" />
-        <feFlood floodColor="#8b5cf6" floodOpacity="0.25" />
+        <feGaussianBlur stdDeviation="4" result="blur" />
+        <feFlood floodColor="#8b5cf6" floodOpacity="0.3" />
         <feComposite in2="blur" operator="in" />
         <feMerge>
           <feMergeNode />
@@ -525,10 +723,10 @@ const MedalsIcon: React.FC = () => (
         </feMerge>
       </filter>
       <filter id="rankShadow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="4" />
-        <feOffset dx="0" dy="2" />
+        <feGaussianBlur stdDeviation="5" />
+        <feOffset dx="0" dy="3" />
         <feComponentTransfer>
-          <feFuncA type="linear" slope="0.3" />
+          <feFuncA type="linear" slope="0.35" />
         </feComponentTransfer>
         <feMerge>
           <feMergeNode />
@@ -537,57 +735,93 @@ const MedalsIcon: React.FC = () => (
       </filter>
     </defs>
 
+    {/* Header */}
+    <g opacity="0.7">
+      <text x="110" y="18" fontSize="8" fill="#a78bfa" opacity="0.8" textAnchor="middle" fontWeight="600">Sales Leaderboard</text>
+    </g>
+
+    {/* 1st Place - Sarah Mitchell */}
     <g filter="url(#rankShadow)">
-      <rect x="15" y="25" width="170" height="35" rx="14" fill="url(#rank1)" stroke="#8b5cf6" strokeWidth="1.5" strokeOpacity="0.35" />
-      <circle cx="35" cy="42" r="8" fill="#7c3aed" opacity="0.25" filter="url(#leaderGlow)" />
-      <text x="35" y="46" fontSize="9" fill="#c4b5fd" opacity="0.8" textAnchor="middle" fontWeight="700">1</text>
-
-      <rect x="50" y="33" width="42" height="5" rx="2.5" fill="#a78bfa" opacity="0.35" />
-      <rect x="50" y="43" width="58" height="4" rx="2" fill="#8b5cf6" opacity="0.3" />
-
-      <rect x="140" y="35" width="35" height="16" rx="8" fill="#7c3aed" opacity="0.2" />
-      <text x="157" y="45" fontSize="8" fill="#c4b5fd" opacity="0.7" textAnchor="middle" fontWeight="600">Score</text>
+      <rect x="10" y="28" width="200" height="40" rx="14" fill="url(#rank1)" stroke="#8b5cf6" strokeWidth="1.8" strokeOpacity="0.4" />
+      
+      {/* Gold Medal */}
+      <circle cx="28" cy="48" r="10" fill="url(#goldBadge)" filter="url(#leaderGlow)" />
+      <text x="28" y="52" fontSize="10" fill="#fef3c7" opacity="0.9" textAnchor="middle" fontWeight="800">1</text>
+      
+      {/* Avatar */}
+      <circle cx="50" cy="48" r="9" fill="#8b5cf6" opacity="0.3" />
+      <text x="50" y="51" fontSize="7" fill="#e9d5ff" opacity="0.8" textAnchor="middle" fontWeight="600">SM</text>
+      
+      {/* Name & info */}
+      <text x="65" y="44" fontSize="8" fill="#e9d5ff" opacity="0.85" fontWeight="600">Sarah Mitchell</text>
+      <text x="65" y="54" fontSize="6" fill="#c4b5fd" opacity="0.65">142 policies closed</text>
+      
+      {/* Sales amount */}
+      <text x="195" y="46" fontSize="12" fill="#c4b5fd" opacity="0.9" textAnchor="end" fontWeight="700">$487K</text>
+      <text x="195" y="55" fontSize="5.5" fill="#a78bfa" opacity="0.65" textAnchor="end">Q4 2025</text>
     </g>
 
+    {/* 2nd Place - Mike Chen */}
     <g filter="url(#rankShadow)">
-      <rect x="15" y="70" width="170" height="32" rx="12" fill="url(#rank2)" stroke="#8b5cf6" strokeWidth="1.2" strokeOpacity="0.28" />
-      <circle cx="33" cy="86" r="7" fill="#8b5cf6" opacity="0.2" />
-      <text x="33" y="89" fontSize="8" fill="#a78bfa" opacity="0.75" textAnchor="middle" fontWeight="600">2</text>
-
-      <rect x="46" y="78" width="38" height="4.5" rx="2.25" fill="#a78bfa" opacity="0.3" />
-      <rect x="46" y="86" width="50" height="3.5" rx="1.75" fill="#8b5cf6" opacity="0.25" />
-
-      <rect x="145" y="79" width="30" height="14" rx="7" fill="#8b5cf6" opacity="0.18" />
-      <text x="160" y="88" fontSize="7" fill="#c4b5fd" opacity="0.65" textAnchor="middle" fontWeight="500">Data</text>
+      <rect x="10" y="76" width="200" height="36" rx="13" fill="url(#rank2)" stroke="#a78bfa" strokeWidth="1.5" strokeOpacity="0.35" />
+      
+      {/* Silver Medal */}
+      <circle cx="27" cy="94" r="8.5" fill="url(#silverBadge)" />
+      <text x="27" y="98" fontSize="9" fill="#f9fafb" opacity="0.85" textAnchor="middle" fontWeight="700">2</text>
+      
+      {/* Avatar */}
+      <circle cx="46" cy="94" r="8" fill="#a78bfa" opacity="0.28" />
+      <text x="46" y="97" fontSize="6.5" fill="#ddd6fe" opacity="0.75" textAnchor="middle" fontWeight="600">MC</text>
+      
+      {/* Name & info */}
+      <text x="59" y="90" fontSize="7.5" fill="#ddd6fe" opacity="0.8" fontWeight="600">Mike Chen</text>
+      <text x="59" y="99" fontSize="5.5" fill="#c4b5fd" opacity="0.6">118 policies closed</text>
+      
+      {/* Sales amount */}
+      <text x="195" y="93" fontSize="11" fill="#c4b5fd" opacity="0.85" textAnchor="end" fontWeight="700">$392K</text>
+      <text x="195" y="101" fontSize="5" fill="#a78bfa" opacity="0.6" textAnchor="end">Q4 2025</text>
     </g>
 
+    {/* 3rd Place - Jessica Torres */}
     <g filter="url(#rankShadow)">
-      <rect x="15" y="110" width="170" height="30" rx="12" fill="url(#rank3)" stroke="#6b7280" strokeWidth="1" strokeOpacity="0.25" />
-      <circle cx="32" cy="125" r="6.5" fill="#6b7280" opacity="0.2" />
-      <text x="32" y="128" fontSize="7.5" fill="#9ca3af" opacity="0.7" textAnchor="middle" fontWeight="600">3</text>
-
-      <rect x="44" y="118" width="35" height="4" rx="2" fill="#9ca3af" opacity="0.28" />
-      <rect x="44" y="125" width="46" height="3.5" rx="1.75" fill="#6b7280" opacity="0.23" />
-
-      <rect x="148" y="118" width="28" height="13" rx="6.5" fill="#6b7280" opacity="0.15" />
-      <text x="162" y="126" fontSize="6.5" fill="#9ca3af" opacity="0.6" textAnchor="middle" fontWeight="500">Value</text>
+      <rect x="10" y="120" width="200" height="34" rx="12" fill="url(#rank3)" stroke="#6b7280" strokeWidth="1.3" strokeOpacity="0.3" />
+      
+      {/* Bronze Medal */}
+      <circle cx="26" cy="137" r="7.5" fill="url(#bronzeBadge)" />
+      <text x="26" y="140" fontSize="8" fill="#fed7aa" opacity="0.8" textAnchor="middle" fontWeight="700">3</text>
+      
+      {/* Avatar */}
+      <circle cx="43" cy="137" r="7.5" fill="#9ca3af" opacity="0.25" />
+      <text x="43" y="140" fontSize="6" fill="#e5e7eb" opacity="0.7" textAnchor="middle" fontWeight="600">JT</text>
+      
+      {/* Name & info */}
+      <text x="55" y="134" fontSize="7" fill="#e5e7eb" opacity="0.75" fontWeight="600">Jessica Torres</text>
+      <text x="55" y="142" fontSize="5" fill="#d1d5db" opacity="0.6">97 policies closed</text>
+      
+      {/* Sales amount */}
+      <text x="195" y="137" fontSize="10" fill="#d1d5db" opacity="0.8" textAnchor="end" fontWeight="700">$328K</text>
+      <text x="195" y="144" fontSize="4.5" fill="#9ca3af" opacity="0.55" textAnchor="end">Q4 2025</text>
     </g>
 
-    <g filter="url(#rankShadow)" opacity="0.7">
-      <rect x="15" y="148" width="170" height="28" rx="11" fill="url(#rankOther)" stroke="#4b5563" strokeWidth="0.8" strokeOpacity="0.2" />
-      <circle cx="31" cy="162" r="6" fill="#4b5563" opacity="0.2" />
-      <text x="31" y="165" fontSize="7" fill="#6b7280" opacity="0.65" textAnchor="middle" fontWeight="500">4</text>
-
-      <rect x="42" y="155" width="32" height="3.5" rx="1.75" fill="#6b7280" opacity="0.25" />
-      <rect x="42" y="162" width="42" height="3" rx="1.5" fill="#6b7280" opacity="0.2" />
-
-      <rect x="150" y="156" width="26" height="12" rx="6" fill="#4b5563" opacity="0.15" />
-      <text x="163" y="163" fontSize="6" fill="#6b7280" opacity="0.55" textAnchor="middle" fontWeight="500">Item</text>
-    </g>
-
-    <g opacity="0.4">
-      <rect x="15" y="184" width="170" height="3" rx="1.5" fill="#4b5563" opacity="0.2" />
-      <rect x="15" y="191" width="140" height="2.5" rx="1.25" fill="#4b5563" opacity="0.15" />
+    {/* 4th Place - David Park */}
+    <g filter="url(#rankShadow)" opacity="0.75">
+      <rect x="10" y="161" width="200" height="32" rx="11" fill="url(#rankOther)" stroke="#4b5563" strokeWidth="1" strokeOpacity="0.25" />
+      
+      {/* Number */}
+      <circle cx="25" cy="177" r="7" fill="#6b7280" opacity="0.25" />
+      <text x="25" y="180" fontSize="7.5" fill="#9ca3af" opacity="0.75" textAnchor="middle" fontWeight="700">4</text>
+      
+      {/* Avatar */}
+      <circle cx="41" cy="177" r="7" fill="#6b7280" opacity="0.2" />
+      <text x="41" y="180" fontSize="5.5" fill="#d1d5db" opacity="0.65" textAnchor="middle" fontWeight="600">DP</text>
+      
+      {/* Name & info */}
+      <text x="52" y="174" fontSize="6.5" fill="#d1d5db" opacity="0.7" fontWeight="600">David Park</text>
+      <text x="52" y="182" fontSize="4.5" fill="#9ca3af" opacity="0.55">84 policies closed</text>
+      
+      {/* Sales amount */}
+      <text x="195" y="177" fontSize="9" fill="#9ca3af" opacity="0.75" textAnchor="end" fontWeight="700">$275K</text>
+      <text x="195" y="184" fontSize="4" fill="#6b7280" opacity="0.5" textAnchor="end">Q4 2025</text>
     </g>
   </svg>
 );
@@ -789,27 +1023,7 @@ const FeatureGrid: React.FC = () => {
 
   return (
     <section className="relative py-20 bg-[#0D0D0D] overflow-hidden">
-      <HorizontalLine />
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 1.4 }}
-          className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-16"
-        >
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed md:max-w-md whitespace-nowrap">
-            <TypewriterText
-              text="/ Core Features"
-              delay={200}
-              className="text-gray-400"
-            />
-          </h2>
-          <p className="text-white/50 text-lg leading-[1.6] md:max-w-xl md:text-right">
-            Purpose-built tools designed specifically for life insurance agents and agencies to streamline workflows and maximize productivity.
-          </p>
-        </motion.div>
-
         <PoweredBySection />
 
         <div className="px-2 lg:px-4">

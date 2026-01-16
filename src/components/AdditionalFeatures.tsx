@@ -23,7 +23,13 @@ const AdditionalFeatures: React.FC = () => {
         backgroundColor: '#000000'
       }}
     >
-      <div className="flex justify-center px-6">
+      <div 
+        className="flex justify-center px-6"
+        style={{
+          alignItems: 'center',
+          position: 'relative',
+        }}
+      >
         <div
           className="glow-shell"
           style={{
@@ -33,6 +39,8 @@ const AdditionalFeatures: React.FC = () => {
             borderRadius: '80px',
             textAlign: 'center',
             overflow: 'visible',
+            backgroundColor: 'rgba(0, 0, 0, 0.4)',
+            backdropFilter: 'blur(10px)',
           }}
         >
           {/* Top Left X */}
@@ -104,27 +112,55 @@ const AdditionalFeatures: React.FC = () => {
             .glow-shell::before {
               content: "";
               position: absolute;
-              top: -1px;
-              bottom: -1px;
-              left: -20px;
-              right: -20px;
-              border-radius: inherit;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%) perspective(800px) rotateX(12deg);
+              width: 140%;
+              height: 140%;
+              background: radial-gradient(
+                ellipse at center,
+                rgba(0, 0, 0, 0.95) 0%,
+                rgba(0, 0, 0, 0.85) 20%,
+                rgba(0, 0, 0, 0.6) 40%,
+                rgba(0, 0, 0, 0.3) 60%,
+                transparent 80%
+              );
+              filter: blur(30px);
+              z-index: -1;
+              pointer-events: none;
+            }
+            .glow-shell::after {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%) skewY(-3deg);
+              width: 120%;
+              height: 160%;
               background: linear-gradient(
                 180deg,
-                rgba(255, 255, 255, 0.2) 0%,
-                rgba(255, 255, 255, 0.08) 20%,
-                rgba(255, 255, 255, 0.02) 40%,
-                rgba(255, 255, 255, 0.00) 60%
+                rgba(0, 0, 0, 0) 0%,
+                rgba(0, 0, 0, 0.4) 30%,
+                rgba(0, 0, 0, 0.7) 50%,
+                rgba(0, 0, 0, 0.5) 70%,
+                transparent 100%
               );
-              filter: blur(4px);
-              opacity: 0.65;
-              z-index: 0;
+              filter: blur(40px);
+              z-index: -2;
               pointer-events: none;
             }
           `}</style>
 
           <div className="relative z-10 flex flex-col items-center gap-3">
             <motion.h2
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ 
+                duration: 1.2, 
+                ease: [0.25, 0.1, 0.25, 1],
+                delay: 0.2
+              }}
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center m-0"
               style={{
                 color: textColor,
@@ -136,6 +172,14 @@ const AdditionalFeatures: React.FC = () => {
               The platform starts here but doesn't stop
             </motion.h2>
             <motion.p
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ 
+                duration: 1.2, 
+                ease: [0.25, 0.1, 0.25, 1],
+                delay: 0.5
+              }}
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center m-0"
               style={{
                 color: textColor,

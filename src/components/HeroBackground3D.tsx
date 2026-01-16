@@ -301,14 +301,14 @@ const HeroBackground3D: React.FC = () => {
     }
 
     let tx = 0, ty = 0;
-    let targetIORotationY = 0;
+    let targetIORotationY = -0.18;
     let targetIORotationX = 0.15;
     const handleMouseMove = (e: MouseEvent) => {
       updatePointerNDC(e);
       if (window.innerWidth < 900) return;
       tx = (e.clientX / window.innerWidth - 0.5) * 0.2;
       ty = (e.clientY / window.innerHeight - 0.5) * 0.15;
-      targetIORotationY = -(e.clientX / window.innerWidth - 0.5) * 0.5;
+      targetIORotationY = -0.18 - (e.clientX / window.innerWidth - 0.5) * 0.5;
       targetIORotationX = 0.15 + (e.clientY / window.innerHeight - 0.5) * 0.35;
     };
 
@@ -358,7 +358,7 @@ const HeroBackground3D: React.FC = () => {
     gsap.fromTo(io.rotation,
       { y: Math.PI * 0.5 },
       {
-        y: 0,
+        y: -0.18,
         duration: 2,
         ease: "power3.out",
         delay: 0.5
