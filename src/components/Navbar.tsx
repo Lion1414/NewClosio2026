@@ -39,8 +39,6 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   useEffect(() => {
     let ticking = false;
-    let lastProgress = 0;
-    let lastScrollingDown = false;
 
     const handleScroll = () => {
       if (!ticking) {
@@ -48,17 +46,12 @@ const Navbar: React.FC<NavbarProps> = () => {
           const scrollY = window.scrollY;
           const maxScroll = 300;
           const progress = Math.min(scrollY / maxScroll, 1);
-          
-          // Only update if progress changed significantly (reduces repaints)
-          if (Math.abs(progress - lastProgress) > 0.01) {
-            setScrollProgress(progress);
-            lastProgress = progress;
-          }
+          setScrollProgress(progress);
 
-          const shouldScrollDown = scrollY > lastScrollY.current && scrollY > 100;
-          if (shouldScrollDown !== lastScrollingDown) {
-            setIsScrollingDown(shouldScrollDown);
-            lastScrollingDown = shouldScrollDown;
+          if (scrollY > lastScrollY.current && scrollY > 100) {
+            setIsScrollingDown(true);
+          } else {
+            setIsScrollingDown(false);
           }
           lastScrollY.current = scrollY;
 

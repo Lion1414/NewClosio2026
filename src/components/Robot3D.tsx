@@ -359,39 +359,29 @@ const Robot3D = () => {
 
     let wasInView = false;
 
-    let ticking = false;
     const updateScrollProgress = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const mobileSection = document.getElementById('mobile');
-          if (!mobileSection) {
-            ticking = false;
-            return;
-          }
+      const mobileSection = document.getElementById('mobile');
+      if (!mobileSection) return;
 
-          const rect = mobileSection.getBoundingClientRect();
-          const viewportHeight = window.innerHeight;
-          const sectionTop = rect.top;
-          const sectionHeight = rect.height;
+      const rect = mobileSection.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const sectionTop = rect.top;
+      const sectionHeight = rect.height;
 
-          const isInView = sectionTop < viewportHeight && sectionTop + sectionHeight > 0;
+      const isInView = sectionTop < viewportHeight && sectionTop + sectionHeight > 0;
 
-          if (isInView) {
-            if (!wasInView) {
-              scrollProgress = 0;
-            }
-            const visibleTop = Math.max(0, viewportHeight - sectionTop);
-            const visibleHeight = Math.min(sectionHeight, visibleTop);
-            targetScrollProgress = Math.min(1, visibleHeight / (sectionHeight * 0.6));
-            wasInView = true;
-          } else {
-            targetScrollProgress = 0;
-            scrollProgress = 0;
-            wasInView = false;
-          }
-          ticking = false;
-        });
-        ticking = true;
+      if (isInView) {
+        if (!wasInView) {
+          scrollProgress = 0;
+        }
+        const visibleTop = Math.max(0, viewportHeight - sectionTop);
+        const visibleHeight = Math.min(sectionHeight, visibleTop);
+        targetScrollProgress = Math.min(1, visibleHeight / (sectionHeight * 0.6));
+        wasInView = true;
+      } else {
+        targetScrollProgress = 0;
+        scrollProgress = 0;
+        wasInView = false;
       }
     };
 

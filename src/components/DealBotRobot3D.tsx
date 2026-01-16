@@ -316,30 +316,20 @@ const DealBotRobot3D = () => {
     let targetScrollProgress = 0;
     let hasAnimatedIn = false;
 
-    let ticking = false;
     const updateScrollProgress = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const dealBotSection = document.getElementById('deal-bot');
-          if (!dealBotSection) {
-            ticking = false;
-            return;
-          }
+      const dealBotSection = document.getElementById('deal-bot');
+      if (!dealBotSection) return;
 
-          const rect = dealBotSection.getBoundingClientRect();
-          const viewportHeight = window.innerHeight;
-          const sectionTop = rect.top;
-          const sectionHeight = rect.height;
+      const rect = dealBotSection.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const sectionTop = rect.top;
+      const sectionHeight = rect.height;
 
-          const isInView = sectionTop < viewportHeight * 0.8 && sectionTop + sectionHeight > 0;
+      const isInView = sectionTop < viewportHeight * 0.8 && sectionTop + sectionHeight > 0;
 
-          if (isInView && !hasAnimatedIn) {
-            targetScrollProgress = 1;
-            hasAnimatedIn = true;
-          }
-          ticking = false;
-        });
-        ticking = true;
+      if (isInView && !hasAnimatedIn) {
+        targetScrollProgress = 1;
+        hasAnimatedIn = true;
       }
     };
 
