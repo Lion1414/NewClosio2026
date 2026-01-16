@@ -55,98 +55,139 @@ const TypewriterText = ({ text, delay = 0, isVisible }: { text: string; delay?: 
 
 const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="relative pb-6">
+    <div className="relative pb-8">
       <div
         className="relative mx-auto"
         style={{
           maxWidth: '100%',
-          filter: 'drop-shadow(0 40px 80px rgba(0, 0, 0, 0.25)) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.15))'
+          filter: 'drop-shadow(0 60px 100px rgba(0, 0, 0, 0.4)) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3))'
         }}
       >
+        {/* Monitor Bezel */}
         <div
-          className="relative rounded-[12px] md:rounded-[16px] overflow-hidden"
+          className="relative rounded-[14px] md:rounded-[18px] overflow-hidden"
           style={{
-            background: 'linear-gradient(180deg, #ffffff 0%, #f5f5f5 40%, #e8e8e8 100%)',
-            padding: '4px 4px 16px 4px',
-            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.8), inset 0 -1px 0 rgba(0,0,0,0.1)',
+            background: 'linear-gradient(145deg, #3a3a3a 0%, #2a2a2a 45%, #1a1a1a 100%)',
+            padding: '3px 6px 24px 6px',
+            boxShadow: `
+              inset 0 2px 4px rgba(255,255,255,0.15),
+              inset 0 -2px 4px rgba(0,0,0,0.8),
+              inset 0 0 0 1px rgba(255,255,255,0.05),
+              0 0 0 1px rgba(0,0,0,0.9)
+            `,
           }}
         >
+          {/* Top metallic highlight */}
           <div
             className="absolute inset-x-0 top-0 h-[1px]"
             style={{
-              background: 'linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.12) 50%, transparent 90%)',
+              background: 'linear-gradient(90deg, transparent 5%, rgba(255,255,255,0.2) 50%, transparent 95%)',
             }}
           />
+          
+          {/* Screen */}
           <div
-            className="absolute top-[6px] md:top-[8px] left-1/2 -translate-x-1/2 w-[5px] h-[5px] md:w-[6px] md:h-[6px] rounded-full"
+            className="rounded-[10px] md:rounded-[12px] overflow-hidden mt-2 md:mt-2"
             style={{
-              background: 'radial-gradient(circle at 35% 35%, #2a2a2a 0%, #1a1a1a 100%)',
-              boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2), inset 0 0 4px rgba(0,0,0,0.5)'
-            }}
-          />
-          <div
-            className="rounded-[6px] md:rounded-[8px] overflow-hidden mt-3 md:mt-4"
-            style={{
-              background: '#0a0a0a',
-              boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03)'
+              background: '#000000',
+              boxShadow: `
+                inset 0 0 0 2px rgba(0,0,0,0.95),
+                inset 0 2px 8px rgba(0,0,0,0.8),
+                0 0 0 1px rgba(255,255,255,0.05)
+              `
             }}
           >
+            {/* Screen glow effect */}
+            <div
+              className="absolute inset-0 rounded-[10px] md:rounded-[12px] pointer-events-none"
+              style={{
+                background: 'radial-gradient(ellipse at center, rgba(168, 85, 247, 0.15) 0%, transparent 60%)',
+              }}
+            />
             {children}
+          </div>
+          
+          {/* Bottom bezel brand mark */}
+          <div
+            className="absolute bottom-[8px] left-1/2 -translate-x-1/2 text-xs font-semibold tracking-wider"
+            style={{
+              color: 'rgba(255, 255, 255, 0.15)',
+              fontSize: '8px',
+              textShadow: '0 1px 1px rgba(0,0,0,0.5)'
+            }}
+          >
+            CLOSIO
           </div>
         </div>
 
+        {/* Stand - Neck */}
         <div className="relative flex flex-col items-center">
           <div
             className="relative"
             style={{
-              width: '10px',
-              height: '45px',
-              background: 'linear-gradient(90deg, #e8e8e8 0%, #f5f5f5 25%, #ffffff 50%, #f5f5f5 75%, #e8e8e8 100%)',
-              boxShadow: '-3px 0 6px rgba(0,0,0,0.1), 3px 0 6px rgba(0,0,0,0.1), inset 1px 0 0 rgba(255,255,255,0.5)',
+              width: '14px',
+              height: '55px',
+              background: 'linear-gradient(90deg, #2a2a2a 0%, #3a3a3a 20%, #4a4a4a 50%, #3a3a3a 80%, #2a2a2a 100%)',
+              boxShadow: `
+                -4px 0 8px rgba(0,0,0,0.3),
+                4px 0 8px rgba(0,0,0,0.3),
+                inset 2px 0 2px rgba(255,255,255,0.1),
+                inset -2px 0 2px rgba(0,0,0,0.3)
+              `,
             }}
           />
+          {/* Metallic highlight on neck */}
           <div
             className="absolute top-0 left-1/2 -translate-x-1/2"
             style={{
-              width: '14px',
-              height: '45px',
-              background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.8) 50%, transparent 100%)',
+              width: '18px',
+              height: '55px',
+              background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%)',
             }}
           />
         </div>
 
+        {/* Stand - Base */}
         <div
           className="relative mx-auto overflow-hidden"
           style={{
-            width: '160px',
-            height: '12px',
-            background: 'linear-gradient(180deg, #ffffff 0%, #f5f5f5 40%, #e8e8e8 100%)',
-            borderRadius: '0 0 6px 6px',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.8)',
+            width: '200px',
+            height: '16px',
+            background: 'linear-gradient(145deg, #3a3a3a 0%, #2a2a2a 40%, #1a1a1a 100%)',
+            borderRadius: '0 0 8px 8px',
+            boxShadow: `
+              0 6px 16px rgba(0,0,0,0.4),
+              inset 0 2px 2px rgba(255,255,255,0.15),
+              inset 0 -1px 2px rgba(0,0,0,0.8),
+              0 0 0 1px rgba(0,0,0,0.9)
+            `,
           }}
         >
+          {/* Top metallic highlight */}
           <div
-            className="absolute inset-x-0 top-0 h-[1px]"
+            className="absolute inset-x-0 top-0 h-[2px]"
             style={{
-              background: 'linear-gradient(90deg, transparent 5%, rgba(255,255,255,0.08) 50%, transparent 95%)',
+              background: 'linear-gradient(90deg, transparent 5%, rgba(255,255,255,0.12) 50%, transparent 95%)',
             }}
           />
+          {/* Side shadows for depth */}
           <div
             className="absolute inset-0"
             style={{
-              background: 'linear-gradient(90deg, rgba(0,0,0,0.15) 0%, transparent 15%, transparent 85%, rgba(0,0,0,0.15) 100%)',
+              background: 'linear-gradient(90deg, rgba(0,0,0,0.3) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.3) 100%)',
             }}
           />
         </div>
       </div>
 
+      {/* Shadow under base */}
       <div
-        className="absolute -bottom-1 left-1/2 -translate-x-1/2"
+        className="absolute -bottom-2 left-1/2 -translate-x-1/2"
         style={{
-          width: '180px',
-          height: '12px',
-          background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, transparent 70%)',
-          filter: 'blur(6px)',
+          width: '240px',
+          height: '20px',
+          background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 50%, transparent 80%)',
+          filter: 'blur(10px)',
         }}
       />
     </div>
@@ -189,64 +230,6 @@ export default function DealMap() {
         </div>
 
         <div className="relative flex items-center justify-center">
-          <svg
-            className="absolute inset-0 w-full h-full pointer-events-none hidden lg:block"
-            style={{ zIndex: 15 }}
-            preserveAspectRatio="none"
-          >
-            <motion.line
-              x1="17.5%"
-              y1="30%"
-              x2="26.717%"
-              y2="30%"
-              stroke="#ffffff"
-              strokeWidth="1"
-              strokeLinecap="round"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 0.6 } : { pathLength: 0, opacity: 0 }}
-              transition={{ delay: 2.8, duration: 1.8, ease: [0.4, 0, 0.2, 1] }}
-            />
-
-            <motion.line
-              x1="17.5%"
-              y1="70%"
-              x2="26.717%"
-              y2="70%"
-              stroke="#ffffff"
-              strokeWidth="1"
-              strokeLinecap="round"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 0.6 } : { pathLength: 0, opacity: 0 }}
-              transition={{ delay: 3.2, duration: 1.8, ease: [0.4, 0, 0.2, 1] }}
-            />
-
-            <motion.line
-              x1="82.5%"
-              y1="30%"
-              x2="73.283%"
-              y2="30%"
-              stroke="#ffffff"
-              strokeWidth="1"
-              strokeLinecap="round"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 0.6 } : { pathLength: 0, opacity: 0 }}
-              transition={{ delay: 3.0, duration: 1.8, ease: [0.4, 0, 0.2, 1] }}
-            />
-
-            <motion.line
-              x1="82.5%"
-              y1="70%"
-              x2="73.283%"
-              y2="70%"
-              stroke="#ffffff"
-              strokeWidth="1"
-              strokeLinecap="round"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 0.6 } : { pathLength: 0, opacity: 0 }}
-              transition={{ delay: 3.4, duration: 1.8, ease: [0.4, 0, 0.2, 1] }}
-            />
-          </svg>
-
           <div className="hidden lg:flex flex-col gap-8 absolute left-0 top-1/2 -translate-y-1/2 z-20" style={{ width: '280px' }}>
             {leftFacts.map((fact, index) => {
               const titleDelay = 800 + index * 400;
@@ -357,11 +340,127 @@ export default function DealMap() {
             className="relative w-full max-w-[580px] mx-auto"
           >
             <DesktopMonitor>
-              <img
-                src="/image copy copy copy copy copy copy copy.png"
-                alt="Deal Map - Policies Submitted Per State"
-                className="w-full h-auto block"
-              />
+              {/* Illustrated UI - Policy Map Dashboard */}
+              <div className="w-full aspect-video bg-gradient-to-br from-black via-purple-950/20 to-black relative overflow-hidden">
+                {/* Grid background */}
+                <div
+                  className="absolute inset-0 opacity-10"
+                  style={{
+                    backgroundImage: 'linear-gradient(rgba(168, 85, 247, 0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(168, 85, 247, 0.4) 1px, transparent 1px)',
+                    backgroundSize: '30px 30px',
+                  }}
+                />
+                
+                {/* Top bar */}
+                <div className="absolute top-0 left-0 right-0 h-12 bg-black/60 backdrop-blur-sm border-b border-purple-500/20 flex items-center justify-between px-6">
+                  <div className="flex items-center gap-3">
+                    <img 
+                      src="/favicon_and_logo_for_closio.png" 
+                      alt="Closio Logo" 
+                      className="w-6 h-6 object-contain"
+                    />
+                    <span className="text-white text-xs font-semibold">Policy Map Dashboard</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-16 h-2 rounded-full bg-purple-500/30" />
+                    <div className="w-16 h-2 rounded-full bg-white/20" />
+                    <div className="w-16 h-2 rounded-full bg-white/20" />
+                  </div>
+                </div>
+
+                {/* Map illustration - US Map with white state borders */}
+                <div className="absolute inset-0 w-full h-full flex items-center justify-center" style={{ paddingTop: '48px', paddingLeft: '2rem', paddingRight: '10rem', paddingBottom: '3.5rem' }}>
+                  <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Blank_US_Map_%28states_only%29.svg"
+                    alt="United States Map"
+                    className="w-full h-full object-contain"
+                    style={{
+                      filter: 'brightness(0) invert(1)',
+                      opacity: 0.8
+                    }}
+                  />
+                </div>
+                
+                {/* State Tracker - Right Side */}
+                <div className="absolute right-2 top-[60px] bottom-[60px] w-36 overflow-hidden">
+                  <div className="backdrop-blur-md bg-black/50 border border-white/10 rounded-lg h-full overflow-y-auto p-2">
+                    <div className="space-y-1">
+                      {[
+                        { state: 'California', count: 342 },
+                        { state: 'Texas', count: 287 },
+                        { state: 'Florida', count: 256 },
+                        { state: 'New York', count: 234 },
+                        { state: 'Pennsylvania', count: 198 },
+                        { state: 'Illinois', count: 176 },
+                        { state: 'Ohio', count: 165 },
+                        { state: 'Georgia', count: 154 },
+                        { state: 'N. Carolina', count: 143 },
+                        { state: 'Michigan', count: 132 },
+                        { state: 'New Jersey', count: 128 },
+                        { state: 'Virginia', count: 119 },
+                        { state: 'Washington', count: 107 },
+                        { state: 'Arizona', count: 98 },
+                        { state: 'Massachusetts', count: 89 },
+                        { state: 'Tennessee', count: 84 },
+                        { state: 'Indiana', count: 76 },
+                        { state: 'Missouri', count: 71 },
+                        { state: 'Maryland', count: 68 },
+                        { state: 'Wisconsin', count: 62 },
+                        { state: 'Colorado', count: 59 },
+                        { state: 'Minnesota', count: 54 },
+                        { state: 'S. Carolina', count: 48 },
+                        { state: 'Alabama', count: 45 },
+                        { state: 'Louisiana', count: 41 },
+                        { state: 'Kentucky', count: 37 },
+                        { state: 'Oregon', count: 33 },
+                        { state: 'Oklahoma', count: 29 },
+                        { state: 'Connecticut', count: 24 },
+                        { state: 'Utah', count: 19 },
+                      ].map((item, index) => (
+                        <div 
+                          key={item.state}
+                          className="flex items-center justify-between text-[9px] py-0.5 px-1.5 rounded hover:bg-white/5 transition-colors"
+                        >
+                          <span className="text-white/70 truncate flex-1">{item.state}</span>
+                          <span className="text-white font-semibold ml-1">{item.count}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Stats overlay - Bottom */}
+                <div className="absolute bottom-2 left-6 right-6 flex items-center justify-between">
+                  <div className="backdrop-blur-md bg-black/40 border border-purple-500/30 rounded-lg px-3 py-2 flex flex-col">
+                    <span className="text-[9px] text-white/60 uppercase tracking-wider mb-0.5">Total Policies</span>
+                    <span className="text-sm font-bold bg-gradient-to-r from-purple-400 to-white bg-clip-text text-transparent">2,847</span>
+                  </div>
+                  
+                  <div className="backdrop-blur-md bg-black/40 border border-white/20 rounded-lg px-3 py-2 flex flex-col">
+                    <span className="text-[9px] text-white/60 uppercase tracking-wider mb-0.5">Active States</span>
+                    <span className="text-sm font-bold text-white">34</span>
+                  </div>
+                  
+                  <div className="backdrop-blur-md bg-black/40 border border-purple-500/30 rounded-lg px-3 py-2 flex flex-col">
+                    <span className="text-[9px] text-white/60 uppercase tracking-wider mb-0.5">This Month</span>
+                    <span className="text-sm font-bold bg-gradient-to-r from-purple-400 to-white bg-clip-text text-transparent">+342</span>
+                  </div>
+                </div>
+
+                {/* Purple glow effects */}
+                <div
+                  className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full blur-3xl opacity-20 pointer-events-none"
+                  style={{
+                    background: 'radial-gradient(circle, rgba(168, 85, 247, 0.6) 0%, transparent 70%)',
+                  }}
+                />
+                <div
+                  className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full blur-3xl opacity-20 pointer-events-none"
+                  style={{
+                    background: 'radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%)',
+                  }}
+                />
+              </div>
             </DesktopMonitor>
           </motion.div>
 

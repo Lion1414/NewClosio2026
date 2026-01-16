@@ -173,7 +173,6 @@ export default function IntegratedFeaturesFlow() {
                       className="w-auto h-4 sm:h-5 lg:h-6"
                       draggable={false}
                     />
-                    <span className="text-[10px] sm:text-xs lg:text-sm font-semibold text-white/95">CLOSIO</span>
                   </div>
                   <div className="flex gap-1">
                     <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/30" />

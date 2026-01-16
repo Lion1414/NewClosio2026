@@ -120,69 +120,56 @@ const BookIcon: React.FC = () => {
     if (isInView && !animated) {
       setAnimated(true);
       
-      // Store interval IDs so they can be cleaned up
-      let interval1: NodeJS.Timeout | null = null;
-      let interval2: NodeJS.Timeout | null = null;
-      let interval3: NodeJS.Timeout | null = null;
-      
       // Small delay before starting
-      const timeoutId = setTimeout(() => {
-        // Animate first number to 4,100
-        const duration1 = 2500;
-        const steps1 = 80;
+      setTimeout(() => {
+        // Animate first number to 4,100 over 3.5 seconds
+        const duration1 = 3500;
+        const steps1 = 100;
         const increment1 = 4100 / steps1;
         let current1 = 0;
         
-        interval1 = setInterval(() => {
+        const interval1 = setInterval(() => {
           current1 += increment1;
           if (current1 >= 4100) {
             setCount1(4100);
-            if (interval1) clearInterval(interval1);
+            clearInterval(interval1);
           } else {
             setCount1(Math.floor(current1));
           }
         }, duration1 / steps1);
 
-        // Animate second number to 6,225
-        const duration2 = 2500;
-        const steps2 = 80;
+        // Animate second number to 6,225 over 3.5 seconds
+        const duration2 = 3500;
+        const steps2 = 100;
         const increment2 = 6225 / steps2;
         let current2 = 0;
         
-        interval2 = setInterval(() => {
+        const interval2 = setInterval(() => {
           current2 += increment2;
           if (current2 >= 6225) {
             setCount2(6225);
-            if (interval2) clearInterval(interval2);
+            clearInterval(interval2);
           } else {
             setCount2(Math.floor(current2));
           }
         }, duration2 / steps2);
 
-        // Animate third number to 9,450
-        const duration3 = 2500;
-        const steps3 = 80;
+        // Animate third number to 9,450 over 3.5 seconds
+        const duration3 = 3500;
+        const steps3 = 100;
         const increment3 = 9450 / steps3;
         let current3 = 0;
         
-        interval3 = setInterval(() => {
+        const interval3 = setInterval(() => {
           current3 += increment3;
           if (current3 >= 9450) {
             setCount3(9450);
-            if (interval3) clearInterval(interval3);
+            clearInterval(interval3);
           } else {
             setCount3(Math.floor(current3));
           }
         }, duration3 / steps3);
       }, 200);
-
-      // Proper cleanup function returned from useEffect
-      return () => {
-        clearTimeout(timeoutId);
-        if (interval1) clearInterval(interval1);
-        if (interval2) clearInterval(interval2);
-        if (interval3) clearInterval(interval3);
-      };
     }
   }, [isInView, animated]);
 
@@ -376,8 +363,57 @@ const HierarchyIcon: React.FC = () => (
   </svg>
 );
 
-const CommissionIcon: React.FC = () => (
-  <svg viewBox="0 0 240 200" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
+const CommissionIcon: React.FC = () => {
+  const [animated, setAnimated] = useState(false);
+  const [teamTotal, setTeamTotal] = useState(0);
+  const [teamPaid, setTeamPaid] = useState(0);
+  const [teamPending, setTeamPending] = useState(0);
+  const [personalTotal, setPersonalTotal] = useState(0);
+  const svgRef = useRef<SVGSVGElement>(null);
+  const isInView = useInView(svgRef, { once: true, margin: '0px 0px -15% 0px' });
+
+  useEffect(() => {
+    if (isInView && !animated) {
+      setAnimated(true);
+      
+      setTimeout(() => {
+        // Animate Team Total to 142,580 over 3.5 seconds
+        const duration = 3500;
+        const steps = 100;
+        const teamTotalIncrement = 142580 / steps;
+        const teamPaidIncrement = 95200 / steps;
+        const teamPendingIncrement = 47380 / steps;
+        const personalIncrement = 28450 / steps;
+        let currentTeamTotal = 0;
+        let currentTeamPaid = 0;
+        let currentTeamPending = 0;
+        let currentPersonal = 0;
+        
+        const interval = setInterval(() => {
+          currentTeamTotal += teamTotalIncrement;
+          currentTeamPaid += teamPaidIncrement;
+          currentTeamPending += teamPendingIncrement;
+          currentPersonal += personalIncrement;
+          
+          if (currentTeamTotal >= 142580) {
+            setTeamTotal(142580);
+            setTeamPaid(95200);
+            setTeamPending(47380);
+            setPersonalTotal(28450);
+            clearInterval(interval);
+          } else {
+            setTeamTotal(Math.floor(currentTeamTotal));
+            setTeamPaid(Math.floor(currentTeamPaid));
+            setTeamPending(Math.floor(currentTeamPending));
+            setPersonalTotal(Math.floor(currentPersonal));
+          }
+        }, duration / steps);
+      }, 200);
+    }
+  }, [isInView, animated]);
+
+  return (
+    <svg ref={svgRef} viewBox="0 0 240 200" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
     <defs>
       <linearGradient id="teamCard" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.2" />
@@ -437,16 +473,16 @@ const CommissionIcon: React.FC = () => (
       </g>
       
       {/* Total amount */}
-      <text x="20" y="80" fontSize="20" fill="#c4b5fd" opacity="0.9" fontWeight="700" filter="url(#commGlow)">$142,580</text>
+      <text x="20" y="80" fontSize="20" fill="#c4b5fd" opacity="0.9" fontWeight="700" filter="url(#commGlow)">${teamTotal.toLocaleString()}</text>
       <text x="20" y="91" fontSize="6" fill="#a78bfa" opacity="0.6">Total Team Commissions</text>
       
       {/* Breakdown bars */}
       <g opacity="0.5">
         <rect x="20" y="97" width="90" height="6" rx="3" fill="#8b5cf6" opacity="0.3" />
-        <text x="115" y="101" fontSize="5.5" fill="#a78bfa">Paid: $95,200</text>
+        <text x="115" y="101" fontSize="5.5" fill="#a78bfa">Paid: ${teamPaid.toLocaleString()}</text>
         
         <rect x="20" y="105" width="45" height="4" rx="2" fill="#7c3aed" opacity="0.25" />
-        <text x="70" y="108" fontSize="5" fill="#8b5cf6" opacity="0.7">Pending: $47,380</text>
+        <text x="70" y="108" fontSize="5" fill="#8b5cf6" opacity="0.7">Pending: ${teamPending.toLocaleString()}</text>
       </g>
     </g>
 
@@ -465,7 +501,7 @@ const CommissionIcon: React.FC = () => (
       </g>
       
       {/* Amount */}
-      <text x="20" y="160" fontSize="20" fill="#6ad4f2" opacity="0.9" fontWeight="700">$28,450</text>
+      <text x="20" y="160" fontSize="20" fill="#6ad4f2" opacity="0.9" fontWeight="700">${personalTotal.toLocaleString()}</text>
       <text x="20" y="171" fontSize="6" fill="#35E7E0" opacity="0.6">Your Earnings This Month</text>
       
       {/* Progress indicators */}
@@ -484,7 +520,8 @@ const CommissionIcon: React.FC = () => (
       <circle cx="203" cy="153" r="1.5" fill="#35E7E0" />
     </g>
   </svg>
-);
+  );
+};
 
 const DashboardIcon: React.FC = () => (
   <svg viewBox="0 0 275 200" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
@@ -689,8 +726,51 @@ const DashboardIcon: React.FC = () => (
   </svg>
 );
 
-const MedalsIcon: React.FC = () => (
-  <svg viewBox="0 0 220 200" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
+const MedalsIcon: React.FC = () => {
+  const [animated, setAnimated] = useState(false);
+  const [place1, setPlace1] = useState(0);
+  const [place2, setPlace2] = useState(0);
+  const [place3, setPlace3] = useState(0);
+  const svgRef = useRef<SVGSVGElement>(null);
+  const isInView = useInView(svgRef, { once: true, margin: '0px 0px -15% 0px' });
+
+  useEffect(() => {
+    if (isInView && !animated) {
+      setAnimated(true);
+      
+      setTimeout(() => {
+        // Animate leaderboard numbers over 3.5 seconds
+        const duration = 3500;
+        const steps = 100;
+        const place1Increment = 28 / steps;
+        const place2Increment = 22 / steps;
+        const place3Increment = 17 / steps;
+        let current1 = 0;
+        let current2 = 0;
+        let current3 = 0;
+        
+        const interval = setInterval(() => {
+          current1 += place1Increment;
+          current2 += place2Increment;
+          current3 += place3Increment;
+          
+          if (current1 >= 28) {
+            setPlace1(28);
+            setPlace2(22);
+            setPlace3(17);
+            clearInterval(interval);
+          } else {
+            setPlace1(Math.floor(current1));
+            setPlace2(Math.floor(current2));
+            setPlace3(Math.floor(current3));
+          }
+        }, duration / steps);
+      }, 200);
+    }
+  }, [isInView, animated]);
+
+  return (
+    <svg ref={svgRef} viewBox="0 0 220 200" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
     <defs>
       <linearGradient id="rank1" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.3" />
@@ -764,7 +844,7 @@ const MedalsIcon: React.FC = () => (
       <text x="65" y="54" fontSize="6" fill="#c4b5fd" opacity="0.65">Weekly performance</text>
       
       {/* Sales amount */}
-      <text x="195" y="46" fontSize="12" fill="#c4b5fd" opacity="0.9" textAnchor="end" fontWeight="700">$28K</text>
+      <text x="195" y="46" fontSize="12" fill="#c4b5fd" opacity="0.9" textAnchor="end" fontWeight="700">${place1}K</text>
       <text x="195" y="55" fontSize="5.5" fill="#a78bfa" opacity="0.65" textAnchor="end">AP This Week</text>
     </g>
 
@@ -785,7 +865,7 @@ const MedalsIcon: React.FC = () => (
       <text x="59" y="99" fontSize="5.5" fill="#c4b5fd" opacity="0.6">Weekly performance</text>
       
       {/* Sales amount */}
-      <text x="195" y="93" fontSize="11" fill="#c4b5fd" opacity="0.85" textAnchor="end" fontWeight="700">$22K</text>
+      <text x="195" y="93" fontSize="11" fill="#c4b5fd" opacity="0.85" textAnchor="end" fontWeight="700">${place2}K</text>
       <text x="195" y="101" fontSize="5" fill="#a78bfa" opacity="0.6" textAnchor="end">AP This Week</text>
     </g>
 
@@ -806,7 +886,7 @@ const MedalsIcon: React.FC = () => (
       <text x="55" y="142" fontSize="5" fill="#d1d5db" opacity="0.6">Weekly performance</text>
       
       {/* Sales amount */}
-      <text x="195" y="137" fontSize="10" fill="#d1d5db" opacity="0.8" textAnchor="end" fontWeight="700">$17K</text>
+      <text x="195" y="137" fontSize="10" fill="#d1d5db" opacity="0.8" textAnchor="end" fontWeight="700">${place3}K</text>
       <text x="195" y="144" fontSize="4.5" fill="#9ca3af" opacity="0.55" textAnchor="end">AP This Week</text>
     </g>
 
@@ -831,7 +911,8 @@ const MedalsIcon: React.FC = () => (
       <text x="195" y="184" fontSize="4" fill="#6b7280" opacity="0.5" textAnchor="end">AP This Week</text>
     </g>
   </svg>
-);
+  );
+};
 
 const HorizontalLine: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -1030,7 +1111,107 @@ const FeatureGrid: React.FC = () => {
   ];
 
   return (
-    <section className="relative py-20 bg-[#0D0D0D] overflow-hidden">
+    <section 
+      className="relative py-20 bg-[#0D0D0D] overflow-hidden"
+      style={{
+        clipPath: 'polygon(120px 0, calc(100% - 120px) 0, 100% 120px, 100% 100%, 0 100%, 0 120px)'
+      }}
+    >
+      {/* Continuous purple and white line across all three parts */}
+      <div className="absolute top-0 left-0 right-0 pointer-events-none z-20" style={{ height: '120px' }}>
+        <svg 
+          className="w-full h-full" 
+          viewBox="0 0 1920 120" 
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <linearGradient id="continuousBorderGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="rgba(168, 85, 247, 0.4)" />
+              <stop offset="8%" stopColor="rgba(255, 255, 255, 0.9)" />
+              <stop offset="15%" stopColor="rgba(168, 85, 247, 1)" />
+              <stop offset="30%" stopColor="rgba(255, 255, 255, 1)" />
+              <stop offset="50%" stopColor="rgba(168, 85, 247, 1)" />
+              <stop offset="70%" stopColor="rgba(255, 255, 255, 1)" />
+              <stop offset="85%" stopColor="rgba(168, 85, 247, 1)" />
+              <stop offset="92%" stopColor="rgba(255, 255, 255, 0.9)" />
+              <stop offset="100%" stopColor="rgba(168, 85, 247, 0.4)" />
+            </linearGradient>
+          </defs>
+          {/* Continuous path: left slant -> straight top -> right slant */}
+          <path
+            d="M 0 120 L 120 0 L 1800 0 L 1920 120"
+            fill="none"
+            stroke="url(#continuousBorderGradient)"
+            strokeWidth="2.5"
+            vectorEffect="non-scaling-stroke"
+          />
+        </svg>
+      </div>
+
+      {/* Purple and white line down the left side - follows the slant then goes vertical */}
+      <div className="absolute top-0 left-0 bottom-0 pointer-events-none z-20" style={{ width: '120px', height: '100%' }}>
+        <svg 
+          className="w-full h-full" 
+          viewBox="0 0 120 100" 
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <linearGradient id="leftSideGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="rgba(168, 85, 247, 0.8)" />
+              <stop offset="5%" stopColor="rgba(255, 255, 255, 1)" />
+              <stop offset="10%" stopColor="rgba(168, 85, 247, 1)" />
+              <stop offset="20%" stopColor="rgba(255, 255, 255, 1)" />
+              <stop offset="30%" stopColor="rgba(168, 85, 247, 1)" />
+              <stop offset="40%" stopColor="rgba(255, 255, 255, 1)" />
+              <stop offset="50%" stopColor="rgba(168, 85, 247, 1)" />
+              <stop offset="60%" stopColor="rgba(255, 255, 255, 0.9)" />
+              <stop offset="70%" stopColor="rgba(168, 85, 247, 0.8)" />
+              <stop offset="85%" stopColor="rgba(255, 255, 255, 0.6)" />
+              <stop offset="100%" stopColor="rgba(168, 85, 247, 0.3)" />
+            </linearGradient>
+          </defs>
+          {/* Path: diagonal from corner then straight down to bottom */}
+          <path
+            d="M 120 0 L 0 8 L 0 100"
+            fill="none"
+            stroke="url(#leftSideGradient)"
+            strokeWidth="2.5"
+          />
+        </svg>
+      </div>
+
+      {/* Purple and white line down the right side - follows the slant then goes vertical */}
+      <div className="absolute top-0 right-0 bottom-0 pointer-events-none z-20" style={{ width: '120px', height: '100%' }}>
+        <svg 
+          className="w-full h-full" 
+          viewBox="0 0 120 100" 
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <linearGradient id="rightSideGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="rgba(168, 85, 247, 0.8)" />
+              <stop offset="5%" stopColor="rgba(255, 255, 255, 1)" />
+              <stop offset="10%" stopColor="rgba(168, 85, 247, 1)" />
+              <stop offset="20%" stopColor="rgba(255, 255, 255, 1)" />
+              <stop offset="30%" stopColor="rgba(168, 85, 247, 1)" />
+              <stop offset="40%" stopColor="rgba(255, 255, 255, 1)" />
+              <stop offset="50%" stopColor="rgba(168, 85, 247, 1)" />
+              <stop offset="60%" stopColor="rgba(255, 255, 255, 0.9)" />
+              <stop offset="70%" stopColor="rgba(168, 85, 247, 0.8)" />
+              <stop offset="85%" stopColor="rgba(255, 255, 255, 0.6)" />
+              <stop offset="100%" stopColor="rgba(168, 85, 247, 0.3)" />
+            </linearGradient>
+          </defs>
+          {/* Path: diagonal from corner then straight down to bottom */}
+          <path
+            d="M 0 0 L 120 8 L 120 100"
+            fill="none"
+            stroke="url(#rightSideGradient)"
+            strokeWidth="2.5"
+          />
+        </svg>
+      </div>
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <PoweredBySection />
 

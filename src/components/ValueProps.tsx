@@ -37,39 +37,13 @@ const ValueProps: React.FC = () => {
           viewport={{ once: true, margin: '0px 0px -15% 0px' }}
           transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="relative">
+          <div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15]">
               <span className="text-gray-400">/ Why</span>{' '}<span className="text-white">CLOS<span
                 className="italic mx-0.5 sm:mx-1"
                 style={{ WebkitTextStroke: '1.5px currentColor', WebkitTextFillColor: 'transparent' }}
               >I</span>O</span>
             </h2>
-            
-            {/* Decorative line from slash up and across to end of CLOSIO */}
-            <div className="absolute left-[3px] top-0 pointer-events-none">
-              <svg 
-                className="w-[280px] sm:w-[320px] md:w-[400px] lg:w-[480px]" 
-                height="60" 
-                viewBox="0 0 480 60" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path 
-                  d="M 8 55 L 8 8 L 475 8" 
-                  stroke="url(#lineGradient)" 
-                  strokeWidth="1.5" 
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <defs>
-                  <linearGradient id="lineGradient" x1="8" y1="55" x2="475" y2="8" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stopColor="rgba(168, 85, 247, 0.4)" />
-                    <stop offset="50%" stopColor="rgba(255, 255, 255, 0.6)" />
-                    <stop offset="100%" stopColor="rgba(168, 85, 247, 0.3)" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
           </div>
           <div>
             <p className="text-base md:text-lg lg:text-xl text-gray-400 leading-[1.6]">

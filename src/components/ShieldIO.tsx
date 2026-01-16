@@ -171,12 +171,12 @@ const ShieldIO = () => {
       </g>
 
       {/* Logo - centered in shield */}
-      <foreignObject x="100" y="180" width="200" height="120">
+      <foreignObject x="100" y="165" width="200" height="130">
         <div className="flex items-center justify-center w-full h-full">
           <img
             src="/favicon_and_logo_for_closio.png"
             alt="Closio"
-            className="w-auto h-24"
+            className="w-auto h-32"
             style={{ filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.6))' }}
           />
         </div>

@@ -142,24 +142,6 @@ const TestimonialSection: React.FC = () => {
                   </p>
                 </blockquote>
               </div>
-
-              {/* Progress dots - fixed position */}
-              <div className="flex justify-center gap-2 mt-6">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      setDirection(index > activeIndex ? 1 : -1);
-                      setActiveIndex(index);
-                    }}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      index === activeIndex 
-                        ? 'w-8 bg-gradient-to-r from-purple-500 to-white' 
-                        : 'w-2 bg-white/20 hover:bg-white/40'
-                    }`}
-                  />
-                ))}
-              </div>
             </div>
           </div>
 

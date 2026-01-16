@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 import Navbar from './components/Navbar';
@@ -89,8 +89,19 @@ function HomePage() {
 }
 
 function App() {
-  const [showSplash, setShowSplash] = useState(true);
+  // Only show splash screen on very first load, not on navigation
+  const [showSplash, setShowSplash] = useState(() => {
+    const hasSeenSplash = sessionStorage.getItem('hasSeenSplash');
+    return !hasSeenSplash;
+  });
+  
   useSmoothScroll();
+
+  useEffect(() => {
+    if (!showSplash) {
+      sessionStorage.setItem('hasSeenSplash', 'true');
+    }
+  }, [showSplash]);
 
   return (
     <>

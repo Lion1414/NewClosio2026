@@ -163,80 +163,92 @@ const ContactSplit = React.memo(() => {
 
   return (
     <>
-      <section id="contact" className="py-24 md:py-32 relative bg-black overflow-hidden">
+      <section id="contact" className="py-16 md:py-20 relative bg-black overflow-hidden">
         <div className="w-full max-w-[95%] sm:max-w-[90%] lg:max-w-[85%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.6 }}
-            className="relative rounded-2xl overflow-hidden"
+            transition={{ duration: 1.2 }}
+            className="relative rounded-3xl overflow-hidden border border-white/10"
             style={{
-              background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%)',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 80px rgba(255, 255, 255, 0.05)',
+              background: '#000000',
             }}
           >
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.03) 100%)',
-              }}
-            />
-            <div
-              className="absolute top-0 left-0 right-0 h-[1px]"
-              style={{
-                background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 20%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.2) 80%, transparent 100%)',
-              }}
-            />
-            <div
-              className="absolute bottom-0 left-0 right-0 h-[1px]"
-              style={{
-                background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%)',
-              }}
-            />
-            <div
-              className="absolute -top-20 -left-20 w-[300px] h-[300px] rounded-full pointer-events-none"
-              style={{
-                background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)',
-              }}
-            />
-            <div
-              className="absolute -bottom-32 -right-32 w-[400px] h-[400px] rounded-full pointer-events-none"
-              style={{
-                background: 'radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%)',
-              }}
-            />
-
-            <div className="relative z-10 flex flex-col md:flex-row items-stretch min-h-[340px] md:min-h-[380px]">
-              <div
-                className="absolute inset-y-0 left-0 w-[55%] pointer-events-none"
+            {/* Background Image on Right Side */}
+            <div className="absolute inset-0 flex">
+              <div className="hidden md:block w-1/2" />
+              <div 
+                className="w-full md:w-1/2 bg-cover bg-center"
                 style={{
-                  background: 'linear-gradient(90deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 40%, transparent 100%)',
+                  backgroundImage: 'url(https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070&auto=format&fit=crop)',
+                  opacity: 0.55,
                 }}
               />
-              <div className="flex-1 p-8 md:p-10 lg:p-12 flex flex-col justify-center relative z-10">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 text-left text-white drop-shadow-sm">
-                  Stay in the Loop with{' '}
-                  <span className="text-white/90">
-                    Closio
-                  </span>
-                </h2>
-                <p className="text-sm lg:text-base text-white/80 max-w-md mb-6 leading-relaxed text-left">
-                  Be the first to hear about updates, early access offers, and exclusive insights.
-                </p>
+            </div>
 
-                {status === 'success' ? (
-                  <div className="flex flex-col items-start py-3">
-                    <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-3 border border-white/30 backdrop-blur-sm">
-                      <span className="text-white text-xl">✓</span>
+            {/* Purple Gradient Overlay - Reversed */}
+            <div 
+              className="absolute inset-0"
+              style={{
+                background: 'linear-gradient(to left, rgba(80, 0, 120, 0.75) 0%, rgba(0, 0, 0, 0.90) 50%, rgba(30, 30, 35, 0.90) 100%)',
+              }}
+            />
+
+            {/* Purple Accent Glow on Right */}
+            <div
+              className="absolute top-0 right-0 w-full h-full pointer-events-none"
+              style={{
+                background: 'radial-gradient(ellipse at right center, rgba(168, 85, 247, 0.15) 0%, transparent 60%)',
+              }}
+            />
+
+            {/* Lighter overlay on left side */}
+            <div
+              className="absolute top-0 left-0 w-1/2 h-full pointer-events-none hidden md:block"
+              style={{
+                background: 'linear-gradient(to right, rgba(40, 40, 45, 0.6) 0%, transparent 100%)',
+              }}
+            />
+
+            {/* Top Border Accent */}
+            <div
+              className="absolute top-0 left-0 right-0 h-[2px]"
+              style={{
+                background: 'linear-gradient(90deg, transparent 0%, rgba(168, 85, 247, 0.6) 20%, rgba(255, 255, 255, 0.8) 50%, rgba(168, 85, 247, 0.6) 80%, transparent 100%)',
+              }}
+            />
+
+            <div className="relative z-10 flex flex-col md:flex-row items-stretch min-h-[350px] md:min-h-[400px] lg:min-h-[450px]">
+              {/* Left Side - Newsletter Form */}
+              <div className="flex-1 md:w-1/2 p-8 md:p-10 lg:p-14 flex flex-col justify-center relative z-10">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium mb-4 text-white leading-tight drop-shadow-md">
+                    Stay in the Loop with{' '}
+                    <span className="bg-gradient-to-r from-purple-400 to-white bg-clip-text text-transparent">
+                      Closio
+                    </span>
+                  </h2>
+                  <p className="text-base lg:text-lg text-white/90 max-w-lg mb-8 leading-relaxed drop-shadow-sm">
+                    Be the first to hear about updates, early access offers, and exclusive insights.
+                  </p>
+
+                  {status === 'success' ? (
+                    <div className="flex flex-col items-start py-4">
+                      <div className="w-14 h-14 bg-gradient-to-r from-purple-500 to-white rounded-full flex items-center justify-center mb-4 shadow-xl">
+                        <span className="text-black text-2xl font-bold">✓</span>
+                      </div>
+                      <p className="text-xl font-semibold text-white drop-shadow-md">You're in!</p>
+                      <p className="text-white/90 mt-2 text-base drop-shadow-sm">We'll be in touch soon.</p>
                     </div>
-                    <p className="text-lg font-semibold text-white">You're in!</p>
-                    <p className="text-white/80 mt-1 text-sm">We'll be in touch.</p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="max-w-2xl">
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      <div className="flex-1">
+                  ) : (
+                    <form onSubmit={handleSubmit} className="max-w-xl -ml-2">
+                      <div className="flex items-center bg-white/10 backdrop-blur-md border-2 border-purple-500/40 rounded-xl overflow-hidden shadow-lg focus-within:border-purple-500 focus-within:ring-2 focus-within:ring-purple-500/30 transition-all">
                         <input
                           type="email"
                           value={email}
@@ -248,36 +260,37 @@ const ContactSplit = React.memo(() => {
                             }
                           }}
                           placeholder="Enter your email"
-                          className="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-xl focus:border-white/60 focus:ring-2 focus:ring-white/30 outline-none transition-all text-white placeholder:text-white/60 text-base backdrop-blur-sm min-h-[56px]"
+                          className="flex-1 px-6 py-4 bg-transparent border-0 outline-none text-white placeholder:text-white/60 text-base min-h-[56px]"
                           disabled={status === 'loading'}
                         />
+                        <button
+                          type="submit"
+                          disabled={status === 'loading'}
+                          className="px-8 py-4 bg-gradient-to-r from-purple-500 to-white text-black font-semibold hover:scale-105 hover:shadow-xl hover:shadow-purple-500/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-base min-h-[56px] min-w-[180px] rounded-r-lg"
+                        >
+                          {status === 'loading' ? (
+                            <span className="flex items-center justify-center gap-2">
+                              <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                              </svg>
+                              <span>Joining...</span>
+                            </span>
+                          ) : (
+                            'Join Newsletter'
+                          )}
+                        </button>
                       </div>
-                      <button
-                        type="submit"
-                        disabled={status === 'loading'}
-                        className="px-8 py-4 bg-white text-black font-semibold rounded-xl hover:bg-white/90 hover:shadow-lg hover:shadow-white/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-base min-h-[56px] min-w-[180px]"
-                      >
-                        {status === 'loading' ? (
-                          <span className="flex items-center justify-center gap-2">
-                            <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                            </svg>
-                            <span>Joining...</span>
-                          </span>
-                        ) : (
-                          'Join Newsletter'
-                        )}
-                      </button>
-                    </div>
 
-                    {status === 'error' && errorMessage && (
-                      <p className="mt-3 text-red-200 text-sm font-medium">{errorMessage}</p>
-                    )}
-                  </form>
-                )}
+                      {status === 'error' && errorMessage && (
+                        <p className="mt-3 text-red-200 text-sm font-medium drop-shadow-sm">{errorMessage}</p>
+                      )}
+                    </form>
+                  )}
+                </motion.div>
               </div>
 
+              {/* Right Side - Navigation Cards */}
               <div className="hidden md:block flex-1 relative overflow-hidden">
                 {backgroundCards.map((card) => (
                   <motion.div
@@ -296,15 +309,15 @@ const ContactSplit = React.memo(() => {
                     <div
                       className="px-4 py-2.5 rounded-xl whitespace-nowrap flex items-center gap-2.5"
                       style={{
-                        background: 'rgba(255, 255, 255, 0.08)',
+                        background: 'rgba(168, 85, 247, 0.08)',
                         backdropFilter: 'blur(20px)',
                         WebkitBackdropFilter: 'blur(20px)',
-                        border: '1px solid rgba(255, 255, 255, 0.15)',
-                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                        border: '1px solid rgba(168, 85, 247, 0.2)',
+                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
                       }}
                     >
-                      <span className="text-white/70">{card.icon}</span>
-                      <span className="text-white/70 text-sm font-medium">{card.label}</span>
+                      <span className="text-purple-300/80">{card.icon}</span>
+                      <span className="text-white/80 text-sm font-medium">{card.label}</span>
                     </div>
                   </motion.div>
                 ))}
@@ -326,14 +339,14 @@ const ContactSplit = React.memo(() => {
                     <div
                       className="px-5 py-3 rounded-xl whitespace-nowrap flex items-center gap-3"
                       style={{
-                        background: 'rgba(255, 255, 255, 0.12)',
+                        background: 'rgba(168, 85, 247, 0.15)',
                         backdropFilter: 'blur(24px)',
                         WebkitBackdropFilter: 'blur(24px)',
-                        border: '1px solid rgba(255, 255, 255, 0.25)',
-                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.1)',
+                        border: '1px solid rgba(168, 85, 247, 0.3)',
+                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(0, 0, 0, 0.1)',
                       }}
                     >
-                      <span className="text-white">{card.icon}</span>
+                      <span className="text-purple-200">{card.icon}</span>
                       <span className="text-white text-sm font-medium drop-shadow-sm">{card.label}</span>
                     </div>
                   </motion.div>

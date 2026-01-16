@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import ShieldIO from './ShieldIO';
 import { DottedSurface } from './ui/dotted-surface';
@@ -127,14 +127,14 @@ const GlassRingsSection = () => {
           </div>
 
           {/* Text content - Second on mobile, first on desktop */}
-          <div className="relative z-10 space-y-6 text-center lg:text-left order-2 lg:order-1">
+          <div className="relative z-10 space-y-6 text-center lg:text-left order-2 lg:order-1 lg:pt-12">
 
-            <div className="space-y-2">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight">
+            <div className="space-y-3">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal leading-[1.2] tracking-tight">
                 <span className="block text-white min-h-[1.2em]">
                   Built by Experts
                 </span>
-                <span className="block text-white/70 min-h-[1.2em]">
+                <span className="block text-white/60 min-h-[1.2em]">
                   <TypewriterText
                     text="Built for You"
                     delay={300}
@@ -148,14 +148,14 @@ const GlassRingsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2, delay: 0.3 }}
-              className="text-sm sm:text-base text-white/50 leading-relaxed max-w-md mx-auto lg:mx-0"
+              className="text-base sm:text-lg text-white/40 leading-relaxed max-w-md mx-auto lg:mx-0"
             >
               Enterprise-grade security and continuous innovation from industry professionals. Your data and success are our priority.
             </motion.p>
           </div>
 
           {/* Feature items - Third on mobile, third on desktop */}
-          <div className="space-y-3 sm:space-y-4 order-3">
+          <div className="space-y-4 sm:space-y-5 order-3 lg:pt-12">
             {featureItems.map((item, index) => (
               <motion.div
                 key={item.title}
@@ -165,14 +165,14 @@ const GlassRingsSection = () => {
                 transition={{ duration: 1.0, delay: 0.4 + index * 0.1 }}
                 className="group relative flex items-start gap-3 sm:gap-4"
               >
-                <div className="flex-shrink-0 text-white/70 group-hover:text-white transition-colors">
+                <div className="flex-shrink-0 text-white/60 group-hover:text-white transition-colors">
                   {item.icon}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-white font-semibold text-sm sm:text-base mb-0.5 sm:mb-1 group-hover:text-white transition-colors">
+                  <h3 className="text-white font-medium text-sm sm:text-base mb-1 sm:mb-1.5 group-hover:text-white transition-colors">
                     / {item.title}
                   </h3>
-                  <p className="text-white/40 text-xs sm:text-sm leading-relaxed group-hover:text-white/50 transition-colors">
+                  <p className="text-white/35 text-xs sm:text-sm leading-relaxed group-hover:text-white/45 transition-colors">
                     {item.description}
                   </p>
                 </div>

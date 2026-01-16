@@ -110,9 +110,17 @@ const Navbar: React.FC<NavbarProps> = () => {
     e.preventDefault();
     e.stopPropagation();
     if (id === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Immediate scroll reset
+      const lenis = (window as any).lenis;
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true, force: true, lock: true });
+      }
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      
       if (!isHomePage) {
-        navigate('/');
+        navigate('/', { replace: false });
       }
     } else {
       if (!isHomePage) {
@@ -152,11 +160,11 @@ const Navbar: React.FC<NavbarProps> = () => {
         }}
       >
         <div
-          className="mx-auto"
+          className="mx-auto relative"
           style={{
             maxWidth: isScrolled ? '900px' : '1280px',
             padding: isScrolled ? '8px 24px' : '0 24px',
-            borderRadius: isScrolled ? '9999px' : '0px',
+            borderRadius: isScrolled ? '16px' : '0',
             backdropFilter: isScrolled ? 'blur(20px) saturate(180%)' : 'none',
             WebkitBackdropFilter: isScrolled ? 'blur(20px) saturate(180%)' : 'none',
             background: isScrolled
@@ -172,7 +180,19 @@ const Navbar: React.FC<NavbarProps> = () => {
             <Link
               to="/"
               className="flex items-center gap-2 flex-shrink-0 relative z-10"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              onClick={(e) => {
+                if (isHomePage) {
+                  e.preventDefault();
+                }
+                // Immediate scroll reset
+                const lenis = (window as any).lenis;
+                if (lenis) {
+                  lenis.scrollTo(0, { immediate: true, force: true, lock: true });
+                }
+                window.scrollTo({ top: 0, behavior: 'instant' });
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+              }}
               aria-label="Closio - Back to top"
             >
               <img
@@ -194,16 +214,18 @@ const Navbar: React.FC<NavbarProps> = () => {
                   height: isScrolled ? '48px' : '80px',
                   opacity: isScrolled ? 1 : 0,
                   transition: 'height 700ms cubic-bezier(0.4, 0, 0.2, 1), opacity 700ms cubic-bezier(0.4, 0, 0.2, 1)',
-                  pointerEvents: isScrolled ? 'auto' : 'none'
+                  pointerEvents: isScrolled ? 'auto' : 'none',
+                  left: '2px',
+                  top: '19px'
                 }}
                 draggable={false}
               />
             </Link>
 
             <div
-              className="hidden lg:flex items-center justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+              className="hidden lg:flex items-center justify-center absolute left-[42%] top-1/2 -translate-x-1/2 -translate-y-1/2"
               style={{
-                gap: isScrolled ? '20px' : '32px',
+                gap: isScrolled ? '16px' : '24px',
                 transition: 'gap 700ms cubic-bezier(0.4, 0, 0.2, 1)'
               }}
             >
@@ -214,12 +236,20 @@ const Navbar: React.FC<NavbarProps> = () => {
                     key={item.id}
                     href={item.id === 'home' ? '/' : `#${item.id}`}
                     onClick={handleNavClick(item.id)}
-                    className={`nav-underline-glow font-medium inline-flex items-center h-8 ${
-                      !isActive ? 'text-white/80 hover:text-white' : 'text-white'
-                    } ${isActive ? 'is-active' : ''}`}
+                    className={`font-medium inline-flex items-center rounded-xl whitespace-nowrap transition-all duration-300 ${
+                      isActive ? 'text-white' : 'text-white/80 hover:text-white'
+                    }`}
                     style={{
+                      padding: isScrolled ? '8px 20px' : '10px 24px',
                       fontSize: isScrolled ? '14px' : '15px',
-                      transition: 'font-size 700ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms ease'
+                      background: isActive 
+                        ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%)'
+                        : 'transparent',
+                      backdropFilter: isActive ? 'blur(20px) saturate(180%)' : 'none',
+                      WebkitBackdropFilter: isActive ? 'blur(20px) saturate(180%)' : 'none',
+                      border: isActive ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid transparent',
+                      boxShadow: isActive ? 'inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 4px 20px rgba(0, 0, 0, 0.2)' : 'none',
+                      transition: 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)'
                     }}
                   >
                     {item.label}
@@ -230,35 +260,51 @@ const Navbar: React.FC<NavbarProps> = () => {
               <Link
                 to="/pricing"
                 onClick={() => window.scrollTo(0, 0)}
-                className={`nav-underline-glow font-medium inline-flex items-center h-8 ${
+                className={`font-medium inline-flex items-center rounded-xl whitespace-nowrap transition-all duration-300 ${
                   location.pathname === '/pricing'
-                    ? 'text-white is-active'
+                    ? 'text-white'
                     : 'text-white/80 hover:text-white'
                 }`}
                 style={{
+                  padding: isScrolled ? '8px 20px' : '10px 24px',
                   fontSize: isScrolled ? '14px' : '15px',
-                  transition: 'font-size 700ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms ease'
+                  background: location.pathname === '/pricing'
+                    ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%)'
+                    : 'transparent',
+                  backdropFilter: location.pathname === '/pricing' ? 'blur(20px) saturate(180%)' : 'none',
+                  WebkitBackdropFilter: location.pathname === '/pricing' ? 'blur(20px) saturate(180%)' : 'none',
+                  border: location.pathname === '/pricing' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid transparent',
+                  boxShadow: location.pathname === '/pricing' ? 'inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 4px 20px rgba(0, 0, 0, 0.2)' : 'none',
+                  transition: 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)'
                 }}
               >
                 Pricing
               </Link>
 
               <div
-                className="relative flex items-center h-8"
+                className="relative flex items-center"
                 ref={resourcesDropdownRef}
                 onMouseEnter={() => setResourcesDropdownOpen(true)}
                 onMouseLeave={() => setResourcesDropdownOpen(false)}
               >
                 <button
                   onClick={() => setResourcesDropdownOpen(!resourcesDropdownOpen)}
-                  className={`nav-underline-glow font-medium inline-flex items-center gap-1 h-8 ${
+                  className={`font-medium inline-flex items-center gap-1 rounded-xl whitespace-nowrap transition-all duration-300 ${
                     RESOURCES_ITEMS.some(item => item.path === location.pathname)
-                      ? 'text-white is-active'
+                      ? 'text-white'
                       : 'text-white/80 hover:text-white'
                   }`}
                   style={{
+                    padding: isScrolled ? '8px 20px' : '10px 24px',
                     fontSize: isScrolled ? '14px' : '15px',
-                    transition: 'font-size 700ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms ease'
+                    background: RESOURCES_ITEMS.some(item => item.path === location.pathname)
+                      ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%)'
+                      : 'transparent',
+                    backdropFilter: RESOURCES_ITEMS.some(item => item.path === location.pathname) ? 'blur(20px) saturate(180%)' : 'none',
+                    WebkitBackdropFilter: RESOURCES_ITEMS.some(item => item.path === location.pathname) ? 'blur(20px) saturate(180%)' : 'none',
+                    border: RESOURCES_ITEMS.some(item => item.path === location.pathname) ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid transparent',
+                    boxShadow: RESOURCES_ITEMS.some(item => item.path === location.pathname) ? 'inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 4px 20px rgba(0, 0, 0, 0.2)' : 'none',
+                    transition: 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)'
                   }}
                 >
                   Resources
@@ -300,21 +346,29 @@ const Navbar: React.FC<NavbarProps> = () => {
               </div>
 
               <div
-                className="relative flex items-center h-8"
+                className="relative flex items-center"
                 ref={legalDropdownRef}
                 onMouseEnter={() => setLegalDropdownOpen(true)}
                 onMouseLeave={() => setLegalDropdownOpen(false)}
               >
                 <button
                   onClick={() => setLegalDropdownOpen(!legalDropdownOpen)}
-                  className={`nav-underline-glow font-medium inline-flex items-center gap-1 h-8 ${
+                  className={`font-medium inline-flex items-center gap-1 rounded-xl whitespace-nowrap transition-all duration-300 ${
                     LEGAL_ITEMS.some(item => item.path === location.pathname)
-                      ? 'text-white is-active'
+                      ? 'text-white'
                       : 'text-white/80 hover:text-white'
                   }`}
                   style={{
+                    padding: isScrolled ? '8px 20px' : '10px 24px',
                     fontSize: isScrolled ? '14px' : '15px',
-                    transition: 'font-size 700ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms ease'
+                    background: LEGAL_ITEMS.some(item => item.path === location.pathname)
+                      ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%)'
+                      : 'transparent',
+                    backdropFilter: LEGAL_ITEMS.some(item => item.path === location.pathname) ? 'blur(20px) saturate(180%)' : 'none',
+                    WebkitBackdropFilter: LEGAL_ITEMS.some(item => item.path === location.pathname) ? 'blur(20px) saturate(180%)' : 'none',
+                    border: LEGAL_ITEMS.some(item => item.path === location.pathname) ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid transparent',
+                    boxShadow: LEGAL_ITEMS.some(item => item.path === location.pathname) ? 'inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 4px 20px rgba(0, 0, 0, 0.2)' : 'none',
+                    transition: 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)'
                   }}
                 >
                   Docs & More
