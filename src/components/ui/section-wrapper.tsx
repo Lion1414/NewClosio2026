@@ -19,8 +19,8 @@ export function SectionWrapper({
   disableAnimation = false
 }: SectionWrapperProps) {
   const { ref, isVisible } = useScrollAnimation({
-    threshold: 0.1,
-    rootMargin: '-80px 0px -80px 0px',
+    threshold: 0.05,
+    rootMargin: '0px 0px -50px 0px',
     triggerOnce: true
   });
 
@@ -41,12 +41,12 @@ export function SectionWrapper({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40, scale: 0.98 }}
+      initial={{ opacity: 0, y: 30, scale: 0.98 }}
       animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{
-        duration: 0.8,
+        duration: 0.5,
         delay: animationDelay,
-        ease: [0.22, 0.61, 0.36, 1]
+        ease: [0.25, 0.46, 0.45, 0.94]
       }}
       style={{
         transform: 'translateZ(0)',

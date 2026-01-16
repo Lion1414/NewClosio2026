@@ -91,8 +91,8 @@ const BottomGlow: React.FC = () => (
 
 const OverlappingBanner: React.FC = () => {
   const { ref, isVisible } = useScrollAnimation({
-    threshold: 0.2,
-    rootMargin: '-80px 0px -80px 0px',
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px',
     triggerOnce: true
   });
 
@@ -105,9 +105,9 @@ const OverlappingBanner: React.FC = () => {
           background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(0, 0, 0, 0.15) 50%, rgba(255, 255, 255, 0.04) 100%)',
           boxShadow: '0 25px 80px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0.5px 0 rgba(255, 255, 255, 0.15)',
         }}
-        initial={{ opacity: 0, y: 40, scale: 0.98 }}
+        initial={{ opacity: 0, y: 30, scale: 0.98 }}
         animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : {}}
-        transition={{ duration: 0.8, ease: [0.22, 0.61, 0.36, 1] }}
+        transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
         <div
           className="absolute inset-0 rounded-3xl pointer-events-none"

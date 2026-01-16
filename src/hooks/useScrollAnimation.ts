@@ -7,14 +7,13 @@ interface ScrollAnimationOptions {
 }
 
 export function useScrollAnimation({
-  threshold = 0.15,
-  rootMargin = '-50px 0px -50px 0px',
+  threshold = 0.05,
+  rootMargin = '0px 0px -100px 0px',
   triggerOnce = false
 }: ScrollAnimationOptions = {}) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout>();
   const rafRef = useRef<number>();
 
   useEffect(() => {
@@ -25,28 +24,21 @@ export function useScrollAnimation({
       ([entry]) => {
         if (triggerOnce && hasAnimated) return;
 
-        // Cancel any pending updates
-        if (timeoutRef.current) {
-          clearTimeout(timeoutRef.current);
-        }
+        // Cancel any pending RAF
         if (rafRef.current) {
           cancelAnimationFrame(rafRef.current);
         }
 
         if (entry.isIntersecting) {
-          // Use RAF for smooth state updates
+          // Immediate trigger with RAF for smooth state update
           rafRef.current = requestAnimationFrame(() => {
-            timeoutRef.current = setTimeout(() => {
-              setIsVisible(true);
-              if (triggerOnce) setHasAnimated(true);
-            }, 50);
+            setIsVisible(true);
+            if (triggerOnce) setHasAnimated(true);
           });
         } else {
           if (!triggerOnce) {
             rafRef.current = requestAnimationFrame(() => {
-              timeoutRef.current = setTimeout(() => {
-                setIsVisible(false);
-              }, 100);
+              setIsVisible(false);
             });
           }
         }
@@ -61,9 +53,6 @@ export function useScrollAnimation({
 
     return () => {
       observer.disconnect();
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
       if (rafRef.current) {
         cancelAnimationFrame(rafRef.current);
       }

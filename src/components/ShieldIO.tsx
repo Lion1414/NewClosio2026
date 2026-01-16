@@ -3,8 +3,8 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const ShieldIO = () => {
   const { ref, isVisible } = useScrollAnimation({
-    threshold: 0.2,
-    rootMargin: '-100px 0px -100px 0px',
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px',
     triggerOnce: true
   });
 
@@ -17,7 +17,7 @@ const ShieldIO = () => {
       className="w-full h-full max-w-[420px] mx-auto drop-shadow-2xl"
       initial={{ opacity: 0, scale: 0.95, y: 40 }}
       animate={isVisible ? { opacity: 1, scale: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, ease: [0.22, 0.61, 0.36, 1] }}
+      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       <defs>
         {/* Realistic metallic shield gradients */}
