@@ -66,7 +66,7 @@ const PerspectiveGrid3D: React.FC = () => {
       const material = new THREE.LineBasicMaterial({
         color: gridColor,
         transparent: true,
-        opacity: opacity * 0.25,
+        opacity: opacity * 0.15,
       });
 
       return new THREE.Line(geometry, material);
@@ -96,7 +96,7 @@ const PerspectiveGrid3D: React.FC = () => {
     for (let i = 0; i <= linesZ; i++) {
       const z = -i * gridSpacing + 5;
       const depth = i / linesZ;
-      const vanishScale = 1 - depth * 0.7;
+      const vanishScale = 1 - depth * 0.4;
 
       const fadeDepth = 1 - depth * 0.85;
       const fadeTop = depth < 0.3 ? depth / 0.3 : 1;
@@ -136,10 +136,11 @@ const PerspectiveGrid3D: React.FC = () => {
 
         void main() {
           float centerDist = length(vUv - vec2(0.5, 0.5));
-          float glow = 1.0 - smoothstep(0.0, 0.6, centerDist);
-          float verticalFade = smoothstep(0.0, 0.4, vUv.y);
-          float pulse = sin(time * 2.0) * 0.3 + 0.7;
-          float finalGlow = glow * verticalFade * 0.35 * pulse;
+          float glow = 1.0 - smoothstep(0.0, 0.7, centerDist);
+          float innerGlow = 1.0 - smoothstep(0.0, 0.3, centerDist);
+          float verticalFade = smoothstep(0.0, 0.5, vUv.y);
+          float pulse = sin(time * 2.0) * 0.2 + 0.8;
+          float finalGlow = (glow * 0.4 + innerGlow * 0.6) * verticalFade * 0.55 * pulse;
 
           gl_FragColor = vec4(color, finalGlow);
         }
@@ -150,6 +151,50 @@ const PerspectiveGrid3D: React.FC = () => {
     horizonGlow.position.set(0, -0.5, -15);
     horizonGlow.rotation.x = Math.PI / 2;
     scene.add(horizonGlow);
+
+    // Add secondary depth glow layer
+    const depthGlowGeometry = new THREE.PlaneGeometry(gridWidth * 1.5, 10);
+    const depthGlowMaterial = new THREE.ShaderMaterial({
+      transparent: true,
+      side: THREE.DoubleSide,
+      depthWrite: false,
+      uniforms: {
+        color: { value: new THREE.Color('#ffffff') },
+        time: { value: 0 }
+      },
+      vertexShader: `
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        uniform vec3 color;
+        uniform float time;
+        varying vec2 vUv;
+
+        void main() {
+          float centerDist = length(vUv - vec2(0.5, 0.5));
+          float glow = 1.0 - smoothstep(0.0, 0.5, centerDist);
+          float verticalFade = smoothstep(0.0, 0.6, vUv.y);
+          float pulse = sin(time * 2.5 + 1.0) * 0.15 + 0.85;
+          float finalGlow = glow * verticalFade * 0.3 * pulse;
+
+          gl_FragColor = vec4(color, finalGlow);
+        }
+      `
+    });
+
+    const depthGlow = new THREE.Mesh(depthGlowGeometry, depthGlowMaterial);
+    depthGlow.position.set(0, -0.3, -18);
+    depthGlow.rotation.x = Math.PI / 2;
+    scene.add(depthGlow);
+
+    // Add point light for more 3D depth
+    const horizonLight = new THREE.PointLight('#ffffff', 2, 40);
+    horizonLight.position.set(0, 0, -15);
+    scene.add(horizonLight);
 
     const gradientGeometry = new THREE.PlaneGeometry(100, 100);
     const gradientMaterial = new THREE.ShaderMaterial({
@@ -215,6 +260,11 @@ const PerspectiveGrid3D: React.FC = () => {
       gridGroup.rotation.y = Math.sin(time * 0.3) * 0.01;
 
       horizonMaterial.uniforms.time.value = time;
+      depthGlowMaterial.uniforms.time.value = time;
+
+      // Animate horizon light for more 3D effect
+      horizonLight.intensity = 2 + Math.sin(time * 2.0) * 0.3;
+      horizonLight.position.y = Math.sin(time * 0.8) * 0.2;
 
       renderer.render(scene, camera);
       animationId = requestAnimationFrame(animate);
