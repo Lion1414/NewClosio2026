@@ -97,7 +97,7 @@ const OverlappingBanner: React.FC = () => {
   });
 
   return (
-    <div className="relative z-10 -mt-16 mb-[-8rem] px-4 sm:px-8 md:px-16 lg:px-24">
+    <div className="relative z-10 -mt-8 mb-[-6rem] px-4 sm:px-8 md:px-16 lg:px-24">
       <motion.div
         ref={ref}
         className="relative w-full rounded-3xl overflow-hidden backdrop-blur-2xl"
@@ -143,29 +143,14 @@ const OverlappingBanner: React.FC = () => {
         />
         <GridPattern />
         <BottomGlow />
-        <div className="relative px-8 py-16 md:py-20 flex flex-col items-center justify-center text-center z-10">
+        <div className="relative px-8 py-12 md:py-14 flex flex-col items-center justify-center text-center z-10">
           <motion.h2
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight max-w-4xl"
             initial={{ opacity: 0, y: 30 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
           >
-            Your entire insurance operation{' '}
-            <span className="relative">
-              <span className="text-gray-400">policies</span>
-              <span className="absolute bottom-1 left-0 right-0 h-[2px] bg-gray-400"></span>
-            </span>
-            ,{' '}
-            <span className="relative">
-              <span className="text-gray-400">commissions</span>
-              <span className="absolute bottom-1 left-0 right-0 h-[2px] bg-gray-400"></span>
-            </span>
-            , and{' '}
-            <span className="relative inline-block">
-              <span className="relative z-10 text-gray-400">team</span>
-              <span className="absolute inset-0 border-2 border-gray-400/40 rounded-full scale-125"></span>
-            </span>
-            {' '}finally in one place.
+            Your entire insurance operation policies, commissions, and team finally in one place.
           </motion.h2>
 
           <motion.p
