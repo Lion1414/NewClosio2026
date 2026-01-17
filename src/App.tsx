@@ -46,10 +46,10 @@ function HomePage() {
         </SectionWrapper>
 
         {/* Purple connecting line */}
-        <div className="relative h-24 -my-12 flex items-center justify-center">
+        <div className="relative w-full py-16 bg-black flex items-center justify-center z-10">
           <motion.svg
-            viewBox="0 0 1200 96"
-            className="w-full h-full"
+            viewBox="0 0 1200 128"
+            className="w-full h-32"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -69,28 +69,28 @@ function HomePage() {
               </filter>
             </defs>
             
-            {/* Main line */}
+            {/* Glow layer */}
             <motion.path
-              d="M600 0 L600 96"
-              stroke="url(#sectionLineGradient)"
-              strokeWidth="3"
+              d="M600 0 L600 128"
+              stroke="rgba(168, 85, 247, 0.4)"
+              strokeWidth="8"
               strokeLinecap="round"
               fill="none"
+              filter="url(#sectionLineGlow)"
+              opacity="0.6"
               initial={{ pathLength: 0 }}
               whileInView={{ pathLength: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             />
             
-            {/* Glow layer */}
+            {/* Main line */}
             <motion.path
-              d="M600 0 L600 96"
-              stroke="rgba(168, 85, 247, 0.4)"
-              strokeWidth="6"
+              d="M600 0 L600 128"
+              stroke="url(#sectionLineGradient)"
+              strokeWidth="3"
               strokeLinecap="round"
               fill="none"
-              filter="url(#sectionLineGlow)"
-              opacity="0.5"
               initial={{ pathLength: 0 }}
               whileInView={{ pathLength: 1 }}
               viewport={{ once: true }}
