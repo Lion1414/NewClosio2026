@@ -162,7 +162,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         <div
           className="mx-auto relative"
           style={{
-            maxWidth: isScrolled ? '900px' : '1280px',
+            maxWidth: isScrolled ? '1100px' : '1280px',
             padding: isScrolled ? '8px 24px' : '0 24px',
             borderRadius: isScrolled ? '16px' : '0',
             backdropFilter: isScrolled ? 'blur(20px) saturate(180%)' : 'none',
