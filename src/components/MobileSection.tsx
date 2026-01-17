@@ -57,15 +57,18 @@ const TypewriterText: React.FC = () => {
 
 const MobileSection: React.FC = () => {
   return (
-    <section id="mobile" className="min-h-[450px] h-[450px] sm:h-[550px] md:h-[600px] lg:h-[700px] xl:h-[750px] overflow-hidden relative">
-      {/* Animated gradient overlay */}
+    <section id="mobile" className="min-h-[450px] h-[450px] sm:h-[550px] md:h-[600px] lg:h-[700px] xl:h-[750px] overflow-hidden relative bg-black">
+      {/* Solid black background on the right side where the phone is */}
+      <div className="absolute inset-0 bg-black pointer-events-none z-[1]" />
+      
+      {/* Animated gradient overlay - only on left side with grid */}
       <motion.div
-        className="absolute inset-0 pointer-events-none z-[0]"
+        className="absolute inset-0 pointer-events-none z-[2]"
         style={{
-          background: 'radial-gradient(circle at 70% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 50%)',
+          background: 'radial-gradient(circle at 30% 50%, rgba(139, 92, 246, 0.06) 0%, transparent 40%)',
         }}
         animate={{
-          opacity: [0.3, 0.6, 0.3],
+          opacity: [0.3, 0.5, 0.3],
         }}
         transition={{
           duration: 4,
@@ -128,6 +131,9 @@ const MobileSection: React.FC = () => {
 
       <Robot3DContainer />
 
+      {/* Solid black overlay on right side for complete darkness around phone */}
+      <div className="absolute top-0 bottom-0 right-0 w-[50%] bg-black pointer-events-none z-[8]" />
+      
       <div className="absolute inset-0 flex items-end justify-end overflow-hidden">
         <div className="relative w-full h-full flex items-end justify-end pr-0 pb-0">
           <TypewriterText />
