@@ -223,7 +223,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             </Link>
 
             <div
-              className="hidden lg:flex items-center justify-center absolute left-[42%] top-1/2 -translate-x-1/2 -translate-y-1/2"
+              className="hidden lg:flex items-center justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
               style={{
                 gap: isScrolled ? '16px' : '24px',
                 transition: 'gap 700ms cubic-bezier(0.4, 0, 0.2, 1)'
