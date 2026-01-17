@@ -44,7 +44,7 @@ function HomePage() {
           <ValueProps />
         </SectionWrapper>
 
-        <SectionWrapper className="!bg-black !bg-none">
+        <SectionWrapper className="!bg-black !bg-none rounded-none">
           <FeatureGrid />
         </SectionWrapper>
 
