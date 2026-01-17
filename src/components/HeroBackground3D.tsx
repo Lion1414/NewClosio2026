@@ -72,7 +72,7 @@ const HeroBackground3D: React.FC = () => {
 
     const hero3D = new THREE.Group();
     scene.add(hero3D);
-    hero3D.position.set(2.2, 0.0, 0.0);
+    hero3D.position.set(0.0, -0.8, 0.0);
 
     function createItalicHollowI({
       width = 0.38,
@@ -215,7 +215,7 @@ const HeroBackground3D: React.FC = () => {
     }
 
     const io = new THREE.Group();
-    io.position.set(0, 0.0, 0.0);
+    io.position.set(0, 0.5, 0.0);
     hero3D.add(io);
 
     const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.6, height: 1.5, stroke: 0.16, depth: 0.25 }), solidMaterial(PURPLE, 0.18, 0.55));
@@ -336,8 +336,9 @@ const HeroBackground3D: React.FC = () => {
       camera.updateProjectionMatrix();
 
       const mobile = w < 900;
-      hero3D.position.x = mobile ? 0 : 2.2;
-      hero3D.scale.setScalar(mobile ? 0.9 : 1.65);
+      hero3D.position.x = 0;
+      hero3D.position.y = mobile ? 0.5 : -0.8;
+      hero3D.scale.setScalar(mobile ? 0.9 : 2.2);
     }
 
     const resizeObserver = new ResizeObserver(fit);

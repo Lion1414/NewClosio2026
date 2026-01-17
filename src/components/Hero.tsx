@@ -144,7 +144,7 @@ const Hero: React.FC = () => {
         style={{ opacity, willChange: 'opacity' }}
         className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-30 py-32 lg:py-0"
       >
-        <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-xl lg:max-w-2xl">
+        <div className="flex flex-col items-center text-center mx-auto max-w-4xl">
           <motion.span
             className="text-xs sm:text-sm uppercase tracking-[0.25em] text-neutral-500 font-medium mb-8 relative"
             initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
@@ -171,7 +171,7 @@ const Hero: React.FC = () => {
             {" "}WAS BUILT FOR YOU
           </motion.span>
 
-          <h1 className="hero-title font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.1] -tracking-[0.03em] mb-8">
+          <h1 className="hero-title font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.1] -tracking-[0.03em] mb-8 w-full">
             <span className="block">
               <TypewriterText
                 text="Close More."
@@ -189,7 +189,7 @@ const Hero: React.FC = () => {
           </h1>
 
           <motion.p
-            className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-md leading-[1.6] mb-12"
+            className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-2xl leading-[1.7] mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.6, delay: 5.3 }}
@@ -197,7 +197,7 @@ const Hero: React.FC = () => {
             Every deal tracked. Every win shared. Automatically.
           </motion.p>
 
-          <div className="flex flex-col items-center md:items-start gap-6 w-full">
+          <div className="flex flex-col items-center gap-6 w-full">
             <GetInTouchButton />
           </div>
         </div>
