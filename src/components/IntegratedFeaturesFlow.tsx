@@ -433,25 +433,6 @@ export default function IntegratedFeaturesFlow() {
                   {/* Corner accent */}
                   <div className="absolute top-0 right-0 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-white/[0.08] to-transparent rounded-tr-xl sm:rounded-tr-2xl rounded-bl-[100%] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                  {/* Pulsing status indicator */}
-                  <motion.div
-                    className="absolute top-2 right-2 sm:top-3 sm:right-3"
-                    animate={{
-                      opacity: [0.4, 1, 0.4],
-                      scale: [1, 1.2, 1],
-                    }}
-                    transition={{
-                      duration: 2,
-                      delay: index * 0.3,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  >
-                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-purple-400" style={{
-                      boxShadow: '0 0 8px rgba(168, 85, 247, 0.6), 0 0 16px rgba(168, 85, 247, 0.3)'
-                    }} />
-                  </motion.div>
-
                   {/* Animated border gradient on hover */}
                   <motion.div
                     className="absolute inset-0 rounded-xl sm:rounded-2xl"
