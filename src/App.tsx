@@ -40,7 +40,7 @@ function HomePage() {
 
         <OverlappingBanner />
 
-        <SectionWrapper className="!bg-black !bg-none pt-32">
+        <SectionWrapper className="!bg-black !bg-none pt-32 rounded-b-none">
           <ValueProps />
         </SectionWrapper>
 
