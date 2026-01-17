@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -43,6 +44,60 @@ function HomePage() {
         <SectionWrapper className="!bg-black !bg-none pt-32 rounded-b-none">
           <ValueProps />
         </SectionWrapper>
+
+        {/* Purple connecting line */}
+        <div className="relative h-24 -my-12 flex items-center justify-center">
+          <motion.svg
+            viewBox="0 0 1200 96"
+            className="w-full h-full"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2 }}
+          >
+            <defs>
+              <linearGradient id="sectionLineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="rgba(168, 85, 247, 0.7)" />
+                <stop offset="50%" stopColor="rgba(255, 255, 255, 0.5)" />
+                <stop offset="100%" stopColor="rgba(168, 85, 247, 0.3)" />
+              </linearGradient>
+              <filter id="sectionLineGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feComponentTransfer>
+                  <feFuncA type="linear" slope="1.5" />
+                </feComponentTransfer>
+              </filter>
+            </defs>
+            
+            {/* Main line */}
+            <motion.path
+              d="M600 0 L600 96"
+              stroke="url(#sectionLineGradient)"
+              strokeWidth="3"
+              strokeLinecap="round"
+              fill="none"
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            />
+            
+            {/* Glow layer */}
+            <motion.path
+              d="M600 0 L600 96"
+              stroke="rgba(168, 85, 247, 0.4)"
+              strokeWidth="6"
+              strokeLinecap="round"
+              fill="none"
+              filter="url(#sectionLineGlow)"
+              opacity="0.5"
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            />
+          </motion.svg>
+        </div>
 
         <SectionWrapper className="!bg-black !bg-none rounded-none">
           <FeatureGrid />
