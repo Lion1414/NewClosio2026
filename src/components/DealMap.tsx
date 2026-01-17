@@ -207,26 +207,31 @@ export default function DealMap() {
       <div className="absolute inset-0 bg-black" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex flex-col gap-4 mb-32 md:mb-28">
-          <motion.h2
+        <div className="mb-16 md:mb-20 lg:mb-24">
+          <motion.div
+            className="text-center mb-6 md:mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] text-gray-500">
+              <TypewriterText text="/ Policy Map Solutions" delay={200} isVisible={isInView} />
+            </h2>
+          </motion.div>
+          
+          <motion.div
+            className="max-w-3xl mx-auto text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl lg:text-4xl text-gray-400"
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            <TypewriterText text="/ Policy Map Solutions" delay={200} isVisible={isInView} />
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-base text-gray-400 md:max-w-xl"
-          >
-            Visualize your agency's reach in real-time. Watch as policies are sold across the nation.
-          </motion.p>
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-400 leading-[1.7] font-light">
+              Visualize your agency's reach in real-time.{' '}
+              <span className="text-white font-normal">Watch as policies are sold across the nation.</span>
+            </p>
+          </motion.div>
         </div>
 
         <div className="relative flex items-center justify-center">
