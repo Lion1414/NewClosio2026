@@ -169,7 +169,7 @@ const AdditionalFeatures: React.FC = () => {
                 willChange: 'color',
               }}
             >
-              The platform starts here but doesn't stop
+              Stop chasing commissions and missing renewals
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 60 }}
