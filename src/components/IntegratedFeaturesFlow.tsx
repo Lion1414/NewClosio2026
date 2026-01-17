@@ -314,15 +314,6 @@ export default function IntegratedFeaturesFlow() {
             {/* Glow effect layer */}
             <g opacity="0.5" filter="url(#blurGlow)">
               <motion.path
-                d="M435 238 L435 420"
-                stroke="rgba(168, 85, 247, 0.4)"
-                strokeWidth="5"
-                strokeLinecap="butt"
-                initial={{ pathLength: 0 }}
-                animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
-                transition={{ duration: 1.6, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              />
-              <motion.path
                 d="M435 420 C435 465, 240 485, 75 520"
                 stroke="rgba(168, 85, 247, 0.3)"
                 strokeWidth="5"
